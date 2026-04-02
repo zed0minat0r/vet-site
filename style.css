@@ -186,15 +186,10 @@ section {
   background: linear-gradient(135deg, rgba(45, 212, 168, 0.15), rgba(14, 165, 233, 0.10));
   box-shadow: 0 0 0 2px rgba(45, 212, 168, 0.25);
   flex-shrink: 0;
-  animation: logoReveal 0.6s ease-out both;
 }
 .logo-badge--footer {
   width: 44px;
   height: 44px;
-}
-@keyframes logoReveal {
-  from { opacity: 0; transform: scale(0.7) rotate(-15deg); }
-  to { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 /* Header CTA actions */
@@ -681,11 +676,24 @@ section {
 }
 
 .emergency-box {
-  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 107, 107, 0.03));
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.12), rgba(255, 107, 107, 0.03));
   border: 2px solid var(--emergency);
   border-radius: var(--radius);
   padding: 2.5rem 1.5rem;
   text-align: center;
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.08), inset 0 1px 0 rgba(255, 107, 107, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.emergency-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--emergency), transparent);
+  opacity: 0.7;
 }
 
 .emergency-pulse {
@@ -702,14 +710,35 @@ section {
   margin: 0 auto;
   animation: emergencyPulse 2s ease-in-out infinite;
 }
+.pulse-cross::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  animation: emergencyRing 2s ease-in-out infinite;
+}
+.pulse-cross::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 107, 107, 0.15);
+  animation: emergencyRing 2s ease-in-out infinite 0.3s;
+}
 
 @keyframes emergencyPulse {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.15); opacity: 0.8; }
 }
 
+@keyframes emergencyRing {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pulse-cross { animation: none; }
+  .pulse-cross, .pulse-cross::before, .pulse-cross::after { animation: none; }
   .fade-in-up {
     opacity: 1 !important;
     transform: none !important;
@@ -799,6 +828,7 @@ section {
   margin-top: 1.5rem;
   padding: 0.85rem 1.25rem;
   background: rgba(255, 107, 107, 0.08);
+  border-left: 3px solid var(--emergency);
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
   color: var(--text);

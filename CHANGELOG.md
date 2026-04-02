@@ -483,3 +483,14 @@
 
 #### CSS
 - `a.trust-strip-link`, `.portal-link-inline`, `.emergency-prep`, `.emergency-response`, `.emergency-faq-link`, `.why-choose-cta`, `.footer-quick-answers`, `.footer-qa-item` — All mobile-first, center-aligned.
+
+---
+
+### v11 — Emergency Section Visual Polish (Spark)
+**Date:** 2026-04-01
+
+#### Emergency Section Enhancements (CSS-only)
+- **Glowing ring animation on pulse cross** — Two concentric ring pseudo-elements (`::before`, `::after`) radiate outward from the emergency cross icon with staggered timing. Creates a subtle urgency signal that draws the eye. Respects `prefers-reduced-motion`.
+- **Emergency box ambient glow** — Added `box-shadow` with soft red outer glow and inner highlight for depth. The box now feels elevated rather than flat.
+- **Top accent gradient bar** — `::before` pseudo-element on `.emergency-box` adds a horizontal gradient line (transparent-red-transparent) across the top edge. Creates a visual accent consistent with the why-choose section's accent bar pattern.
+- **Prep tip left accent border** — Added 3px left border in emergency red to `.emergency-prep` to visually anchor the save-number tip, mirroring the testimonial card accent border pattern.
