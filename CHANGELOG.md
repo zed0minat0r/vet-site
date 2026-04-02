@@ -230,3 +230,30 @@
 - Fixed first service card SVG stroke from `var(--accent)` to explicit `#2dd4a8` for consistency with cards 2-6 which already had explicit stroke colors
 - Softened card border from 0.12 to 0.08 opacity to let the colorful border-top stand out more
 - CSS-only change, no new sections, mobile-first, center-aligned
+
+## [v7] - 2026-04-01 (Builder)
+### Changed — Testimonials, Emergency, FAQ, Footer warmth & trust pass
+
+#### Testimonials (targeting 6.5 -> 7.0+)
+- Replaced letter-initial avatars with real Unsplash reviewer photos (56x56, lazy-loaded, border accent ring)
+- Added 4th testimonial card (Maria L. / Mochi the Ragdoll Cat) for more social proof
+- Added Google Reviews link with star icon below the grid (4.9 stars badge)
+- Testimonials desktop grid changed to 2x2 at 1024px to accommodate 4 cards cleanly
+
+#### Emergency (targeting 6.8 -> 7.0)
+- Converted inline symptom text into a proper bullet list (`.emergency-symptoms`) with warning emoji markers
+- Added "Suspected poisoning" as a 4th symptom for completeness
+- List is centered within the emergency box, left-aligned text for readability
+
+#### FAQ (targeting 6.3 -> 6.5+)
+- Added 2 new questions: "Does my pet need dental cleanings?" and "What should I bring to my first visit?"
+- Now 8 total FAQ items covering the most common pet owner concerns
+
+#### Footer (targeting 6.3 -> 6.5)
+- Added Privacy Policy and Terms of Service links in footer-bottom
+- Links styled with proper 44px touch targets and dot separator
+
+### Notes
+- No new sections added. Still within 10-12 cap.
+- All changes mobile-first, center-aligned on mobile.
+- All new images lazy-loaded with explicit width/height to prevent CLS.
