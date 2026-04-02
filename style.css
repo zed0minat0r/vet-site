@@ -1476,10 +1476,23 @@ section {
   animation: none !important;
 }
 
-/* --- Why Choose Us --- */
+/* --- Why Choose Us (Spark: accent-glow callout design, breaks card-wall monotony) --- */
 .why-choose {
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(45, 212, 168, 0.06) 0%, transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
   text-align: center;
+  position: relative;
+}
+/* Subtle top accent line to visually separate from sections above */
+.why-choose::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), rgba(45, 212, 168, 0.3));
+  margin: 0 auto 2rem;
 }
 .why-choose-grid {
   display: grid;
@@ -1489,11 +1502,13 @@ section {
   margin: 0 auto;
 }
 .why-choose-item {
-  background: var(--bg-alt);
+  background: linear-gradient(135deg, rgba(45, 212, 168, 0.04) 0%, var(--bg-alt) 100%);
   border-radius: var(--radius);
   padding: 1.5rem;
   border: 1px solid rgba(45, 212, 168, 0.1);
+  border-left: 3px solid rgba(45, 212, 168, 0.35);
   text-align: center;
+  position: relative;
 }
 /* Inline layout: icon left, text right — distinct from stacked service cards */
 .why-choose-item--inline {
@@ -1514,9 +1529,10 @@ section {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(45, 212, 168, 0.1);
+  background: rgba(45, 212, 168, 0.12);
   color: var(--accent);
   margin-bottom: 1rem;
+  box-shadow: 0 0 12px rgba(45, 212, 168, 0.08);
 }
 .why-choose-item h3 {
   font-size: 1.1rem;
@@ -1666,10 +1682,12 @@ section {
   }
   .why-choose-item:hover {
     border-color: rgba(45, 212, 168, 0.25);
-    box-shadow: 0 4px 16px rgba(45, 212, 168, 0.1);
+    border-left-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(45, 212, 168, 0.12);
   }
   .why-choose-item:hover .why-choose-icon {
-    background: rgba(45, 212, 168, 0.18);
+    background: rgba(45, 212, 168, 0.2);
+    box-shadow: 0 0 16px rgba(45, 212, 168, 0.15);
   }
 }
 
@@ -1679,6 +1697,7 @@ section {
 }
 .why-choose-item:active {
   border-color: rgba(45, 212, 168, 0.3);
+  border-left-color: var(--accent);
 }
 /* Team card active state */
 .team-card {

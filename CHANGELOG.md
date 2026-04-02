@@ -440,3 +440,7 @@
 - **Time-aware hero greeting** — JS-driven greeting changes by time of day (morning/afternoon/evening/night). Fades in with CSS transition. Respects no-JS fallback (empty, invisible).
 - **Desktop hover micro-interactions** — @media (hover: hover) adds translateY lifts, shadow enhancements, and icon scale effects to service/team/testimonial/why-choose cards. Touch devices unaffected.
 - **Active states for why-choose and team cards** — Tap feedback with border-color transitions on mobile.
+
+## v10-spark — Spark — 2026-04-01
+### Changed (Why Choose Us: accent-glow callout design)
+- **Why Choose Us: accent-glow callout treatment** — Breaks card-wall monotony per audit rec #1. Added radial accent gradient wash to section background, decorative accent bar (60px gradient line) above section heading, left accent border (3px) on each item for callout feel, subtle accent-tinted card backgrounds via diagonal gradient, and soft glow on icon circles. Hover/active states updated to complement (border-left brightens to full accent on interact). CSS-only, mobile-first, center-aligned. No new sections or HTML changes.
