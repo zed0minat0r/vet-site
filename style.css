@@ -35,7 +35,9 @@ body {
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: 5rem;
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 a {
@@ -239,8 +241,8 @@ section {
   padding-bottom: 4rem;
   text-align: center;
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 64 64' fill='none' opacity='0.035'%3E%3Cellipse cx='32' cy='42' rx='14' ry='12' fill='%232dd4a8'/%3E%3Cellipse cx='16' cy='22' rx='7' ry='9' fill='%232dd4a8' transform='rotate(-15 16 22)'/%3E%3Cellipse cx='30' cy='16' rx='6' ry='8.5' fill='%232dd4a8'/%3E%3Cellipse cx='44' cy='18' rx='6' ry='8.5' fill='%232dd4a8' transform='rotate(10 44 18)'/%3E%3Cellipse cx='52' cy='28' rx='6' ry='8' fill='%232dd4a8' transform='rotate(25 52 28)'/%3E%3C/svg%3E") repeat,
-    linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+    linear-gradient(180deg, rgba(18, 24, 32, 0.72) 0%, rgba(18, 24, 32, 0.85) 100%),
+    url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
   position: relative;
   overflow: hidden;
 }
@@ -248,11 +250,11 @@ section {
 .hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(ellipse at 50% 80%, rgba(45, 212, 168, 0.08) 0%, transparent 60%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 80%, rgba(45, 212, 168, 0.10) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -280,7 +282,9 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  align-items: center;
+  align-items: stretch;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 /* Hero Paw SVG */
@@ -339,8 +343,13 @@ section {
   display: block;
 }
 
-/* --- Team --- */
-.team { background: var(--bg-alt); }
+/* --- Team (light-mode section for visual variety) --- */
+.team {
+  background: #f4f7fa;
+  color: #1a2230;
+}
+.team h2 { color: #1a2230; }
+.team .section-subtitle { color: #5a6577; }
 
 .team-grid {
   display: grid;
@@ -349,38 +358,37 @@ section {
 }
 
 .team-card {
-  background: var(--bg-card);
+  background: #ffffff;
   border-radius: var(--radius);
   padding: 2rem 1.5rem;
   text-align: center;
-  border: 1px solid rgba(45, 212, 168, 0.08);
+  border: 1px solid rgba(45, 212, 168, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-.avatar-circle {
-  width: 72px;
-  height: 72px;
+.avatar-photo {
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
   margin: 0 auto 1rem;
-}
-.avatar-initial {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--bg);
+  display: block;
+  border: 3px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(45, 212, 168, 0.2);
 }
 
-.team-card h3 { margin-bottom: 0.25rem; }
+.team-card h3 {
+  margin-bottom: 0.25rem;
+  color: #1a2230;
+}
 .team-role {
-  color: var(--accent);
+  color: var(--accent-dark);
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
 }
 .team-card p:last-child {
-  color: var(--text-muted);
+  color: #5a6577;
   font-size: 0.95rem;
 }
 
@@ -555,8 +563,8 @@ section {
   color: var(--text-muted);
   font-size: 0.95rem;
 }
-.hours-table td:first-child { text-align: right; padding-right: 0.5rem; }
-.hours-table td:last-child { text-align: left; padding-left: 0.5rem; color: var(--text); }
+.hours-table td:first-child { text-align: right; padding-right: 0.75rem; }
+.hours-table td:last-child { text-align: left; padding-left: 0.75rem; color: var(--text); }
 
 .map-placeholder {
   background: var(--bg-card);
@@ -618,7 +626,6 @@ section {
   font-weight: 600;
   margin-bottom: 0.35rem;
   font-size: 0.95rem;
-  text-align: center;
 }
 
 .required { color: var(--emergency); }
@@ -635,7 +642,7 @@ section {
   font-size: 16px;
   font-family: var(--font);
   transition: border-color var(--transition);
-  text-align: center;
+  min-height: 48px;
 }
 .form-group input:focus,
 .form-group select:focus,
@@ -656,11 +663,11 @@ section {
   font-size: 0.85rem;
   min-height: 1.2em;
   margin-top: 0.25rem;
-  text-align: center;
 }
 
 .form-group textarea {
-  text-align: left;
+  min-height: 80px;
+  resize: vertical;
 }
 
 .form-row {
@@ -702,9 +709,9 @@ section {
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  text-align: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  text-align: left;
   min-height: 44px;
 }
 .faq-item summary::-webkit-details-marker { display: none; }
@@ -723,7 +730,7 @@ section {
   padding: 0 1.25rem 1.1rem;
   color: var(--text-muted);
   line-height: 1.7;
-  text-align: center;
+  text-align: left;
 }
 
 /* --- Footer --- */
@@ -820,7 +827,12 @@ section {
   font-style: normal;
   color: var(--text-muted);
   font-size: 0.95rem;
-  line-height: 1.8;
+  line-height: 2.2;
+}
+.footer-contact address a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
 }
 
 .footer-social {
@@ -881,7 +893,7 @@ section {
 @media (min-width: 768px) {
   h2 { font-size: 2.1rem; }
   .hero h1 { font-size: 3rem; }
-  .hero-actions { flex-direction: row; justify-content: center; }
+  .hero-actions { flex-direction: row; justify-content: center; align-items: center; max-width: none; }
 
   .nav-toggle { display: none; }
   .nav-menu {
@@ -917,11 +929,14 @@ section {
   left: 0;
   right: 0;
   display: flex;
+  gap: 0.5rem;
   z-index: 1000;
   background: var(--bg-alt);
   border-top: 1px solid rgba(45, 212, 168, 0.2);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease;
+  padding: 0.5rem 0.75rem;
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
 }
 
 .mobile-cta-bar.cta-hidden {
@@ -935,12 +950,13 @@ section {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.85rem 1rem;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-sm);
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
   text-align: center;
   transition: transform 0.15s ease, opacity 0.15s ease;
+  min-height: 48px;
 }
 
 .mobile-cta-btn:active {

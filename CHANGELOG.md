@@ -80,3 +80,15 @@
 - No dead JS functions or unused event listeners found — all JS is active and lean
 - No unused keyframes/animations found
 - Net result: 49 lines removed (44 CSS, 5 JS) — zero functional changes
+
+## [1.6.0] - 2026-04-01 — Pixel: Mobile Design Audit (375px)
+- FAQ: Changed summary and answer text from center-aligned to left-aligned for readability; marker uses space-between
+- Form: Removed centered text-align from inputs/labels/error messages — left-aligned for standard mobile UX
+- Form inputs: Added min-height 48px for consistent tap targets across all form fields
+- Textarea: Added resize:vertical and min-height 80px
+- Hero buttons: Changed to full-width stretch layout (max-width 320px, centered) for uniform mobile tap targets
+- Mobile CTA bar: Added inner padding, gap between buttons, safe-area-inset-bottom for notched phones
+- Mobile CTA buttons: Increased min-height to 48px, unified border-radius to --radius-sm
+- Footer contact links: Added 44px min-height tap targets for phone/email links
+- Body: Added overflow-wrap/word-break to prevent text-based horizontal scroll; safe-area-inset padding
+- Hours table: Increased cell padding for better readability on narrow screens
