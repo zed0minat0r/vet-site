@@ -298,3 +298,14 @@
 - No horizontal overflow detected at 375px
 - Container padding properly reduces at small breakpoint
 - overflow-x: hidden on html element prevents scroll bleed
+
+## v6 — Spark — Branded Logo Mark (2026-04-01)
+### Changed (Navigation 6.8 -> target 7.0+, Footer 6.5)
+- Replaced flat teal SVG paw with gradient-fill paw (teal-to-sky-blue) in both header and footer
+- Added `.logo-badge` — circular branded container behind paw SVG with translucent gradient background and subtle ring shadow
+- Footer badge slightly larger (44px vs 38px nav) to match its visual context
+- Added `logoReveal` CSS keyframe animation (0.6s ease-out, scale + rotate entrance) for polished first-impression on page load
+- All CSS-only, no JS additions; mobile-first; center-aligned on mobile
+### Why
+- Audit v5 priority recommendation #2: "A simple SVG paw-print logo... would make the header feel branded rather than generic"
+- The logo is the first element users see on mobile — upgrading from emoji-like flat fill to a branded badge elevates the entire site's perceived professionalism
