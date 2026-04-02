@@ -842,16 +842,26 @@ section {
 .map-directions-link {
   display: block;
   text-align: center;
-  padding: 0.75rem;
+  padding: 0.65rem 1.5rem;
   font-size: 0.9rem;
-  font-weight: 600;
-  color: #1a8a6a;
+  font-weight: 700;
+  color: #ffffff;
   text-decoration: none;
   min-height: 44px;
-  line-height: 44px;
-  padding: 0;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  border-radius: var(--radius-sm);
+  margin: 0.75rem auto 0.25rem;
+  max-width: 220px;
+  letter-spacing: 0.3px;
 }
-.map-directions-link:active { opacity: 0.7; }
+.map-directions-link:active { opacity: 0.85; transform: scale(0.97); }
+.map-parking-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #7a8899;
+  margin-top: 0.25rem;
+  padding-bottom: 0.5rem;
+}
 
 .address-link {
   color: var(--text-muted);
@@ -898,10 +908,11 @@ section {
 
 .form-group label {
   display: block;
-  font-weight: 600;
-  margin-bottom: 0.35rem;
-  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
   color: #1a2230;
+  letter-spacing: 0.2px;
 }
 
 .required { color: var(--emergency); }
@@ -1046,10 +1057,25 @@ section {
   align-items: center;
   gap: 0.25rem;
 }
+.faq-cta .btn-outline {
+  background: transparent;
+  color: var(--accent-dark);
+  border: 2px solid var(--accent-dark);
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  min-height: 44px;
+}
+.faq-cta .btn-outline:active {
+  background: var(--accent-dark);
+  color: #ffffff;
+}
 
 /* --- Footer --- */
 .site-footer {
-  background: var(--bg-alt);
+  background: linear-gradient(180deg, #1e2a3a 0%, var(--bg-alt) 100%);
   border-top: none;
   padding: 3rem 0 1.5rem;
   position: relative;
@@ -1111,6 +1137,19 @@ section {
   font-size: 0.95rem;
   line-height: 1.6;
 }
+.footer-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.4rem 1rem;
+  background: rgba(45, 212, 168, 0.08);
+  border: 1px solid rgba(45, 212, 168, 0.12);
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 0.3px;
+}
 .footer-tagline {
   font-size: 0.85rem !important;
   color: var(--accent) !important;
@@ -1151,10 +1190,21 @@ section {
 
 .footer-social {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding: 1rem 0;
+}
+.footer-social-label {
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-bottom: -0.25rem;
 }
 .social-link {
   display: flex;
@@ -1307,8 +1357,9 @@ section {
 }
 
 .mobile-cta-book {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: var(--bg);
+  box-shadow: 0 2px 8px rgba(45, 212, 168, 0.3);
 }
 
 /* --- Small-screen refinements (375px and below) --- */

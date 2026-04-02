@@ -309,3 +309,14 @@
 ### Why
 - Audit v5 priority recommendation #2: "A simple SVG paw-print logo... would make the header feel branded rather than generic"
 - The logo is the first element users see on mobile — upgrading from emoji-like flat fill to a branded badge elevates the entire site's perceived professionalism
+
+## v6-polish — Builder — Trust, Warmth & Polish Pass (2026-04-01)
+### Changed (Footer 6.5, CTA Bar 6.5, Location 6.5, FAQ 6.8, Booking 6.8)
+- Footer: upgraded flat dark background to subtle gradient (1e2a3a -> bg-alt), added "Your family is our family" heart trust badge, added "Follow Us" label above social icons
+- Sticky CTA Bar: Book Now button upgraded to gradient fill with accent glow shadow for visual differentiation from outlined Call Now
+- Location: "Get Directions" map link upgraded from plain text to a full accent-gradient button (max-width 220px, white text, rounded), added "Free parking available on-site" note below map
+- FAQ: Call CTA button changed from filled btn-primary to outlined btn-outline style for visual variety against the light FAQ background
+- Booking Form: labels upgraded to font-weight 700 with tighter size (0.95rem) and letter-spacing (0.2px) for quicker scanning
+### Why
+- Post v5 audit: 4 sections still at 6.5 (Footer, Location, CTA Bar) and 2 at 6.8 (FAQ, Booking). These small trust/warmth/polish tweaks target each weak section to push the overall score from 6.9 toward 7.0+
+- All changes mobile-first, center-aligned on mobile, no new sections added
