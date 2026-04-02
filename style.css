@@ -309,26 +309,42 @@ section {
   padding-top: 7rem;
   padding-bottom: 4rem;
   text-align: center;
-  background:
-    linear-gradient(180deg, rgba(18, 24, 32, 0.50) 0%, rgba(18, 24, 32, 0.65) 100%),
-    url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=400&q=75") center/cover no-repeat;
+  background: var(--bg);
   position: relative;
   overflow: hidden;
 }
-@media (min-width: 480px) {
-  .hero {
-    background:
-      linear-gradient(180deg, rgba(18, 24, 32, 0.50) 0%, rgba(18, 24, 32, 0.65) 100%),
-      url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=768&q=80") center/cover no-repeat;
-  }
+
+/* Responsive <picture> hero bg — replaces CSS background-image for LCP + data savings */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
-@media (min-width: 768px) {
-  .hero {
-    background:
-      linear-gradient(180deg, rgba(18, 24, 32, 0.50) 0%, rgba(18, 24, 32, 0.65) 100%),
-      url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-  }
+.hero-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 24, 32, 0.55) 0%, rgba(18, 24, 32, 0.70) 100%);
+}
+
+/* Time-aware greeting */
+.hero-greeting {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.hero-greeting.is-ready { opacity: 1; }
 
 .hero::before {
   content: '';
@@ -460,13 +476,13 @@ section {
 .service-card:nth-child(6) .service-icon svg { fill: rgba(14, 165, 233, 0.08); }
 .service-card:nth-child(6) { border-top-color: #0ea5e9; }
 
-/* --- Team (light-mode section for visual variety) --- */
+/* --- Team (dark section — breaks card-wall monotony after light Services) --- */
 .team {
-  background: #f4f7fa;
-  color: #1a2230;
+  background: var(--bg);
+  color: var(--text);
 }
-.team h2 { color: #1a2230; }
-.team .section-subtitle { color: #5a6577; }
+.team h2 { color: var(--text); }
+.team .section-subtitle { color: var(--text-muted); }
 
 .team-grid {
   display: grid;
@@ -475,13 +491,24 @@ section {
 }
 
 .team-card {
-  background: #ffffff;
+  background: var(--bg-alt);
   border-radius: var(--radius);
   padding: 2rem 1.5rem;
   text-align: center;
-  border: 1px solid rgba(45, 212, 168, 0.15);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(45, 212, 168, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
+
+/* Horizontal team card — photo left, text right (breaks vertical card-wall) */
+.team-card--horizontal {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: left;
+}
+.team-card--horizontal .team-avatar { flex-shrink: 0; }
+.team-card--horizontal .avatar-photo { margin: 0; }
+.team-card--horizontal .team-info { min-width: 0; }
 
 .avatar-photo {
   width: 104px;
@@ -496,7 +523,7 @@ section {
 
 .team-card h3 {
   margin-bottom: 0.25rem;
-  color: #1a2230;
+  color: var(--text);
 }
 .team-role {
   color: var(--accent-dark);
@@ -505,13 +532,13 @@ section {
   margin-bottom: 0.75rem;
 }
 .team-card p:last-child {
-  color: #5a6577;
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
-/* --- Testimonials --- */
+/* --- Testimonials (light section with accent tint — distinct from Services' green-to-gray) --- */
 .testimonials {
-  background: #f9fafb;
+  background: linear-gradient(180deg, #f0f4fa 0%, #f7faf9 100%);
   position: relative;
   text-align: center;
 }
@@ -532,6 +559,7 @@ section {
   padding: 2rem 1.5rem 1.5rem;
   text-align: center;
   border: none;
+  border-left: 3px solid var(--accent);
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
@@ -876,7 +904,7 @@ section {
   display: block;
   font-weight: 700;
   margin-bottom: 0.4rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #1a2230;
   letter-spacing: 0.2px;
 }
@@ -1369,13 +1397,13 @@ section {
   .nav-logo { font-size: 1rem; }
   .mobile-cta-bar { padding: 0.5rem 0.5rem; padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
   .mobile-cta-btn { font-size: 0.9rem; padding: 0.75rem 0.75rem; min-height: 48px; }
-  .cta-emergency-badge { font-size: 0.55rem; padding: 0.1rem 0.3rem; }
+  .cta-emergency-badge { font-size: 0.65rem; padding: 0.15rem 0.35rem; }
   .faq-item summary { padding: 1rem 1rem; }
   .faq-item p { padding: 0 1rem 1rem; }
   .booking-form { padding: 1.5rem 1.25rem; }
   .hero-trust-strip { flex-wrap: wrap; gap: 0.35rem 0.5rem; max-width: 320px; }
   .trust-strip-divider { display: none; }
-  .trust-strip-item { font-size: 0.75rem; }
+  .trust-strip-item { font-size: 0.8rem; }
   .avatar-photo { width: 96px; height: 96px; }
 }
 
@@ -1444,42 +1472,54 @@ section {
 
 /* --- Why Choose Us --- */
 .why-choose {
-  background: var(--bg);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
   text-align: center;
 }
 .why-choose-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 1rem;
   max-width: 800px;
   margin: 0 auto;
 }
 .why-choose-item {
   background: var(--bg-alt);
   border-radius: var(--radius);
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   border: 1px solid rgba(45, 212, 168, 0.1);
   text-align: center;
 }
+/* Inline layout: icon left, text right — distinct from stacked service cards */
+.why-choose-item--inline {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+}
+.why-choose-item--inline .why-choose-icon {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+.why-choose-item--inline .why-choose-text { min-width: 0; }
 .why-choose-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: rgba(45, 212, 168, 0.1);
   color: var(--accent);
   margin-bottom: 1rem;
 }
 .why-choose-item h3 {
-  font-size: 1.15rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
   color: var(--text);
 }
 .why-choose-item p {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   line-height: 1.6;
 }
 @media (min-width: 600px) {

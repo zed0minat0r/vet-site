@@ -418,3 +418,15 @@
 - **Trust strip: responsive wrap for <360px** — Added flex-wrap, smaller gap, hidden dividers, and reduced font-size at <=400px to prevent text cramming on narrow screens.
 - **Google Reviews link: real target** — Changed href from "#" to Google Maps URL with target="_blank" and rel="noopener noreferrer".
 - **Stars CSS: flexbox alignment** — Added display:flex, center alignment, and gap to .stars for consistent SVG star spacing.
+
+## v12 — Pixel — 2026-04-01
+### Fixed (Mobile audit at 375px)
+- **Emergency badge text too small at <=400px** — Bumped `.cta-emergency-badge` font-size from 0.55rem (8.8px) to 0.65rem (10.4px) and padding from 0.1rem/0.3rem to 0.15rem/0.35rem for better readability on narrow screens.
+- **Form labels slightly under 16px** — Bumped `.form-group label` font-size from 0.95rem (15.2px) to 1rem (16px) for consistent readability and iOS accessibility.
+- **Trust strip text too small at <=400px** — Bumped `.trust-strip-item` font-size from 0.75rem (12px) to 0.8rem (12.8px) for legibility on small screens.
+### Audited (no issues found)
+- Center alignment: All sections consistently center-aligned on mobile (hero, services, team, testimonials, emergency, location, booking, FAQ, why-choose, footer).
+- Tap targets: All interactive elements meet 44px minimum (buttons, links, nav items, form inputs at 48px).
+- Input font sizes: All inputs/selects/textareas at 16px (no iOS zoom).
+- Overflow: `overflow-x: hidden` on html, no fixed-width elements exceeding viewport.
+- Spacing/padding: Consistent padding across cards, sections, and containers at 375px.
