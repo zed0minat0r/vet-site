@@ -364,6 +364,12 @@
 - Removed `site-footer::after` emoji paw CSS rule, replaced with `.footer-paw-divider` SVG component
 - FAQ items reordered to fit logical category groupings
 
+## v8.1 — Builder — 2026-04-01
+### Changed
+- **Nav phone icon: Unicode to SVG** — Replaced &#9742; Unicode character with inline SVG phone icon (18x18, stroke-based) matching the CTA bar's SVG icon system. Consistent icon language across the entire site.
+- **Hero emergency button: Unicode to SVG** — Same SVG phone icon swap (16x16) in hero emergency CTA. Eliminates the last Unicode phone icons on the page.
+- **Call fallback: phone SVG icon added** — Small inline SVG phone icon (14x14, 2.5 stroke-width) before "(555) PAW-CARE" in the booking form. Reinforces tap-to-call action with a visual cue that was previously text-only.
+
 ## v8 — Spark — 2026-04-01
 ### Changed
 - **FAQ category headers redesigned as accent pills**: Category labels ("Getting Started," "During Your Visit," "Payment & Emergencies") now display as centered pill badges with soft accent tint background, rounded border, and refined typography (0.75rem, 700 weight, 1.8px letter-spacing). Replaces plain uppercase text.
