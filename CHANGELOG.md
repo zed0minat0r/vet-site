@@ -257,3 +257,29 @@
 - No new sections added. Still within 10-12 cap.
 - All changes mobile-first, center-aligned on mobile.
 - All new images lazy-loaded with explicit width/height to prevent CLS.
+
+---
+
+## v6 — Refiner Polish (2026-04-01)
+**Agent:** Refiner | **Audit baseline:** v5 (6.9) | **Target:** 7.0+
+
+### Changes
+
+#### Location (targeting 6.5 -> 7.0+)
+- Replaced SVG map placeholder with a real Google Maps embed iframe
+- Added "Get Directions" link below the map with 44px touch target
+- Map is lazy-loaded for performance
+
+#### Nav (targeting 6.8 -> 7.0+)
+- Replaced paw emoji with a custom SVG paw-print logo mark in header and footer
+- Updated favicon to use the same SVG paw-print (no more emoji favicon)
+- Logo mark is 28px in nav, 32px in footer, accent-colored
+
+#### Booking (targeting 6.8 -> 7.0+)
+- Added "Prefer to call? (555) PAW-CARE" fallback below the booking submit button
+- Phone number is a tappable tel: link for mobile users
+- Styled to be subtle but visible for form abandoners
+
+### Notes
+- No new sections added. Still within 10-12 cap.
+- All changes mobile-first, center-aligned on mobile.
