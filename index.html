@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pawsitive Care Veterinary | Compassionate Pet Care</title>
   <meta name="description" content="Pawsitive Care Veterinary offers comprehensive veterinary services including wellness exams, surgery, dental care, and 24/7 emergency support. Your pet's health is our priority.">
+  <meta name="theme-color" content="#121820">
+  <meta property="og:title" content="Pawsitive Care Veterinary | Compassionate Pet Care">
+  <meta property="og:description" content="Where every pet is family. Comprehensive veterinary services including wellness exams, surgery, dental care, and 24/7 emergency support.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zed0minat0r.github.io/vet-site/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
@@ -75,13 +81,13 @@
     <section class="hero" id="hero">
       <div class="container">
         <div class="hero-paw" aria-hidden="true">
-          <div class="paw-print">
-            <div class="paw-pad"></div>
-            <div class="paw-toe paw-toe-1"></div>
-            <div class="paw-toe paw-toe-2"></div>
-            <div class="paw-toe paw-toe-3"></div>
-            <div class="paw-toe paw-toe-4"></div>
-          </div>
+          <svg class="hero-paw-svg" width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="42" rx="14" ry="12" fill="var(--accent)" opacity="0.85"/>
+            <ellipse cx="16" cy="22" rx="7" ry="9" fill="var(--accent)" opacity="0.8" transform="rotate(-15 16 22)"/>
+            <ellipse cx="30" cy="16" rx="6" ry="8.5" fill="var(--accent)" opacity="0.8"/>
+            <ellipse cx="44" cy="18" rx="6" ry="8.5" fill="var(--accent)" opacity="0.8" transform="rotate(10 44 18)"/>
+            <ellipse cx="52" cy="28" rx="6" ry="8" fill="var(--accent)" opacity="0.8" transform="rotate(25 52 28)"/>
+          </svg>
         </div>
         <h1>Pawsitive Care<br><span class="highlight">Veterinary</span></h1>
         <p class="hero-tagline">Where every pet is family. Compassionate, modern care they deserve.</p>
@@ -102,61 +108,42 @@
         <div class="services-grid">
           <div class="service-card">
             <div class="service-icon" aria-hidden="true">
-              <div class="icon-stethoscope">
-                <div class="steth-head"></div>
-                <div class="steth-tube"></div>
-              </div>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.62a3 3 0 0 1 5.4 0"/><path d="M8 15A7 7 0 1 1 8.5 2"/><path d="M7.5 2a7 7 0 1 1 0 13"/><circle cx="8" cy="10" r="2" fill="var(--accent)" stroke="none"/><line x1="8" y1="12" x2="8" y2="18"/><path d="M6 18h4"/></svg>
             </div>
             <h3>Wellness Exams</h3>
             <p>Thorough annual and bi-annual check-ups to keep your pet healthy and catch issues early.</p>
           </div>
           <div class="service-card">
             <div class="service-icon" aria-hidden="true">
-              <div class="icon-surgery">
-                <div class="scalpel-handle"></div>
-                <div class="scalpel-blade"></div>
-              </div>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12h10"/><path d="M12 7v10"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
             </div>
             <h3>Surgery</h3>
             <p>State-of-the-art surgical suites for spay/neuter, soft tissue, and orthopedic procedures.</p>
           </div>
           <div class="service-card">
             <div class="service-icon" aria-hidden="true">
-              <div class="icon-tooth">
-                <div class="tooth-crown"></div>
-                <div class="tooth-root-l"></div>
-                <div class="tooth-root-r"></div>
-              </div>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.5 2 6 4.5 6 7c0 2.5 1 4 1.5 5.5C8.2 14.8 8 17 8 19c0 1.7.8 3 2 3 1 0 1.5-1 2-3 .5 2 1 3 2 3 1.2 0 2-1.3 2-3 0-2-.2-4.2.5-6.5C17 11 18 9.5 18 7c0-2.5-2.5-5-6-5z"/></svg>
             </div>
             <h3>Dental Care</h3>
             <p>Professional cleanings, digital dental X-rays, and extractions to protect oral health.</p>
           </div>
           <div class="service-card">
             <div class="service-icon" aria-hidden="true">
-              <div class="icon-syringe">
-                <div class="syringe-barrel"></div>
-                <div class="syringe-plunger"></div>
-                <div class="syringe-needle"></div>
-              </div>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 2.5L21.5 5.5"/><path d="M15 5l4 4"/><path d="M17.5 6.5L7.8 16.2a2 2 0 0 1-1.1.5L4 17.5l.8-2.7a2 2 0 0 1 .5-1.1L15 4"/><line x1="9" y1="11" x2="13" y2="15"/><path d="M4 20l1.5-1.5"/></svg>
             </div>
             <h3>Vaccinations</h3>
             <p>Core and lifestyle vaccines tailored to your pet's age, breed, and risk factors.</p>
           </div>
           <div class="service-card">
             <div class="service-icon" aria-hidden="true">
-              <div class="icon-heart">
-                <div class="heart-shape"></div>
-              </div>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3.3.8-4.5 2.1C10.8 3.8 9.3 3 7.5 3A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7 7-7z"/><path d="M12 8v4"/><path d="M10 10h4"/></svg>
             </div>
             <h3>Preventive Care</h3>
             <p>Heartworm, flea, and tick prevention plus microchipping and nutrition counseling.</p>
           </div>
           <div class="service-card">
             <div class="service-icon" aria-hidden="true">
-              <div class="icon-lab">
-                <div class="lab-flask"></div>
-                <div class="lab-liquid"></div>
-              </div>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v7.4a4 4 0 0 1-.8 2.4L6 17c-1.3 1.7-.2 4 2 4h8c2.2 0 3.3-2.3 2-4l-3.2-4.2a4 4 0 0 1-.8-2.4V3"/><path d="M8.5 14h7"/></svg>
             </div>
             <h3>Diagnostics</h3>
             <p>In-house bloodwork, urinalysis, digital X-ray, and ultrasound for fast, accurate results.</p>
@@ -286,8 +273,11 @@
             <div class="info-block">
               <h3>Address</h3>
               <address>
-                742 Bark Avenue<br>
-                Greenfield, PA 19038
+                <a href="https://maps.google.com/?q=742+Bark+Avenue+Greenfield+PA+19038" target="_blank" rel="noopener noreferrer" class="address-link">
+                  742 Bark Avenue<br>
+                  Greenfield, PA 19038
+                  <span class="directions-cta">Get Directions &rarr;</span>
+                </a>
               </address>
             </div>
             <div class="info-block">
@@ -305,13 +295,16 @@
               <a href="tel:+15557292273">(555) PAW-CARE</a>
             </div>
           </div>
-          <div class="map-placeholder" aria-label="Map showing clinic location">
-            <div class="map-pin" aria-hidden="true">
-              <div class="pin-head"></div>
-              <div class="pin-point"></div>
-            </div>
-            <p>742 Bark Avenue<br>Greenfield, PA</p>
-          </div>
+          <a href="https://maps.google.com/?q=742+Bark+Avenue+Greenfield+PA+19038" target="_blank" rel="noopener noreferrer" class="map-placeholder" aria-label="Open map to clinic location">
+            <svg class="map-illustration" width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="8" y="8" width="48" height="48" rx="6" stroke="var(--accent)" stroke-width="1.5" opacity="0.3"/>
+              <path d="M20 16v32M44 16v32M8 28h48M8 44h48" stroke="var(--accent)" stroke-width="0.75" opacity="0.15"/>
+              <path d="M32 18c-5 0-9 3.6-9 8.5 0 7.5 9 15.5 9 15.5s9-8 9-15.5c0-4.9-4-8.5-9-8.5z" fill="var(--emergency)" opacity="0.9"/>
+              <circle cx="32" cy="26" r="3.5" fill="#fff" opacity="0.9"/>
+            </svg>
+            <p>742 Bark Avenue, Greenfield, PA</p>
+            <span class="map-tap-hint">Tap to open in Maps</span>
+          </a>
         </div>
       </div>
     </section>
@@ -447,8 +440,23 @@
           </address>
         </div>
       </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook" class="social-link">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-link">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="Google Business" class="social-link">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </a>
+      </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Pawsitive Care Veterinary. All rights reserved.</p>
+        <a href="#hero" class="back-to-top" aria-label="Back to top">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+          Back to top
+        </a>
       </div>
     </div>
   </footer>

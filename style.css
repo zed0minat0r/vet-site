@@ -273,37 +273,13 @@ section {
   align-items: center;
 }
 
-/* CSS Paw Print */
+/* Hero Paw SVG */
 .hero-paw { margin-bottom: 1.5rem; }
-.paw-print {
-  position: relative;
-  width: 60px;
-  height: 54px;
+.hero-paw-svg {
+  display: block;
   margin: 0 auto;
+  filter: drop-shadow(0 0 12px rgba(45, 212, 168, 0.3));
 }
-.paw-pad {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 24px;
-  background: var(--accent);
-  border-radius: 50% 50% 50% 50%;
-  opacity: 0.8;
-}
-.paw-toe {
-  position: absolute;
-  width: 14px;
-  height: 16px;
-  background: var(--accent);
-  border-radius: 50%;
-  opacity: 0.8;
-}
-.paw-toe-1 { top: 0; left: 4px; transform: rotate(-15deg); }
-.paw-toe-2 { top: -4px; left: 18px; }
-.paw-toe-3 { top: 0; left: 32px; transform: rotate(15deg); }
-.paw-toe-4 { top: 10px; left: 44px; transform: rotate(25deg); }
 
 /* ===========================
    Services
@@ -340,107 +316,20 @@ section {
   font-size: 0.95rem;
 }
 
-/* CSS Icons */
+/* SVG Service Icons */
 .service-icon {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   margin: 0 auto 1rem;
-  position: relative;
-}
-
-/* Stethoscope */
-.steth-head {
-  width: 20px; height: 20px;
-  border: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(45, 212, 168, 0.08);
   border-radius: 50%;
-  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  padding: 4px;
 }
-.steth-tube {
-  width: 3px; height: 22px;
-  background: var(--accent);
-  position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
-  border-radius: 2px;
-}
-
-/* Heart */
-.heart-shape {
-  width: 30px; height: 28px;
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-}
-.heart-shape::before, .heart-shape::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 15px; height: 24px;
-  background: var(--accent);
-  border-radius: 15px 15px 0 0;
-}
-.heart-shape::before { left: 0; transform: rotate(-45deg); transform-origin: bottom left; }
-.heart-shape::after { right: 0; transform: rotate(45deg); transform-origin: bottom right; }
-
-/* Tooth */
-.tooth-crown {
-  width: 22px; height: 18px;
-  background: var(--accent);
-  border-radius: 10px 10px 4px 4px;
-  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
-}
-.tooth-root-l, .tooth-root-r {
-  width: 8px; height: 14px;
-  background: var(--accent);
-  border-radius: 0 0 4px 4px;
-  position: absolute; top: 22px;
-}
-.tooth-root-l { left: 12px; }
-.tooth-root-r { left: 26px; }
-
-/* Syringe */
-.syringe-barrel {
-  width: 8px; height: 28px;
-  background: var(--accent);
-  border-radius: 2px;
-  position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
-}
-.syringe-plunger {
-  width: 14px; height: 3px;
-  background: var(--accent);
-  position: absolute; top: 2px; left: 50%; transform: translateX(-50%);
-  border-radius: 2px;
-}
-.syringe-needle {
-  width: 2px; height: 12px;
-  background: var(--accent);
-  position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%);
-}
-
-/* Surgery icon */
-.scalpel-handle {
-  width: 6px; height: 22px;
-  background: var(--accent);
-  border-radius: 3px;
-  position: absolute; top: 4px; left: 50%; transform: translateX(-50%) rotate(15deg);
-}
-.scalpel-blade {
-  width: 12px; height: 14px;
-  background: var(--accent);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%) rotate(15deg);
-}
-
-/* Lab flask */
-.lab-flask {
-  width: 10px; height: 18px;
-  background: var(--accent);
-  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
-  clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
-}
-.lab-liquid {
-  width: 22px; height: 10px;
-  background: var(--accent);
-  opacity: 0.5;
-  border-radius: 0 0 6px 6px;
-  position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+.service-icon svg {
+  display: block;
 }
 
 /* ===========================
@@ -682,20 +571,36 @@ section {
   text-align: center;
   padding: 2rem;
   color: var(--text-muted);
+  text-decoration: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.map-placeholder:active {
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+.map-illustration { margin-bottom: 1rem; }
+.map-tap-hint {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  opacity: 0.7;
 }
 
-/* Map pin CSS */
-.map-pin { margin-bottom: 1rem; }
-.pin-head {
-  width: 24px; height: 24px;
-  background: var(--emergency);
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
-  margin: 0 auto;
+/* Tappable address link */
+.address-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s ease;
 }
-.pin-point {
-  width: 0; height: 0;
-  margin: -4px auto 0;
+.address-link:active { color: var(--accent); }
+.directions-cta {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* ===========================
@@ -882,6 +787,29 @@ section {
   line-height: 1.8;
 }
 
+/* Footer Social Links */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(45, 212, 168, 0.1);
+  color: var(--text-muted);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.social-link:active {
+  background: var(--accent);
+  color: var(--bg);
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(138, 150, 168, 0.15);
   padding-top: 1.25rem;
@@ -889,6 +817,20 @@ section {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+
+/* Back to Top */
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 44px;
+}
+.back-to-top:active { opacity: 0.7; }
 
 /* ===========================
    Desktop Breakpoints

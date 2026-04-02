@@ -41,3 +41,14 @@
 - MOBILE: Form row (Pet Type / Service) stacks to single column on mobile (<600px)
 - MOBILE: html overflow-x hidden to prevent horizontal scroll
 - MOBILE: Textarea keeps left-align for multi-line readability
+
+## [1.2.0] - 2026-04-01 — Refiner: SVG Icons, Tappable Address, Footer Social
+- Replaced all CSS placeholder icons (hero paw, 6 service icons, map pin) with proper inline SVGs — cleaner, recognizable, vet-themed
+- Service icons now sit in subtle circular accent-tinted backgrounds for visual polish
+- Hero paw SVG is larger (80px) with a soft glow drop-shadow for more visual impact
+- Made address tappable: wraps in Google Maps link with "Get Directions" CTA (Audit Priority #1)
+- Map placeholder is now a tappable link to Google Maps with SVG map illustration and "Tap to open in Maps" hint
+- Added social media links (Facebook, Instagram, Google Business) with circular icon buttons to footer (Audit Priority #2)
+- Added "Back to top" smooth-scroll link in footer bottom (Audit Priority #2)
+- Added meta theme-color, Open Graph tags, and emoji favicon (Audit Priority #4 — quick wins)
+- All changes mobile-first and center-aligned per AGENT-RULES
