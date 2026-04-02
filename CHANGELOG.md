@@ -561,3 +561,15 @@
 - `!important` declarations reduced from 16 to 7 — all remaining 7 are in `prefers-reduced-motion` or `.no-js` blocks (correct usage). Refactored `.emergency-note`, `.emergency-response`, `.footer-tagline`, and `.newsletter-btn` to use parent-class specificity instead
 - Placeholder `#` links reduced from 8 to 1 (back-to-top, which uses `event.preventDefault()`). Pet Parent Portal links converted to `<span>` elements with "Coming Soon" label. Footer portal link shows "(Coming Soon)". Social links now point to real platform URLs with `data-placeholder` attribute. Privacy/Terms links converted to muted placeholder `<span>` elements
 - Added `.portal-coming-soon` and `.footer-link-placeholder` utility classes for consistent placeholder styling
+
+## [Spark] - 2026-04-01
+### Location / Hours Visual Refresh (Audit Priority 1)
+- Added quick-glance hours status pill below section subtitle with animated green dot and emergency deep-link — gives the section a "living" feel on first scroll
+- Enhanced info-card shadow to match elevated card style used in other sections (consistent depth)
+- Added divider borders between info-blocks (Address / Hours / Phone) for clearer visual rhythm
+- Hours table rows now alternate with subtle green tint for scannability
+- Map embed gains a gradient accent bar along the top edge for visual polish
+- "First Visit?" card now has a left accent border and decorative paw emoji badge — warmer, more inviting tone
+- Parking note styled with italic and softer green tone for personality
+- Subtle bottom radial gradient added to section background for depth
+- All changes are CSS-only (one small HTML addition for the status pill). Mobile-first, center-aligned. Respects `prefers-reduced-motion`
