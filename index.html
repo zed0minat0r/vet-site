@@ -264,14 +264,17 @@
     </section>
 
     <!-- 6. Location / Hours -->
-    <section class="location" id="location">
+    <section class="location location-light" id="location">
       <div class="container">
         <h2>Visit Us</h2>
-        <p class="section-subtitle">Conveniently located with easy parking</p>
+        <p class="section-subtitle">Conveniently located in Greenfield with easy parking</p>
         <div class="location-grid">
           <div class="location-info">
             <div class="info-block">
-              <h3>Address</h3>
+              <h3>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Address
+              </h3>
               <address>
                 <a href="https://maps.google.com/?q=742+Bark+Avenue+Greenfield+PA+19038" target="_blank" rel="noopener noreferrer" class="address-link">
                   742 Bark Avenue<br>
@@ -281,7 +284,10 @@
               </address>
             </div>
             <div class="info-block">
-              <h3>Hours</h3>
+              <h3>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Hours
+              </h3>
               <table class="hours-table" aria-label="Business hours">
                 <tbody>
                   <tr><td>Monday - Friday</td><td>7:30 AM - 6:00 PM</td></tr>
@@ -291,16 +297,19 @@
               </table>
             </div>
             <div class="info-block">
-              <h3>Phone</h3>
+              <h3>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Phone
+              </h3>
               <a href="tel:+15557292273">(555) PAW-CARE</a>
             </div>
           </div>
           <a href="https://maps.google.com/?q=742+Bark+Avenue+Greenfield+PA+19038" target="_blank" rel="noopener noreferrer" class="map-placeholder" aria-label="Open map to clinic location">
-            <svg class="map-illustration" width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="8" y="8" width="48" height="48" rx="6" stroke="var(--accent)" stroke-width="1.5" opacity="0.3"/>
-              <path d="M20 16v32M44 16v32M8 28h48M8 44h48" stroke="var(--accent)" stroke-width="0.75" opacity="0.15"/>
-              <path d="M32 18c-5 0-9 3.6-9 8.5 0 7.5 9 15.5 9 15.5s9-8 9-15.5c0-4.9-4-8.5-9-8.5z" fill="var(--emergency)" opacity="0.9"/>
-              <circle cx="32" cy="26" r="3.5" fill="#fff" opacity="0.9"/>
+            <svg class="map-illustration" width="90" height="90" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="6" y="6" width="52" height="52" rx="8" fill="#e8f5ef" stroke="#2dd4a8" stroke-width="1"/>
+              <path d="M16 14v36M48 14v36M6 24h52M6 40h52" stroke="#2dd4a8" stroke-width="0.5" opacity="0.25"/>
+              <path d="M32 16c-6 0-10 4-10 9.5 0 8.5 10 17.5 10 17.5s10-9 10-17.5c0-5.5-4-9.5-10-9.5z" fill="#2dd4a8" opacity="0.85"/>
+              <circle cx="32" cy="25" r="4" fill="#fff" opacity="0.95"/>
             </svg>
             <p>742 Bark Avenue, Greenfield, PA</p>
             <span class="map-tap-hint">Tap to open in Maps</span>
@@ -360,9 +369,21 @@
               </select>
             </div>
           </div>
-          <div class="form-group">
-            <label for="preferred-date">Preferred Date</label>
-            <input type="date" id="preferred-date" name="preferred-date">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="preferred-date">Preferred Date</label>
+              <input type="date" id="preferred-date" name="preferred-date">
+            </div>
+            <div class="form-group">
+              <label for="preferred-time">Preferred Time</label>
+              <select id="preferred-time" name="preferred-time">
+                <option value="">Select...</option>
+                <option value="early-morning">Early Morning (7:30 - 9 AM)</option>
+                <option value="morning">Morning (9 AM - 12 PM)</option>
+                <option value="afternoon">Afternoon (12 - 3 PM)</option>
+                <option value="late-afternoon">Late Afternoon (3 - 6 PM)</option>
+              </select>
+            </div>
           </div>
           <div class="form-group">
             <label for="notes">Additional Notes</label>
@@ -406,6 +427,13 @@
             <summary>Can I stay with my pet during the exam?</summary>
             <p>Absolutely! We encourage pet parents to be present during exams. For certain procedures, we may ask you to wait in our comfortable lobby, but we'll keep you informed every step of the way.</p>
           </details>
+        </div>
+        <div class="faq-cta">
+          <p>Still have questions? We're happy to help.</p>
+          <a href="tel:+15557292273" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Us: (555) PAW-CARE
+          </a>
         </div>
       </div>
     </section>
@@ -454,7 +482,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Pawsitive Care Veterinary. All rights reserved.</p>
-        <a href="#hero" class="back-to-top" aria-label="Back to top">
+        <a href="#" class="back-to-top" aria-label="Back to top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
           Back to top
         </a>

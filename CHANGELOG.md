@@ -142,3 +142,26 @@
 - Breaks the "all-dark monotony" flagged in AUDIT.md (Services was lowest at 6.0)
 - CSS-only change, mobile-first, center-aligned, no new sections
 - No new sections added
+
+## [2.3.0] - 2026-04-01 — Builder: Warmth & Polish Pass (Location, FAQ, Booking, Back-to-Top)
+### Fixed
+- Back-to-top button: Now scrolls to y=0 instead of y=460 (was using #hero anchor with scroll-padding offset; replaced with JS window.scrollTo)
+
+### Changed — Location / Hours Section
+- Converted from dark to warm light-mode (soft green-to-neutral gradient), matching Team and Services visual warmth
+- Map placeholder upgraded: white card with soft shadow, larger/clearer SVG map illustration with filled green pin
+- Added inline SVG icons (pin, clock, phone) next to section subheadings for visual warmth
+- Text colors updated for readability on light background (dark headings, muted body text)
+
+### Changed — FAQ Section
+- Added "Still have questions?" CTA with phone call button below FAQ list
+- CTA separated by subtle border-top divider, center-aligned
+
+### Changed — Booking Form
+- Added "Preferred Time" dropdown (Early Morning, Morning, Afternoon, Late Afternoon) alongside date picker
+- Date field now enforces min=today via JS to prevent past-date selection
+- Date + time fields in a responsive 2-column row on desktop
+
+### Notes
+- Mobile-first, center-aligned, no new sections added (still 10 sections)
+- Addresses audit items: Location 6.0, FAQ 6.0, Booking 6.3 stagnation

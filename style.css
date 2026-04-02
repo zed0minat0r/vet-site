@@ -627,6 +627,14 @@ section {
 /* --- Location --- */
 .location { background: var(--bg); }
 
+.location-light {
+  background: linear-gradient(180deg, #f0faf6 0%, #f4f7fa 100%);
+}
+.location-light h2,
+.location-light .section-subtitle { color: #1a2230; }
+.location-light .section-subtitle { color: #4a5568; }
+.location-light h2::after { background: var(--accent); }
+
 .location-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -639,22 +647,26 @@ section {
   margin-bottom: 1.5rem;
 }
 .info-block h3 {
-  color: var(--accent);
+  color: var(--accent-dark);
   font-size: 1rem;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.location-light .info-block h3 { color: #1a8a6a; }
 .info-block address {
   font-style: normal;
   color: var(--text-muted);
 }
+.location-light .info-block address,
+.location-light .info-block a { color: #4a5568; }
 .info-block a {
   color: var(--accent);
   display: inline-block;
   min-height: 44px;
   line-height: 44px;
 }
+.location-light .directions-cta { color: #1a8a6a; }
 
 .hours-table {
   width: 100%;
@@ -667,6 +679,8 @@ section {
   color: var(--text-muted);
   font-size: 0.95rem;
 }
+.location-light .hours-table td { color: #5a6a7a; }
+.location-light .hours-table td:last-child { color: #1a2230; }
 .hours-table td:first-child { text-align: right; padding-right: 0.75rem; }
 .hours-table td:last-child { text-align: left; padding-left: 0.75rem; color: var(--text); }
 
@@ -685,6 +699,12 @@ section {
   text-decoration: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
+.location-light .map-placeholder {
+  background: #ffffff;
+  border: 1px solid rgba(45, 212, 168, 0.2);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  color: #4a5568;
+}
 .map-placeholder:active {
   border-color: var(--accent);
   box-shadow: 0 0 14px var(--accent-glow);
@@ -697,6 +717,7 @@ section {
   color: var(--accent);
   opacity: 0.7;
 }
+.location-light .map-tap-hint { color: #1a8a6a; }
 
 .address-link {
   color: var(--text-muted);
@@ -707,6 +728,8 @@ section {
   transition: color 0.2s ease;
 }
 .address-link:active { color: var(--accent); }
+.location-light .address-link { color: #4a5568; }
+.location-light .address-link:active { color: #1a8a6a; }
 .directions-cta {
   display: inline-block;
   margin-top: 0.4rem;
@@ -839,6 +862,23 @@ section {
   color: var(--text-muted);
   line-height: 1.7;
   text-align: left;
+}
+
+.faq-cta {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(45, 212, 168, 0.1);
+}
+.faq-cta p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.faq-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 /* --- Footer --- */

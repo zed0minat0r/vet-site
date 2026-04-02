@@ -33,6 +33,16 @@
     }, { passive: true });
   }
 
+  // --- Set min date on booking form to today ---
+  var dateInput = document.getElementById('preferred-date');
+  if (dateInput) {
+    var today = new Date();
+    var yyyy = today.getFullYear();
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var dd = String(today.getDate()).padStart(2, '0');
+    dateInput.setAttribute('min', yyyy + '-' + mm + '-' + dd);
+  }
+
   // --- Form Validation ---
   const form = document.getElementById('booking-form');
   const formSuccess = document.getElementById('form-success');
