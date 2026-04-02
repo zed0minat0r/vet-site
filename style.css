@@ -31,6 +31,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 70px;
+  overflow-x: hidden;
 }
 
 body {
@@ -115,6 +116,7 @@ section {
   border: none;
   cursor: pointer;
   line-height: 1.4;
+  min-height: 44px;
 }
 .btn:active { transform: scale(0.97); }
 
@@ -176,8 +178,8 @@ section {
   background: none;
   border: none;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   position: relative;
 }
 
@@ -231,6 +233,7 @@ section {
   color: var(--text);
   font-weight: 500;
   transition: background var(--transition);
+  min-height: 44px;
 }
 .nav-menu li a:focus-visible,
 .nav-menu li a:hover {
@@ -504,7 +507,7 @@ section {
   padding: 1.75rem 1.5rem;
   text-align: center;
   border: 1px solid rgba(45, 212, 168, 0.08);
-  border-left: 3px solid var(--accent);
+  border-top: 3px solid var(--accent);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .testimonial-card:active {
@@ -608,6 +611,9 @@ section {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--emergency);
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
 }
 .emergency-item span {
   color: var(--text-muted);
@@ -661,8 +667,8 @@ section {
   color: var(--text-muted);
   font-size: 0.95rem;
 }
-.hours-table td:first-child { text-align: right; padding-right: 1rem; }
-.hours-table td:last-child { text-align: left; color: var(--text); }
+.hours-table td:first-child { text-align: right; padding-right: 0.5rem; }
+.hours-table td:last-child { text-align: left; padding-left: 0.5rem; color: var(--text); }
 
 .map-placeholder {
   background: var(--bg-card);
@@ -711,6 +717,7 @@ section {
   font-weight: 600;
   margin-bottom: 0.35rem;
   font-size: 0.95rem;
+  text-align: center;
 }
 
 .required { color: var(--emergency); }
@@ -724,9 +731,10 @@ section {
   border: 1px solid rgba(138, 150, 168, 0.3);
   border-radius: var(--radius-sm);
   color: var(--text);
-  font-size: 1rem;
+  font-size: 16px;
   font-family: var(--font);
   transition: border-color var(--transition);
+  text-align: center;
 }
 .form-group input:focus,
 .form-group select:focus,
@@ -747,11 +755,16 @@ section {
   font-size: 0.85rem;
   min-height: 1.2em;
   margin-top: 0.25rem;
+  text-align: center;
+}
+
+.form-group textarea {
+  text-align: left;
 }
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
@@ -790,8 +803,10 @@ section {
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
+  text-align: center;
+  min-height: 44px;
 }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary::after {
@@ -809,6 +824,7 @@ section {
   padding: 0 1.25rem 1.1rem;
   color: var(--text-muted);
   line-height: 1.7;
+  text-align: center;
 }
 
 /* ===========================
@@ -849,10 +865,13 @@ section {
 }
 
 .footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 0.4rem; }
+.footer-links li { margin-bottom: 0; }
 .footer-links a {
   color: var(--text-muted);
   font-size: 0.95rem;
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
 }
 .footer-links a:hover { color: var(--accent); }
 
@@ -879,6 +898,7 @@ section {
   .team-grid { grid-template-columns: 1fr 1fr; }
   .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .emergency-details { flex-direction: row; justify-content: center; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr 1fr; }
 }
 
 @media (min-width: 768px) {
@@ -903,6 +923,8 @@ section {
 
   .location-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr 1fr; text-align: left; }
+  .footer-links a { min-height: unset; line-height: 1.6; }
+  .footer-links li { margin-bottom: 0.4rem; }
 }
 
 @media (min-width: 1024px) {

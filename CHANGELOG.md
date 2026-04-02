@@ -27,3 +27,17 @@
 - Respects safe-area-inset-bottom for notched/iPhone devices
 - Uses site accent colors and dark theme styling consistently
 - Addresses SCOUT-REPORT #1 CRITICAL (Mobile-First with Sticky CTA)
+
+## [1.2.0] - 2026-04-01 — Pixel: Mobile Center-Alignment & Visual Audit
+### Fixed
+- CENTER ALIGNMENT: Form labels, inputs, selects, and error messages now center-aligned on mobile
+- CENTER ALIGNMENT: FAQ summary text and answer paragraphs centered on mobile
+- CENTER ALIGNMENT: Testimonial cards use top border accent instead of left border for visual symmetry
+- VISUAL: Nav hamburger tap target increased from 40px to 44px (iOS minimum)
+- VISUAL: All buttons enforce min-height 44px for tap target compliance
+- VISUAL: Emergency phone link gets 44px min tap target
+- VISUAL: Footer quick links get 44px tap targets on mobile, reset on desktop
+- VISUAL: Input font-size set to explicit 16px to prevent iOS auto-zoom
+- MOBILE: Form row (Pet Type / Service) stacks to single column on mobile (<600px)
+- MOBILE: html overflow-x hidden to prevent horizontal scroll
+- MOBILE: Textarea keeps left-align for multi-line readability
