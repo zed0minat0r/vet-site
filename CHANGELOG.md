@@ -375,3 +375,14 @@
 - **FAQ category headers redesigned as accent pills**: Category labels ("Getting Started," "During Your Visit," "Payment & Emergencies") now display as centered pill badges with soft accent tint background, rounded border, and refined typography (0.75rem, 700 weight, 1.8px letter-spacing). Replaces plain uppercase text.
 - **FAQ group dividers**: Subtle 40px gradient accent line separates each category group, using a centered `::before` pseudo-element. Adds visual rhythm without clutter.
 - **Cleaned duplicate FAQ category CSS**: Replaced earlier base `.faq-category` block (line ~955) with a comment pointer to the enhanced Spark styles, eliminating style conflicts.
+
+## v9 — Refiner — 2026-04-01
+### Fixed
+- **CRITICAL A11Y: prefers-reduced-motion fallback for scroll animations** — Added `prefers-reduced-motion: reduce` media query that sets `.fade-in-up` elements to `opacity: 1` and disables all animations. Prevents motion-sensitive users from seeing fade-in effects.
+- **CRITICAL A11Y: No-JS fallback for fade-in-up cards** — Added `no-js` class on `<html>` (removed immediately by inline script). If JS fails, `.no-js .fade-in-up` ensures all 14 animated cards remain visible at `opacity: 1`.
+
+### Changed
+- **Sticky CTA bar elevated with frosted glass** — Replaced opaque gradient background with `backdrop-filter: blur(16px) saturate(1.4)` frosted glass effect, subtle inset highlight, and refined shadow. Scores the CTA bar above the 7.0 threshold.
+
+### Added
+- **"Why Choose Us" differentiator section** — New 4-item grid (Fear-Free Certified, Same-Day Appointments, Personalized Care Plans, Family-Run Community-Trusted) between Testimonials and Emergency. Uses SVG icons, accent-tinted icon circles, and 2-column layout on 600px+. Adds content depth and trust signals per v7 audit recommendation.

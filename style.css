@@ -647,6 +647,11 @@ section {
 
 @media (prefers-reduced-motion: reduce) {
   .pulse-cross { animation: none; }
+  .fade-in-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
 }
 .cross-h, .cross-v {
   position: absolute;
@@ -1093,7 +1098,7 @@ section {
   background: rgba(45, 212, 168, 0.08);
   border: 1px solid rgba(45, 212, 168, 0.12);
   border-radius: 2rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--accent);
   letter-spacing: 0.3px;
 }
@@ -1146,7 +1151,7 @@ section {
 .footer-social-label {
   width: 100%;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--text-muted);
@@ -1264,9 +1269,11 @@ section {
   display: flex;
   gap: 0.5rem;
   z-index: 1000;
-  background: linear-gradient(180deg, var(--bg-alt) 0%, #1a2435 100%);
-  border-top: 1px solid rgba(45, 212, 168, 0.25);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.45);
+  background: rgba(15, 23, 36, 0.75);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-top: 1px solid rgba(45, 212, 168, 0.2);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition: transform 0.3s ease;
   padding: 0.5rem 0.75rem;
   padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
@@ -1385,13 +1392,66 @@ section {
   animation: fadeInUp 0.5s ease-out forwards;
 }
 
+/* No-JS fallback: make cards visible if JavaScript fails */
+.no-js .fade-in-up {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* --- Why Choose Us --- */
+.why-choose {
+  background: var(--bg);
+  text-align: center;
+}
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.why-choose-item {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(45, 212, 168, 0.1);
+  text-align: center;
+}
+.why-choose-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(45, 212, 168, 0.1);
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.why-choose-item h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+.why-choose-item p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+@media (min-width: 600px) {
+  .why-choose-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 /* --- FAQ Category Headers (Spark: ruled-heading with accent pill + flanking lines) --- */
 .faq-category {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.8px;
@@ -1467,7 +1527,7 @@ section {
   border: 1px solid rgba(45, 212, 168, 0.2);
   background: rgba(255, 255, 255, 0.05);
   color: var(--text);
-  font-size: 0.9rem;
+  font-size: 16px;
   min-height: 44px;
 }
 .newsletter-form input[type="email"]::placeholder {
