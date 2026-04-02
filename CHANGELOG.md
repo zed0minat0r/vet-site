@@ -20,3 +20,10 @@
 - Mobile-first: subtle press-in on :active gives tactile feel when tapping cards
 - Addresses SCOUT-REPORT #4 (Trust Signals) and #7 (Service presentation)
 - Uses existing --accent-glow variable; no new dependencies
+
+## [1.1.0] - 2026-04-01 — Builder: Sticky Mobile CTA Bar
+- Added sticky bottom CTA bar with "Call Now" (tap-to-call) and "Book Now" buttons
+- Fixed to bottom of viewport on mobile, hidden on desktop (768px+)
+- Respects safe-area-inset-bottom for notched/iPhone devices
+- Uses site accent colors and dark theme styling consistently
+- Addresses SCOUT-REPORT #1 CRITICAL (Mobile-First with Sticky CTA)

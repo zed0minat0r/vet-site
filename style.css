@@ -909,3 +909,65 @@ section {
   .services-grid { grid-template-columns: 1fr 1fr 1fr; }
   .testimonials-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
+
+/* --- Sticky Mobile CTA Bar --- */
+.mobile-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  z-index: 1000;
+  background: var(--bg-alt);
+  border-top: 1px solid rgba(45, 212, 168, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 0.75rem;
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+  gap: 0.75rem;
+}
+
+.mobile-cta-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.mobile-cta-btn:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
+
+.mobile-cta-call {
+  background: var(--bg-card);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.mobile-cta-book {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Add bottom padding to body so footer isn't hidden behind the CTA bar */
+body {
+  padding-bottom: 5rem;
+}
+
+/* Hide sticky CTA on larger screens — desktop users have the nav */
+@media (min-width: 768px) {
+  .mobile-cta-bar {
+    display: none;
+  }
+  body {
+    padding-bottom: 0;
+  }
+}
