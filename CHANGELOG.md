@@ -108,3 +108,10 @@
 - Reworked pet name display format for personality ("Biscuit the Golden Retriever" vs "Pet: Biscuit (Golden Retriever)")
 - White card design with soft box-shadow replaces dark bordered cards — warmer, more inviting on mobile
 - All changes CSS-only and mobile-first; center-aligned
+
+## [1.9.0] - 2026-04-01 — Builder: Header CTA + Emergency Pulse (Audit #5 & #3)
+- Nav: Added visible "Book Now" CTA button and phone icon in header bar — always visible without opening hamburger (Audit #5)
+- Nav: Reduced hamburger menu from 8 items to 6 — removed FAQ and Contact (both accessible via footer)
+- Emergency: Added subtle pulse animation on the emergency cross icon for visual urgency (Audit #3)
+- Pulse animation respects prefers-reduced-motion for accessibility
+- Desktop: Phone icon hidden (less needed), Book Now CTA remains visible

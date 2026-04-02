@@ -526,6 +526,9 @@ section {
 
 .emergency-pulse {
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pulse-cross {
@@ -533,6 +536,16 @@ section {
   height: 50px;
   position: relative;
   margin: 0 auto;
+  animation: emergencyPulse 2s ease-in-out infinite;
+}
+
+@keyframes emergencyPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.8; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-cross { animation: none; }
 }
 .cross-h, .cross-v {
   position: absolute;
@@ -963,6 +976,11 @@ section {
   .hero-actions { flex-direction: row; justify-content: center; align-items: center; max-width: none; }
 
   .nav-toggle { display: none; }
+  .nav-phone { display: none; }
+  .nav-cta {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.1rem;
+  }
   .nav-menu {
     display: flex;
     position: static;
