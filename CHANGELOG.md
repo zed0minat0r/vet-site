@@ -400,4 +400,11 @@
 - Padding: Container padding reduces to 1rem at <=400px; no content touches screen edges.
 - Overflow: `overflow-x: hidden` on body; no horizontal scroll issues detected. `white-space: nowrap` elements are properly contained.
 - Form inputs: Booking form already at 16px font-size and 48px min-height.
+
+## v10 — Spark — 2026-04-01
+### Changed (Sticky CTA Bar 6.8 -> targeting 7.0+)
+- **CTA bar: 24/7 emergency badge on Call button** — Small red pill badge ("24/7") with emergency color and subtle glow, positioned next to "Call Now" text. Signals after-hours availability at a glance — addresses Audit Rec #2(b).
+- **CTA bar: Book Now entrance glow animation** — One-time CSS keyframe animation on first appearance: the Book Now button briefly pulses with an accent glow halo (2s ease-out, 0.5s delay), then settles to default shadow. Draws eye without being distracting — addresses Audit Rec #2(c).
+- **CTA bar: prefers-reduced-motion** — Entrance glow animation disabled for users who prefer reduced motion, keeping accessibility intact.
+- **CTA bar: small-screen badge sizing** — Emergency badge scales down at <=400px to avoid crowding on narrow viewports.
 - Spacing: Consistent vertical rhythm maintained across all sections.

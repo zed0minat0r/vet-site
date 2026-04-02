@@ -652,6 +652,9 @@ section {
     transform: none !important;
     animation: none !important;
   }
+  .mobile-cta-book {
+    animation: none !important;
+  }
 }
 .cross-h, .cross-v {
   position: absolute;
@@ -1315,6 +1318,37 @@ section {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: var(--bg);
   box-shadow: 0 2px 8px rgba(45, 212, 168, 0.3);
+  animation: cta-glow-entrance 2s ease-out 0.5s 1 both;
+}
+
+/* Emergency badge on Call button */
+.cta-emergency-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: var(--emergency);
+  border-radius: 6px;
+  padding: 0.15rem 0.35rem;
+  line-height: 1;
+  margin-left: -0.15rem;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+}
+
+/* Book Now entrance glow — draws attention on first appearance */
+@keyframes cta-glow-entrance {
+  0% {
+    box-shadow: 0 2px 8px rgba(45, 212, 168, 0.3);
+  }
+  40% {
+    box-shadow: 0 2px 20px rgba(45, 212, 168, 0.6), 0 0 30px rgba(45, 212, 168, 0.25);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(45, 212, 168, 0.3);
+  }
 }
 
 /* --- Small-screen refinements (375px and below) --- */
@@ -1331,6 +1365,7 @@ section {
   .nav-logo { font-size: 1rem; }
   .mobile-cta-bar { padding: 0.5rem 0.5rem; padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
   .mobile-cta-btn { font-size: 0.9rem; padding: 0.75rem 0.75rem; min-height: 48px; }
+  .cta-emergency-badge { font-size: 0.55rem; padding: 0.1rem 0.3rem; }
   .faq-item summary { padding: 1rem 1rem; }
   .faq-item p { padding: 0 1rem 1rem; }
   .booking-form { padding: 1.5rem 1.25rem; }
