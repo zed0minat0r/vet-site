@@ -40,10 +40,16 @@ body {
   word-break: break-word;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
   transition: color var(--transition);
+  -webkit-tap-highlight-color: transparent;
 }
 
 a:focus-visible {
@@ -277,9 +283,23 @@ section {
   text-align: center;
   background:
     linear-gradient(180deg, rgba(18, 24, 32, 0.50) 0%, rgba(18, 24, 32, 0.65) 100%),
-    url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+    url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=400&q=75") center/cover no-repeat;
   position: relative;
   overflow: hidden;
+}
+@media (min-width: 480px) {
+  .hero {
+    background:
+      linear-gradient(180deg, rgba(18, 24, 32, 0.50) 0%, rgba(18, 24, 32, 0.65) 100%),
+      url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=768&q=80") center/cover no-repeat;
+  }
+}
+@media (min-width: 768px) {
+  .hero {
+    background:
+      linear-gradient(180deg, rgba(18, 24, 32, 0.50) 0%, rgba(18, 24, 32, 0.65) 100%),
+      url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+  }
 }
 
 .hero::before {
@@ -385,16 +405,21 @@ section {
 }
 .service-icon svg {
   display: block;
-  fill: rgba(45, 212, 168, 0.1);
 }
 
-/* Unique warm pastel tints for each service icon */
+/* Unique warm pastel tints for each service icon — background + matching SVG fill */
 .service-card:nth-child(1) .service-icon { background: rgba(45, 212, 168, 0.15); }
+.service-card:nth-child(1) .service-icon svg { fill: rgba(45, 212, 168, 0.1); }
 .service-card:nth-child(2) .service-icon { background: rgba(59, 130, 246, 0.12); }
+.service-card:nth-child(2) .service-icon svg { fill: rgba(59, 130, 246, 0.08); }
 .service-card:nth-child(3) .service-icon { background: rgba(168, 85, 247, 0.12); }
+.service-card:nth-child(3) .service-icon svg { fill: rgba(168, 85, 247, 0.08); }
 .service-card:nth-child(4) .service-icon { background: rgba(251, 146, 60, 0.12); }
+.service-card:nth-child(4) .service-icon svg { fill: rgba(251, 146, 60, 0.08); }
 .service-card:nth-child(5) .service-icon { background: rgba(236, 72, 153, 0.12); }
+.service-card:nth-child(5) .service-icon svg { fill: rgba(236, 72, 153, 0.08); }
 .service-card:nth-child(6) .service-icon { background: rgba(14, 165, 233, 0.12); }
+.service-card:nth-child(6) .service-icon svg { fill: rgba(14, 165, 233, 0.08); }
 
 /* --- Team (light-mode section for visual variety) --- */
 .team {
@@ -740,12 +765,22 @@ section {
   font-weight: 600;
 }
 
-/* --- Booking Form --- */
-.booking { background: var(--bg-alt); }
+/* --- Booking Form (warm light-mode) --- */
+.booking {
+  background: linear-gradient(180deg, #f4f7fa 0%, #f0faf6 100%);
+  color: #1a2230;
+}
+.booking h2 { color: #1a2230; }
+.booking .section-subtitle { color: #5a6577; }
 
 .booking-form {
   max-width: 540px;
   margin: 0 auto;
+  background: #ffffff;
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(45, 212, 168, 0.12);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .form-group {
@@ -757,6 +792,7 @@ section {
   font-weight: 600;
   margin-bottom: 0.35rem;
   font-size: 0.95rem;
+  color: #1a2230;
 }
 
 .required { color: var(--emergency); }
@@ -766,10 +802,10 @@ section {
 .form-group textarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  background: var(--bg);
-  border: 1px solid rgba(138, 150, 168, 0.3);
+  background: #f8fafb;
+  border: 1px solid #d1d9e0;
   border-radius: var(--radius-sm);
-  color: var(--text);
+  color: #1a2230;
   font-size: 16px;
   font-family: var(--font);
   transition: border-color var(--transition);
@@ -809,16 +845,21 @@ section {
 
 .form-success {
   margin-top: 1.5rem;
-  background: var(--accent-glow);
+  background: rgba(45, 212, 168, 0.1);
   border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
   padding: 1.25rem;
   text-align: center;
 }
-.form-success p { color: var(--accent); font-weight: 600; }
+.form-success p { color: #1a8a6a; font-weight: 600; }
 
-/* --- FAQ --- */
-.faq { background: var(--bg); }
+/* --- FAQ (warm light-mode) --- */
+.faq {
+  background: linear-gradient(180deg, #f0faf6 0%, #f4f7fa 100%);
+  color: #1a2230;
+}
+.faq h2 { color: #1a2230; }
+.faq .section-subtitle { color: #5a6577; }
 
 .faq-list {
   max-width: 680px;
@@ -826,10 +867,11 @@ section {
 }
 
 .faq-item {
-  background: var(--bg-card);
+  background: #ffffff;
   border-radius: var(--radius-sm);
   margin-bottom: 0.75rem;
-  border: 1px solid rgba(45, 212, 168, 0.08);
+  border: 1px solid rgba(45, 212, 168, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -844,6 +886,7 @@ section {
   gap: 0.75rem;
   text-align: left;
   min-height: 44px;
+  color: #1a2230;
 }
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item summary::after {
@@ -859,7 +902,7 @@ section {
 
 .faq-item p {
   padding: 0 1.25rem 1.1rem;
-  color: var(--text-muted);
+  color: #5a6577;
   line-height: 1.7;
   text-align: left;
 }
@@ -868,10 +911,10 @@ section {
   text-align: center;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(45, 212, 168, 0.1);
+  border-top: 1px solid rgba(45, 212, 168, 0.15);
 }
 .faq-cta p {
-  color: var(--text-muted);
+  color: #5a6577;
   margin-bottom: 1rem;
   font-size: 1rem;
 }
@@ -1126,6 +1169,23 @@ section {
 .mobile-cta-book {
   background: var(--accent);
   color: var(--bg);
+}
+
+/* --- Small-screen refinements (375px and below) --- */
+@media (max-width: 400px) {
+  .hero h1 { font-size: 2rem; }
+  .hero-tagline { font-size: 1rem; }
+  .container { padding: 0 1rem; }
+  .section { padding: 3rem 0; }
+  .emergency-box { padding: 2rem 1rem; }
+  .service-card { padding: 1.5rem 1.25rem; }
+  .team-card { padding: 1.5rem 1.25rem; }
+  .testimonial-card { padding: 1.5rem 1.25rem 1.25rem; }
+  .nav { padding: 0.75rem 1rem; }
+  .nav-logo { font-size: 1rem; }
+  .mobile-cta-bar { padding: 0.5rem 0.5rem; padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
+  .mobile-cta-btn { font-size: 0.9rem; padding: 0.75rem 0.75rem; }
+  .stat-number { font-size: 3rem; }
 }
 
 /* Hide sticky CTA on larger screens */

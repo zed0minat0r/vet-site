@@ -165,3 +165,25 @@
 ### Notes
 - Mobile-first, center-aligned, no new sections added (still 10 sections)
 - Addresses audit items: Location 6.0, FAQ 6.0, Booking 6.3 stagnation
+
+## [1.5.1] - 2026-04-01
+### Fixed — Mobile Audit (375px viewport) by Pixel
+- Added `@media (max-width: 400px)` breakpoint for small-screen refinements
+  - Hero h1 reduced from 2.4rem to 2rem to prevent tight wrapping
+  - Hero tagline reduced to 1rem for better readability
+  - Container side padding tightened to 1rem for more breathing room
+  - Section vertical padding reduced from 4rem to 3rem
+  - Card padding (service, team, testimonial) slightly reduced for fit
+  - Nav padding and logo font tightened
+  - Mobile CTA bar padding and font size reduced to prevent overflow
+  - Stat numbers reduced from 3.5rem to 3rem
+- Added global `img { max-width: 100%; height: auto; }` to prevent image overflow
+- Added `-webkit-tap-highlight-color: transparent` on links for cleaner mobile taps
+- Service icon SVG stroke colors updated to match CSS nth-child pastel tints
+- Responsive hero background images (400w mobile, 768w tablet, 1200w desktop)
+- Booking form and FAQ sections restyled to warm light-mode (white cards, light backgrounds)
+
+### Notes
+- All inputs already at 16px (no iOS zoom). All tap targets already at 44px+ min-height.
+- Center alignment consistent across all sections. No horizontal overflow detected.
+- Still 10 sections. No new sections added.
