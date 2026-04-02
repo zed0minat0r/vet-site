@@ -573,3 +573,34 @@
 - Parking note styled with italic and softer green tone for personality
 - Subtle bottom radial gradient added to section background for depth
 - All changes are CSS-only (one small HTML addition for the status pill). Mobile-first, center-aligned. Respects `prefers-reduced-motion`
+
+## v12 — 2026-04-01
+### Multi-Channel Contact, Booking Vet Picker, Review Stats, Pricing FAQ
+
+### Location / Hours (7.1 target: 7.4)
+- Phone block replaced with multi-channel "Contact Us" block: Call, Text, and Email as pill-style tap targets — meets clients where they prefer to communicate
+- "First Visit?" card upgraded to checklist format with specific items to bring (records, medications, carrier/leash) — eliminates first-visit friction
+- Hours table rows now highlight today's day via JS (`is-today` class with `data-days` attributes)
+- Status dot color dynamically updates: green + glow when open, gray when closed
+
+### Sticky CTA Bar (7.1 target: 7.3)
+- Third CTA button added: "Text" via `sms:` link — multi-channel contact from any scroll position
+- Button labels shortened ("Call", "Text", "Book") and icon sizes reduced for 3-column fit
+- Padding and font-size tightened for 375px screens to maintain 48px min tap targets
+
+### Booking Form (7.2 target: 7.4)
+- "Preferred Veterinarian" dropdown added with all three clinic vets — per premium gap table ("smart booking with preferred vet reduces abandonment")
+- Options: Dr. Sarah Mitchell, Dr. James Chen, Dr. Priya Patel, or "No preference"
+
+### Testimonials (7.3 target: 7.5)
+- Review stats bar added above testimonial cards: "4.9 Google Rating | 500+ Reviews | 98% Recommend Us"
+- Stats bar is a centered card with green accent values, uppercase labels, and subtle dividers
+
+### FAQ (7.2 target: 7.4)
+- New FAQ added: "How much does a typical visit cost?" — addresses pricing transparency gap (the #1 trust signal per Scout Report)
+- Covers wellness exam, vaccination, and dental cleaning price ranges with written estimate promise
+
+### Technical
+- All new CSS uses mobile-first patterns, center-aligned, no `!important`, no hover-only effects
+- JS additions are lightweight and progressive (no-op if elements missing)
+- `prefers-reduced-motion` respected on all existing animations

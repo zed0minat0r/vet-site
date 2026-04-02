@@ -191,6 +191,42 @@
     });
   }
 
+  // --- Live open/closed status & today's hours highlight ---
+  (function () {
+    var statusPill = document.querySelector('.location-status-pill');
+    var hoursTable = document.querySelector('.hours-table');
+    if (!statusPill || !hoursTable) return;
+
+    var now = new Date();
+    var day = now.getDay(); // 0=Sun
+    var hour = now.getHours();
+    var min = now.getMinutes();
+    var timeDecimal = hour + min / 60;
+
+    // Highlight today's row
+    var rows = hoursTable.querySelectorAll('tr');
+    rows.forEach(function (row) {
+      var days = row.getAttribute('data-days');
+      if (days && days.split(',').indexOf(String(day)) !== -1) {
+        row.classList.add('is-today');
+      }
+    });
+
+    // Determine open/closed
+    var isOpen = false;
+    if (day >= 1 && day <= 5) {
+      isOpen = timeDecimal >= 7.5 && timeDecimal < 18;
+    } else if (day === 6) {
+      isOpen = timeDecimal >= 8 && timeDecimal < 14;
+    }
+
+    var dot = statusPill.querySelector('.status-dot');
+    if (dot) {
+      dot.style.background = isOpen ? '#22c55e' : '#94a3b8';
+      dot.style.boxShadow = isOpen ? '0 0 6px rgba(34,197,94,0.5)' : 'none';
+    }
+  })();
+
   // --- Active nav link highlighting ---
   var sections = document.querySelectorAll('section[id], footer[id]');
   var navLinks = document.querySelectorAll('.nav-menu a');
