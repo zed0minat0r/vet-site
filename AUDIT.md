@@ -2,7 +2,7 @@
 
 **Auditor:** Nigel
 **Date:** 2026-04-01
-**Version:** v4
+**Version:** v5
 **Perspective:** Mobile (375px)
 **Context:** Template build — placeholders expected; stock content/photos not penalized
 
@@ -21,230 +21,243 @@
 
 ---
 
-## What Changed Since v3
+## What Changed Since v4
 
-1. **Services converted to warm light-mode** — Background now `linear-gradient(#f0faf6, #f4f7fa)`, white cards with accent border-top, pastel-tinted icon backgrounds (unique per card: teal, blue, purple, orange, pink, sky). Dark text replaces light text. (v3 rec #2)
-2. **Hero overlay lightened** — Gradient reduced from 72-85% opacity to 50-65% opacity. The Unsplash background image is now more visible on mobile. (v3 rec #1 partial)
-3. **Location/Hours converted to light-mode** — `location-light` class applied. White map placeholder, dark text on light gradient background. Matching the services/team/testimonials light palette. (untouched in v3)
-4. **FAQ call CTA added** — "Still have questions?" prompt with a phone SVG icon and "Call Us: (555) PAW-CARE" button at bottom of FAQ section. (v3 rec from FAQ section)
-5. **Booking form improvements** — Time preference dropdown added (Early Morning, Morning, Afternoon, Late Afternoon). Past-date blocking via JS `min` attribute set to today's date. (v3 booking issues)
-6. **Preconnect + OG tags added** — `<link rel="preconnect">` and `<link rel="dns-prefetch">` for images.unsplash.com. Full Open Graph meta tags (og:title, og:description, og:type, og:url, og:image). (v3 rec #3)
-7. **Back-to-top bug fixed** — Now uses inline `onclick` with `event.preventDefault()` and `window.scrollTo({top:0, behavior:'smooth'})`. Functional.
-8. **Service card styling refreshed** — White cards, subtle box-shadow, accent border-top (3px solid var(--accent)), active press feedback with accent glow.
-9. **Location tap targets improved** — Address link has `min-height: 44px`, `padding: 0.5rem 0`. Phone link has `min-height: 44px`, `line-height: 44px`.
-10. **Hours padding improved** — Table cells now `padding: 0.5rem 0.5rem` with proper left/right alignment split.
+1. **Booking form converted to light-mode** — Background now `linear-gradient(#f4f7fa, #f0faf6)`, white form card, light inputs (#f8fafb) with dark text. Matches surrounding light sections. (v4 rec #1)
+2. **FAQ converted to light-mode** — Background `linear-gradient(#f0faf6, #f4f7fa)`, white accordion cards, dark text. Consistent with services/location/booking. (v4 rec #1)
+3. **Hero responsive image sizing** — CSS media queries now serve w=400 for mobile, w=768 for tablet, w=1200 for desktop instead of loading the full 1200px image on all screens. Not true `srcset` but achieves the same bandwidth savings via background-image breakpoints. (v4 rec #2)
+4. **Service icon strokes color-matched** — Each service card SVG now uses its own stroke color: #2dd4a8 (teal), #3b82f6 (blue), #a855f7 (purple), #fb923c (orange), #ec4899 (pink), #0ea5e9 (sky). The CSS also sets per-card `border-top-color` to match. (v4 rec #3)
+5. **Color-matched card border-tops** — Service cards use nth-child selectors to set unique `border-top-color` per card, completing the per-card color story.
+6. **Softer 16px card corners** — Service cards now use `border-radius: 16px` instead of the var(--radius) default, giving a softer, more modern feel.
+7. **Real testimonial photos** — All four reviewers now have Unsplash face photos (96x96 crops) with proper width/height attributes and lazy loading. Replaces the colored-initial avatars.
+8. **4th testimonial added** — Maria L. with Mochi the Ragdoll Cat. Four testimonials provide better social proof than three.
+9. **Google Reviews badge** — "4.9 stars on Google -- Read all reviews" link with star SVG below the testimonials grid. Adds credibility.
+10. **Emergency bullet list with icons** — Symptoms now displayed as a proper `<ul>` with warning emoji bullets via CSS `::before`. Replaces the previously unformatted text.
+11. **2 new FAQ questions (8 total)** — "Does my pet need dental cleanings?" and "What should I bring to my first visit?" added. Covers more common pet owner concerns.
+12. **Footer legal links** — Privacy Policy and Terms of Service added with dot separator, 44px touch targets, inline-flex alignment.
+13. **400px breakpoint** — Small-screen refinements for hero text, container padding, card padding, nav sizing. Prevents cramping on smaller phones.
+14. **Image overflow protection** — Global `img { max-width: 100%; height: auto; }` and `overflow-x: hidden` on html element.
 
-All three v3 priority recommendations were addressed. Solid breadth of improvements across previously-untouched sections.
+All three v4 priority recommendations were addressed. This is the most impactful round yet — the booking/FAQ light-mode conversion alone unifies the entire page's visual rhythm.
 
 ---
 
 ## Section-by-Section Breakdown
 
-### 1. Navigation / Header — 6.8 (v3: 6.8, unchanged)
+### 1. Navigation / Header — 6.8 (v4: 6.8, unchanged)
 
 **Positives:**
-- "Book Now" CTA pill and phone icon visible at all times in header bar
+- "Book Now" CTA pill and phone icon visible in sticky header
 - 6-item hamburger menu remains clean
-- Sticky blur header, aria-expanded, skip-link all intact
+- Blur header, aria-expanded, skip-link all functional
+- 400px breakpoint now adjusts nav padding and logo font-size for very small screens
 
 **Issues:**
 - Still text-only branding (paw emoji + text) — no SVG logo mark
 - Nav-cta button remains small (0.45rem padding, 0.8rem font)
-- No changes this round
+- No visual changes this round
 
-**Assessment:** Unchanged. Still approaching 7.0 but the lack of a real logo holds it back. Functional and conversion-aware, but visually generic.
+**Assessment:** Unchanged. The 400px breakpoint adjustment is a minor defensive fix, not a visual upgrade. Still approaching 7.0 but the lack of a real logo holds it back. Functional and conversion-aware, but visually generic.
 
-### 2. Hero — 7.0 (v3: 6.8, +0.2)
-
-**Positives:**
-- Overlay reduced to 50-65% opacity — the golden retriever image is now genuinely visible on a phone, not just a tinted wash. This was the single most-requested change from v3
-- The hero now reads as a real vet/pet landing section. A pet owner sees warmth immediately
-- Radial accent gradient at bottom adds subtle depth
-- Text remains legible against the lighter overlay
-
-**Issues:**
-- Still no srcset — 1200px image loading on a 375px phone is a performance waste. A 600px mobile crop would cut load time significantly
-- The 80px SVG paw still sits on top of the photo, which is mildly redundant now that the image itself communicates "pet"
-- The image is still a generic golden retriever portrait rather than a vet-with-pet scene
-
-**Assessment:** The lighter overlay is a genuine improvement. At 50-65% the image does real visual work now. A pet owner landing on this page sees a warm animal photo with clear CTAs — that clears 7.0. The missing srcset keeps it from going higher; loading a 1200px image on mobile with no responsive sizing is a real performance penalty.
-
-### 3. Services — 6.5 (v3: 6.0, +0.5)
+### 2. Hero — 7.2 (v4: 7.0, +0.2)
 
 **Positives:**
-- Light-mode conversion is a significant visual upgrade. White cards on the soft green-to-blue gradient match the site's light-section rhythm
-- Pastel-tinted icon backgrounds (unique per card) add genuine color variety — teal, blue, purple, orange, pink, sky blue. This was specifically called out in v3 rec #2
-- Accent border-top (3px solid) gives each card a clean top accent line
-- Box-shadow and :active feedback with accent glow look polished
-- Dark text on light background is much more readable than the previous white-on-dark
+- Responsive image sizing now in place: w=400 on mobile (<480px), w=768 on tablet, w=1200 on desktop. On a 375px phone, this cuts the image payload by roughly 60%. A real user on mobile data feels this
+- The 400px breakpoint adds `font-size: 2rem` for h1 and `1rem` for tagline — text no longer feels cramped on smaller phones (iPhone SE, etc.)
+- Overlay, CTAs, and visual warmth all intact from v4
+- The golden retriever image remains visible and emotionally warm at 50-65% overlay
 
 **Issues:**
-- SVG icons still use `stroke="var(--accent)"` (monochrome teal) for every icon — the pastel backgrounds are per-card but the icons themselves are still uniform teal. Matching icon stroke colors to their respective backgrounds would complete the visual differentiation
+- Still uses CSS background-image media queries rather than `<picture>` / `<img srcset>`. For a hero section, this means no browser-level `sizes` optimization and no ability to serve WebP/AVIF formats. Functional but not best-practice
+- The 80px SVG paw still sits on top of the photo — mildly redundant
+- Image is still a generic golden retriever portrait
+
+**Assessment:** The responsive image sizing is a genuine performance win. A pet owner on a 375px phone now loads a 400px image instead of 1200px — that is a real-world improvement they can feel on slow connections. The 400px text refinement prevents the hero from looking cramped on the smallest screens. Moving from 7.0 to 7.2.
+
+### 3. Services — 7.0 (v4: 6.5, +0.5)
+
+**Positives:**
+- Color-matched icon strokes complete the per-card color story. Each card now has a unique teal/blue/purple/orange/pink/sky stroke on its SVG icon, matching its pastel background tint and border-top color. On a phone, you scroll through six cards and each one feels distinct — this is a real visual upgrade over the previous uniform teal
+- The CSS `border-top-color` per nth-child means the 3px accent stripe at the top of each card matches its icon color. The color story is now fully unified: icon stroke = icon bg tint = border-top
+- 16px border-radius gives the cards a softer, more modern feel than the previous sharper radius
+- Light-mode white cards on soft gradient, box-shadow, :active feedback all carry over from v4
+
+**Issues:**
+- Six cards stacked vertically on mobile is still a long scroll (~3 full swipes)
 - No individual CTAs on cards (e.g., "Learn more" or "Book this service")
-- Six cards stacked vertically on mobile is still a long scroll
-- The icon SVGs are somewhat abstract/generic — not immediately recognizable for each service at a glance
+- SVG icons are still somewhat abstract — not immediately recognizable at a glance for each service
+- No horizontal scroll option or "show more" collapse for mobile
 
-**Assessment:** Real improvement. The light-mode conversion and pastel icon backgrounds break the monotony that v3 flagged. The section no longer stands out as the dark holdout between light neighbors. But the uniform teal icon strokes limit the impact of the per-card color approach — the tint is visible but the icons themselves still look identical in color. Moving from 6.0 to 6.5.
+**Assessment:** The color-matching is the change that pushes this section to 7.0. Before, the pastel backgrounds were nice but the icons were all teal — a missed opportunity. Now each card has genuine visual identity. A pet owner scrolling through the services on their phone sees variety and visual polish. This section now matches the quality bar set by the team section. Clearing 7.0.
 
-### 4. Meet the Team — 7.0 (v3: 7.0, unchanged)
+### 4. Meet the Team — 7.0 (v4: 7.0, unchanged)
 
 **Positives:**
-- Unsplash headshots, light background, white cards — still the strongest visual section
-- Real human faces build trust
+- Unsplash headshots, light background, white cards — still the benchmark visual section
+- Real human faces build trust on mobile
 
 **Issues:**
 - No changes this round
-- Still no :active state on team cards (inconsistency with services noted since v2)
-- 88px photos still slightly small
+- Still no :active state on team cards
+- 88px photos still slightly small for mobile
 
-**Assessment:** Unchanged. Still holds 7.0. The team section was already the benchmark — other sections are now catching up to it.
+**Assessment:** Unchanged. The services section has now caught up to the team section at 7.0 — the gap is closed. Both sections share the same visual language of white cards on light gradients with colored accents.
 
-### 5. Testimonials — 6.5 (v3: 6.5, unchanged)
+### 5. Testimonials — 7.0 (v4: 6.5, +0.5)
 
 **Positives:**
-- Light background, colored initial avatars, decorative quote marks, varied star ratings all intact
+- Real reviewer photos are the single biggest trust upgrade this round. Unsplash face photos (56x56 rendered, 96x96 source) with proper width/height and lazy loading. On a phone, scrolling past four faces with real photos feels dramatically more trustworthy than colored-initial avatars
+- 4th testimonial (Maria L. / Mochi) adds variety — now two dog owners, two cat owners. Four testimonials with varied star ratings (5, 4, 5, 5) feel more authentic than three all-5-star reviews
+- Google Reviews badge ("4.9 stars on Google -- Read all reviews") with gold star SVG adds external credibility. Even as a placeholder link, the presence of a Google badge signals legitimacy
+- The :active state on testimonial cards (scale + accent shadow) provides tactile feedback on mobile
+- Decorative quote marks, styled footer with cite and pet-name, all intact
 
 **Issues:**
-- No changes this round
-- Still no reviewer photos
-- No Google Reviews link
-- Three testimonials with no "see more" option
+- Google Reviews link goes to "#" — placeholder for now (acceptable for template)
+- Photos are 56px rendered — slightly small. 64-72px would give more face detail on mobile
+- No "see more reviews" pagination or link to an external review page
+- All four testimonials are visible at once — on mobile this is a long scroll
 
-**Assessment:** Unchanged. Solid but not exceptional. Reviewer photos remain the most impactful missing element.
+**Assessment:** The reviewer photos are the highest-impact single change in v5. Photos convert a "looks like a template" testimonial section into "looks like a real business." The Google Reviews badge adds a layer of external validation. The 4th testimonial with a different pet type broadens the appeal. This section jumps from 6.5 to 7.0 — it now earns real trust on mobile.
 
-### 6. Emergency — 6.8 (v3: 6.8, unchanged)
+### 6. Emergency — 7.0 (v4: 6.8, +0.2)
 
 **Positives:**
+- Emergency symptoms are now a proper `<ul>` with warning emoji bullets (::before content). On mobile, the bulleted list is much more scannable than the previous paragraph-style text. A panicking pet owner can quickly identify symptoms
 - Pulse animation functional, respects prefers-reduced-motion
-- Red-bordered box pops well after surrounding light sections
-- Tap-to-call prominent
+- Red-bordered box pops strongly against the now-fully-light surrounding sections (services, testimonials, location, booking, FAQ are all light — the emergency section is the lone dark standout, which is exactly right for an emergency section)
+- Tap-to-call prominent with proper touch target
+
+**Issues:**
+- Only 4 symptoms listed — could expand to 6-8 for completeness
+- The emergency box still lacks a secondary action (e.g., "Directions to Clinic" for after-hours)
+- Pulse animation is still subtle (scale-only)
+
+**Assessment:** The bulleted symptom list is a practical mobile UX improvement. When your pet is in distress, scanning a list of bullets is faster than reading prose. The section also benefits enormously from context: now that every surrounding section is light, the dark emergency box with red accents and pulse animation is the most visually distinctive section on the entire page. That contrast is exactly what an emergency section needs. Moving from 6.8 to 7.0.
+
+### 7. Location / Hours — 6.5 (v4: 6.5, unchanged)
+
+**Positives:**
+- Light-mode from v4 still in place, consistent with site rhythm
+- Tap targets, hours table, SVG icons all carry over
+- Address and phone links functional
 
 **Issues:**
 - No changes this round
-- Pulse animation remains understated (scale-only)
-- Symptom list not formatted as bullets
+- Map is still a placeholder illustration
+- "Get Directions" CTA embedded in address link rather than a standalone button
 
-**Assessment:** Unchanged. The section benefits from the now-expanded light context around it (services and location are both light now), making the red/dark emergency section even more visually prominent by contrast. Still close to 7.0.
+**Assessment:** Unchanged. The location section is solid but not exceptional. The map placeholder is the most obvious gap — every other section now has real content (real photos, real testimonials) while location still shows an illustration.
 
-### 7. Location / Hours — 6.5 (v3: 6.0, +0.5)
-
-**Positives:**
-- Light-mode conversion (`location-light`) matches the site's visual rhythm. White map placeholder on soft gradient background is cleaner
-- Tap targets improved — address link now has proper 44px min-height with padding, phone link has 44px min-height with line-height. These are real mobile usability improvements
-- Hours table padding improved to 0.5rem with proper left/right alignment split — more readable on mobile
-- SVG inline icons added to Address, Hours, and Phone headings — small visual enhancement
-- Map placeholder now has white background with subtle shadow and accent border
-
-**Issues:**
-- Map is still a placeholder illustration, not an embedded map or static map image. On a real client site this would be the first thing to swap
-- The map placeholder SVG, while improved with light-mode styling, still looks like a placeholder
-- "Get Directions" CTA is embedded inside the address link rather than being a separate prominent button
-
-**Assessment:** The light-mode conversion and tap target fixes directly address v3 issues. A pet owner scrolling through now sees a consistent light aesthetic from services through location. The improved tap targets are a real mobile usability win — tapping the phone number or address is now reliably easy. Moving from 6.0 to 6.5.
-
-### 8. Booking Form — 6.5 (v3: 6.3, +0.2)
+### 8. Booking Form — 6.8 (v4: 6.5, +0.3)
 
 **Positives:**
-- Time preference dropdown added with four sensible slots (Early Morning, Morning, Afternoon, Late Afternoon). This was a specific v3 issue — now addressed
-- Past-date blocking via JS setting `min` attribute to today's date. Users can no longer select dates in the past. Clean implementation
-- Form-row layout puts date and time side-by-side, which works well even at 375px (they stack via grid-template-columns: 1fr at mobile)
-- All previous strengths intact: 48px min-height inputs, 16px font, accessible errors, autocomplete attributes
+- Light-mode conversion is complete: linear-gradient background, white form card (#ffffff), light inputs (#f8fafb), dark text (#1a2230). The booking form no longer stands out as a dark anomaly between light neighbors
+- The white card with subtle border and shadow matches the service card treatment — visual consistency
+- Input styling is clean and inviting: light gray background with dark borders (#d1d9e0), 48px min-height, 16px font. On mobile, these feel spacious and easy to tap
+- Time preference and past-date blocking from v4 remain
+- Accent-colored focus rings (box-shadow with --accent-glow) are visible and accessible
 
 **Issues:**
-- Still dark inputs on dark background — the booking section remains on `var(--bg-alt)` while surrounding sections have gone light. It is now the odd dark section sandwiched between light location and dark FAQ
-- No confirmation of time slot availability
-- No phone number visible near the form as a fallback ("prefer to call?")
+- No phone number near the form as a fallback ("prefer to call?")
+- No visual confirmation that the form actually works (it is a template — acceptable)
+- Form labels are dark (#1a2230) on light background — readable but could use slightly more weight or spacing for quick scanning
+- No progress indicator or step numbering for the multi-field form
 
-**Assessment:** The time preference and past-date blocking are practical UX improvements that a real user would appreciate. The form is now more complete and prevents user errors. Small but meaningful bump from 6.3 to 6.5.
+**Assessment:** The light-mode conversion makes the booking form feel inviting rather than intimidating. Dark inputs on a dark background (v3-v4) felt "developer-y" — white inputs on a light gradient feel like a modern healthcare booking page. The section now flows naturally between light location and light FAQ sections. The visual rhythm is unified. Moving from 6.5 to 6.8.
 
-### 9. FAQ — 6.3 (v3: 6.0, +0.3)
+### 9. FAQ — 6.8 (v4: 6.3, +0.5)
 
 **Positives:**
-- Call CTA added at bottom: "Still have questions? We're happy to help." with a phone SVG icon and "Call Us: (555) PAW-CARE" button. This was specifically called out as missing in v3
-- The CTA has a proper separator (border-top) and centered layout
-- Button uses inline-flex with icon alignment — looks clean on mobile
-- Details/summary semantics, custom +/- indicators, good content all intact
+- Light-mode conversion: soft gradient background, white accordion cards with subtle accent border. The FAQ section no longer feels like an afterthought dark section — it matches the site's warm aesthetic
+- 8 questions now (up from 5): dental care and first-visit prep are common concerns that were previously missing. The FAQ is now comprehensive enough that a real pet owner would find their question answered
+- White cards with accent borders and +/- indicators look clean and professional on mobile
+- The call CTA at the bottom with phone SVG icon provides a clear action path
+- 1px accent border on cards adds visual structure without heaviness
 
 **Issues:**
-- Still on dark background while most surrounding sections have gone light
-- Only 5 questions — could benefit from 1-2 more common pet owner queries
-- No search or category filtering (acceptable for template scale)
-- The CTA button style matches the primary button — could be more distinctive (e.g., outlined style for visual variety)
+- FAQ answers use left-aligned text (`text-align: left`) — this is correct for readability but slightly inconsistent with the center-aligned headings. Not a real problem, but worth noting
+- No search or category filtering (acceptable at this scale)
+- The call CTA button uses the same style as other primary CTAs — could be an outlined variant for visual variety
 
-**Assessment:** The call CTA is a genuine conversion improvement. A pet owner who reads through the FAQ and still has questions now has an immediate action path instead of a dead end. The section is still visually dark and basic, but functionally more complete. Bump from 6.0 to 6.3.
+**Assessment:** The light-mode conversion and expanded content both contribute meaningfully. 8 questions is a real FAQ that covers the major pet owner concerns — wellness, emergencies, payment, surgery prep, vaccinations, staying with pet, dental, first visit. The section went from being a dark holdout with minimal content to a bright, comprehensive resource. Moving from 6.3 to 6.8 — the biggest single-section jump this round.
 
-### 10. Footer — 6.3 (v3: 6.3, unchanged)
+### 10. Footer — 6.5 (v4: 6.3, +0.2)
 
 **Positives:**
-- Back-to-top button now confirmed working (onclick with preventDefault and smooth scroll)
-- Social icons, gradient strip, paw dividers intact
-- 44px tap targets on all links
+- Privacy Policy and Terms of Service links added with middot separator. These are placeholder links (#) but their presence signals professionalism — a real business site has legal links
+- 44px touch targets on legal links with inline-flex alignment
+- Back-to-top button, social icons, gradient strip, paw dividers all intact
+- The footer-legal styling is clean: subtle muted color, proper spacing
 
 **Issues:**
-- No changes this round
 - Social links still go to "#"
-- No privacy policy link
-- No newsletter signup
+- Legal links still go to "#" — acceptable for template but worth noting
+- No newsletter signup or email capture
+- The footer is still on `var(--bg-alt)` (dark) — consistent with the dark header/footer framing, but it could benefit from a subtle gradient or accent
 
-**Assessment:** Unchanged. The back-to-top fix from this round was already scored in v3 when it was added (just buggy). Now it works properly, but the score was already reflecting its presence.
+**Assessment:** The legal links are a small but meaningful addition. Every professional business website has them — their absence was noticeable. The footer is now functionally complete for a template. Moving from 6.3 to 6.5.
 
-### 11. Sticky Mobile CTA Bar — 6.5 (v3: 6.5, unchanged)
+### 11. Sticky Mobile CTA Bar — 6.5 (v4: 6.5, unchanged)
 
 **Positives:**
 - Call Now and Book Now with SVG icons
-- Scroll-hide behavior works
-- Safe-area-inset padding
+- Scroll-hide behavior functional
+- Safe-area-inset padding for notch phones
+- 400px breakpoint adjusts padding and font-size
 
 **Issues:**
-- No changes this round
+- No changes beyond the 400px refinement
 - No emergency option
-- Visually plain
+- Visually plain — both buttons look similar
 
-**Assessment:** Unchanged. Functional, standard.
+**Assessment:** Unchanged in substance. The 400px breakpoint adjustment prevents the CTA bar from looking cramped on small screens but does not change the design. Functional, standard.
 
-### 12. Accessibility & Technical — 7.0 (v3: 6.8, +0.2)
+### 12. Accessibility & Technical — 7.2 (v4: 7.0, +0.2)
 
 **Positives:**
-- Preconnect and dns-prefetch for images.unsplash.com now present — addresses the key v3 performance concern
-- Full Open Graph meta tags added: og:title, og:description, og:type, og:url, og:image. Social sharing and iMessage link previews will now show meaningful content. This was v3 rec #3
-- Past-date blocking in booking form prevents invalid submissions
-- All previous accessibility features intact (skip-link, Schema.org, aria labels, focus-visible, lazy loading, prefers-reduced-motion)
+- Responsive hero image sizing via CSS media queries (w=400, w=768, w=1200) is a genuine performance win. On a 375px phone, the image payload drops from ~1200px to ~400px — roughly 60% bandwidth reduction
+- Reviewer photos have explicit width/height attributes (width="56" height="56") — prevents CLS during lazy load
+- Global `img { max-width: 100%; height: auto; }` prevents image overflow on any screen size
+- `overflow-x: hidden` on html element prevents horizontal scroll
+- 400px breakpoint adds defensive sizing for very small screens
+- All previous a11y features intact: skip-link, Schema.org, aria labels, focus-visible, lazy loading, prefers-reduced-motion, preconnect, OG tags
 
 **Issues:**
-- Still no srcset for the hero image — 1200px loaded on 375px screen
+- Hero uses CSS background-image breakpoints rather than `<picture>` / `<img srcset>` — functional but misses browser-level format negotiation (WebP/AVIF)
 - Team photos still loaded at 200x200 with no smaller mobile variant
-- No explicit width/height on Unsplash images (potential CLS)
-- favicon is still a data URI SVG with emoji — may not render consistently
+- Favicon is still a data URI SVG with emoji
+- No explicit `loading="lazy"` on the hero (it is a CSS background, so this does not apply, but worth noting the hero image always loads eagerly)
 
-**Assessment:** The preconnect and OG tags are exactly the quick technical wins v3 recommended. Social sharing the live link will now produce a proper preview card. Clears 7.0 — the technical foundation is now genuinely better than most templates, with Schema.org, OG tags, preconnect, lazy loading, and accessibility features all in place. The remaining srcset gap keeps it from going higher.
+**Assessment:** The responsive hero sizing and image overflow protection are solid technical improvements. The reviewer photos with explicit dimensions prevent CLS — a genuine Core Web Vitals win. The technical foundation is now comprehensive: responsive images, preconnect, OG tags, Schema.org, a11y attributes, lazy loading, CLS prevention, overflow protection, and small-screen breakpoints. Clearing 7.2.
 
 ---
 
 ## Overall Score
 
-| Section | v3 Score | v4 Score | Change |
+| Section | v4 Score | v5 Score | Change |
 |---------|----------|----------|--------|
 | Navigation / Header | 6.8 | 6.8 | -- |
-| Hero | 6.8 | 7.0 | +0.2 |
-| Services | 6.0 | 6.5 | **+0.5** |
+| Hero | 7.0 | 7.2 | +0.2 |
+| Services | 6.5 | 7.0 | **+0.5** |
 | Meet the Team | 7.0 | 7.0 | -- |
-| Testimonials | 6.5 | 6.5 | -- |
-| Emergency | 6.8 | 6.8 | -- |
-| Location / Hours | 6.0 | 6.5 | **+0.5** |
-| Booking Form | 6.3 | 6.5 | +0.2 |
-| FAQ | 6.0 | 6.3 | +0.3 |
-| Footer | 6.3 | 6.3 | -- |
+| Testimonials | 6.5 | 7.0 | **+0.5** |
+| Emergency | 6.8 | 7.0 | +0.2 |
+| Location / Hours | 6.5 | 6.5 | -- |
+| Booking Form | 6.5 | 6.8 | +0.3 |
+| FAQ | 6.3 | 6.8 | **+0.5** |
+| Footer | 6.3 | 6.5 | +0.2 |
 | Sticky Mobile CTA Bar | 6.5 | 6.5 | -- |
-| Accessibility & Technical | 6.8 | 7.0 | +0.2 |
-| **OVERALL** | **6.5** | **6.7** | **+0.2** |
+| Accessibility & Technical | 7.0 | 7.2 | +0.2 |
+| **OVERALL** | **6.7** | **6.9** | **+0.2** |
 
-**v4 Overall: 6.7 / 9.0**
+**v5 Overall: 6.9 / 9.0**
 
-The v3-to-v4 round focused on breadth rather than depth. Five previously-untouched sections (services, location/hours, booking, FAQ, technical) all received improvements. The light-mode conversions for services and location mean the site now has a predominantly warm, light aesthetic with dark reserved for the hero, emergency, booking, FAQ, and footer — a much more balanced rhythm than the all-dark monotone of v1-v2.
+This is the strongest round yet. All three v4 recommendations were addressed, and the supplementary changes (testimonial photos, Google badge, 4th testimonial, emergency bullets, FAQ expansion, footer legal links, 400px breakpoint, overflow protection) add real breadth. Five sections now sit at 7.0 or above (hero, services, team, testimonials, emergency, technical). The floor has risen from 6.3 to 6.5. The weakest sections (location 6.5, sticky CTA 6.5, footer 6.5) are all functional and respectable — there are no longer any sections dragging the average down significantly.
 
-The +0.2 overall improvement is modest but represents real progress across the board. Three sections now sit at 7.0 (hero, team, technical). The floor has risen — the lowest score is now 6.3 (FAQ, footer) instead of 6.0. The site reads as a cohesive, modern template with genuine personality.
+The site now reads as a warm, cohesive, professional veterinary template that a pet owner would trust on their phone. The light-mode unification is complete — the only dark sections are the hero (appropriate for a photo-overlay hero), the emergency box (appropriate for visual urgency), the header/footer (appropriate for framing), and the sticky CTA bar. Every content section between header and footer is now in the light palette.
 
-The path from 6.7 to 7.0 overall requires moving the remaining 6.3-6.5 sections upward. The biggest opportunities are in the sections that are still dark (booking, FAQ) and in completing the visual differentiation of services (colored icon strokes).
+The path from 6.9 to 7.0+ is narrower now. The remaining opportunities are about polish and depth rather than fundamental fixes.
 
 ---
 
@@ -256,20 +269,21 @@ The path from 6.7 to 7.0 overall requires moving the remaining 6.3-6.5 sections 
 | v2 | 2026-04-01 | 6.1 | Nigel | Recalibrated scoring; 5 of 5 v1 recs addressed; hero & imagery remain weak |
 | v3 | 2026-04-01 | 6.5 | Nigel | Hero photo, team headshots, light sections, testimonial redesign, pulse animation. Team hits 7.0. |
 | v4 | 2026-04-01 | 6.7 | Nigel | Light-mode services/location, hero overlay lightened, booking form improved, FAQ CTA, OG tags. Three sections at 7.0. |
+| v5 | 2026-04-01 | 6.9 | Nigel | Booking/FAQ light-mode, responsive hero, color-matched icons, testimonial photos, Google badge, emergency bullets, 8 FAQs, footer legal. Six sections at 7.0+. |
 
 ---
 
 ## Top 3 Priority Recommendations
 
-### 1. Convert booking form and FAQ to light-mode (Booking 6.5, FAQ 6.3)
-These are now the two most visually stagnant dark sections, sandwiched between light neighbors. The booking form especially — it sits between light location and dark FAQ, creating an awkward dark-light-dark rhythm. Converting both to light backgrounds with dark text (matching the services/location treatment) would unify the page's visual flow. Light form inputs are also more inviting and feel less "developer." This is the highest-leverage change for overall score: lifting two sections simultaneously affects the average meaningfully.
+### 1. Replace the map placeholder with a real static map image (Location 6.5)
+The location section is now the most obviously "template" section. Every other section has real content — real photos, real testimonials, real FAQ answers. But the map is still an SVG placeholder illustration. Replace it with a Google Maps Static API image (or a screenshot of the map) showing "742 Bark Avenue, Greenfield, PA 19038." Even a static image of a map would read as "real business" on mobile. This is the single highest-leverage change for perceived professionalism. Could push location from 6.5 toward 7.0.
 
-### 2. Add srcset to hero image for mobile performance (Hero 7.0, Technical 7.0)
-The hero still loads a 1200px Unsplash image on a 375px screen with no responsive sizing. Add `srcset` with a 600px crop for mobile and 1200px for desktop: `url("...w=600&q=75") 600w, url("...w=1200&q=80") 1200w`. This is a free performance win that improves load time on the device that matters most (mobile). Combined with the existing preconnect, this would push both hero and technical scores higher.
+### 2. Add a real logo mark to the header (Navigation 6.8)
+The nav still uses a paw emoji + text as branding. A simple SVG paw-print logo (even just the hero paw SVG repurposed at 24-32px with accent color) would make the header feel branded rather than generic. On mobile, the logo is the first thing users see — it sets the tone for the entire experience. A real logo mark could push the nav from 6.8 to 7.0+ and improve the overall first-impression.
 
-### 3. Color-match service icon strokes to their pastel backgrounds (Services 6.5)
-The pastel-tinted icon backgrounds (per-card unique colors) are a great addition, but the SVG stroke color is still uniform `var(--accent)` teal for every card. Matching each icon's stroke to its background tint (blue icon on blue bg, purple on purple, orange on orange) would complete the visual differentiation and make the services section genuinely colorful rather than "teal icons on colored circles." This is a CSS-only change (override stroke on nth-child) that could push services from 6.5 toward 7.0.
+### 3. Add a "Prefer to call?" fallback near the booking form (Booking 6.8, Sticky CTA 6.5)
+Many pet owners — especially older ones or those in a hurry — prefer to call rather than fill out a form. A simple line below the form like "Prefer to call? (555) PAW-CARE" with a tap-to-call link would capture users who abandon the form. This is a conversion optimization that costs nothing and could meaningfully increase appointment bookings. Could push booking from 6.8 toward 7.0.
 
 ---
 
-*End of v4 audit. The site has achieved solid breadth improvements — five previously-untouched sections all got attention. Three sections now clear 7.0. The floor has risen from 6.0 to 6.3. The remaining path to 7.0 overall runs through the dark holdout sections (booking, FAQ) and completing the services color story. The site now reads as a warm, modern veterinary template that a pet owner would find trustworthy and easy to navigate on their phone.*
+*End of v5 audit. The site has reached 6.9 — just shy of the 7.0 threshold where it would be "genuinely better than most templates." Six sections now clear 7.0. The visual rhythm is unified, the content is comprehensive, and the mobile experience is polished. The remaining gap to 7.0 is about replacing the last obvious placeholder (map), adding branded identity (logo), and optimizing conversion paths (call fallback). The site is now a strong template that a real veterinary practice could adopt with minimal customization.*
