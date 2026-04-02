@@ -172,7 +172,9 @@ section {
 }
 
 .nav-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--accent);
   color: var(--bg);
   font-weight: 700;
@@ -182,14 +184,15 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.03em;
   white-space: nowrap;
+  min-height: 44px;
 }
 
 .nav-phone {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: rgba(45, 212, 168, 0.12);
   color: var(--accent);
@@ -273,7 +276,7 @@ section {
   padding-bottom: 4rem;
   text-align: center;
   background:
-    linear-gradient(180deg, rgba(18, 24, 32, 0.72) 0%, rgba(18, 24, 32, 0.85) 100%),
+    linear-gradient(180deg, rgba(18, 24, 32, 0.50) 0%, rgba(18, 24, 32, 0.65) 100%),
     url("https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
   position: relative;
   overflow: hidden;
@@ -341,8 +344,9 @@ section {
   border-radius: var(--radius);
   padding: 1.75rem 1.5rem;
   text-align: center;
-  border: 1px solid rgba(45, 212, 168, 0.08);
+  border: 1px solid rgba(45, 212, 168, 0.12);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  border-top: 3px solid var(--accent);
 }
 .service-card:active {
   transform: scale(0.97);
@@ -367,12 +371,13 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(45, 212, 168, 0.08);
+  background: rgba(45, 212, 168, 0.15);
   border-radius: 50%;
   padding: 4px;
 }
 .service-icon svg {
   display: block;
+  fill: rgba(45, 212, 168, 0.15);
 }
 
 /* --- Team (light-mode section for visual variety) --- */
@@ -630,6 +635,9 @@ section {
 }
 .info-block a {
   color: var(--accent);
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
 }
 
 .hours-table {

@@ -115,3 +115,12 @@
 - Emergency: Added subtle pulse animation on the emergency cross icon for visual urgency (Audit #3)
 - Pulse animation respects prefers-reduced-motion for accessibility
 - Desktop: Phone icon hidden (less needed), Book Now CTA remains visible
+
+## [2.0.0] - 2026-04-01 — Refiner: Hero Overlay + Services Refresh + Preconnect (Audit v3 Top 3)
+- Hero: Lightened overlay from 72-85% to 50-65% opacity — vet-with-pet photo now visible on mobile
+- Services: Added accent top-border on cards for visual pop and stronger section identity
+- Services: Increased icon background opacity (0.08 to 0.15) and added subtle fill to SVG icons
+- Services: Bumped card border opacity for better definition on dark backgrounds
+- Technical: Added preconnect + dns-prefetch for images.unsplash.com in head
+- Technical: Added og:image meta tag for social sharing / iMessage link previews
+- All changes mobile-first, center-aligned, no new sections added
