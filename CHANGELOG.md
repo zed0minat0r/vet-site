@@ -514,3 +514,23 @@
 
 #### CSS
 - `.emergency-expect`, `.emergency-steps`, `.footer-hours` — All mobile-first, center-aligned on mobile.
+
+### 2026-04-01 — Razor: Code Cleanup Audit
+
+#### style.css (12 lines removed)
+- **Merged duplicate rule blocks** — `.team-card` and `.why-choose-item` each had a second declaration block at the end of the file solely for `transition`. Merged into their primary rule blocks to eliminate duplication.
+- **Removed stale comments** — Deleted "faq-category base — enhanced styles in Spark section below" (misleading, no base exists separately) and "Paw divider now handled by inline SVG" (refactoring note no longer relevant).
+- **Trimmed verbose comments** — Shortened 16 overly descriptive comments (e.g. "Responsive <picture> hero bg — replaces CSS background-image for LCP + data savings" to "Hero background image"). Section headers kept for navigation.
+- **Removed double blank lines** — Consolidated consecutive blank lines throughout the file.
+
+#### main.js — No changes needed
+- All functions are called, all event listeners target existing elements, no dead code found.
+
+#### index.html — No changes needed
+- All CSS classes are referenced in style.css, no orphaned markup found.
+
+#### Summary
+- **0 dead CSS selectors** — Every class in style.css matches an element in index.html or is dynamically added by main.js.
+- **0 dead JS functions** — All code paths are active.
+- **0 unused keyframes** — All 4 animations (emergencyPulse, emergencyRing, cta-glow-entrance, fadeInUp) are referenced.
+- **Net lines removed: 12** (style.css: 1990 → 1978)

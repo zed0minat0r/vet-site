@@ -175,7 +175,7 @@ section {
 
 .nav-logo .logo-svg { flex-shrink: 0; }
 
-/* Logo badge — branded circle behind paw */
+/* Logo badge */
 .logo-badge {
   display: inline-flex;
   align-items: center;
@@ -309,7 +309,7 @@ section {
   overflow: hidden;
 }
 
-/* Responsive <picture> hero bg — replaces CSS background-image for LCP + data savings */
+/* Hero background image */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -389,7 +389,7 @@ section {
   filter: drop-shadow(0 0 12px rgba(45, 212, 168, 0.3));
 }
 
-/* --- Services (warm light-mode section) --- */
+/* --- Services --- */
 .services {
   background: linear-gradient(180deg, #f0faf6 0%, #f4f7fa 100%);
   color: #1a2230;
@@ -446,7 +446,7 @@ section {
   display: block;
 }
 
-/* Unique warm pastel tints — icon bg, SVG fill, and color-matched card border-top */
+/* Service card color tints */
 .service-card:nth-child(1) .service-icon { background: rgba(45, 212, 168, 0.15); }
 .service-card:nth-child(1) .service-icon svg { fill: rgba(45, 212, 168, 0.1); }
 .service-card:nth-child(1) { border-top-color: #2dd4a8; }
@@ -501,7 +501,7 @@ section {
   text-decoration: underline;
 }
 
-/* --- Team (dark section — breaks card-wall monotony after light Services) --- */
+/* --- Team --- */
 .team {
   background: var(--bg);
   color: var(--text);
@@ -522,9 +522,10 @@ section {
   text-align: center;
   border: 1px solid rgba(45, 212, 168, 0.1);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Horizontal team card — stacked + centered on mobile, row layout on tablet+ */
+/* Horizontal team card layout */
 .team-card--horizontal {
   display: flex;
   flex-direction: column;
@@ -562,7 +563,7 @@ section {
   font-size: 0.95rem;
 }
 
-/* --- Testimonials (light section with accent tint — distinct from Services' green-to-gray) --- */
+/* --- Testimonials --- */
 .testimonials {
   background: linear-gradient(180deg, #f0f4fa 0%, #f7faf9 100%);
   position: relative;
@@ -604,7 +605,6 @@ section {
   transform: scale(0.97);
   box-shadow: 0 4px 20px rgba(45, 212, 168, 0.15);
 }
-
 
 .reviewer-photo {
   width: 56px;
@@ -957,7 +957,6 @@ section {
 .hours-table td:first-child { text-align: right; padding-right: 0.75rem; }
 .hours-table td:last-child { text-align: left; padding-left: 0.75rem; color: var(--text); }
 
-
 .map-embed {
   border-radius: var(--radius);
   overflow: hidden;
@@ -1015,7 +1014,7 @@ section {
   font-weight: 600;
 }
 
-/* --- Booking Form (warm light-mode) --- */
+/* --- Booking Form --- */
 .booking {
   background: linear-gradient(180deg, #f4f7fa 0%, #f0faf6 100%);
   color: #1a2230;
@@ -1171,7 +1170,7 @@ section {
   gap: 0.25rem;
 }
 
-/* --- FAQ (warm light-mode) --- */
+/* --- FAQ --- */
 .faq {
   background: linear-gradient(180deg, #f0faf6 0%, #f4f7fa 100%);
   color: #1a2230;
@@ -1183,8 +1182,6 @@ section {
   max-width: 680px;
   margin: 0 auto;
 }
-
-/* faq-category base — enhanced styles in Spark section below */
 
 .faq-item {
   background: #ffffff;
@@ -1284,8 +1281,6 @@ section {
   );
   opacity: 0.7;
 }
-
-/* Paw divider now handled by inline SVG .footer-paw-divider */
 
 .footer-grid {
   display: grid;
@@ -1467,7 +1462,7 @@ section {
 @media (min-width: 600px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
-  /* At 2-col, revert team cards to stacked/centered */
+  /* 2-col team card layout */
   .team-card--horizontal {
     flex-direction: column;
     text-align: center;
@@ -1591,7 +1586,7 @@ section {
   box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
 }
 
-/* Book Now entrance glow — draws attention on first appearance */
+/* Book Now entrance glow */
 @keyframes cta-glow-entrance {
   0% {
     box-shadow: 0 2px 8px rgba(45, 212, 168, 0.3);
@@ -1702,14 +1697,14 @@ a.trust-strip-link:active {
   animation: fadeInUp 0.5s ease-out forwards;
 }
 
-/* No-JS fallback: make cards visible if JavaScript fails */
+/* No-JS fallback */
 .no-js .fade-in-up {
   opacity: 1 !important;
   transform: none !important;
   animation: none !important;
 }
 
-/* --- Why Choose Us (Spark: accent-glow callout design, breaks card-wall monotony) --- */
+/* --- Why Choose Us --- */
 .why-choose {
   background:
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(45, 212, 168, 0.06) 0%, transparent 70%),
@@ -1717,7 +1712,7 @@ a.trust-strip-link:active {
   text-align: center;
   position: relative;
 }
-/* Subtle top accent line to visually separate from sections above */
+/* Top accent line */
 .why-choose::before {
   content: "";
   display: block;
@@ -1742,8 +1737,9 @@ a.trust-strip-link:active {
   border-left: 3px solid rgba(45, 212, 168, 0.35);
   text-align: center;
   position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-/* Inline layout: stacked + centered on mobile, row layout on tablet+ */
+/* Inline layout */
 .why-choose-item--inline {
   display: flex;
   flex-direction: column;
@@ -1788,7 +1784,7 @@ a.trust-strip-link:active {
   .why-choose-grid {
     grid-template-columns: 1fr 1fr;
   }
-  /* Restore inline (row) layout on tablet+ where space permits */
+  /* Inline layout on tablet+ */
   .why-choose-item--inline {
     flex-direction: row;
     align-items: flex-start;
@@ -1797,7 +1793,7 @@ a.trust-strip-link:active {
   }
 }
 
-/* --- FAQ Category Headers (Spark: ruled-heading with accent pill + flanking lines) --- */
+/* --- FAQ Category Headers --- */
 .faq-category {
   display: flex;
   align-items: center;
@@ -1821,7 +1817,7 @@ a.trust-strip-link:active {
 .faq-category:first-child {
   margin-top: 0;
 }
-/* Subtle divider line between FAQ groups */
+/* FAQ group divider */
 .faq-category:not(:first-child) {
   position: relative;
   margin-top: 2.25rem;
@@ -1837,7 +1833,7 @@ a.trust-strip-link:active {
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
-/* --- Footer SVG Paw Divider (replaces emoji) --- */
+/* --- Footer Paw Divider --- */
 .footer-paw-divider {
   display: flex;
   align-items: center;
@@ -1976,15 +1972,7 @@ a.trust-strip-link:active {
   }
 }
 
-/* Why-choose active state for mobile */
-.why-choose-item {
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
 .why-choose-item:active {
   border-color: rgba(45, 212, 168, 0.3);
   border-left-color: var(--accent);
-}
-/* Team card active state */
-.team-card {
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
