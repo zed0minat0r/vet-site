@@ -508,6 +508,7 @@ section {
 .testimonials {
   background: #f9fafb;
   position: relative;
+  text-align: center;
 }
 .testimonials h2,
 .testimonials .section-subtitle {
@@ -558,8 +559,9 @@ section {
 }
 
 .google-reviews-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
   margin-top: 1.5rem;
   font-size: 0.95rem;
@@ -567,6 +569,7 @@ section {
   color: #1a9a7a;
   text-decoration: none;
   min-height: 44px;
+  text-align: center;
 }
 .google-reviews-link svg {
   color: #fbbf24;
@@ -930,6 +933,9 @@ section {
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .call-fallback-link:active { opacity: 0.7; }
 
@@ -944,6 +950,18 @@ section {
 .faq-list {
   max-width: 680px;
   margin: 0 auto;
+}
+
+.faq-category {
+  text-align: center;
+  color: #1a8a6a;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 1.5rem 0 0.75rem;
+}
+.faq-category:first-of-type {
+  margin-top: 0;
 }
 
 .faq-item {
@@ -1045,19 +1063,7 @@ section {
   opacity: 0.7;
 }
 
-.site-footer::after {
-  content: "🐾  🐾  🐾";
-  position: absolute;
-  top: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.7rem;
-  letter-spacing: 0.25rem;
-  background: var(--bg-alt);
-  padding: 0 1rem;
-  color: var(--accent);
-  opacity: 0.5;
-}
+/* Paw divider now handled by inline SVG .footer-paw-divider */
 
 .footer-grid {
   display: grid;
@@ -1325,6 +1331,139 @@ section {
   .faq-item summary { padding: 1rem 1rem; }
   .faq-item p { padding: 0 1rem 1rem; }
   .booking-form { padding: 1.5rem 1.25rem; }
+}
+
+/* --- Hero Trust Strip --- */
+.hero-trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.trust-strip-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+.trust-strip-item svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.trust-strip-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+/* --- Scroll-triggered fade-in-up --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  opacity: 0;
+}
+.fade-in-up.is-visible {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* --- FAQ Category Headers --- */
+.faq-category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-dark);
+  margin: 1.5rem 0 0.75rem;
+  text-align: center;
+}
+.faq-category:first-child {
+  margin-top: 0;
+}
+
+/* --- Footer SVG Paw Divider (replaces emoji) --- */
+.footer-paw-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1rem;
+  opacity: 0.35;
+}
+.footer-paw-divider svg {
+  flex-shrink: 0;
+}
+
+/* --- Footer Newsletter --- */
+.footer-newsletter {
+  text-align: center;
+  padding: 1.25rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(138, 150, 168, 0.15);
+}
+.footer-newsletter-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.3px;
+}
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.newsletter-form input[type="email"] {
+  flex: 1 1 200px;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(45, 212, 168, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 0.9rem;
+  min-height: 44px;
+}
+.newsletter-form input[type="email"]::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+.newsletter-btn {
+  padding: 0.6rem 1.2rem !important;
+  font-size: 0.85rem !important;
+  min-height: 44px;
+  white-space: nowrap;
+}
+.newsletter-success {
+  width: 100%;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
 }
 
 /* Hide sticky CTA on larger screens */

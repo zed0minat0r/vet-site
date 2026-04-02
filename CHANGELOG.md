@@ -337,3 +337,18 @@
 - index.html (546 lines): no unused classes, no bloat
 ### Why
 - Routine code hygiene pass to remove dead selectors, unreachable rules, and duplicate declarations
+
+## [1.3.1] - 2026-04-01
+### Fixed (Mobile audit at 375px — Pixel)
+- Center alignment: `.testimonials` section now has `text-align: center` so the Google Reviews link centers properly on mobile
+- Center alignment: `.google-reviews-link` changed from `inline-flex` to `flex` with `justify-content: center` for reliable centering
+- Tap target: `.call-fallback-link` (phone link under booking form) now has `min-height: 44px` with `display: inline-flex`
+- New styles: `.faq-category` headers now center-aligned with accent color and uppercase styling for visual consistency
+### Audited & kept (no issues found)
+- All form inputs already use `font-size: 16px` (prevents iOS zoom)
+- All buttons and interactive links already meet 44px min-height tap targets
+- No horizontal overflow at 375px; max-widths fit within container padding
+- Emergency symptoms list properly centered via inline-block + parent text-align
+- Hours table (max-width 320px) fits within 375px viewport with padding
+- Hero actions column layout with 320px max-width properly centered
+- Mobile CTA bar has proper safe-area-inset padding and 48px tap targets
