@@ -227,6 +227,30 @@
     }
   })();
 
+  // --- Testimonial carousel dots ---
+  var carouselGrid = document.querySelector('.testimonials-grid');
+  var dots = document.querySelectorAll('.carousel-dot');
+  if (carouselGrid && dots.length) {
+    var cards = carouselGrid.querySelectorAll('.testimonial-card');
+    var dotObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var idx = Array.prototype.indexOf.call(cards, entry.target);
+          dots.forEach(function (dot, i) {
+            dot.classList.toggle('active', i === idx);
+            dot.setAttribute('aria-current', i === idx ? 'true' : 'false');
+          });
+        }
+      });
+    }, { root: carouselGrid, threshold: 0.6 });
+    cards.forEach(function (card) { dotObserver.observe(card); });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      });
+    });
+  }
+
   // --- Active nav link highlighting ---
   var sections = document.querySelectorAll('section[id], footer[id]');
   var navLinks = document.querySelectorAll('.nav-menu a');

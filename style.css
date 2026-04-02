@@ -217,7 +217,7 @@ section {
 }
 
 .nav-phone {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   width: 44px;
@@ -722,6 +722,28 @@ section {
   color: #6b7280;
   font-size: 0.85rem;
   margin-top: 0.25rem;
+}
+
+/* Carousel dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(45, 212, 168, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.carousel-dot.active {
+  background: var(--accent);
+  transform: scale(1.2);
 }
 
 /* --- Emergency --- */
@@ -1728,6 +1750,7 @@ section {
   .testimonials-grid > * {
     flex: none;
   }
+  .carousel-dots { display: none; }
   .emergency-details { flex-direction: row; justify-content: center; gap: 3rem; }
   .form-row { grid-template-columns: 1fr 1fr; }
 }
@@ -1739,6 +1762,8 @@ section {
 
   .nav-toggle { display: none; }
   .nav-phone { display: none; }
+  .nav-menu-phone { display: none; }
+  .carousel-dots { display: none; }
   .nav-cta {
     font-size: 0.85rem;
     padding: 0.5rem 1.1rem;
@@ -2052,6 +2077,22 @@ a.trust-strip-link:active {
   background: rgba(45, 212, 168, 0.12);
   color: var(--accent);
   margin-bottom: 1rem;
+}
+.why-choose-icon--teal {
+  background: rgba(45, 212, 168, 0.12);
+  color: #1a9a7a;
+}
+.why-choose-icon--sky {
+  background: rgba(14, 165, 233, 0.12);
+  color: #0284c7;
+}
+.why-choose-icon--rose {
+  background: rgba(244, 63, 94, 0.12);
+  color: #e11d48;
+}
+.why-choose-icon--amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
   box-shadow: 0 0 12px rgba(45, 212, 168, 0.08);
 }
 .why-choose-item h3 {

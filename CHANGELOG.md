@@ -627,3 +627,29 @@
 - No horizontal overflow issues at 375px
 - Container padding adequate (1rem at 400px, 1.25rem default)
 - Center alignment consistent across all sections
+
+## v12 — Refiner (2026-04-01)
+
+### Booking Form Fix (CRITICAL)
+- Fixed vet name mismatch: booking dropdown now shows Dr. James Rivera and Emily Nguyen (matching team section) instead of Dr. James Chen and Dr. Priya Patel
+
+### Testimonial Carousel Accessibility
+- Added `role="region"`, `aria-roledescription="carousel"`, and `aria-label` to testimonials container
+- Each testimonial card now has `role="group"`, `aria-roledescription="slide"`, and positional `aria-label`
+- Added carousel indicator dots below testimonials on mobile (hidden at 600px+ where grid takes over)
+- Dots use IntersectionObserver to highlight on scroll; tap a dot to jump to that testimonial
+- Dots styled with brand accent color, subtle scale on active state
+
+### Header Condensed
+- Removed phone icon from mobile header (4 elements to 3: logo, Book Now, hamburger)
+- Added "Call Us" link inside hamburger nav-menu so phone access is not lost
+- CTA bar already provides call/text access, so phone icon was redundant on mobile
+
+### Why Choose Us Elevated
+- Updated subtitle from generic "What sets us apart from the rest" to "Care that goes beyond the exam room"
+- Added per-icon tint colors (teal, sky, rose, amber) to differentiate each value proposition visually
+
+### Technical
+- All new CSS is mobile-first, no `!important`, no hover-only effects
+- Carousel dot JS is lightweight, progressive (no-op if elements missing), uses IntersectionObserver
+- `nav-menu-phone` hidden on desktop via existing 768px breakpoint
