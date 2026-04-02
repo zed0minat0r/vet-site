@@ -166,6 +166,41 @@
 - Mobile-first, center-aligned, no new sections added (still 10 sections)
 - Addresses audit items: Location 6.0, FAQ 6.0, Booking 6.3 stagnation
 
+---
+
+## v5 — Refiner Pass (2026-04-01)
+
+### Changed — Booking Form (light-mode conversion)
+- Converted from dark (--bg-alt) to warm light gradient (#f4f7fa -> #f0faf6)
+- Form wrapped in white card with subtle border and shadow
+- Input fields now light (#f8fafb) with soft gray borders (#d1d9e0)
+- Labels, text, headings all use dark palette (#1a2230, #5a6577)
+- Success message uses green on light background
+
+### Changed — FAQ (light-mode conversion)
+- Converted from dark (--bg) to warm light gradient (#f0faf6 -> #f4f7fa)
+- FAQ items now white cards with soft shadow and green-tinted border
+- Summary text and paragraph text use dark palette
+- CTA divider updated to match light theme
+
+### Changed — Hero Image (responsive srcset)
+- Default (mobile) loads 400px wide image instead of 1200px
+- 480px+ breakpoint loads 768px wide image
+- 768px+ breakpoint loads full 1200px image
+- Reduces bandwidth on phones by ~60%
+
+### Changed — Service Icon Colors (matched to backgrounds)
+- Surgery icon stroke: teal -> blue (#3b82f6) matching blue pastel bg
+- Dental Care icon stroke: teal -> purple (#a855f7) matching purple pastel bg
+- Vaccinations icon stroke: teal -> orange (#fb923c) matching orange pastel bg
+- Preventive Care icon stroke: teal -> pink (#ec4899) matching pink pastel bg
+- Diagnostics icon stroke: teal -> sky (#0ea5e9) matching sky pastel bg
+- SVG fill colors now per-card, matched to their respective background tints
+
+### Notes
+- Mobile-first, center-aligned, no new sections added
+- Addresses v4 audit top 3 priorities: dark holdout sections, hero image size, icon color mismatch
+
 ## [1.5.1] - 2026-04-01
 ### Fixed — Mobile Audit (375px viewport) by Pixel
 - Added `@media (max-width: 400px)` breakpoint for small-screen refinements
