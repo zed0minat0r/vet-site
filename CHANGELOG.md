@@ -92,3 +92,10 @@
 - Footer contact links: Added 44px min-height tap targets for phone/email links
 - Body: Added overflow-wrap/word-break to prevent text-based horizontal scroll; safe-area-inset padding
 - Hours table: Increased cell padding for better readability on narrow screens
+
+## [1.7.0] - 2026-04-01 — Refiner: Hero Image, Team Photos, Visual Variety (v2 Audit Top 3)
+- Hero: Replaced SVG paw pattern background with Unsplash photo of vet with pet + dark gradient overlay for readability (Audit #1 — biggest single-change lever)
+- Team: Replaced letter-circle avatar placeholders with Unsplash stock headshot photos — circular with accent border (Audit #2)
+- Team section: Converted to light-mode (#f4f7fa bg, white cards) to break dark monotone pattern and add visual hierarchy (Audit #4)
+- Team cards: Added subtle box-shadow for depth on light background
+- Avatar photos: 88px circular with 3px accent border and soft glow shadow
