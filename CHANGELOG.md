@@ -386,3 +386,18 @@
 
 ### Added
 - **"Why Choose Us" differentiator section** — New 4-item grid (Fear-Free Certified, Same-Day Appointments, Personalized Care Plans, Family-Run Community-Trusted) between Testimonials and Emergency. Uses SVG icons, accent-tinted icon circles, and 2-column layout on 600px+. Adds content depth and trust signals per v7 audit recommendation.
+
+## v10 — Pixel — 2026-04-01
+### Fixed (Mobile Audit @ 375px)
+- **Newsletter email input font-size: 0.9rem -> 16px** — Prevents iOS Safari auto-zoom on input focus. All form inputs now consistently use 16px minimum.
+- **FAQ category pill font-size: 0.75rem -> 0.8rem** — Improved readability of category labels on small screens.
+- **Footer social label font-size: 0.75rem -> 0.8rem** — Bumped decorative label for better legibility at 375px.
+- **Footer trust badge font-size: 0.8rem -> 0.85rem** — Slightly larger for readability on narrow viewports.
+
+### Verified (No Issues Found)
+- Center alignment: All sections consistently center-aligned on mobile.
+- Tap targets: All interactive elements meet 44px minimum (buttons, links, nav items, social icons are 44-48px).
+- Padding: Container padding reduces to 1rem at <=400px; no content touches screen edges.
+- Overflow: `overflow-x: hidden` on body; no horizontal scroll issues detected. `white-space: nowrap` elements are properly contained.
+- Form inputs: Booking form already at 16px font-size and 48px min-height.
+- Spacing: Consistent vertical rhythm maintained across all sections.
