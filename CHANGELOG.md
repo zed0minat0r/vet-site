@@ -534,3 +534,12 @@
 - **0 dead JS functions** — All code paths are active.
 - **0 unused keyframes** — All 4 animations (emergencyPulse, emergencyRing, cta-glow-entrance, fadeInUp) are referenced.
 - **Net lines removed: 12** (style.css: 1990 → 1978)
+
+## [2.4.0] - 2026-04-01 — Pixel: Mobile Audit (375px viewport)
+### Fixed
+- Footer quick-answer pills: tap target increased from 36px to 44px min-height (WCAG/Apple HIG compliance)
+- Footer quick-answer pills: switched to inline-flex with centered alignment for consistent tap zones
+- Footer QA item font-size bumped from 0.82rem to 0.85rem for better readability
+- Added 375px-specific refinements: tighter h2 (1.6rem), full-width hero actions, compact "Why Choose" padding
+- Emergency symptoms list center-aligned on small screens (was left-only, causing visual drift)
+- FAQ CTA button right-sized for narrow viewports (0.95rem font, tighter padding)
