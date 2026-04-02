@@ -52,3 +52,12 @@
 - Added "Back to top" smooth-scroll link in footer bottom (Audit Priority #2)
 - Added meta theme-color, Open Graph tags, and emoji favicon (Audit Priority #4 — quick wins)
 - All changes mobile-first and center-aligned per AGENT-RULES
+
+## [1.3.0] - 2026-04-01 — Spark: Footer Visual Warmth (Audit — Footer 6.8, lowest section)
+- Added decorative gradient accent strip along top of footer replacing plain border — gives visual depth
+- Added subtle paw-trail divider (CSS pseudo-element) above footer for vet clinic character
+- Enhanced footer brand area: larger paw icon, subtle separator below brand on mobile, warmer presence
+- Added "Proudly serving Greenfield, PA & surrounding communities" tagline — local identity, feels real
+- Social link icons now have a subtle accent-tinted border for more definition
+- Desktop: brand separator hidden for clean 3-column layout
+- All changes CSS-only, mobile-first, center-aligned per AGENT-RULES
