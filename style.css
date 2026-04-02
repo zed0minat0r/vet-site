@@ -366,10 +366,10 @@ section {
 
 .service-card {
   background: #ffffff;
-  border-radius: var(--radius);
+  border-radius: 16px;
   padding: 1.75rem 1.5rem;
   text-align: center;
-  border: 1px solid rgba(45, 212, 168, 0.12);
+  border: 1px solid rgba(45, 212, 168, 0.08);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   border-top: 3px solid var(--accent);
@@ -407,19 +407,30 @@ section {
   display: block;
 }
 
-/* Unique warm pastel tints for each service icon — background + matching SVG fill */
+/* Unique warm pastel tints — icon bg, SVG fill, and color-matched card border-top */
 .service-card:nth-child(1) .service-icon { background: rgba(45, 212, 168, 0.15); }
 .service-card:nth-child(1) .service-icon svg { fill: rgba(45, 212, 168, 0.1); }
+.service-card:nth-child(1) { border-top-color: #2dd4a8; }
+
 .service-card:nth-child(2) .service-icon { background: rgba(59, 130, 246, 0.12); }
 .service-card:nth-child(2) .service-icon svg { fill: rgba(59, 130, 246, 0.08); }
+.service-card:nth-child(2) { border-top-color: #3b82f6; }
+
 .service-card:nth-child(3) .service-icon { background: rgba(168, 85, 247, 0.12); }
 .service-card:nth-child(3) .service-icon svg { fill: rgba(168, 85, 247, 0.08); }
+.service-card:nth-child(3) { border-top-color: #a855f7; }
+
 .service-card:nth-child(4) .service-icon { background: rgba(251, 146, 60, 0.12); }
 .service-card:nth-child(4) .service-icon svg { fill: rgba(251, 146, 60, 0.08); }
+.service-card:nth-child(4) { border-top-color: #fb923c; }
+
 .service-card:nth-child(5) .service-icon { background: rgba(236, 72, 153, 0.12); }
 .service-card:nth-child(5) .service-icon svg { fill: rgba(236, 72, 153, 0.08); }
+.service-card:nth-child(5) { border-top-color: #ec4899; }
+
 .service-card:nth-child(6) .service-icon { background: rgba(14, 165, 233, 0.12); }
 .service-card:nth-child(6) .service-icon svg { fill: rgba(14, 165, 233, 0.08); }
+.service-card:nth-child(6) { border-top-color: #0ea5e9; }
 
 /* --- Team (light-mode section for visual variety) --- */
 .team {

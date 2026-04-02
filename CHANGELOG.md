@@ -222,3 +222,11 @@
 - All inputs already at 16px (no iOS zoom). All tap targets already at 44px+ min-height.
 - Center alignment consistent across all sections. No horizontal overflow detected.
 - Still 10 sections. No new sections added.
+
+## [v6] - 2026-04-01 (Spark)
+### Changed — Services color story completion (Audit rec #3)
+- Color-matched each service card border-top to its unique icon color (teal, blue, purple, orange, pink, sky) instead of uniform `var(--accent)` teal
+- Bumped service card border-radius from 12px to 16px for a warmer, more organic feel (scout report: "curved/organic shapes create warmth")
+- Fixed first service card SVG stroke from `var(--accent)` to explicit `#2dd4a8` for consistency with cards 2-6 which already had explicit stroke colors
+- Softened card border from 0.12 to 0.08 opacity to let the colorful border-top stand out more
+- CSS-only change, no new sections, mobile-first, center-aligned
