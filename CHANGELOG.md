@@ -494,3 +494,23 @@
 - **Emergency box ambient glow** — Added `box-shadow` with soft red outer glow and inner highlight for depth. The box now feels elevated rather than flat.
 - **Top accent gradient bar** — `::before` pseudo-element on `.emergency-box` adds a horizontal gradient line (transparent-red-transparent) across the top edge. Creates a visual accent consistent with the why-choose section's accent bar pattern.
 - **Prep tip left accent border** — Added 3px left border in emergency red to `.emergency-prep` to visually anchor the save-number tip, mirroring the testimonial card accent border pattern.
+
+---
+
+### v12 — Floor Raise: Emergency + Footer + Header Declutter (Builder)
+**Date:** 2026-04-01
+
+#### Emergency Section — "When You Call" Steps
+- **3-step process added** — Numbered steps below symptoms explaining what happens when a pet owner calls: (1) a veterinary professional answers directly, (2) urgency assessment and guidance, (3) on-call vet meets at clinic if needed. Uses CSS counters with numbered circle badges in emergency red tint. Provides reassurance that reduces anxiety — a pet owner in crisis now knows exactly what to expect.
+- **Visual separator** — Subtle `border-top` divides the new content from existing symptoms list, maintaining clean visual hierarchy.
+
+#### Footer — Hours + Polish
+- **Hours in footer contact column** — Mon-Fri, Sat, and Sun hours now displayed below the contact address. Sunday shows "Closed" with a linked "Emergencies 24/7" pointing to the emergency section. Pet owners commonly look for hours in the footer — this saves a scroll back to the Location section.
+- **Footer hours responsive** — Center-aligned on mobile, left-aligned on desktop (768px+) to match footer grid layout.
+
+#### Header — Declutter at 375px
+- **Reduced header crowding** — At small screens (max-width: 480px): logo badge shrinks from 38px to 32px, nav-cta gets tighter padding and smaller font, nav padding reduced. Gives breathing room to the logo + phone + Book Now + hamburger row on small devices.
+- **Removed logo animation** — The `logoReveal` keyframe animation on `.logo-badge` (scale+rotate on every page load) was removed. The badge now renders immediately without a spin-in effect, which felt unnecessary on repeat visits.
+
+#### CSS
+- `.emergency-expect`, `.emergency-steps`, `.footer-hours` — All mobile-first, center-aligned on mobile.
