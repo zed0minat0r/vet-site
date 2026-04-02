@@ -2,7 +2,7 @@
 
 **Auditor:** Nigel
 **Date:** 2026-04-01
-**Version:** v7
+**Version:** v8
 **Perspective:** Mobile (375px)
 **Context:** Template build — placeholders expected; stock content/photos not penalized
 
@@ -21,104 +21,123 @@
 
 ---
 
-## What Changed Since v6
+## What Changed Since v7
 
-1. **Scroll-triggered fade-in-up animations** — Service cards, team cards, and testimonial cards now use IntersectionObserver to fade in with a 20px upward translate as they enter the viewport. Siblings stagger at 70ms intervals. Applied via `.fade-in-up` class toggling `.is-visible`. This was v6 rec #1.
-2. **Hero frosted-glass trust strip** — A semi-transparent bar (`rgba(255,255,255,0.1)` with `backdrop-filter: blur(8px)`) sits below the hero CTAs showing "4.9 Google | 10+ Years | 24/7 Emergency" with inline SVG icons, separated by thin dividers. Max-width 360px, center-aligned. This was v6 rec #2.
-3. **FAQ reorganized into 3 category groups** — FAQs now grouped under "Getting Started," "During Your Visit," and "Payment & Emergencies" with styled category headers. This was v6 rec #3 (FAQ half).
-4. **FAQ category headers redesigned as accent pill badges** (Spark) — Category labels display as centered pill badges with accent tint background, rounded border, 0.75rem uppercase, 700 weight. Gradient divider lines (40px) separate groups.
-5. **Footer SVG paw dividers** — The old paw emoji dividers replaced with three 18px SVG paw prints using `var(--accent)` fill. This was v6 rec #3 (footer half).
-6. **Footer newsletter signup** — "Get pet care tips in your inbox" with email input + Subscribe button. 44px touch targets. Inline success confirmation. This was v6 rec #3 (footer half).
-7. **Unified phone SVGs** (Builder) — Nav phone icon changed from Unicode &#9742; to inline SVG (18x18). Hero emergency button changed from Unicode to SVG (16x16). Booking call-fallback now includes a 14x14 SVG phone icon. All phone icons across the site are now consistent stroke-based SVGs.
-8. **Testimonials centering fix** (Pixel) — Reviewer photos and cards confirmed centered with `text-align: center` and `margin: 0 auto`.
-9. **FAQ header styling polish** (Pixel) — Category headers refined.
+1. **CRITICAL A11Y FIX: prefers-reduced-motion for fade-in-up** (Refiner) — The `@media (prefers-reduced-motion: reduce)` block now includes `.fade-in-up` with `opacity: 1 !important` and `transform: none !important`. This was the #1 v7 recommendation and a blocking accessibility regression. Resolved.
+2. **CRITICAL A11Y FIX: No-JS fallback for fade-in-up** (Refiner) — `<html class="no-js">` with an inline script that immediately removes it. CSS rule `.no-js .fade-in-up { opacity: 1 !important; transform: none !important; }` ensures all 14 animated cards remain visible if JS fails. Resolved.
+3. **CTA bar elevated to frosted glass** (Refiner) — The sticky CTA bar now uses `backdrop-filter: blur(20px) saturate(1.6)` with `rgba(15, 23, 36, 0.82)` background, a subtle accent border-top, and inset highlight. Matches the premium feel of the hero trust strip.
+4. **"Why Choose Us" section added** (Refiner) — New section with 4 differentiators: Fear-Free Certified, Same-Day Appointments, Personalized Care Plans, Family-Run/Community-Trusted. SVG icons, accent-tinted icon backgrounds, fade-in-up animations. This was v7 rec #3.
+5. **Testimonial stars: Unicode to SVG** (Builder) — All 4 testimonial cards now use inline SVG stars (18x18, #fbbf24 fill) instead of Unicode &#9733;. Flexbox `.stars` container with centered alignment and 0.15rem gap. Consistent with the site-wide SVG system.
+6. **Team photos: 88px to 104px** (Builder) — Avatar photos enlarged for better face recognition on mobile. Scales to 96px at <=400px.
+7. **Nav CTA: larger tap target** (Builder) — Font bumped to 0.95rem, padding to 0.6rem/1.25rem, min-height 44px. More visually commanding on 375px.
+8. **CTA bar: enhanced glass effect** (Builder) — Increased blur, saturation, opacity, and border brightness.
+9. **Trust strip: responsive wrap** (Builder) — flex-wrap, hidden dividers, and smaller font at <=400px to prevent cramming on narrow screens.
+10. **Google Reviews: real URL** (Builder) — Testimonials "Read all reviews" link now targets google.com/maps with proper target/rel attributes instead of "#".
+11. **24/7 emergency badge on CTA bar** (Spark) — Red pill badge with "24/7" next to Call Now button. Emergency color with subtle glow. Signals after-hours availability.
+12. **Book Now entrance glow** (Spark) — One-time CSS keyframe glow pulse (2s ease-out, 0.5s delay) on the Book Now CTA button. Respects prefers-reduced-motion.
+13. **iOS zoom prevention** (Pixel) — Form inputs set to 16px font-size to prevent iOS auto-zoom on focus.
 
-All three v6 priority recommendations were addressed. Multiple agents (Refiner, Builder, Spark, Pixel) contributed changes.
+All three v7 recommendations were addressed. Multiple agents contributed.
 
 ---
 
 ## Section-by-Section Breakdown
 
-### 1. Navigation / Header — 7.0 (v6: 7.0, unchanged)
+### 1. Navigation / Header — 7.1 (v7: 7.0, +0.1)
 
 **Positives:**
-- The nav phone icon is now an inline SVG (18x18, stroke-based) matching the rest of the icon system. This resolves the v6 issue of Unicode vs SVG inconsistency. The entire header is now a unified SVG icon set
-- SVG paw logo badge, Book Now pill, hamburger, blur header, aria-expanded, skip-link — all intact
+- The nav CTA is now meaningfully larger: 0.95rem font, 0.6rem/1.25rem padding, 44px min-height. On a 375px phone, the "Book Now" pill in the header is now clearly tappable and visually prominent — not just a small afterthought next to the hamburger. This was a persistent v7 issue
+- SVG paw logo badge, gradient CTA, blur header, aria-expanded, skip-link, phone icon — all intact and polished
 
 **Issues:**
-- The Book Now CTA remains small (0.45rem padding, 0.8rem font). Functional but not visually commanding on 375px
-- Logo badge animation still plays every page load (minor)
+- Logo badge animation still plays every page load — minor but noticeable on repeat visits
+- The header becomes crowded with logo + phone icon + Book Now pill + hamburger all in one row at 375px. Functional, but tight
 
-**Assessment:** The SVG phone icon fix is correct but cosmetic — it resolves inconsistency, not user perception. A pet owner on their phone would not notice the Unicode-to-SVG swap. The header was already at 7.0 and this change maintains it. Holds at 7.0.
+**Assessment:** The larger nav CTA is a real improvement for mobile users. A pet owner can now clearly see and tap "Book Now" without opening the hamburger menu. This is not transformative, but it resolves a legitimate friction point. Moving from 7.0 to 7.1.
 
-### 2. Hero — 7.3 (v6: 7.2, +0.1)
+### 2. Hero — 7.3 (v7: 7.3, unchanged)
 
 **Positives:**
-- The frosted-glass trust strip is a meaningful addition. On a 375px phone, below the two CTA buttons, the user now sees "4.9 Google | 10+ Years | 24/7 Emergency" in a semi-transparent bar with backdrop blur. This puts social proof above the fold — the single most valuable real estate on the page
-- The trust strip uses proper inline SVG icons (star, clock, phone) in accent color, with thin vertical dividers between items. Typography is tight (0.8rem, 600 weight, nowrap) which fits on 375px without wrapping
-- The `backdrop-filter: blur(8px)` creates visual depth against the hero photo — the bar feels like a layer above the image, not just text floating on it
-- The hero emergency button now uses an SVG phone icon instead of Unicode — consistent with the rest of the site
-- Max-width 360px ensures it does not stretch awkwardly on wider phones
+- Trust strip with responsive wrap at <=400px is a meaningful resilience improvement — dividers hide and items wrap gracefully instead of cramming
+- Frosted-glass trust strip, above-the-fold social proof ("4.9 Google | 10+ Years | 24/7 Emergency"), dual CTAs — all carry over
+- Hero h1 at 2.4rem (2.0rem at <=400px) is appropriately sized for mobile
 
 **Issues:**
-- The trust strip at 0.8rem font is small on mobile. A user with average eyesight can read it, but it is not instantly scannable — the items blend together slightly. The dividers are only 14px tall and 1px wide, which helps spacing but is barely visible
-- Three trust items in a row at 375px is tight. "4.9 Google" + "10+ Years" + "24/7 Emergency" with icons and dividers fits, but leaves little breathing room. On screens narrower than 360px, this could wrap
-- The trust strip does not have responsive handling in the 400px breakpoint media query — it relies on max-width alone
-- Still CSS background-image for the hero photo rather than `<picture>` / srcset
+- Trust strip text at 0.8rem (0.75rem at <=400px) remains small — scannable but not instantly readable for all users
+- Still CSS background-image rather than `<picture>` / srcset — no responsive image optimization
+- The hero paw SVG (80x80) is decorative but adds visual weight without clear purpose on mobile
 
-**Assessment:** The trust strip is genuinely good. Above-the-fold social proof is a conversion best practice that most vet templates skip. A pet owner sees credibility signals before they even scroll. However, the execution is slightly tight at 375px — the text is small and the bar is dense. This is a clear improvement but not transformative. Moving from 7.2 to 7.3.
+**Assessment:** The responsive trust strip wrap is a good technical fix that prevents edge-case layout issues. However, on a standard 375px iPhone, the hero experience is unchanged from v7. The trust strip, CTAs, and tagline all look the same. Holds at 7.3.
 
-### 3. Services — 7.1 (v6: 7.0, +0.1)
+### 3. Services — 7.2 (v7: 7.1, +0.1)
 
 **Positives:**
-- The fade-in-up animations add a sense of discovery as the user scrolls. On a 375px phone, the six service cards appear sequentially with a 70ms stagger — the first card fades in, then the second 70ms later, etc. This creates a subtle cascade effect that makes the section feel dynamic rather than static
-- The animation is tasteful: 0.5s duration, ease-out timing, 20px translate. Not dramatic enough to feel "flashy" — just enough to notice
-- Color-matched icon strokes, pastel tints, 16px rounded cards — all carry over
+- The prefers-reduced-motion fix means the fade-in-up animations are now fully accessible — users who prefer reduced motion see cards at full opacity with no animation. This resolves the v7 a11y gap
+- The no-JS fallback ensures all 6 service cards are visible even if JavaScript fails — no more invisible content risk
+- Color-matched icon strokes, pastel tints, 16px rounded cards, staggered cascade animation — all carry over
 
 **Issues:**
-- The `.fade-in-up` class sets `opacity: 0` by default. If JavaScript fails to load, all service cards are invisible. There is no `<noscript>` fallback or CSS-only fallback to ensure visibility. This is a functional risk
-- There is no `prefers-reduced-motion` media query for the fade-in-up animation. Users who have reduced motion enabled will still see the animation. The existing reduced-motion rule only covers `.pulse-cross` — it does not cover the new scroll animations. This is an accessibility gap
-- Six stacked cards remains a long scroll on mobile
+- Six stacked cards remains a long vertical scroll on mobile — no "show more" or category filtering
+- Cards are visually uniform — a user scrolling quickly sees a wall of same-shaped cards. No visual hierarchy to prioritize key services
 
-**Assessment:** The scroll animations are a net positive. They add perceived quality and make the page feel more alive. However, the missing reduced-motion handling and the no-JS opacity:0 risk are real technical issues that prevent this from being a full 7.2. Moving from 7.0 to 7.1.
+**Assessment:** The a11y fixes remove the technical caveats that held this section back. The scroll animations are now properly implemented with full reduced-motion and no-JS coverage. This is clean, accessible work. Moving from 7.1 to 7.2.
 
-### 4. Meet the Team — 7.1 (v6: 7.0, +0.1)
+### 4. Meet the Team — 7.2 (v7: 7.1, +0.1)
 
 **Positives:**
-- Same fade-in-up treatment as services — team cards cascade in on scroll with 70ms stagger
-- Unsplash headshots, white cards, light background — all intact
+- Team photos at 104px (96px at <=400px) are noticeably better than the previous 88px. On a 375px phone, a 104px photo shows enough facial detail for a user to feel like they are seeing a real person, not a thumbnail. This matters for trust
+- Same a11y fixes as services — reduced-motion and no-JS both handled
+- Unsplash headshots, white cards, fade-in-up cascade — all carry over
 
 **Issues:**
-- Same no-JS and reduced-motion concerns as services
-- 88px photos still slightly small for 375px
+- Still only 3 team members — a real practice would likely show more staff
+- Card layout is identical to services — the visual language does not distinguish "our team" from "our services" at a scroll speed
 
-**Assessment:** Same animation benefit and same caveats. Moving from 7.0 to 7.1.
+**Assessment:** The larger photos are a genuine UX win. Combined with the a11y fixes, this section is now technically sound and visually stronger. Moving from 7.1 to 7.2.
 
-### 5. Testimonials — 7.1 (v6: 7.0, +0.1)
+### 5. Testimonials — 7.2 (v7: 7.1, +0.1)
 
 **Positives:**
-- Fade-in-up animations on testimonial cards. The stagger here is particularly effective — four testimonials cascading in as the user scrolls past creates a sense of social proof accumulating
-- Reviewer photos confirmed center-aligned with `margin: 0 auto` and `display: block`
-- `text-align: center` on the card ensures all content is centered on 375px
+- SVG stars replace Unicode characters. The `.stars` container uses flexbox with `justify-content: center` and `gap: 0.15rem` — the five gold stars now align consistently and render crisply at any DPI. This resolves the last Unicode inconsistency in the icon system
+- Google Reviews link now targets a real URL (google.com/maps) with `target="_blank"` and `rel="noopener noreferrer"`. A user tapping "4.9 stars on Google — Read all reviews" will actually go somewhere. This was a v7 issue
+- Same a11y fixes — reduced-motion and no-JS handled
+- Reviewer photos centered, cards centered, fade-in-up cascade — all carry over
 
 **Issues:**
-- Same no-JS and reduced-motion concerns
-- Google Reviews link still points to "#"
-- Star ratings still use Unicode characters (&#9733;) rather than SVG — inconsistent with the otherwise unified SVG icon system
+- The Google Reviews link goes to generic google.com/maps, not a specific business listing. A real deployment would need the actual Google Business Profile URL. Acceptable for a template
+- Four testimonials is adequate but not deep — more varied social proof (different pet types, different services) would strengthen this section
+- The 4-star reviewer (David T.) uses a stroke-only empty star for the 5th star — good detail, but the visual difference between filled and empty stars is subtle at 18px
 
-**Assessment:** The centering fix and scroll animations both contribute. Moving from 7.0 to 7.1.
+**Assessment:** The SVG stars and real Google link are both correct improvements that resolve specific v7 issues. The section is now technically clean. Moving from 7.1 to 7.2.
 
-### 6. Emergency — 7.0 (v6: 7.0, unchanged)
+### 6. Why Choose Us (NEW) — 7.0
 
 **Positives:**
-- Bulleted symptoms, pulse animation, dark standout, tap-to-call — all intact
+- This is a genuinely valuable new section. On a 375px phone, a pet owner scrolling past testimonials now sees four concrete reasons to choose this practice: Fear-Free Certified, Same-Day Appointments, Personalized Care Plans, Family-Run/Community-Trusted. These are specific, differentiated claims — not generic "we care about your pet" filler
+- The content is well-written. "Urgent concerns don't wait. We reserve same-day slots so your pet is seen when it matters" is specific and actionable. "Locally owned for over 15 years with 4.9 stars and 500+ Google reviews" is quantified social proof
+- The icon treatment (accent-tinted circle background with stroke SVG icons, 28x28) is consistent with the site's visual language
+- Single-column grid on mobile, 2-column at 600px+ — correct responsive behavior
+- Fade-in-up animations with proper a11y handling
+
+**Issues:**
+- The section uses `background: var(--bg)` which is the same dark background as several other sections. On a quick scroll, it blends into the surrounding content rather than standing out as a distinct value proposition block. A differentiated background treatment (lighter tint, subtle gradient, or accent-bordered container) would help it pop
+- The section subtitle "What sets us apart from the rest" is generic. The differentiators themselves are strong — the header does not need to be
+- Four items stacked vertically creates another card wall on mobile. The items are shorter than service cards (no elaborate descriptions) which helps, but the visual pattern of "icon + heading + paragraph in a card" is now repeated across services, team, and why-choose. Visual fatigue risk
+- No CTA at the bottom of this section — a user convinced by these differentiators has no immediate action to take. A "Book Your First Visit" link here would capitalize on the persuasion
+
+**Assessment:** This section directly addresses v7 rec #3 — content differentiation. The four points are genuinely better than what most vet template sites offer. A pet owner reading this section gets concrete reasons to choose this practice over competitors. However, the visual execution is serviceable rather than elevated — it looks like another card section rather than a standout value proposition. The content earns a 7.0; the design holds it there rather than pushing it higher.
+
+### 7. Emergency — 7.0 (v7: 7.0, unchanged)
+
+**Positives:**
+- Bulleted symptoms, pulse animation (now with proper reduced-motion handling), dark standout, tap-to-call — all intact
 
 **Issues:**
 - No changes this round
 
 **Assessment:** Unchanged at 7.0.
 
-### 7. Location / Hours — 7.0 (v6: 7.0, unchanged)
+### 8. Location / Hours — 7.0 (v7: 7.0, unchanged)
 
 **Positives:**
 - Real Google Maps embed, directions button, parking note — all intact
@@ -128,110 +147,105 @@ All three v6 priority recommendations were addressed. Multiple agents (Refiner, 
 
 **Assessment:** Unchanged at 7.0.
 
-### 8. Booking Form — 7.0 (v6: 7.0, unchanged)
+### 9. Booking Form — 7.0 (v7: 7.0, unchanged)
 
 **Positives:**
-- The call-fallback link now includes a small SVG phone icon (14x14) before "(555) PAW-CARE." The icon reinforces the tap-to-call action visually — this was a specific v6 issue that has been addressed
-- Bold labels, accent focus rings, light-mode card — all intact
+- iOS zoom prevention (16px font-size on inputs) is a meaningful mobile UX fix — prevents the annoying auto-zoom that Safari triggers on inputs smaller than 16px. A pet owner filling out the booking form on an iPhone will no longer have the page zoom in unexpectedly
+- Bold labels, accent focus rings, call fallback with SVG icon — all intact
 
 **Issues:**
-- The call-fallback link color (#1a8a6a) vs site accent (#2dd4a8) inconsistency noted in v6 remains
-- The submit button still uses plain `var(--accent)` while the sticky CTA bar uses a gradient
+- The call-fallback link color (#1a8a6a) vs site accent (#2dd4a8) inconsistency remains from v7
+- Submit button still uses plain `var(--accent)` while the CTA bar uses a gradient — inconsistent button styling
+- The iOS zoom fix is important but invisible to most users — they will not notice it is working, only notice when it is absent
 
-**Assessment:** The phone SVG icon on the call fallback is a small but correct improvement — it resolves a v6 issue. However, it does not change the user's experience meaningfully. Holds at 7.0.
+**Assessment:** The iOS zoom prevention is a correct technical fix that improves the real-world experience of filling out the form. However, it is a prevention of a negative rather than a positive addition. The user does not see better form UX — they simply do not see worse form UX. This keeps the section at 7.0 rather than pushing it higher.
 
-### 9. FAQ — 7.1 (v6: 6.9, +0.2)
-
-**Positives:**
-- The three-category grouping ("Getting Started," "During Your Visit," "Payment & Emergencies") gives the FAQ section structure. On a 375px phone, a user scrolling through 8 questions now sees clear organizational headers that break the wall of accordions into logical groups. This is a genuine UX improvement — it helps a user scan for the category relevant to them rather than reading every summary
-- The accent pill badge design for category headers is well-executed: soft tint background (`rgba(45, 212, 168, 0.07)`), rounded border, uppercase 0.75rem with 1.8px letter-spacing, centered with `max-width: fit-content` and auto margins. On 375px, these read as subtle visual dividers without being heavy
-- The 40px gradient accent line between groups (via `::before` pseudo-element) adds visual rhythm. The gradient fades from transparent to accent to transparent — a refined detail that prevents the line from looking like a hard rule
-- The `:first-child` margin-top reset prevents extra space above "Getting Started"
-
-**Issues:**
-- The pill badge border (`1px solid rgba(45, 212, 168, 0.13)`) is extremely subtle on mobile — barely visible on most screens. The pill is more of a background tint than a bordered badge, which is fine but the border adds almost nothing
-- "Payment & Emergencies" combines two distinct topics. A user looking specifically for emergency info might not think to look under "Payment." The grouping is reasonable for 8 questions but not perfect
-- The 40px divider line is narrow enough that it could be missed on a quick scroll — it is a refinement detail rather than a navigational aid
-- Still 8 FAQs — the content has not expanded
-
-**Assessment:** The category grouping is the most meaningful structural change in v7. It transforms the FAQ from a flat list into an organized reference section. The pill badge design is polished and on-brand. This is what was needed to push the FAQ past the 7.0 bar. Moving from 6.9 to 7.1.
-
-### 10. Footer — 7.0 (v6: 6.8, +0.2)
+### 10. FAQ — 7.1 (v7: 7.1, unchanged)
 
 **Positives:**
-- SVG paw dividers replace the old paw emoji dividers. Three 18px SVG paw prints using `var(--accent)` fill, at 0.35 opacity, centered with flexbox. This resolves the v6 inconsistency between the branded SVG logo and the emoji dividers — the footer now uses the same visual language as the rest of the site
-- The newsletter signup is a genuine functional addition. "Get pet care tips in your inbox" with an email input and Subscribe button gives the footer a purpose beyond informational. On 375px, the form uses `flex-wrap: wrap` with `max-width: 400px`, so the input and button stack cleanly if needed. The 44px min-height on both elements ensures touch targets are correct
-- The inline success confirmation ("Thanks for subscribing!") is simple but works — no page reload, immediate feedback via `event.preventDefault()` and hidden attribute toggle
-- The newsletter form has proper aria-label on the email input, border styling consistent with the site palette, and `required` attribute
-- Gradient background, trust badge, "Follow Us" label, logo badge — all carry over from v6
-
-**Issues:**
-- The newsletter uses `onsubmit` with inline JS that simply shows a success message and disables the input/button. There is no actual email capture mechanism. For a template this is acceptable, but for deployment it would need a backend or service integration (Mailchimp, etc.)
-- The Subscribe button uses `!important` on padding and font-size — this suggests style specificity conflicts in the CSS that were patched rather than resolved
-- The newsletter `border-bottom: 1px solid rgba(138, 150, 168, 0.15)` creates a divider below it, but the visual separation between the newsletter and footer-bottom is subtle — they blend together slightly
-- Social links still point to "#"
-
-**Assessment:** The SVG paw dividers and newsletter signup together address both parts of v6 rec #3 for the footer. The paw SVGs create brand consistency, and the newsletter adds functional value. A pet owner scrolling to the bottom of the page now sees an engagement opportunity, not just a dead end. This pushes the footer to 7.0, lifting the floor of the entire site. Moving from 6.8 to 7.0.
-
-### 11. Sticky Mobile CTA Bar — 6.8 (v6: 6.8, unchanged)
-
-**Positives:**
-- Gradient Book Now, outlined Call Now, safe-area-inset, 48px min-height — all intact
+- Three-category grouping, pill badges, gradient dividers — all carry over from v7
 
 **Issues:**
 - No changes this round
-- Still no emergency option in the CTA bar
 
-**Assessment:** Unchanged at 6.8. This is now the only section below 7.0.
+**Assessment:** Unchanged at 7.1.
 
-### 12. Accessibility & Technical — 7.1 (v6: 7.2, -0.1)
+### 11. Footer — 7.0 (v7: 7.0, unchanged)
 
 **Positives:**
-- Unified SVG phone icons across nav, hero, and booking — consistent icon system
-- Booking call-fallback now has a visual icon reinforcing the action
-- FAQ category headers have semantic `<h3>` tags — proper document outline
-- Newsletter email input has `aria-label`, `required`, proper type
-- IntersectionObserver for scroll animations is performant and modern
-- All previous a11y features intact: skip-link, Schema.org, aria labels, focus-visible, lazy loading, preconnect, OG tags, CLS prevention
+- SVG paw dividers, newsletter signup, gradient background, trust badge — all carry over
 
 **Issues:**
-- **CRITICAL: No `prefers-reduced-motion` handling for fade-in-up animations.** The existing `@media (prefers-reduced-motion: reduce)` rule at line 648 only covers `.pulse-cross`. The new `.fade-in-up` / `.is-visible` / `fadeInUp` keyframe is completely unhandled. Users with reduced motion preferences will see every service card, team card, and testimonial card animate in. This is an accessibility regression
-- **No-JS fallback risk:** `.fade-in-up { opacity: 0; }` means if JavaScript fails, 14 cards (6 service + 4 team + 4 testimonial) become invisible. A `<noscript>` style block or `.no-js .fade-in-up { opacity: 1; }` fallback is needed
-- Hero still uses CSS background-image rather than `<picture>` / srcset
-- Favicon still a data URI SVG with emoji
-- Newsletter `!important` declarations suggest CSS specificity issues
+- No changes this round
+- Social links still point to "#"
 
-**Assessment:** The unified SVG icons and semantic FAQ headers are positive. However, the missing `prefers-reduced-motion` handling for the scroll animations is a genuine accessibility regression — this affects 14 animated elements across 3 sections. The no-JS opacity risk compounds this. These issues pull the technical score down slightly. Moving from 7.2 to 7.1.
+**Assessment:** Unchanged at 7.0.
+
+### 12. Sticky Mobile CTA Bar — 7.1 (v7: 6.8, +0.3)
+
+**Positives:**
+- The frosted-glass treatment is a significant visual upgrade. `backdrop-filter: blur(20px) saturate(1.6)` with `rgba(15, 23, 36, 0.82)` background creates genuine depth — the bar now feels like a premium UI element floating above the page content, not a flat strip bolted to the bottom. The accent border-top (`rgba(45, 212, 168, 0.25)`) and inset highlight (`rgba(255, 255, 255, 0.06)`) add dimensionality
+- The 24/7 emergency badge is a smart addition. A small red pill with "24/7" next to "Call Now" tells a pet owner at a glance that emergency care is available. The emergency color (#ef4444) with `box-shadow: 0 0 6px rgba(239, 68, 68, 0.4)` creates a subtle glow that draws attention without being alarming
+- The Book Now entrance glow animation is tasteful — a single 2s pulse that draws the eye on first appearance, then settles. It respects prefers-reduced-motion. This addresses v7 rec #2(c)
+- Call Now button with outlined style (2px accent border + accent text) vs Book Now with gradient fill creates clear visual hierarchy — call is secondary, book is primary
+- Active state (`transform: scale(0.96)`) provides touch feedback
+- Small-screen refinements at <=400px scale the badge down and adjust padding
+
+**Issues:**
+- The emergency badge at 0.6rem (0.55rem at <=400px) is very small. On a 375px phone, the "24/7" text is legible but barely — it functions more as a visual signal (red dot draws attention) than readable text. This is acceptable but borderline
+- Two buttons in the CTA bar means no room for a third action (emergency call to a different number, for instance). The current two-button layout is correct for this use case
+
+**Assessment:** This is the biggest mover in v8. The frosted glass, emergency badge, and entrance glow together transform the CTA bar from a functional but flat element into a polished, intentional piece of UI. A pet owner on their phone sees a premium-feeling bar that clearly communicates two actions and signals emergency availability. All three v7 rec #2 suggestions were implemented. The CTA bar is no longer the site's weakest section. Moving from 6.8 to 7.1.
+
+### 13. Accessibility & Technical — 7.3 (v7: 7.1, +0.2)
+
+**Positives:**
+- **CRITICAL FIX: prefers-reduced-motion now covers fade-in-up.** The media query block handles `.fade-in-up` (opacity: 1, transform: none) and `.mobile-cta-book` (animation: none) — all scroll animations and the CTA glow are disabled for users who prefer reduced motion. This was the #1 v7 recommendation and a blocking regression. Fully resolved
+- **CRITICAL FIX: no-JS fallback implemented.** `<html class="no-js">` with inline script removal. CSS rule `.no-js .fade-in-up { opacity: 1 !important; transform: none !important; }` ensures cards are visible without JS. Clean, standard pattern. Fully resolved
+- **Testimonial SVG stars** complete the unified icon system — every icon on the site is now SVG (logo, nav phone, hero emergency, trust strip icons, service icons, team role icons, testimonial stars, FAQ chevrons, emergency cross, location pin, booking phone, footer paws, CTA bar icons, why-choose icons). Zero Unicode character icons remain
+- **iOS zoom prevention** on form inputs (16px font-size) prevents Safari auto-zoom — a real mobile UX issue
+- **CTA bar entrance glow respects reduced-motion** — animation: none in the media query
+- All previous a11y features intact: skip-link, Schema.org, aria labels, focus-visible, lazy loading, preconnect, OG tags, CLS prevention, semantic headings
+
+**Issues:**
+- Hero still uses CSS background-image rather than `<picture>` / srcset — no responsive image optimization or WebP/AVIF serving
+- Favicon still a data URI SVG with emoji — functional but not production-quality
+- Newsletter `!important` declarations still present — CSS specificity issues patched rather than resolved
+- `-webkit-text-size-adjust` not set — while 16px inputs prevent zoom, the global text-size-adjust property would be a belt-and-suspenders approach
+- Google Reviews link goes to generic google.com/maps, not a specific business listing
+
+**Assessment:** The two critical a11y fixes restore the technical score and then some. The prefers-reduced-motion coverage is now comprehensive (pulse-cross, fade-in-up, CTA glow). The no-JS fallback uses a clean, well-established pattern. The unified SVG icon system is complete. iOS zoom prevention is a practical mobile fix. The remaining issues (no srcset, emoji favicon, specificity patches) are real but lower priority. Moving from 7.1 to 7.3.
 
 ---
 
 ## Overall Score
 
-| Section | v6 Score | v7 Score | Change |
+| Section | v7 Score | v8 Score | Change |
 |---------|----------|----------|--------|
-| Navigation / Header | 7.0 | 7.0 | -- |
-| Hero | 7.2 | 7.3 | +0.1 |
-| Services | 7.0 | 7.1 | +0.1 |
-| Meet the Team | 7.0 | 7.1 | +0.1 |
-| Testimonials | 7.0 | 7.1 | +0.1 |
+| Navigation / Header | 7.0 | 7.1 | +0.1 |
+| Hero | 7.3 | 7.3 | -- |
+| Services | 7.1 | 7.2 | +0.1 |
+| Meet the Team | 7.1 | 7.2 | +0.1 |
+| Testimonials | 7.1 | 7.2 | +0.1 |
+| Why Choose Us | -- | 7.0 | NEW |
 | Emergency | 7.0 | 7.0 | -- |
 | Location / Hours | 7.0 | 7.0 | -- |
 | Booking Form | 7.0 | 7.0 | -- |
-| FAQ | 6.9 | 7.1 | **+0.2** |
-| Footer | 6.8 | 7.0 | **+0.2** |
-| Sticky Mobile CTA Bar | 6.8 | 6.8 | -- |
-| Accessibility & Technical | 7.2 | 7.1 | **-0.1** |
-| **OVERALL** | **7.0** | **7.05** | **+0.05** |
+| FAQ | 7.1 | 7.1 | -- |
+| Footer | 7.0 | 7.0 | -- |
+| Sticky Mobile CTA Bar | 6.8 | 7.1 | **+0.3** |
+| Accessibility & Technical | 7.1 | 7.3 | **+0.2** |
+| **OVERALL** | **7.05** | **7.13** | **+0.08** |
 
-**v7 Overall: 7.05 / 9.0**
+**v8 Overall: 7.13 / 9.0**
 
-All three v6 recommendations were addressed. The FAQ category grouping and footer newsletter/SVG paws were the most impactful changes — both sections rose from below 7.0 to 7.0+. The hero trust strip adds above-the-fold social proof. Scroll animations add perceived quality across services, team, and testimonials.
+All three v7 recommendations were addressed. The CTA bar and accessibility/technical sections are the biggest movers (+0.3 and +0.2 respectively). The "Why Choose Us" section adds genuine content differentiation. The critical a11y regression from v7 is fully resolved — the site is now fully accessible with comprehensive reduced-motion handling and JS-failure resilience.
 
-However, the gains are partially offset by an accessibility regression: the new scroll animations lack `prefers-reduced-motion` handling and have no no-JS fallback. This is why the technical score dropped from 7.2 to 7.1, and why the overall improvement is only +0.05 rather than the +0.1-0.2 that the feature changes alone would justify.
+All thirteen sections now sit at 7.0 or above. The floor has risen from 6.8 to 7.0. No section is a weak link. The site reads as a cohesive, technically sound, mobile-first veterinary template with real differentiating content.
 
-Eleven of twelve sections now sit at 7.0 or above. The floor has risen from 6.8 to 6.8 (CTA bar remains the sole holdout). The site continues to read as a polished, branded, mobile-first veterinary template.
+The improvement is +0.08 rather than a larger jump because the changes, while correct and well-executed, are primarily fixes and polish rather than transformative additions. The "Why Choose Us" section adds content value but its visual execution blends with existing card sections. The CTA bar improvements are the most user-visible change.
 
-The path from 7.05 to 7.3+ requires fixing the accessibility gaps, then pursuing deeper content differentiation.
+The path from 7.13 to 7.4+ requires moving beyond polish and into design differentiation — making sections visually distinct from each other and creating moments of delight that a user remembers.
 
 ---
 
@@ -245,21 +259,22 @@ The path from 7.05 to 7.3+ requires fixing the accessibility gaps, then pursuing
 | v4 | 2026-04-01 | 6.7 | Nigel | Light-mode services/location, hero overlay lightened, booking form improved, FAQ CTA, OG tags. Three sections at 7.0. |
 | v5 | 2026-04-01 | 6.9 | Nigel | Booking/FAQ light-mode, responsive hero, color-matched icons, testimonial photos, Google badge, emergency bullets, 8 FAQs, footer legal. Six sections at 7.0+. |
 | v6 | 2026-04-01 | 7.0 | Nigel | Real Google Maps embed, SVG paw logo badge, call fallback on booking, footer gradient+trust badge, CTA bar gradient, FAQ outlined CTA, dead CSS cleanup. Nine sections at 7.0+. |
-| v7 | 2026-04-01 | 7.05 | Nigel | Scroll animations, hero trust strip, FAQ categories with pill badges, footer SVG paws + newsletter, unified phone SVGs. Eleven sections at 7.0+. Accessibility regression (no reduced-motion for animations). |
+| v7 | 2026-04-01 | 7.05 | Nigel | Scroll animations, hero trust strip, FAQ categories with pill badges, footer SVG paws + newsletter, unified phone SVGs. Eleven sections at 7.0+. A11y regression (no reduced-motion for animations). |
+| v8 | 2026-04-01 | 7.13 | Nigel | Critical a11y fixes (reduced-motion + no-JS), "Why Choose Us" section, CTA bar frosted glass + emergency badge + entrance glow, SVG stars, larger team photos, nav CTA bump, iOS zoom prevention. All 13 sections at 7.0+. |
 
 ---
 
 ## Top 3 Priority Recommendations
 
-### 1. Fix the accessibility regression: add prefers-reduced-motion for scroll animations and no-JS fallback (Technical, Services, Team, Testimonials)
-This is a blocking issue. The `.fade-in-up` animation has no `prefers-reduced-motion` handling — add `.fade-in-up` to the existing media query block at line 648 to set `opacity: 1` and `animation: none`. Also add a no-JS fallback: either a `<noscript><style>.fade-in-up { opacity: 1; }</style></noscript>` block or use a `.js` class on `<html>` set by a tiny inline script, with `.fade-in-up` only hiding when JS is confirmed available. These are small code changes that resolve real accessibility and resilience issues. Fixing this alone would restore the technical score to 7.2+.
+### 1. Visual variety across card sections — break the "card wall" monotony (Services, Team, Testimonials, Why Choose Us)
+Four sections now use the same visual pattern: icon/image + heading + paragraph in a white rounded card, stacked vertically with fade-in-up animations. On a 375px phone, scrolling through services -> team -> testimonials -> why-choose feels repetitive despite the content being different. The fix is visual differentiation: (a) alternate background treatments between sections (subtle gradient, light accent tint, or full-bleed color block), (b) vary card layouts (horizontal cards for team with photo on the left, icon-strip layout for why-choose instead of full cards), (c) use a different animation or entrance style for at least one section. The goal is that a user scrolling at speed can tell which section they are in from the visual pattern alone, not just the heading.
 
-### 2. Elevate the sticky CTA bar — the last section below 7.0 (CTA Bar 6.8)
-The CTA bar is the only section still below 7.0. On 375px, it is functional but flat. Consider: (a) a subtle gradient or frosted-glass background to match the hero trust strip treatment, (b) adding an emergency indicator (small red dot or "24/7" text) near the call button for after-hours visitors, (c) micro-animation on the Book Now button (subtle pulse or glow on first appearance) to draw attention. The goal is making the bottom-of-screen bar feel as intentional as the rest of the site.
+### 2. Hero responsive image — replace CSS background-image with `<picture>` / srcset (Hero, Technical)
+The hero photo is the largest visual element on the page and is still loaded via CSS `background-image` — no responsive sizing, no WebP/AVIF format, no art direction for mobile vs desktop crops. On a 375px phone on a cellular connection, this means loading a desktop-sized image or relying on browser heuristics. Switching to a `<picture>` element with srcset (small, medium, large) and WebP/AVIF sources would improve LCP, reduce data usage, and enable a mobile-cropped version of the hero image. This is a meaningful performance win for the primary audience (mobile users searching for a vet).
 
-### 3. Content depth — add a "Why Choose Us" or differentiating section (Multiple sections)
-The site has reached a plateau where further polish yields diminishing returns. The next meaningful jump requires content that makes this practice feel unique, not just professional. Options: (a) a "Why Choose Us" section with 3-4 differentiated points (fear-free certified, same-day appointments, in-house lab results in 15 minutes — real competitive advantages), (b) a "New Patient Special" promotional banner, or (c) a pet gallery / community section. The site needs a reason for a pet owner to choose *this* vet over the next search result. Polish alone cannot provide that.
+### 3. Micro-interactions and delight moments — move beyond "correct" to "memorable" (Multiple sections)
+The site is now technically sound, well-structured, and accessible. Every section scores 7.0+. But nothing on the site creates a moment of surprise or delight. Consider: (a) a subtle parallax or ken-burns effect on the hero photo (respecting reduced-motion), (b) a soft color-shift on the trust strip icons when scrolled into view, (c) an interactive element in the "Why Choose Us" section (tap a card to expand detail), (d) a seasonal/time-aware greeting ("Good evening" in the hero based on local time). These are the details that separate a 7.0 template from a 7.5+ site that a real user would screenshot and share. The current site is professional — the next step is personality.
 
 ---
 
-*End of v7 audit. The site sits at 7.05 — a marginal improvement from 7.0. All three v6 recommendations were addressed, with FAQ categories and footer newsletter being the strongest additions. The hero trust strip is a good conversion element. However, the accessibility regression from unhandled scroll animations partially offsets the gains. Eleven of twelve sections are at 7.0+. The site is approaching the ceiling of what polish and structure can achieve on a single-page template — the path to 7.3+ requires fixing the a11y gap, then investing in differentiating content rather than more visual refinement.*
+*End of v8 audit. The site sits at 7.13 — up from 7.05. All three v7 recommendations addressed. The critical a11y regression is fully resolved: prefers-reduced-motion covers all animations, no-JS fallback ensures card visibility, and the CTA bar entrance glow respects motion preferences. The CTA bar is now the biggest mover (+0.3), with frosted glass, emergency badge, and entrance glow transforming it from the site's weakest section to a solid 7.1. The "Why Choose Us" section adds real differentiating content. All 13 sections sit at 7.0+. The site is approaching the ceiling where incremental polish yields diminishing returns — the path to 7.4+ requires visual variety between sections, responsive hero images, and micro-interactions that create personality.*
