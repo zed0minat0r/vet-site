@@ -123,6 +123,29 @@
     });
   }
 
+  // --- Scroll-to-hide sticky CTA bar ---
+  var ctaBar = document.querySelector('.mobile-cta-bar');
+  if (ctaBar) {
+    var lastScrollY = window.scrollY;
+    var ticking = false;
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var currentY = window.scrollY;
+          if (currentY > lastScrollY && currentY > 100) {
+            ctaBar.classList.add('cta-hidden');
+          } else {
+            ctaBar.classList.remove('cta-hidden');
+          }
+          lastScrollY = currentY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
   // --- Active nav link highlighting ---
   var sections = document.querySelectorAll('section[id], footer[id]');
   var navLinks = document.querySelectorAll('.nav-menu a');

@@ -61,3 +61,11 @@
 - Social link icons now have a subtle accent-tinted border for more definition
 - Desktop: brand separator hidden for clean 3-column layout
 - All changes CSS-only, mobile-first, center-aligned per AGENT-RULES
+
+## [1.4.0] - 2026-04-01 — Builder: Hero Background Pattern + Scroll-to-Hide CTA (Audit #3 + #5)
+- Added subtle repeating paw-print SVG pattern to hero background for visual texture and vet clinic identity (Audit Priority #3)
+- Added radial gradient glow behind hero content for depth and emotional warmth
+- Hero now has layered background: paw pattern + gradient + radial glow — all CSS, no images to load
+- Added scroll-to-hide behavior on sticky mobile CTA bar: hides on scroll down, reappears on scroll up (Audit Priority #5)
+- CTA hide/show uses requestAnimationFrame for smooth 60fps performance
+- All changes mobile-first and center-aligned per AGENT-RULES

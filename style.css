@@ -957,6 +957,11 @@ section {
   background: var(--bg-alt);
   border-top: 1px solid rgba(45, 212, 168, 0.2);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.mobile-cta-bar.cta-hidden {
+  transform: translateY(100%);
   padding: 0.5rem 0.75rem;
   padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
   gap: 0.75rem;
