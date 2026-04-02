@@ -14,3 +14,9 @@
 - Smooth scroll, sticky header, active nav highlighting
 - Skip-to-content link for accessibility
 - Emergency CTA prominently featured in hero and dedicated section
+
+## [2026-04-01] — Spark: Tap-glow micro-interaction
+- Added CSS-only tap feedback (scale + accent glow) to service cards and testimonial cards
+- Mobile-first: subtle press-in on :active gives tactile feel when tapping cards
+- Addresses SCOUT-REPORT #4 (Trust Signals) and #7 (Service presentation)
+- Uses existing --accent-glow variable; no new dependencies
