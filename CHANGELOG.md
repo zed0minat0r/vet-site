@@ -430,3 +430,13 @@
 - Input font sizes: All inputs/selects/textareas at 16px (no iOS zoom).
 - Overflow: `overflow-x: hidden` on html, no fixed-width elements exceeding viewport.
 - Spacing/padding: Consistent padding across cards, sections, and containers at 375px.
+
+## v9-refiner — Refiner — 2026-04-01
+### Changed (Card-wall monotony + Hero + Micro-interactions)
+- **Responsive hero image: CSS bg-image to <picture>/<img> with srcset** — Mobile gets 400w/q70, tablet 768w/q75, desktop 1200w/q80. LCP improvement and data savings on mobile. fetchpriority="high" + loading="eager" on hero img.
+- **Team section: dark bg + horizontal cards on mobile** — Team now uses dark (--bg/--bg-alt) background, breaking the light-light-light card-wall. Cards are horizontal (photo left, text right) on mobile for visual variety, reverting to centered at 600px+ 2-col grid.
+- **Testimonials: blue-tint gradient bg + left accent border** — Background changed from flat #f9fafb to gradient #f0f4fa-to-#f7faf9 for subtle warmth. Cards get a left 3px accent border instead of the same white-box-with-top-border look.
+- **Why Choose Us: inline icon-left layout + gradient bg** — Items now display icon left / text right instead of stacked, differentiating from every other card section. Section bg uses a subtle gradient from --bg to --bg-alt.
+- **Time-aware hero greeting** — JS-driven greeting changes by time of day (morning/afternoon/evening/night). Fades in with CSS transition. Respects no-JS fallback (empty, invisible).
+- **Desktop hover micro-interactions** — @media (hover: hover) adds translateY lifts, shadow enhancements, and icon scale effects to service/team/testimonial/why-choose cards. Touch devices unaffected.
+- **Active states for why-choose and team cards** — Tap feedback with border-color transitions on mobile.

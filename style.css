@@ -1253,6 +1253,12 @@ section {
 @media (min-width: 600px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
+  /* At 2-col, revert team cards to stacked/centered */
+  .team-card--horizontal {
+    flex-direction: column;
+    text-align: center;
+  }
+  .team-card--horizontal .avatar-photo { margin: 0 auto 1rem; }
   .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .emergency-details { flex-direction: row; justify-content: center; gap: 3rem; }
   .form-row { grid-template-columns: 1fr 1fr; }
@@ -1639,4 +1645,42 @@ section {
   body {
     padding-bottom: 0;
   }
+}
+
+/* --- Desktop hover micro-interactions (pointer devices only) --- */
+@media (hover: hover) {
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(45, 212, 168, 0.15);
+  }
+  .service-card:hover .service-icon {
+    transform: scale(1.08);
+  }
+  .team-card:hover {
+    border-color: rgba(45, 212, 168, 0.3);
+    box-shadow: 0 6px 24px rgba(45, 212, 168, 0.12);
+  }
+  .testimonial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 212, 168, 0.12);
+  }
+  .why-choose-item:hover {
+    border-color: rgba(45, 212, 168, 0.25);
+    box-shadow: 0 4px 16px rgba(45, 212, 168, 0.1);
+  }
+  .why-choose-item:hover .why-choose-icon {
+    background: rgba(45, 212, 168, 0.18);
+  }
+}
+
+/* Why-choose active state for mobile */
+.why-choose-item {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.why-choose-item:active {
+  border-color: rgba(45, 212, 168, 0.3);
+}
+/* Team card active state */
+.team-card {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }

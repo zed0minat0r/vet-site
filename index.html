@@ -87,6 +87,11 @@
 
     <!-- 1. Hero -->
     <section class="hero" id="hero">
+      <picture class="hero-bg" aria-hidden="true">
+        <source media="(min-width: 768px)" srcset="https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=1200&q=80">
+        <source media="(min-width: 480px)" srcset="https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=768&q=75">
+        <img src="https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=400&q=70" alt="" loading="eager" fetchpriority="high" width="400" height="267">
+      </picture>
       <div class="container">
         <div class="hero-paw" aria-hidden="true">
           <svg class="hero-paw-svg" width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,6 +102,7 @@
             <ellipse cx="52" cy="28" rx="6" ry="8" fill="var(--accent)" opacity="0.8" transform="rotate(25 52 28)"/>
           </svg>
         </div>
+        <p class="hero-greeting" aria-live="polite"></p>
         <h1>Pawsitive Care<br><span class="highlight">Veterinary</span></h1>
         <p class="hero-tagline">Where every pet is family. Compassionate, modern care they deserve.</p>
         <div class="hero-actions">
@@ -182,37 +188,45 @@
         <h2>Meet Our Team</h2>
         <p class="section-subtitle">Dedicated professionals who love what they do</p>
         <div class="team-grid">
-          <div class="team-card fade-in-up">
+          <div class="team-card team-card--horizontal fade-in-up">
             <div class="team-avatar">
               <img class="avatar-photo" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&h=200&q=80" alt="Dr. Sarah Mitchell" loading="lazy">
             </div>
-            <h3>Dr. Sarah Mitchell</h3>
-            <p class="team-role">Lead Veterinarian, DVM</p>
-            <p>15 years of experience in small animal medicine. Special interest in internal medicine and geriatric care.</p>
+            <div class="team-info">
+              <h3>Dr. Sarah Mitchell</h3>
+              <p class="team-role">Lead Veterinarian, DVM</p>
+              <p>15 years of experience in small animal medicine. Special interest in internal medicine and geriatric care.</p>
+            </div>
           </div>
-          <div class="team-card fade-in-up">
+          <div class="team-card team-card--horizontal fade-in-up">
             <div class="team-avatar">
               <img class="avatar-photo" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=200&h=200&q=80" alt="Dr. James Rivera" loading="lazy">
             </div>
-            <h3>Dr. James Rivera</h3>
-            <p class="team-role">Veterinary Surgeon, DVM</p>
-            <p>Board-eligible surgeon specializing in orthopedic and soft tissue procedures with a gentle approach.</p>
+            <div class="team-info">
+              <h3>Dr. James Rivera</h3>
+              <p class="team-role">Veterinary Surgeon, DVM</p>
+              <p>Board-eligible surgeon specializing in orthopedic and soft tissue procedures with a gentle approach.</p>
+            </div>
           </div>
-          <div class="team-card fade-in-up">
+          <div class="team-card team-card--horizontal fade-in-up">
             <div class="team-avatar">
               <img class="avatar-photo" src="https://images.unsplash.com/photo-1594824476967-48c8b964ac31?auto=format&fit=crop&w=200&h=200&q=80" alt="Emily Nguyen" loading="lazy">
             </div>
-            <h3>Emily Nguyen</h3>
-            <p class="team-role">Certified Veterinary Technician</p>
-            <p>Expert in anesthesia monitoring and post-operative care. Fear-free certified for low-stress visits.</p>
+            <div class="team-info">
+              <h3>Emily Nguyen</h3>
+              <p class="team-role">Certified Veterinary Technician</p>
+              <p>Expert in anesthesia monitoring and post-operative care. Fear-free certified for low-stress visits.</p>
+            </div>
           </div>
-          <div class="team-card fade-in-up">
+          <div class="team-card team-card--horizontal fade-in-up">
             <div class="team-avatar">
               <img class="avatar-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80" alt="Marcus Johnson" loading="lazy">
             </div>
-            <h3>Marcus Johnson</h3>
-            <p class="team-role">Client Care Coordinator</p>
-            <p>Friendly first point of contact who ensures every visit runs smoothly from check-in to checkout.</p>
+            <div class="team-info">
+              <h3>Marcus Johnson</h3>
+              <p class="team-role">Client Care Coordinator</p>
+              <p>Friendly first point of contact who ensures every visit runs smoothly from check-in to checkout.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -274,33 +288,41 @@
         <h2>Why Choose Pawsitive Care</h2>
         <p class="section-subtitle">What sets us apart from the rest</p>
         <div class="why-choose-grid">
-          <div class="why-choose-item fade-in-up">
+          <div class="why-choose-item why-choose-item--inline fade-in-up">
             <div class="why-choose-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <h3>Fear-Free Certified</h3>
-            <p>Every team member is trained in low-stress handling so your pet feels safe, not scared.</p>
+            <div class="why-choose-text">
+              <h3>Fear-Free Certified</h3>
+              <p>Every team member is trained in low-stress handling so your pet feels safe, not scared.</p>
+            </div>
           </div>
-          <div class="why-choose-item fade-in-up">
+          <div class="why-choose-item why-choose-item--inline fade-in-up">
             <div class="why-choose-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <h3>Same-Day Appointments</h3>
-            <p>Urgent concerns don't wait. We reserve same-day slots so your pet is seen when it matters.</p>
+            <div class="why-choose-text">
+              <h3>Same-Day Appointments</h3>
+              <p>Urgent concerns don't wait. We reserve same-day slots so your pet is seen when it matters.</p>
+            </div>
           </div>
-          <div class="why-choose-item fade-in-up">
+          <div class="why-choose-item why-choose-item--inline fade-in-up">
             <div class="why-choose-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
-            <h3>Personalized Care Plans</h3>
-            <p>No cookie-cutter treatments. Every pet gets a plan tailored to their breed, age, and lifestyle.</p>
+            <div class="why-choose-text">
+              <h3>Personalized Care Plans</h3>
+              <p>No cookie-cutter treatments. Every pet gets a plan tailored to their breed, age, and lifestyle.</p>
+            </div>
           </div>
-          <div class="why-choose-item fade-in-up">
+          <div class="why-choose-item why-choose-item--inline fade-in-up">
             <div class="why-choose-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <h3>Family-Run, Community-Trusted</h3>
-            <p>Locally owned for over 15 years with 4.9 stars and 500+ Google reviews from real pet parents.</p>
+            <div class="why-choose-text">
+              <h3>Family-Run, Community-Trusted</h3>
+              <p>Locally owned for over 15 years with 4.9 stars and 500+ Google reviews from real pet parents.</p>
+            </div>
           </div>
         </div>
       </div>

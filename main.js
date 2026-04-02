@@ -1,6 +1,24 @@
 (function () {
   'use strict';
 
+  // --- Time-Aware Hero Greeting ---
+  var greetingEl = document.querySelector('.hero-greeting');
+  if (greetingEl) {
+    var hour = new Date().getHours();
+    var greeting;
+    if (hour >= 5 && hour < 12) {
+      greeting = 'Good morning! Ready to care for your pet today.';
+    } else if (hour >= 12 && hour < 17) {
+      greeting = 'Good afternoon! Your pet deserves the best care.';
+    } else if (hour >= 17 && hour < 21) {
+      greeting = 'Good evening! We are here for your furry family.';
+    } else {
+      greeting = 'Open 24/7 for emergencies. Your pet is always our priority.';
+    }
+    greetingEl.textContent = greeting;
+    greetingEl.classList.add('is-ready');
+  }
+
   // --- Mobile Nav Toggle ---
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-menu');
