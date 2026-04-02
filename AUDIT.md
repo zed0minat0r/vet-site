@@ -2,237 +2,266 @@
 
 **Auditor:** Nigel
 **Date:** 2026-04-01
-**Version:** v1 (First Audit)
+**Version:** v2 (Recalibrated Audit)
 **Perspective:** Mobile (375px)
 **Context:** Template build — placeholders expected; stock content/photos not penalized
 
 ---
 
-## Scoring Scale
+## Scoring Scale (Recalibrated)
 
 | Score | Meaning |
 |-------|---------|
 | 5.0 | Average — functional but unremarkable |
-| 6.0 | Generic — competent, nothing stands out |
-| 7.0 | Better than most — clear effort, solid execution |
-| 8.0 | Client would choose this over competitors |
+| 5.5 | Functional but generic first build |
+| 6.0 | Generic template you'd find online |
+| 7.0 | Genuinely better than most templates — HIGH bar |
+| 8.0 | A real client would choose this over competitors |
 | 9.0 | Award-worthy |
+
+---
+
+## What Changed Since v1
+
+1. **SVG icon overhaul** — All CSS-drawn service icons replaced with proper SVG icons
+2. **Tappable address** — Address now links to Google Maps with "Get Directions" CTA
+3. **Social links in footer** — Facebook, Instagram, Google Business SVG icons added
+4. **Hero paw pattern** — SVG paw icon in hero (still small, still text-dominant)
+5. **Scroll-hide CTA bar** — Sticky bottom bar hides on scroll-down, reappears on scroll-up
+6. **Footer upgrade** — Gradient accent strip, paw dividers, local tagline added
+7. **Razor cleanup** — 49 lines of dead CSS/JS removed, comments trimmed
+8. **Meta tags** — theme-color, OG tags, favicon all added
+
+These directly addressed v1 recommendations 1-5. Good execution.
 
 ---
 
 ## Section-by-Section Breakdown
 
-### 1. Navigation / Header — 7.4
+### 1. Navigation / Header — 6.2
 
 **Positives:**
-- Fixed/sticky header with backdrop blur — clean, modern feel on mobile
-- Hamburger menu with animated open/close transition (X transform)
-- aria-expanded, aria-controls, aria-label all present — strong accessibility
-- Skip-link implemented for keyboard users
-- Logo + brand name visible; links to hero
-- Menu closes on link click — good mobile UX
-- Active nav link highlighting via IntersectionObserver
+- Sticky header with backdrop blur works well on mobile
+- Hamburger menu with animated X transition
+- Strong accessibility (aria-expanded, skip-link)
+- Menu closes on link click — correct mobile behavior
+- Active nav highlighting via IntersectionObserver
 
 **Issues:**
-- No "Book Now" or "Call" CTA visible in the header itself on mobile; users must open the hamburger to find them (mitigated by sticky bottom bar, but header CTA is still best practice per Scout #1)
-- Header shadow logic is JS-only (inline style) rather than CSS class toggle — minor but less clean
-- Eight nav items is a lot for mobile hamburger; could overwhelm
+- Eight nav items is excessive for a hamburger menu — a pet owner sees a wall of links
+- No "Call" or "Book" CTA visible in header itself; user must open hamburger or scroll to bottom bar
+- Dark header on dark background — low visual distinction; feels like a generic dark template
+- No logo graphic — just text. On mobile, this reads as unbranded
 
-### 2. Hero — 7.2
+**Recalibration note:** v1 scored 7.4. Functionally solid, but from a real user's phone perspective, it is a competent but unremarkable dark-theme nav. Nothing here exceeds what Bootstrap or Tailwind templates offer out of the box.
+
+### 2. Hero — 5.5
 
 **Positives:**
-- "Book Appointment" CTA above the fold — directly addresses Scout #2 (CRITICAL)
-- Emergency phone number with tap-to-call right in the hero — addresses Scout #3
-- Buttons stack vertically on mobile, go side-by-side at 768px — responsive done right
-- CSS paw print is a nice branded touch without image dependency
-- Clean gradient background, centered layout
-- Tagline is concise and emotionally engaging
+- "Book Appointment" and "Emergency" CTAs above the fold — functionally correct
+- Buttons stack vertically on mobile — responsive
+- Tagline is concise and emotionally relevant
+- SVG paw icon adds a small branded touch
 
 **Issues:**
-- No background image or video — hero is text-only with a small CSS paw icon. Scout #6 recommends strong imagery or video. For a template this is acceptable, but it reads flat
-- Hero h1 at 2.4rem is solid but the overall visual impact is low without imagery
-- The paw print is small (60px) and may feel underwhelming as the sole visual element on mobile
+- No background image, no photo, no video — just text on a dark gradient. A pet owner landing here sees nothing that says "veterinary clinic." No animals, no warmth, no personality
+- The 80px SVG paw is the only visual. It is small and abstract
+- The radial gradient ::before is extremely subtle — barely visible
+- Overall visual impact is flat. This is the first thing a user sees, and it looks like a SaaS landing page, not a vet clinic
+- A competitor with a hero photo of a vet holding a puppy wins this instantly
 
-### 3. Services — 7.5
+**Recalibration note:** v1 scored 7.2 — far too generous. A text-only hero with a small paw icon, no matter how well-coded, does not exceed a 6.0 for a real mobile user.
+
+### 3. Services — 6.0
 
 **Positives:**
-- Six services with custom CSS icons (stethoscope, scalpel, tooth, syringe, heart, lab flask) — creative, no image dependencies
-- Single-column grid on mobile, 2-col at 600px, 3-col at 1024px — proper responsive progression
-- Cards have :active scale effect — good mobile tactile feedback per AGENT-RULES (no hover-only)
-- Each card has center-aligned text, icon, heading, description — clean hierarchy
-- Service descriptions are specific and informative, not generic fluff
-- Card border and glow on active state adds polish
+- Six services with SVG icons (upgraded from CSS shapes — cleaner now)
+- Single-column mobile, responsive grid at breakpoints
+- :active scale effect for mobile tactile feedback
+- Descriptions are specific and informative
 
 **Issues:**
-- Cards are not expandable/accordion — Scout #7 recommends accordion on mobile to manage density. Six stacked cards create a long scroll
-- CSS icons, while creative, are quite abstract at 50px. Some (scalpel, lab flask) may not be immediately recognizable
-- No "Learn more" links or CTAs on individual services
+- SVG icons are monochrome line drawings at 48px — functional but not visually engaging on a phone screen. They all look similar (accent-colored outlines)
+- Six stacked cards create a long scroll on mobile with no way to collapse
+- No "Learn more" or CTAs on individual cards
+- Cards are visually identical — same border, same spacing. No hierarchy or visual variety
+- A real user scrolling through six identical-looking teal-outlined cards gets monotonous
 
-### 4. Meet the Team — 7.0
+**Recalibration note:** v1 scored 7.5. The SVG upgrade is better than CSS shapes, but monochrome line icons on dark cards is standard template fare. Solid 6.0.
+
+### 4. Meet the Team — 5.5
 
 **Positives:**
-- Four team members with roles, credentials, and brief bios
-- Avatar circles with initials — clean placeholder that works for template context
-- Fear-free certification mentioned (Emily Nguyen) — builds trust per Scout #4
-- Center-aligned, single-column on mobile — consistent with AGENT-RULES
-- Background alternates (bg-alt) for visual rhythm per Scout #5
+- Four team members with roles, credentials, bios
+- Initial-based avatar circles — acceptable template placeholder
+- Fear-free certification mentioned — trust signal
+- Center-aligned, consistent layout
 
 **Issues:**
-- Initial-based avatars are functional but sterile — this section will need real photos to reach 8.0+
-- No links to credentials, certifications, or professional profiles
-- Cards don't have any interactive state (no :active effect like services do) — inconsistent
+- Initial avatars (colored circles with letters) look sterile and impersonal. A pet owner wants to see faces
+- No interactive states on cards (services have :active, these do not) — inconsistent
+- All four cards look identical structurally — no visual hierarchy
+- This section does the least to build trust because it is the most "placeholder-looking" section on the site
 
-### 5. Testimonials — 7.2
+**Recalibration note:** v1 scored 7.0. Letter-circle avatars are a standard dev placeholder. A real user sees four identical dark cards with letters in circles. This is below-average visual execution.
+
+### 5. Testimonials — 5.8
 
 **Positives:**
-- Three testimonials with star ratings, quotes, client names, and pet details — specific and believable
-- Left accent border on cards adds visual distinction
-- :active scale + glow effect — consistent mobile interaction
-- Star rating uses accessible aria-label
+- Three testimonials with star ratings, quotes, names, pet details
+- :active interaction
 - Pet names/breeds add authenticity
+- Left accent border provides visual distinction
 
 **Issues:**
-- No integration with Google Reviews or external review platform — Scout #4 recommends this
-- Only three testimonials — could benefit from a carousel or "View more" pattern on mobile
-- All reviews are 5 stars — feels curated rather than authentic (template context, acceptable)
-- No profile photos or avatars for reviewers
+- All 5 stars — feels fake
+- No photos or avatars for reviewers
+- Only three testimonials with no way to see more
+- No link to Google Reviews or external validation
+- On a phone, three text-heavy quote cards in a row is dense and skimmable
 
-### 6. Emergency — 7.8
+**Recalibration note:** v1 scored 7.2. Text-only testimonials with no faces and all-5-star ratings is standard template filler. Does not stand out.
+
+### 6. Emergency — 6.5
 
 **Positives:**
-- Dedicated section with red/emergency color treatment — visually distinct, immediately recognizable
-- Emergency phone number is tap-to-call with large font (1.5rem)
-- After-hours schedule clearly displayed
-- Emergency symptoms listed (difficulty breathing, bleeding, seizures, collapse) — actionable
-- CSS cross icon reinforces medical urgency without images
-- Red border + gradient background — stands out from rest of site
+- Dedicated section with red color treatment — visually distinct and immediately recognizable
+- Tap-to-call phone number at large size
+- After-hours info and symptom list — actionable content
+- Red border + gradient stands out from rest of site
+- SVG cross icon
 
 **Issues:**
-- Section is positioned 5th — could arguably be higher, but hero already has emergency phone. Acceptable placement
-- No pulsing animation on the cross (class is "emergency-pulse" but no CSS animation defined) — missed opportunity for subtle urgency indicator
-- After-hours text could be more scannable; consider bold formatting for key times
+- The "emergency-pulse" class has no animation (no @keyframes in CSS) — the cross just sits there. Missed opportunity for urgency
+- The cross icon is a basic CSS div, not an SVG — less polished than the upgraded service icons
+- Content is good but visual execution is just "red box on dark background"
 
-### 7. Location / Hours — 6.8
+**Recalibration note:** v1 scored 7.8. The content is the strongest part (symptom list, clear phone number), but visually it is a colored box. Bringing down to reflect that the missing pulse animation and basic cross icon cap the visual polish.
+
+### 7. Location / Hours — 6.0
 
 **Positives:**
-- Address, hours, and phone all present and center-aligned
-- Hours displayed in clean table format
-- Phone number is tap-to-call
-- Map placeholder with CSS pin — functional for template
-- Single column on mobile, 2-col at 768px — responsive
+- Tappable address with Google Maps link and "Get Directions" CTA — **this was the #1 v1 recommendation, now fixed**
+- Hours in clean table format
+- Phone tap-to-call
+- Map placeholder links to Google Maps on tap
 
 **Issues:**
-- Map is a placeholder div, not an embedded map — Scout #8 recommends interactive map. Template context, but it still looks bare
-- Address is not wrapped in a link to Google Maps / Apple Maps for one-tap directions — Scout #8 specifically calls for tappable address
-- No parking instructions mentioned (Scout #8)
-- The map placeholder feels like the least polished section visually
-- Hours table alignment (right/left split) works but looks slightly off-center at 375px with the auto-margin max-width constraint
+- Map is still a placeholder div with an SVG pin, not an embedded map
+- The placeholder map box looks bare — a large gray box with a tiny pin icon
+- No parking info
+- Hours table alignment is slightly awkward at 375px
 
-### 8. Booking Form — 7.6
+**Recalibration note:** v1 scored 6.8. The tappable address is a real improvement. But the map placeholder still looks incomplete. Net: slight bump to 6.0 from what would have been lower with recalibration.
+
+### 8. Booking Form — 6.3
 
 **Positives:**
-- Full booking form with: name, email, phone, pet name, pet type, service type, preferred date, notes — comprehensive per Scout #2
-- Client-side validation with real-time error clearing — good UX
-- Email regex and phone digit validation — thorough
-- Form fields use autocomplete attributes — Scout #2 autofill compatibility
-- Error messages use aria-live="polite" — accessibility
-- Success message with confirmation text
-- Form max-width 540px centered — doesn't stretch awkwardly on larger screens
-- Pet type and service type side-by-side (form-row) — efficient use of space even on mobile
+- Comprehensive fields: name, email, phone, pet name, pet type, service, date, notes
+- Client-side validation with real-time error clearing
+- Autocomplete attributes
+- Accessible error messages
+- Success confirmation message
 
 **Issues:**
-- No date validation (can select past dates)
-- No time preference field — Scout #2 mentions "preferred date/time"
-- Form submits to nowhere (e.preventDefault only) — expected for template, but needs backend integration note
-- No emergency keyword detection — Scout #2 recommends redirecting urgent cases
-- Submit button text "Request Appointment" is clear; success message is good
+- Can select past dates — basic validation gap
+- No time preference field
+- Submits nowhere (expected for template, but still)
+- No emergency keyword detection
+- Form styling is functional but generic — dark inputs on dark background with teal accents. Every dark template looks like this
 
-### 9. FAQ — 7.3
+**Recalibration note:** v1 scored 7.6. The form works correctly, but its appearance is indistinguishable from any dark-theme contact form. Functional ≠ impressive.
+
+### 9. FAQ — 6.0
 
 **Positives:**
-- Six relevant, well-written Q&As
-- Uses native `<details>` / `<summary>` — semantic, accessible, no JS required
-- Custom styling removes default marker, adds +/- indicator
-- Max-width 680px centered — readable line length
-- Questions cover practical concerns (exam frequency, emergencies, payment, surgery prep, vaccines, pet parent presence)
+- Six relevant Q&As using semantic `<details>`/`<summary>`
+- Custom +/- indicator styling
+- Good content covering practical concerns
+- Readable line length
 
 **Issues:**
-- No search or filter for FAQs — acceptable at 6 items but noted
-- No "Contact us" CTA at the end of FAQ for unanswered questions
-- Answers could include links to relevant sections (e.g., emergency FAQ could link to #emergency)
+- No "Contact us" CTA at end for unanswered questions
+- No cross-links to relevant sections
+- Visually plain — just text accordions on a dark background
 
-### 10. Footer — 6.8
+**Recalibration note:** v1 scored 7.3. Native details/summary with custom styling is standard. Content is good but presentation is unremarkable.
+
+### 10. Footer — 6.0
 
 **Positives:**
-- Three-column layout on desktop, single-column centered on mobile — responsive
-- Quick links, contact info, address all present
-- Email and phone are linked (mailto, tel)
-- Copyright with current year
-- Brand + tagline reinforced
+- Social media icons added (Facebook, Instagram, Google Business) — **v1 recommendation #2, now fixed**
+- Gradient accent strip at top — nice touch
+- Paw emoji dividers — branded detail
+- Local tagline added
+- Brand reinforced with logo text
 
 **Issues:**
-- No social media icons — Scout #10 recommends Instagram/Facebook links
-- No "Back to top" button
-- No newsletter signup option — Scout #10
-- Footer feels minimal compared to the rest of the site
-- No HIPAA-equivalent notice or privacy policy link (common for vet sites)
+- No "Back to top" button (still missing from v1 rec)
+- No newsletter signup
+- No privacy policy link
+- Social links go to "#" — dead links on mobile look bad if tapped
+- Paw emoji dividers (🐾 🐾 🐾) render differently across devices — could look odd on some Android phones
 
-### 11. Sticky Mobile CTA Bar — 7.8
+**Recalibration note:** v1 scored 6.8. The social icons and gradient strip are real improvements. With recalibration, this lands at 6.0 — improved but still standard.
+
+### 11. Sticky Mobile CTA Bar — 6.5
 
 **Positives:**
-- Fixed bottom bar with "Call Now" and "Book Now" — directly addresses Scout #1 CRITICAL recommendation
-- Respects safe-area-inset-bottom for notched devices
-- Hidden on desktop (768px+) — appropriate
-- SVG icons inline for fast rendering
-- :active scale effect — tactile feedback
-- High z-index (1000) ensures visibility
-- Body padding-bottom prevents content from being hidden behind bar
+- Fixed bottom bar with "Call Now" and "Book Now" — essential mobile UX
+- Scroll-to-hide on scroll-down, reappear on scroll-up — **v1 recommendation #5, now implemented**
+- Safe-area-inset for notched devices
+- :active scale feedback
 
 **Issues:**
-- Bar takes up vertical space on small screens — could obscure content when scrolling near bottom
-- No auto-hide on scroll-down / show on scroll-up behavior (common pattern to reclaim space)
-- Only two actions — could consider adding an emergency option (three-button layout)
+- Only two actions — no emergency option
+- Bar design is plain (dark background, teal buttons) — functional but not visually distinctive
+- Takes up space on small screens even with scroll-hide
 
-### 12. Accessibility & Technical — 7.4
+**Recalibration note:** v1 scored 7.8. The scroll-hide behavior is a genuine improvement. But the bar itself is standard — every modern mobile template has one. Recalibrating to reflect that this is expected, not exceptional.
+
+### 12. Accessibility & Technical — 6.5
 
 **Positives:**
-- Skip link present
-- Schema.org JSON-LD for VeterinaryCare — excellent for local SEO
-- Meta description present and descriptive
-- All interactive elements have focus-visible styles
-- aria-labels on navigation, map, form fields, star ratings
-- Scroll-padding-top accounts for fixed header
-- Passive scroll listener for performance
-- No hover-only interactions — compliant with AGENT-RULES
-- System font stack — fast, no font loading
-- CSS custom properties throughout — maintainable
+- Skip link, Schema.org JSON-LD, meta description — all present
+- theme-color, OG tags, favicon all added — **v1 recommendation #4, now fixed**
+- Focus-visible styles throughout
+- aria-labels on interactive elements
+- Passive scroll listeners
+- System font stack — fast loading
+- CSS custom properties — maintainable
 
 **Issues:**
-- No Open Graph / social sharing meta tags
-- No favicon referenced
-- No preconnect or performance hints
-- No `<meta name="theme-color">` for mobile browser chrome
-- No lazy loading attributes (no images yet, but noted for when photos are added)
+- No og:image tag — social shares will have no preview image
+- No lazy loading attributes (noted for future)
+- No preconnect hints
+- Emergency pulse animation referenced in HTML class but never defined in CSS — dead reference
+
+**Recalibration note:** v1 scored 7.4. The meta additions are good wins. But this is standard best-practice stuff, not differentiating. A user never sees these directly.
 
 ---
 
 ## Overall Score
 
-| Section | Score |
-|---------|-------|
-| Navigation / Header | 7.4 |
-| Hero | 7.2 |
-| Services | 7.5 |
-| Meet the Team | 7.0 |
-| Testimonials | 7.2 |
-| Emergency | 7.8 |
-| Location / Hours | 6.8 |
-| Booking Form | 7.6 |
-| FAQ | 7.3 |
-| Footer | 6.8 |
-| Sticky Mobile CTA Bar | 7.8 |
-| Accessibility & Technical | 7.4 |
-| **OVERALL** | **7.2** |
+| Section | v1 Score | v2 Score | Change |
+|---------|----------|----------|--------|
+| Navigation / Header | 7.4 | 6.2 | -1.2 (recalibrated) |
+| Hero | 7.2 | 5.5 | -1.7 (recalibrated) |
+| Services | 7.5 | 6.0 | -1.5 (recalibrated) |
+| Meet the Team | 7.0 | 5.5 | -1.5 (recalibrated) |
+| Testimonials | 7.2 | 5.8 | -1.4 (recalibrated) |
+| Emergency | 7.8 | 6.5 | -1.3 (recalibrated) |
+| Location / Hours | 6.8 | 6.0 | -0.8 (recalibrated + fix) |
+| Booking Form | 7.6 | 6.3 | -1.3 (recalibrated) |
+| FAQ | 7.3 | 6.0 | -1.3 (recalibrated) |
+| Footer | 6.8 | 6.0 | -0.8 (recalibrated + fixes) |
+| Sticky Mobile CTA Bar | 7.8 | 6.5 | -1.3 (recalibrated + fix) |
+| Accessibility & Technical | 7.4 | 6.5 | -0.9 (recalibrated + fixes) |
+| **OVERALL** | **7.2** | **6.1** | **-1.1** |
+
+**v2 Overall: 6.1 / 9.0**
+
+The v1 audit overscored by ~1.1 points across the board. With recalibration against the stated scale (7.0 = genuinely better than most templates), this site lands at 6.1 — a functional, well-structured dark template that is slightly above generic. The v1-to-v2 improvements (SVG icons, tappable address, social links, scroll-hide CTA, meta tags) were all correctly targeted and well-executed. They prevented the score from dropping further during recalibration.
 
 ---
 
@@ -240,27 +269,28 @@
 
 | Version | Date | Overall | Auditor | Notes |
 |---------|------|---------|---------|-------|
-| v1 | 2026-04-01 | 7.2 | Nigel | First audit — strong template foundation, mobile-first done right |
+| v1 | 2026-04-01 | 7.2 | Nigel | First audit — overscored; strong code but visual impact overrated |
+| v2 | 2026-04-01 | 6.1 | Nigel | Recalibrated scoring; 5 of 5 v1 recs addressed; hero & imagery remain weak |
 
 ---
 
 ## Top 5 Priority Recommendations
 
-### 1. Make the address tappable for map directions (Location section — currently 6.8)
-Wrap the address in a Google Maps / Apple Maps link so mobile users get one-tap navigation. This is the single easiest fix with the highest UX payoff. Scout #8 explicitly calls for this.
+### 1. CRITICAL: Add a hero background image or illustration (Hero — 5.5)
+The hero is the biggest drag on the score. A pet owner opening this site sees dark background + tiny paw + text. Add a hero background image (stock photo of a vet with a pet, or a professional illustration). Even a CSS background-image with a dark overlay would transform the emotional impact. This alone could push the hero from 5.5 to 7.0+. No other single change has this much impact.
 
-### 2. Add social media links and a "Back to top" button to the Footer (Footer — currently 6.8)
-The footer is the weakest section. Add Instagram/Facebook icons (even as template placeholders) and a smooth-scroll "Back to top" button. These are standard expectations per Scout #10 and would bring the footer to 7.2+.
+### 2. Add real or realistic avatar photos to Meet the Team (Team — 5.5)
+Letter-circle placeholders are the most visually "template" element on the site. Use stock photos or AI-generated headshots as placeholder defaults. Pet owners want to see who will care for their animal. Even placeholder stock photos dramatically outperform initials.
 
-### 3. Add hero background imagery or a subtle pattern (Hero — currently 7.2)
-The hero is text-only with a small CSS paw. A gradient overlay on a background image (or even a subtle geometric/paw pattern) would dramatically increase visual impact and emotional connection. Scout #6 rates this medium-high impact.
+### 3. Implement the emergency pulse animation (Emergency — 6.5)
+The HTML has class="emergency-pulse" but no @keyframes exists in CSS. Add a subtle pulsing glow animation to the emergency cross. This was noted in v1 and still not fixed. Quick win: `@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,107,0.4); } 70% { box-shadow: 0 0 0 10px rgba(255,107,107,0); } }`.
 
-### 4. Add meta theme-color, Open Graph tags, and a favicon (Technical — currently 7.4)
-Three quick wins: `<meta name="theme-color" content="#121820">` for mobile browser chrome, OG tags for social sharing previews, and a favicon (even a paw emoji favicon). These are expected baseline items.
+### 4. Add visual variety and hierarchy to break the monotony (Sitewide)
+Every section follows the same pattern: dark background, teal accent, center-aligned cards. The site is visually monotonous on a phone. Options: alternate section background colors more aggressively, add a light-mode section, use different card layouts (horizontal card for one section, grid for another), or add subtle background patterns/textures.
 
-### 5. Add scroll-to-hide behavior on the sticky CTA bar (CTA Bar — currently 7.8)
-Hide the sticky bar when scrolling down, show on scroll up. This reclaims vertical space on small screens and is the industry-standard pattern. Would push this strong section toward 8.0+.
+### 5. Reduce nav items and add a header CTA button (Nav — 6.2)
+Eight hamburger items is too many. Combine or remove lower-priority links (FAQ can be in footer only). Add a visible "Book Now" or phone icon button in the header bar itself (not behind the hamburger). This is the most common pattern on high-converting vet sites.
 
 ---
 
-*End of audit. Next audit should follow after the above recommendations are addressed.*
+*End of v2 audit. The site has a solid code foundation and correct mobile-first architecture. The gap to 7.0+ is primarily visual — imagery, variety, and warmth. The dark monochrome aesthetic works against the "friendly neighborhood vet" brand.*
