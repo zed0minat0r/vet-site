@@ -283,3 +283,18 @@
 ### Notes
 - No new sections added. Still within 10-12 cap.
 - All changes mobile-first, center-aligned on mobile.
+
+## [1.0.1] - 2026-04-01 — Pixel Mobile Audit (375px)
+### Fixed
+- Bumped form label font-size from 0.95rem to 1rem for better mobile readability
+- Increased nav CTA button font-size from 0.8rem to 0.85rem and padding for easier tapping
+- Bumped map tap-hint, footer tagline, and footer legal font-sizes from 0.8rem to 0.85rem (min legibility threshold)
+- Added 375px refinements: testimonial quote mark repositioned to prevent overlap, FAQ summary/body padding tightened, booking form padding adjusted
+- Ensured mobile CTA bar buttons retain min-height: 48px at small-screen breakpoint
+### Audited (no issues found)
+- All form inputs already at 16px (prevents iOS auto-zoom)
+- All tap targets meet 44px minimum (buttons, links, nav items, social icons)
+- Center alignment consistent across all mobile sections
+- No horizontal overflow detected at 375px
+- Container padding properly reduces at small breakpoint
+- overflow-x: hidden on html element prevents scroll bleed

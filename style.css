@@ -185,8 +185,8 @@ section {
   background: var(--accent);
   color: var(--bg);
   font-weight: 700;
-  font-size: 0.8rem;
-  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -799,7 +799,7 @@ section {
 .map-tap-hint {
   display: block;
   margin-top: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--accent);
   opacity: 0.7;
 }
@@ -878,7 +878,7 @@ section {
   display: block;
   font-weight: 600;
   margin-bottom: 0.35rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #1a2230;
 }
 
@@ -1090,7 +1090,7 @@ section {
   line-height: 1.6;
 }
 .footer-tagline {
-  font-size: 0.8rem !important;
+  font-size: 0.85rem !important;
   color: var(--accent) !important;
   opacity: 0.65;
   letter-spacing: 0.5px;
@@ -1175,7 +1175,7 @@ section {
 
 .footer-legal {
   margin-top: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 .footer-legal a {
   color: var(--text-muted);
@@ -1299,11 +1299,15 @@ section {
   .service-card { padding: 1.5rem 1.25rem; }
   .team-card { padding: 1.5rem 1.25rem; }
   .testimonial-card { padding: 1.5rem 1.25rem 1.25rem; }
+  .testimonial-card::before { font-size: 3rem; left: 0.75rem; }
   .nav { padding: 0.75rem 1rem; }
   .nav-logo { font-size: 1rem; }
   .mobile-cta-bar { padding: 0.5rem 0.5rem; padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
-  .mobile-cta-btn { font-size: 0.9rem; padding: 0.75rem 0.75rem; }
+  .mobile-cta-btn { font-size: 0.9rem; padding: 0.75rem 0.75rem; min-height: 48px; }
   .stat-number { font-size: 3rem; }
+  .faq-item summary { padding: 1rem 1rem; }
+  .faq-item p { padding: 0 1rem 1rem; }
+  .booking-form { padding: 1.5rem 1.25rem; }
 }
 
 /* Hide sticky CTA on larger screens */
