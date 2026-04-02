@@ -99,3 +99,12 @@
 - Team section: Converted to light-mode (#f4f7fa bg, white cards) to break dark monotone pattern and add visual hierarchy (Audit #4)
 - Team cards: Added subtle box-shadow for depth on light background
 - Avatar photos: 88px circular with 3px accent border and soft glow shadow
+
+## [1.8.0] - 2026-04-01 — Spark: Testimonials Warmth Redesign (Audit score 5.8)
+- Testimonials section: Switched from dark bg to warm light background (#f9fafb) with white cards for a friendlier feel
+- Added colored initial-letter avatars for each reviewer (green for dog owners, amber for cat owners)
+- Added decorative open-quote mark (CSS ::before) in soft accent color for visual warmth
+- Varied star ratings (one 4-star review) so ratings feel authentic, not templated
+- Reworked pet name display format for personality ("Biscuit the Golden Retriever" vs "Pet: Biscuit (Golden Retriever)")
+- White card design with soft box-shadow replaces dark bordered cards — warmer, more inviting on mobile
+- All changes CSS-only and mobile-first; center-aligned
