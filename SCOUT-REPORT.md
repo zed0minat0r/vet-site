@@ -249,3 +249,87 @@ Accessibility is now a legal requirement, not optional:
 - [OneWebCare — Mobile Experience for Vet Websites](https://onewebcare.com/blog/mobile-experience-for-veterinary-websites/)
 - [W3C — WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
 - [IxDF — WCAG Updated 2026](https://ixdf.org/literature/topics/web-content-accessibility-guidelines)
+
+---
+
+## Round 3 Research — 2026-04-01
+
+### Pricing Transparency & Wellness Plan Presentation
+
+Pricing transparency is becoming a regulatory expectation (the UK CMA is already enforcing it for vets) and a major trust differentiator in the US market. Only ~40% of top vet sites show any pricing — so doing it well is a competitive advantage.
+
+**How to present pricing on a vet website:**
+
+1. **Range-Based Pricing Tables** — Don't list exact prices (they change). Instead, show "starting at" or range pricing for commonly shopped services (wellness exams, vaccines, spay/neuter, dental cleanings). Use clean tables or card layouts, not buried text.
+2. **Wellness Plan Comparison Cards** — Display 2-3 tiers (e.g., Puppy/Adult/Senior or Basic/Plus/Premium) side by side with checkmarks for what's included. This is the model pet owners already understand from subscription services. Highlight annual savings vs. paying per visit.
+3. **Integrated Payment Options** — Mention financing (CareCredit, Scratchpay), pet insurance compatibility, and in-house payment plans alongside pricing. Practices that integrate digital payment platforms with wellness plans and financing options gain a competitive edge in 2026.
+4. **"What to Expect" Cost Framing** — Instead of raw prices, frame costs around visits: "Your puppy's first year of wellness care typically costs $X-$Y, or $Z/month with our wellness plan." This contextualizes the investment.
+5. **Transparency Builds Trust** — Being upfront about pricing ranges reduces phone call volume ("How much is...?") and pre-qualifies clients who are a good fit. Clinics that hide costs feel untrustworthy to modern consumers.
+
+### Pet Parent Engagement Features
+
+The leading vet websites in 2026 integrate deeply with client engagement platforms. Even for a static site, referencing and linking to these capabilities matters.
+
+**Must-reference engagement features:**
+
+1. **Pet Parent Portal Access** — Clients expect to view vaccination history, download medical records, request prescription refills, and manage their pet's care journey through a portal or app. Link prominently to your portal (PetDesk, Covetrus, IDEXX Vello, or similar).
+2. **Automated Appointment Reminders** — Email + SMS reminders reduce no-shows significantly. Mention this capability on the booking section: "We'll send you reminders so you never miss a visit."
+3. **Two-Way Texting** — Clients want to text their vet, not call. Platforms like IDEXX Vello and PetDesk support two-way texting. Highlight this as a convenience feature.
+4. **Post-Visit Follow-Ups** — Automated check-in messages after procedures ("How is Bella doing after her dental cleaning?") build loyalty and catch complications early. This is a premium differentiator.
+5. **Digital New Patient Forms** — Online intake forms that clients complete before arrival save 15-20 minutes per visit and reduce front-desk friction. Include a "New Patients" section with downloadable or online forms.
+6. **Pet Profiles with Care Timelines** — The best portals show a visual timeline of each pet's care history. While this is platform-dependent, mentioning "your pet's complete health history at your fingertips" signals modern care.
+
+### Veterinary SEO & Local Search Optimization (2026)
+
+Beyond Round 2's AI optimization findings, here are specific local SEO tactics for 2026:
+
+1. **Google Business Profile (GBP) is King** — Your GBP listing is more important than your website for local "near me" searches. It must have: accurate NAP (Name, Address, Phone), current hours, high-quality photos updated monthly, service categories, and a detailed business description with local keywords.
+2. **Long-Tail Local Keywords** — Don't compete for "veterinarian." Target "emergency vet open now [city]," "cat dentist [neighborhood]," "best dog dermatologist in [city]." These high-intent keywords convert better.
+3. **Review Volume & Velocity** — Google ranks businesses with more recent, high-quality reviews higher in local pack results. Actively request reviews after positive visits. Respond to every review (positive and negative). Practices with 100+ Google reviews and a 4.5+ rating dominate local search.
+4. **Service-Specific Landing Content** — Each service (dental, surgery, wellness exams) should have its own content section with local keywords naturally woven in. This helps both traditional search and AI discovery.
+5. **Schema Markup (Structured Data)** — Implement LocalBusiness and VeterinaryCare schema markup. This helps Google understand your services, hours, and location, improving rich snippet visibility.
+6. **Mobile Speed is a Ranking Factor** — Google's Core Web Vitals (LCP under 2.5s, FID under 100ms, CLS under 0.1) directly impact local rankings. Optimize images, minimize JavaScript, use lazy loading.
+7. **Content That Answers Questions** — 72% of marketers say content marketing increases engagement and leads. Create FAQ sections and educational content that directly answers common pet owner searches ("how often should I vaccinate my puppy," "signs my cat needs dental care").
+
+### The 7/10 to 8/10 Premium Gap — What Separates Good from Great
+
+After analyzing dozens of vet websites, the gap between a "good" site (7/10) and a "great" site (8/10) comes down to these specific differentiators:
+
+| 7/10 Site (Good) | 8/10 Site (Great) | Why It Matters |
+|---|---|---|
+| Has a booking button | Has smart booking with service pre-selection, preferred vet, and minimal fields | Reduces abandonment; feels modern |
+| Lists services | Each service has descriptive content with "what to expect" details | Builds confidence; improves SEO |
+| Shows team photos | Team bios with personality, specialties, and "fun fact" humanization | Creates emotional connection before first visit |
+| Has testimonials | Testimonials with pet names, photos, and specific stories | Specific stories are 3x more persuasive than generic praise |
+| Mobile responsive | Mobile-first with sticky CTAs, thumb-friendly navigation, and sub-3s load | 84% of users leave sites with poor navigation |
+| Shows address and hours | Interactive map + one-tap directions + parking info + "what to bring" | Eliminates all friction for first visit |
+| Has contact info | Multiple contact channels: call, text, email, portal, and emergency line | Meets each client where they prefer to communicate |
+| Generic "we care" messaging | Specific value propositions ("Same-day sick visits," "Fear-free certified," "24/7 nurse line") | Specific claims differentiate; generic claims blend in |
+| Basic color scheme | Intentional palette with calming tones, organic shapes, and consistent brand voice | 94% of first impressions are design-driven |
+| Static content | Subtle micro-interactions, smooth scroll, section transitions | Feels alive and premium without being distracting |
+
+**The single biggest gap:** A 7/10 site tells you what the clinic does. An 8/10 site makes you feel what it would be like to bring your pet there. It's the difference between information and experience.
+
+---
+
+## Round 3 Sources
+
+- [Vet Radar — Pros and Cons of Wellness Plans](https://www.vetradar.com/blog/pros-and-cons-of-wellness-plans)
+- [IDEXX — Future of Veterinary Payments 2026](https://software.idexx.com/resources/blog/veterinary-payment-trends-what-to-expect-in-2026)
+- [Granite Peak — Rethinking Pricing Transparency in Veterinary Medicine](https://granitepeakcpa.com/rethinking-pricing-transparency-in-veterinary-medicine-a-path-to-stronger-client-relationships/)
+- [IDEXX — Veterinary Pricing Strategies That Work](https://software.idexx.com/resources/blog/a-guide-to-veterinary-pricing-models-that-work)
+- [IDEXX — 7 Digital Trends Shaping Veterinary Practices 2026](https://software.idexx.com/resources/blog/7-digital-veterinary-technology-trends-shaping-practices-in-2026)
+- [IDEXX Vello Client Engagement Platform](https://software.idexx.com/vello)
+- [Covetrus — Pet Parent Portal](https://covetrus.com/covetrus-platform/client-engagement-tools/pet-parent-portal/)
+- [NectarVet — PetDesk Software Review 2026](https://www.nectarvet.com/post/petdesk-software-comprehensive-features-integration-partners-list-pricing-and-customer-reviews-2026)
+- [Digitail — Pet Parent App](https://digitail.com/pet-parent-app/)
+- [Digitail — Must-Have Integrations for Vet Software 2026](https://digitail.com/blog/must-have-integrations-for-veterinary-software-in-2026/)
+- [DVMelite — 22 Veterinary SEO Tips 2026](https://www.dvmelite.com/the-21-veterinary-seo-tips-every-practitioner-should-know)
+- [Optuno — Veterinary Local Search Optimization Guide](https://www.optuno.com/blog/veterinary-seo-your-complete-guide-to-local-search-optimization-for-vet-clinics)
+- [IDEXX — Google Reviews and Veterinary SEO](https://software.idexx.com/resources/blog/google-reviews-and-veterinary-seo-how-to-rank-higher-in-local-searches)
+- [PetDesk — SEO Best Practices for Vet Clinics](https://petdesk.com/blog/best-seo-practices-veterinary-clinics/)
+- [iVet360 — 10 Best Veterinary Hospital Websites 2026](https://ivet360.com/10-best-veterinary-hospital-websites/)
+- [Colorlib — 20 Best Veterinary Website Designs 2026](https://colorlib.com/wp/veterinary-websites/)
+- [GeniusVets — Vet Website Design Trends](https://www.geniusvets.com/veterinary-marketing/blog/4-trends-veterinary-website-design-you-should-follow-and-3-you-shouldnt)
+- [Hibu — Veterinary Website Design Best Practices](https://hibu.com/blog/industries/veterinary-website-design-best-practices)
+- [PetDesk — Ultimate Veterinary Website Guide](https://petdesk.com/blog/ultimate-veterinary-website-guide)
