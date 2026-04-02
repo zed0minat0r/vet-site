@@ -168,7 +168,7 @@ section {
   font-size: 1.1rem;
   color: var(--text);
 }
-.nav-logo .logo-icon { font-size: 1.4rem; }
+
 .nav-logo .logo-svg { flex-shrink: 0; }
 
 /* Logo badge — branded circle behind paw */
@@ -545,22 +545,6 @@ section {
   box-shadow: 0 4px 20px rgba(45, 212, 168, 0.15);
 }
 
-.reviewer-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  margin: 0 auto 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: #fff;
-  background: linear-gradient(135deg, #2dd4a8, #1a9a7a);
-}
-.testimonial-card[data-pet="cat"] .reviewer-avatar {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-}
 
 .reviewer-photo {
   width: 56px;
@@ -733,15 +717,11 @@ section {
 }
 
 /* --- Location --- */
-.location { background: var(--bg); }
-
 .location-light {
   background: linear-gradient(180deg, #f0faf6 0%, #f4f7fa 100%);
 }
-.location-light h2,
-.location-light .section-subtitle { color: #1a2230; }
+.location-light h2 { color: #1a2230; }
 .location-light .section-subtitle { color: #4a5568; }
-.location-light h2::after { background: var(--accent); }
 
 .location-grid {
   display: grid;
@@ -792,40 +772,6 @@ section {
 .hours-table td:first-child { text-align: right; padding-right: 0.75rem; }
 .hours-table td:last-child { text-align: left; padding-left: 0.75rem; color: var(--text); }
 
-.map-placeholder {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border: 1px solid rgba(45, 212, 168, 0.1);
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.location-light .map-placeholder {
-  background: #ffffff;
-  border: 1px solid rgba(45, 212, 168, 0.2);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  color: #4a5568;
-}
-.map-placeholder:active {
-  border-color: var(--accent);
-  box-shadow: 0 0 14px var(--accent-glow);
-}
-.map-illustration { margin-bottom: 1rem; }
-.map-tap-hint {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--accent);
-  opacity: 0.7;
-}
-.location-light .map-tap-hint { color: #1a8a6a; }
 
 .map-embed {
   border-radius: var(--radius);
@@ -1125,7 +1071,7 @@ section {
   padding-bottom: 1.5rem;
   border-bottom: 1px solid rgba(45, 212, 168, 0.08);
 }
-.footer-brand .logo-icon { font-size: 1.8rem; }
+
 .footer-brand .logo-text {
   font-weight: 700;
   font-size: 1.15rem;
@@ -1367,7 +1313,6 @@ section {
   .hero h1 { font-size: 2rem; }
   .hero-tagline { font-size: 1rem; }
   .container { padding: 0 1rem; }
-  .section { padding: 3rem 0; }
   .emergency-box { padding: 2rem 1rem; }
   .service-card { padding: 1.5rem 1.25rem; }
   .team-card { padding: 1.5rem 1.25rem; }
@@ -1377,7 +1322,6 @@ section {
   .nav-logo { font-size: 1rem; }
   .mobile-cta-bar { padding: 0.5rem 0.5rem; padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
   .mobile-cta-btn { font-size: 0.9rem; padding: 0.75rem 0.75rem; min-height: 48px; }
-  .stat-number { font-size: 3rem; }
   .faq-item summary { padding: 1rem 1rem; }
   .faq-item p { padding: 0 1rem 1rem; }
   .booking-form { padding: 1.5rem 1.25rem; }

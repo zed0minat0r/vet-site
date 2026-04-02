@@ -320,3 +320,20 @@
 ### Why
 - Post v5 audit: 4 sections still at 6.5 (Footer, Location, CTA Bar) and 2 at 6.8 (FAQ, Booking). These small trust/warmth/polish tweaks target each weak section to push the overall score from 6.9 toward 7.0+
 - All changes mobile-first, center-aligned on mobile, no new sections added
+
+## razor-cleanup — Razor — Dead Code & Bloat Removal (2026-04-01)
+### Removed (style.css: 56 lines removed, 1394 -> 1338)
+- Dead CSS: `.reviewer-avatar` and `[data-pet="cat"] .reviewer-avatar` (16 lines) — no HTML element uses this class; all testimonials use `.reviewer-photo`
+- Dead CSS: `.map-placeholder`, `.map-illustration`, `.map-tap-hint`, `.location-light .map-tap-hint` (27 lines) — HTML uses `.map-embed` instead
+- Dead CSS: `.stat-number` in small-screen media query (1 line) — no element with this class exists
+- Dead CSS: `.section` in small-screen media query (1 line) — HTML uses `section` elements, not `.section` class
+- Dead CSS: `.location { background: var(--bg); }` (2 lines) — always overridden by `.location-light` since both classes are used together
+- Dead CSS: `.location-light h2::after` (1 line) — no `content` property, pseudo-element never renders
+- Dead CSS: `.footer-brand .logo-icon { font-size: 1.8rem; }` (1 line) — logo-icon is an SVG with explicit dimensions; font-size has no effect
+- Dead CSS: `.nav-logo .logo-icon { font-size: 1.4rem; }` (1 line) — same reason as above
+- Duplicate fix: `.location-light .section-subtitle` was declared twice (lines 742-743); consolidated to single rule with final value
+### Audited & kept (no issues found)
+- main.js (179 lines): all functions called, all event listeners target existing elements, no dead code
+- index.html (546 lines): no unused classes, no bloat
+### Why
+- Routine code hygiene pass to remove dead selectors, unreachable rules, and duplicate declarations
