@@ -352,3 +352,14 @@
 - Hours table (max-width 320px) fits within 375px viewport with padding
 - Hero actions column layout with 320px max-width properly centered
 - Mobile CTA bar has proper safe-area-inset padding and 48px tap targets
+
+## v7 — Refiner — 2026-04-01
+### Added
+- **Scroll-triggered fade-in-up animations**: Service cards, team cards, and testimonial cards now fade in with a subtle upward motion as they enter the viewport (IntersectionObserver, 50-70ms stagger between siblings). Adds life to every scroll interaction without violating minimal animation rules.
+- **Hero trust strip**: Semi-transparent frosted bar below hero CTAs showing "4.9 Google | 10+ Years | 24/7 Emergency" with inline SVG icons. Social proof above the fold on mobile. Center-aligned, max-width 360px.
+- **FAQ category groupings**: FAQs reorganized into three categories — "Getting Started," "During Your Visit," and "Payment & Emergencies" — with small bold uppercase headers between groups. Improves scannability.
+- **Footer SVG paw dividers**: Replaced emoji paw dividers (::after pseudo-element) with three inline SVG paw prints using the site's accent color. Matches the branded SVG logo system.
+- **Footer newsletter signup**: "Get pet care tips in your inbox" with email input + Subscribe button between the social icons and footer-bottom. 44px touch targets, mobile-friendly flex layout, success confirmation.
+### Changed
+- Removed `site-footer::after` emoji paw CSS rule, replaced with `.footer-paw-divider` SVG component
+- FAQ items reordered to fit logical category groupings

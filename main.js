@@ -151,6 +151,28 @@
     }, { passive: true });
   }
 
+  // --- Scroll-triggered fade-in-up ---
+  var fadeEls = document.querySelectorAll('.fade-in-up');
+  if (fadeEls.length) {
+    var fadeObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // Stagger siblings by index
+          var parent = entry.target.parentElement;
+          var siblings = parent.querySelectorAll('.fade-in-up');
+          var idx = Array.prototype.indexOf.call(siblings, entry.target);
+          entry.target.style.animationDelay = (idx * 0.07) + 's';
+          entry.target.classList.add('is-visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    fadeEls.forEach(function (el) {
+      fadeObserver.observe(el);
+    });
+  }
+
   // --- Active nav link highlighting ---
   var sections = document.querySelectorAll('section[id], footer[id]');
   var navLinks = document.querySelectorAll('.nav-menu a');
