@@ -1,8 +1,3 @@
-/* ===========================
-   Pawsitive Care Veterinary
-   Main JavaScript
-   =========================== */
-
 (function () {
   'use strict';
 

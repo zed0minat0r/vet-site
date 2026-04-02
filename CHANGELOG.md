@@ -69,3 +69,14 @@
 - Added scroll-to-hide behavior on sticky mobile CTA bar: hides on scroll down, reappears on scroll up (Audit Priority #5)
 - CTA hide/show uses requestAnimationFrame for smooth 60fps performance
 - All changes mobile-first and center-aligned per AGENT-RULES
+
+## [1.5.0] - 2026-04-01 — Razor: Code Cleanup Audit
+- Removed dead `img` rule from CSS (no img elements in HTML)
+- Consolidated duplicate `body` declarations (merged padding-bottom into main body rule)
+- Removed unreachable properties in `.mobile-cta-bar.cta-hidden` (padding/gap on off-screen element)
+- Removed standalone `.footer-links a:hover` (hover-only, no focus-visible pair)
+- Trimmed 13 verbose multi-line comment blocks to single-line format across CSS and JS
+- Removed decorative file-header comment from main.js
+- No dead JS functions or unused event listeners found — all JS is active and lean
+- No unused keyframes/animations found
+- Net result: 49 lines removed (44 CSS, 5 JS) — zero functional changes
