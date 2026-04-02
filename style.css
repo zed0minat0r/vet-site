@@ -425,8 +425,8 @@ section {
 }
 .service-card p {
   color: #5a6577;
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 .service-icon {
@@ -476,7 +476,7 @@ section {
 
 /* Service pricing hints */
 .service-price {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--accent-dark);
   margin-top: 0.35rem;
@@ -604,7 +604,7 @@ section {
   line-height: 1.1;
 }
 .review-stat-label {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.8px;
@@ -863,14 +863,19 @@ section {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  display: inline-block;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .emergency-symptoms li {
   color: var(--text-muted);
   font-size: 0.9rem;
   font-weight: 600;
   padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .emergency-symptoms li::before {
   content: "\26A0\FE0F";
@@ -882,11 +887,14 @@ section {
   margin-top: 1.5rem;
   padding: 0.85rem 1.25rem;
   background: rgba(255, 107, 107, 0.08);
-  border-left: 3px solid var(--emergency);
+  border-top: 3px solid var(--emergency);
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
   color: var(--text);
-  display: inline-block;
+  display: block;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 .emergency-prep strong {
@@ -973,7 +981,7 @@ section {
   border: 1px solid rgba(45, 212, 168, 0.2);
   border-radius: 999px;
   padding: 0.35rem 1rem;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   color: #3a6a5a;
   margin: 0.5rem auto 0;
   letter-spacing: 0.2px;
@@ -1631,7 +1639,7 @@ section {
 .footer-social-label {
   width: 100%;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--text-muted);
@@ -1831,7 +1839,7 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.03em;
   color: #fff;
@@ -1872,22 +1880,21 @@ section {
   .logo-badge .logo-svg { width: 18px; height: 18px; }
   .nav-cta { font-size: 0.85rem; padding: 0.5rem 0.9rem; }
   .mobile-cta-bar { padding: 0.5rem 0.5rem; padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
-  .mobile-cta-btn { font-size: 0.8rem; padding: 0.65rem 0.4rem; min-height: 48px; gap: 0.25rem; }
-  .cta-emergency-badge { font-size: 0.65rem; padding: 0.15rem 0.35rem; }
+  .mobile-cta-btn { font-size: 0.85rem; padding: 0.65rem 0.4rem; min-height: 48px; gap: 0.25rem; }
+  .cta-emergency-badge { font-size: 0.7rem; padding: 0.15rem 0.35rem; }
   .faq-item summary { padding: 1rem 1rem; }
   .faq-item p { padding: 0 1rem 1rem; }
   .booking-form { padding: 1.5rem 1.25rem; }
   .hero-trust-strip { flex-wrap: wrap; gap: 0.35rem 0.5rem; max-width: 320px; }
   .trust-strip-divider { display: none; }
-  .trust-strip-item { font-size: 0.8rem; }
+  .trust-strip-item { font-size: 0.82rem; }
   .avatar-photo { width: 96px; height: 96px; }
   h2 { font-size: 1.6rem; }
   .hero-actions { max-width: 100%; }
   .why-choose-item { padding: 1.25rem 1rem; }
-  .footer-qa-item { font-size: 0.8rem; padding: 0.4rem 0.85rem; }
+  .footer-qa-item { font-size: 0.85rem; padding: 0.4rem 0.85rem; }
   .faq-cta .btn-outline { font-size: 0.95rem; padding: 0.6rem 1.25rem; }
-  .emergency-symptoms { text-align: center; }
-  .emergency-symptoms li { justify-content: center; }
+  /* emergency-symptoms centering handled in base styles */
 }
 
 /* --- Hero Trust Strip --- */
@@ -1911,7 +1918,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #ffffff;
   white-space: nowrap;

@@ -604,3 +604,26 @@
 - All new CSS uses mobile-first patterns, center-aligned, no `!important`, no hover-only effects
 - JS additions are lightweight and progressive (no-op if elements missing)
 - `prefers-reduced-motion` respected on all existing animations
+
+## [1.0.1] - 2026-04-01 — Pixel Mobile Audit (375px)
+### Fixed
+- Bumped small font sizes to meet mobile readability minimums:
+  - `.review-stat-label`: 0.72rem -> 0.8rem
+  - `.service-price`: 0.78rem -> 0.85rem
+  - `.location-status-pill`: 0.78rem -> 0.85rem
+  - `.cta-emergency-badge`: 0.6rem -> 0.7rem (400px: 0.65rem -> 0.7rem)
+  - `.service-card p`: 0.8rem -> 0.85rem with improved line-height (1.4 -> 1.5)
+  - `.mobile-cta-btn` at 400px: 0.8rem -> 0.85rem
+  - `.trust-strip-item`: 0.8rem -> 0.82rem (base + 400px breakpoint)
+  - `.footer-social-label`: 0.8rem -> 0.82rem
+  - `.footer-qa-item` at 400px: 0.8rem -> 0.85rem
+- Emergency symptoms list now center-aligned at all mobile widths (was only in 400px breakpoint)
+  - Switched from `inline-block` + `text-align: left` to flexbox centering
+- Emergency prep box: switched `border-left` to `border-top` for symmetric centered layout
+  - Changed from `inline-block` to `block` with `max-width: 400px` + auto margins
+### Verified (no changes needed)
+- All form inputs already at `font-size: 16px` (prevents iOS zoom) with `min-height: 48px`
+- All interactive elements (buttons, links, nav) meet 44px minimum tap target
+- No horizontal overflow issues at 375px
+- Container padding adequate (1rem at 400px, 1.25rem default)
+- Center alignment consistent across all sections
