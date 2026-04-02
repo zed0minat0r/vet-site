@@ -123,8 +123,9 @@ section {
 .btn:active { transform: scale(0.97); }
 
 .btn-primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: var(--bg);
+  box-shadow: 0 2px 8px rgba(45, 212, 168, 0.2);
 }
 .btn-primary:focus-visible,
 .btn-primary:hover { background: var(--accent-dark); color: var(--bg); }
@@ -132,6 +133,9 @@ section {
 .btn-emergency {
   background: var(--emergency);
   color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 .btn-emergency:focus-visible,
 .btn-emergency:hover { background: var(--emergency-dark); color: var(--white); }
@@ -204,16 +208,17 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: var(--bg);
   font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  padding: 0.55rem 1.1rem;
   border-radius: 6px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   white-space: nowrap;
   min-height: 44px;
+  box-shadow: 0 2px 8px rgba(45, 212, 168, 0.25);
 }
 
 .nav-phone {
@@ -929,7 +934,7 @@ section {
   color: #4a5568;
 }
 .call-fallback-link {
-  color: #1a8a6a;
+  color: var(--accent);
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -952,17 +957,7 @@ section {
   margin: 0 auto;
 }
 
-.faq-category {
-  text-align: center;
-  color: #1a8a6a;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 1.5rem 0 0.75rem;
-}
-.faq-category:first-of-type {
-  margin-top: 0;
-}
+/* faq-category base — enhanced styles in Spark section below */
 
 .faq-item {
   background: #ffffff;
@@ -1269,9 +1264,9 @@ section {
   display: flex;
   gap: 0.5rem;
   z-index: 1000;
-  background: var(--bg-alt);
-  border-top: 1px solid rgba(45, 212, 168, 0.2);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(180deg, var(--bg-alt) 0%, #1a2435 100%);
+  border-top: 1px solid rgba(45, 212, 168, 0.25);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.45);
   transition: transform 0.3s ease;
   padding: 0.5rem 0.75rem;
   padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
@@ -1303,9 +1298,10 @@ section {
 }
 
 .mobile-cta-call {
-  background: var(--bg-card);
+  background: rgba(45, 212, 168, 0.08);
   color: var(--accent);
   border: 2px solid var(--accent);
+  box-shadow: 0 0 12px rgba(45, 212, 168, 0.1);
 }
 
 .mobile-cta-book {
@@ -1389,18 +1385,44 @@ section {
   animation: fadeInUp 0.5s ease-out forwards;
 }
 
-/* --- FAQ Category Headers --- */
+/* --- FAQ Category Headers (Spark: ruled-heading with accent pill + flanking lines) --- */
 .faq-category {
-  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.8px;
   color: var(--accent-dark);
-  margin: 1.5rem 0 0.75rem;
+  margin: 2rem 0 1rem;
   text-align: center;
+  padding: 0.35rem 1rem;
+  background: rgba(45, 212, 168, 0.07);
+  border-radius: 20px;
+  border: 1px solid rgba(45, 212, 168, 0.13);
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 .faq-category:first-child {
   margin-top: 0;
+}
+/* Subtle divider line between FAQ groups */
+.faq-category:not(:first-child) {
+  position: relative;
+  margin-top: 2.25rem;
+}
+.faq-category:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: -1.15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 /* --- Footer SVG Paw Divider (replaces emoji) --- */

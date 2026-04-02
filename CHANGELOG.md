@@ -363,3 +363,9 @@
 ### Changed
 - Removed `site-footer::after` emoji paw CSS rule, replaced with `.footer-paw-divider` SVG component
 - FAQ items reordered to fit logical category groupings
+
+## v8 — Spark — 2026-04-01
+### Changed
+- **FAQ category headers redesigned as accent pills**: Category labels ("Getting Started," "During Your Visit," "Payment & Emergencies") now display as centered pill badges with soft accent tint background, rounded border, and refined typography (0.75rem, 700 weight, 1.8px letter-spacing). Replaces plain uppercase text.
+- **FAQ group dividers**: Subtle 40px gradient accent line separates each category group, using a centered `::before` pseudo-element. Adds visual rhythm without clutter.
+- **Cleaned duplicate FAQ category CSS**: Replaced earlier base `.faq-category` block (line ~955) with a comment pointer to the enhanced Spark styles, eliminating style conflicts.
