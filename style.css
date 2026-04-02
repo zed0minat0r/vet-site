@@ -211,8 +211,8 @@ section {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   color: var(--bg);
   font-weight: 700;
-  font-size: 0.9rem;
-  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.25rem;
   border-radius: 6px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -484,8 +484,8 @@ section {
 }
 
 .avatar-photo {
-  width: 88px;
-  height: 88px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 1rem;
@@ -588,6 +588,10 @@ section {
   font-size: 1.2rem;
   margin-bottom: 0.75rem;
   letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
 }
 
 .testimonial-card p {
@@ -1272,14 +1276,14 @@ section {
   display: flex;
   gap: 0.5rem;
   z-index: 1000;
-  background: rgba(15, 23, 36, 0.75);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  backdrop-filter: blur(16px) saturate(1.4);
-  border-top: 1px solid rgba(45, 212, 168, 0.2);
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: rgba(15, 23, 36, 0.82);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  backdrop-filter: blur(20px) saturate(1.6);
+  border-top: 1px solid rgba(45, 212, 168, 0.25);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   transition: transform 0.3s ease;
-  padding: 0.5rem 0.75rem;
-  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  padding: 0.6rem 0.75rem;
+  padding-bottom: max(0.6rem, env(safe-area-inset-bottom));
 }
 
 .mobile-cta-bar.cta-hidden {
@@ -1369,6 +1373,10 @@ section {
   .faq-item summary { padding: 1rem 1rem; }
   .faq-item p { padding: 0 1rem 1rem; }
   .booking-form { padding: 1.5rem 1.25rem; }
+  .hero-trust-strip { flex-wrap: wrap; gap: 0.35rem 0.5rem; max-width: 320px; }
+  .trust-strip-divider { display: none; }
+  .trust-strip-item { font-size: 0.75rem; }
+  .avatar-photo { width: 96px; height: 96px; }
 }
 
 /* --- Hero Trust Strip --- */

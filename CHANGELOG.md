@@ -408,3 +408,13 @@
 - **CTA bar: prefers-reduced-motion** — Entrance glow animation disabled for users who prefer reduced motion, keeping accessibility intact.
 - **CTA bar: small-screen badge sizing** — Emergency badge scales down at <=400px to avoid crowding on narrow viewports.
 - Spacing: Consistent vertical rhythm maintained across all sections.
+
+## v11 — Builder — 2026-04-01
+### Changed (Polish pass targeting 7.1+)
+- **Testimonial stars: Unicode -> SVG** — Replaced all Unicode star characters (&#9733;/&#9734;) with inline SVG stars across all 4 testimonial cards. Consistent with the site-wide SVG icon system. 4-star rating uses stroke-only SVG for the empty star.
+- **Team photos: 88px -> 104px** — Larger avatar photos on mobile for better visual impact and face recognition. Scales to 96px at <=400px.
+- **Nav CTA: larger tap target** — Bumped font-size 0.9rem -> 0.95rem, padding 0.55rem -> 0.6rem / 1.1rem -> 1.25rem for stronger visual weight on mobile.
+- **CTA bar: enhanced frosted glass** — Increased backdrop blur (16px -> 20px), saturation (1.4 -> 1.6), opacity (0.75 -> 0.82), and border brightness for a more premium feel.
+- **Trust strip: responsive wrap for <360px** — Added flex-wrap, smaller gap, hidden dividers, and reduced font-size at <=400px to prevent text cramming on narrow screens.
+- **Google Reviews link: real target** — Changed href from "#" to Google Maps URL with target="_blank" and rel="noopener noreferrer".
+- **Stars CSS: flexbox alignment** — Added display:flex, center alignment, and gap to .stars for consistent SVG star spacing.
