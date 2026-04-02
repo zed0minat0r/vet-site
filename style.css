@@ -330,8 +330,13 @@ section {
   filter: drop-shadow(0 0 12px rgba(45, 212, 168, 0.3));
 }
 
-/* --- Services --- */
-.services { background: var(--bg); }
+/* --- Services (warm light-mode section) --- */
+.services {
+  background: linear-gradient(180deg, #f0faf6 0%, #f4f7fa 100%);
+  color: #1a2230;
+}
+.services h2 { color: #1a2230; }
+.services .section-subtitle { color: #5a6577; }
 
 .services-grid {
   display: grid;
@@ -340,45 +345,56 @@ section {
 }
 
 .service-card {
-  background: var(--bg-card);
+  background: #ffffff;
   border-radius: var(--radius);
   padding: 1.75rem 1.5rem;
   text-align: center;
   border: 1px solid rgba(45, 212, 168, 0.12);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   border-top: 3px solid var(--accent);
 }
 .service-card:active {
   transform: scale(0.97);
-  border-color: var(--accent);
-  box-shadow: 0 0 14px var(--accent-glow), 0 0 28px rgba(45, 212, 168, 0.06);
+  box-shadow: 0 4px 20px rgba(45, 212, 168, 0.15);
 }
 
 .service-card h3 {
   font-size: 1.15rem;
   margin-bottom: 0.5rem;
-  color: var(--accent);
+  color: #1a2230;
 }
 .service-card p {
-  color: var(--text-muted);
+  color: #5a6577;
   font-size: 0.95rem;
 }
 
 .service-icon {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   margin: 0 auto 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(45, 212, 168, 0.15);
   border-radius: 50%;
   padding: 4px;
+  transition: transform 0.25s ease;
+}
+.service-card:active .service-icon {
+  transform: scale(1.05);
 }
 .service-icon svg {
   display: block;
-  fill: rgba(45, 212, 168, 0.15);
+  fill: rgba(45, 212, 168, 0.1);
 }
+
+/* Unique warm pastel tints for each service icon */
+.service-card:nth-child(1) .service-icon { background: rgba(45, 212, 168, 0.15); }
+.service-card:nth-child(2) .service-icon { background: rgba(59, 130, 246, 0.12); }
+.service-card:nth-child(3) .service-icon { background: rgba(168, 85, 247, 0.12); }
+.service-card:nth-child(4) .service-icon { background: rgba(251, 146, 60, 0.12); }
+.service-card:nth-child(5) .service-icon { background: rgba(236, 72, 153, 0.12); }
+.service-card:nth-child(6) .service-icon { background: rgba(14, 165, 233, 0.12); }
 
 /* --- Team (light-mode section for visual variety) --- */
 .team {

@@ -132,4 +132,13 @@
 - Verified: all form inputs already 16px font-size, all buttons/nav links already 44px+ min-height
 - Verified: center alignment consistent across all sections on mobile
 - Verified: no horizontal overflow at 375px viewport
+
+## [2.2.0] - 2026-04-01 — Spark: Services Section Visual Warmth Upgrade
+- Converted Services section from dark monochrome to warm light-mode (soft green-to-neutral gradient background)
+- Cards now white with subtle box-shadow, matching Team section's inviting feel
+- Service icons enlarged from 56px to 64px with unique pastel tint per card (green, blue, purple, orange, pink, sky)
+- Text colors updated to warm dark tones for better readability on light background
+- Active state refined with softer glow and icon scale feedback
+- Breaks the "all-dark monotony" flagged in AUDIT.md (Services was lowest at 6.0)
+- CSS-only change, mobile-first, center-aligned, no new sections
 - No new sections added
