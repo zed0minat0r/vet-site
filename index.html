@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pawsitive Care Veterinary | Compassionate Pet Care</title>
-  <meta name="description" content="Pawsitive Care Veterinary offers comprehensive veterinary services including wellness exams, surgery, dental care, and 24/7 emergency support. Your pet's health is our priority.">
+  <meta name="description" content="Pawsitive Care Veterinary in Greenfield, PA — trusted local vet offering wellness exams, surgery, dental care, vaccinations, and 24/7 emergency services for dogs, cats &amp; small animals. Serving Greenfield, Springfield, Cheltenham &amp; surrounding communities.">
   <meta name="theme-color" content="#121820">
   <meta property="og:title" content="Pawsitive Care Veterinary | Compassionate Pet Care">
   <meta property="og:description" content="Where every pet is family. Comprehensive veterinary services including wellness exams, surgery, dental care, and 24/7 emergency support.">
@@ -21,9 +21,10 @@
     "@context": "https://schema.org",
     "@type": "VeterinaryCare",
     "name": "Pawsitive Care Veterinary",
-    "description": "Compassionate, comprehensive veterinary care for your beloved pets.",
+    "description": "Compassionate, comprehensive veterinary care in Greenfield, PA. Wellness exams, surgery, dental care, vaccinations, and 24/7 emergency services for dogs, cats, and small animals.",
     "url": "https://zed0minat0r.github.io/vet-site/",
-    "telephone": "+1-555-PAW-CARE",
+    "telephone": "+1-555-729-2273",
+    "image": "https://images.unsplash.com/photo-1629740067905-bd3f515aa739?auto=format&fit=crop&w=1200&q=80",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "742 Bark Avenue",
@@ -31,6 +32,27 @@
       "addressRegion": "PA",
       "postalCode": "19038",
       "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.1,
+      "longitude": -75.15
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Greenfield, PA" },
+      { "@type": "City", "name": "Springfield, PA" },
+      { "@type": "City", "name": "Cheltenham, PA" },
+      { "@type": "City", "name": "Abington, PA" },
+      { "@type": "City", "name": "Jenkintown, PA" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Veterinary Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wellness Exam", "description": "Annual and bi-annual check-ups" }, "priceSpecification": { "@type": "PriceSpecification", "price": "65", "priceCurrency": "USD", "valueAddedTaxIncluded": false } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dental Cleaning", "description": "Professional cleanings and digital X-rays" }, "priceSpecification": { "@type": "PriceSpecification", "price": "195", "priceCurrency": "USD", "valueAddedTaxIncluded": false } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vaccinations", "description": "Core and lifestyle vaccines" }, "priceSpecification": { "@type": "PriceSpecification", "price": "35", "priceCurrency": "USD", "valueAddedTaxIncluded": false } }
+      ]
     },
     "openingHoursSpecification": [
       {
@@ -47,7 +69,52 @@
       }
     ],
     "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "500",
+      "bestRating": "5"
+    },
+    "paymentAccepted": "Cash, Credit Card, CareCredit, Scratchpay, Pet Insurance",
     "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often should my pet have a wellness exam?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We recommend annual exams for adult pets and bi-annual exams for seniors (7+ years). Puppies and kittens need more frequent visits during their first year for vaccinations and growth monitoring." }
+      },
+      {
+        "@type": "Question",
+        "name": "What vaccinations does my puppy or kitten need?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Core vaccines include rabies, distemper, and parvovirus for dogs; rabies, FVRCP for cats. Lifestyle vaccines like Bordetella or FeLV may be recommended based on your pet's exposure risk." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer payment plans?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We accept CareCredit, Scratchpay, and offer in-house payment plans for qualifying procedures. We also accept all major credit cards and pet insurance." }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I do in a pet emergency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Call our emergency line at (555) 123-4567 immediately. Keep your pet calm and still. Do not give any medications unless instructed. Bring them in as soon as possible." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I access the Pet Parent Portal?",
+        "acceptedAnswer": { "@type": "Answer", "text": "After your first visit, we'll email you a login link for our Pet Parent Portal. From there you can view vaccination records, request prescription refills, see post-visit summaries, and manage upcoming appointments." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you follow up after procedures?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes! After every surgery, dental cleaning, or sick visit, we'll send a check-in text within 24-48 hours to see how your pet is doing. If anything seems off, reply directly and our team will respond promptly." }
+      }
+    ]
   }
   </script>
 </head>
@@ -142,6 +209,7 @@
             </div>
             <h3>Wellness Exams</h3>
             <p>Thorough annual and bi-annual check-ups to keep your pet healthy and catch issues early.</p>
+            <p class="service-price">Starting at $65</p>
           </div>
           <div class="service-card fade-in-up">
             <div class="service-icon" aria-hidden="true">
@@ -149,6 +217,7 @@
             </div>
             <h3>Surgery</h3>
             <p>State-of-the-art surgical suites for spay/neuter, soft tissue, and orthopedic procedures.</p>
+            <p class="service-price">Starting at $250</p>
           </div>
           <div class="service-card fade-in-up">
             <div class="service-icon" aria-hidden="true">
@@ -156,6 +225,7 @@
             </div>
             <h3>Dental Care</h3>
             <p>Professional cleanings, digital dental X-rays, and extractions to protect oral health.</p>
+            <p class="service-price">Starting at $195</p>
           </div>
           <div class="service-card fade-in-up">
             <div class="service-icon" aria-hidden="true">
@@ -163,6 +233,7 @@
             </div>
             <h3>Vaccinations</h3>
             <p>Core and lifestyle vaccines tailored to your pet's age, breed, and risk factors.</p>
+            <p class="service-price">Starting at $35/vaccine</p>
           </div>
           <div class="service-card fade-in-up">
             <div class="service-icon" aria-hidden="true">
@@ -170,6 +241,7 @@
             </div>
             <h3>Preventive Care</h3>
             <p>Heartworm, flea, and tick prevention plus microchipping and nutrition counseling.</p>
+            <p class="service-price">Starting at $45/month</p>
           </div>
           <div class="service-card fade-in-up">
             <div class="service-icon" aria-hidden="true">
@@ -177,8 +249,13 @@
             </div>
             <h3>Diagnostics</h3>
             <p>In-house bloodwork, urinalysis, digital X-ray, and ultrasound for fast, accurate results.</p>
+            <p class="service-price">Starting at $85</p>
           </div>
         </div>
+        <p class="services-pricing-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          We accept CareCredit, Scratchpay, pet insurance &amp; payment plans. <a href="#faq" class="pricing-link">See payment FAQ &rarr;</a>
+        </p>
       </div>
     </section>
 
@@ -312,16 +389,16 @@
             </div>
             <div class="why-choose-text">
               <h3>Personalized Care Plans</h3>
-              <p>No cookie-cutter treatments. Every pet gets a plan tailored to their breed, age, and lifestyle.</p>
+              <p>No cookie-cutter treatments. Every pet gets a plan tailored to their breed, age, and lifestyle — accessible anytime through our Pet Parent Portal.</p>
             </div>
           </div>
           <div class="why-choose-item why-choose-item--inline fade-in-up">
             <div class="why-choose-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
             <div class="why-choose-text">
-              <h3>Family-Run, Community-Trusted</h3>
-              <p>Locally owned for over 15 years with 4.9 stars and 500+ Google reviews from real pet parents.</p>
+              <h3>We Follow Up After Every Visit</h3>
+              <p>After every procedure, we check in via text to see how your pet is recovering. Your peace of mind doesn't end at checkout.</p>
             </div>
           </div>
         </div>
@@ -365,7 +442,7 @@
     <section class="location location-light" id="location">
       <div class="container">
         <h2>Visit Us</h2>
-        <p class="section-subtitle">Conveniently located in Greenfield with easy parking</p>
+        <p class="section-subtitle">Conveniently located in Greenfield, PA &mdash; serving Springfield, Cheltenham, Abington &amp; Jenkintown</p>
         <div class="location-grid">
           <div class="location-info">
             <div class="info-block">
@@ -417,7 +494,7 @@
     <section class="booking" id="booking">
       <div class="container">
         <h2>Book an Appointment</h2>
-        <p class="section-subtitle">Request your visit online - we'll confirm within 1 business day</p>
+        <p class="section-subtitle">Request your visit online &mdash; we'll confirm within 1 business day</p>
         <form class="booking-form" id="booking-form" novalidate>
           <div class="form-group">
             <label for="owner-name">Your Name <span class="required" aria-hidden="true">*</span></label>
@@ -487,9 +564,34 @@
           <button type="submit" class="btn btn-primary btn-full">Request Appointment</button>
           <p class="call-fallback">Prefer to call? <a href="tel:+15557292273" class="call-fallback-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:2px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(555) PAW-CARE</a></p>
           <div class="form-success" id="form-success" role="alert" hidden>
-            <p>Thank you! Your appointment request has been received. We'll contact you within 1 business day to confirm.</p>
+            <p>Thank you! Your appointment request has been received. We'll confirm within 1 business day via text or email. After your visit, we'll check in on your pet's recovery too.</p>
           </div>
         </form>
+        <div class="portal-strip">
+          <p class="portal-strip-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Existing Clients
+          </p>
+          <p class="portal-strip-text">Access your pet's records, request prescription refills, and manage appointments through our <strong>Pet Parent Portal</strong>.</p>
+          <div class="portal-strip-features">
+            <span class="portal-feature">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Vaccination records
+            </span>
+            <span class="portal-feature">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Rx refill requests
+            </span>
+            <span class="portal-feature">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Post-visit summaries
+            </span>
+          </div>
+          <a href="#" class="btn btn-outline btn-sm portal-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Log in to Pet Portal
+          </a>
+        </div>
       </div>
     </section>
 
@@ -525,6 +627,16 @@
           <details class="faq-item">
             <summary>Does my pet need dental cleanings?</summary>
             <p>Yes! Dental disease affects over 80% of pets by age three. We recommend annual dental exams and professional cleanings as needed. Regular dental care prevents pain, infection, and more serious health problems down the road.</p>
+          </details>
+
+          <h3 class="faq-category">Your Account &amp; Portal</h3>
+          <details class="faq-item">
+            <summary>How do I access the Pet Parent Portal?</summary>
+            <p>After your first visit, we'll email you a login link for our Pet Parent Portal. From there you can view vaccination records, request prescription refills, see post-visit summaries, and manage upcoming appointments.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you follow up after procedures?</summary>
+            <p>Yes! After every surgery, dental cleaning, or sick visit, we'll send a check-in text within 24-48 hours to see how your pet is doing. If anything seems off, reply directly and our team will respond promptly.</p>
           </details>
 
           <h3 class="faq-category">Payment &amp; Emergencies</h3>
@@ -573,9 +685,10 @@
         <div class="footer-links">
           <h3>Quick Links</h3>
           <ul role="list">
-            <li><a href="#services">Services</a></li>
+            <li><a href="#services">Services &amp; Pricing</a></li>
             <li><a href="#team">Our Team</a></li>
             <li><a href="#booking">Book Appointment</a></li>
+            <li><a href="#">Pet Parent Portal</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>

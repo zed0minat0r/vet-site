@@ -476,6 +476,36 @@ section {
 .service-card:nth-child(6) .service-icon svg { fill: rgba(14, 165, 233, 0.08); }
 .service-card:nth-child(6) { border-top-color: #0ea5e9; }
 
+/* Service pricing hints */
+.service-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-top: 0.5rem;
+  letter-spacing: 0.3px;
+}
+
+/* Services pricing note */
+.services-pricing-note {
+  text-align: center;
+  margin-top: 1.75rem;
+  font-size: 0.9rem;
+  color: #5a6577;
+  padding: 0.75rem 1rem;
+  background: rgba(45, 212, 168, 0.06);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(45, 212, 168, 0.12);
+}
+.services-pricing-note .pricing-link {
+  color: var(--accent-dark);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.services-pricing-note .pricing-link:active {
+  text-decoration: underline;
+}
+
 /* --- Team (dark section — breaks card-wall monotony after light Services) --- */
 .team {
   background: var(--bg);
@@ -983,6 +1013,56 @@ section {
   min-height: 44px;
 }
 .call-fallback-link:active { opacity: 0.7; }
+
+/* Portal strip below booking form */
+.portal-strip {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1px solid rgba(45, 212, 168, 0.15);
+  text-align: center;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.portal-strip-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a2230;
+  margin-bottom: 0.5rem;
+}
+.portal-strip-text {
+  font-size: 0.9rem;
+  color: #5a6577;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.portal-strip-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.portal-feature {
+  font-size: 0.85rem;
+  color: #3a4a5e;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.btn-sm {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  min-height: 40px;
+}
+.portal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
 
 /* --- FAQ (warm light-mode) --- */
 .faq {

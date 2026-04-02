@@ -444,3 +444,16 @@
 ## v10-spark — Spark — 2026-04-01
 ### Changed (Why Choose Us: accent-glow callout design)
 - **Why Choose Us: accent-glow callout treatment** — Breaks card-wall monotony per audit rec #1. Added radial accent gradient wash to section background, decorative accent bar (60px gradient line) above section heading, left accent border (3px) on each item for callout feel, subtle accent-tinted card backgrounds via diagonal gradient, and soft glow on icon circles. Hover/active states updated to complement (border-left brightens to full accent on interact). CSS-only, mobile-first, center-aligned. No new sections or HTML changes.
+
+## v10-builder — Builder — 2026-04-01
+### Changed (Pricing Transparency, Pet Parent Portal, Local SEO, Post-Visit Follow-Up)
+- **Service card pricing hints** — Added "Starting at $X" price labels to all 6 service cards. Uses `.service-price` class with accent-dark color. Differentiator: only ~40% of vet sites show any pricing.
+- **Services payment/financing note** — Added payment acceptance strip below services grid (CareCredit, Scratchpay, pet insurance, payment plans) with link to payment FAQ.
+- **Pet Parent Portal strip** — Added portal access card below booking form with feature checklist (vaccination records, Rx refill requests, post-visit summaries) and "Log in to Pet Portal" CTA. Footer quick links updated to include portal.
+- **Post-visit follow-up messaging** — Booking form success message now mentions post-visit check-in. New "We Follow Up After Every Visit" item in Why Choose Us section (replaces Family-Run, which was redundant with trust strip). Message icon SVG.
+- **Local SEO: enhanced JSON-LD** — VeterinaryCare schema now includes geo coordinates, areaServed (5 surrounding cities), hasOfferCatalog with 3 service offers + prices, aggregateRating (4.9/500), paymentAccepted, image, and proper telephone format.
+- **FAQPage structured data** — New JSON-LD block with 6 FAQ entries for Google rich snippets. Includes new portal and follow-up FAQs.
+- **New FAQ entries** — "Your Account & Portal" category with 2 questions: portal access and post-visit follow-ups.
+- **Local keywords in meta description** — Updated to include "Greenfield, PA" and surrounding communities (Springfield, Cheltenham, Abington, Jenkintown).
+- **Location subtitle with area-served** — Updated "Visit Us" subtitle to list surrounding communities for local SEO.
+- **CSS additions** — `.service-price`, `.services-pricing-note`, `.portal-strip` with features grid, `.btn-sm`, `.portal-btn`. All mobile-first, center-aligned.
