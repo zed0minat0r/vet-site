@@ -543,3 +543,21 @@
 - Added 375px-specific refinements: tighter h2 (1.6rem), full-width hero actions, compact "Why Choose" padding
 - Emergency symptoms list center-aligned on small screens (was left-only, causing visual drift)
 - FAQ CTA button right-sized for narrow viewports (0.95rem font, tighter padding)
+
+## [2.5.0] - 2026-04-01 — Refiner: v10 Audit Priorities
+
+### Location/Hours Visual Refresh (Priority 1)
+- Wrapped address/hours/phone info blocks in a `.location-info-card` with white background, accent top border, and subtle shadow — breaks the plain-white "generic find us" look
+- Added radial gradient overlay to section background for depth
+- Added "First Visit?" tip card below info with arrival instructions, parking info, and curbside check-in note — gives the section unique personality and utility beyond the footer hours duplicate
+- Deep-links to booking form from the first-visit card
+
+### Break Stacked-Card Sameness on Mobile (Priority 2)
+- Services grid changed from 1-column stack to 2-column mini-grid at 375px with compact card sizing (smaller icons, tighter padding, reduced font sizes) — breaks the vertical card monotony
+- Testimonials converted from vertical stack to horizontal swipe carousel on mobile with `scroll-snap-type: x mandatory` and hidden scrollbar — each card takes 85% viewport width with snap-to-center
+- Both sections restore standard grid layout at 600px+
+
+### Technical Debt Cleanup (Priority 3)
+- `!important` declarations reduced from 16 to 7 — all remaining 7 are in `prefers-reduced-motion` or `.no-js` blocks (correct usage). Refactored `.emergency-note`, `.emergency-response`, `.footer-tagline`, and `.newsletter-btn` to use parent-class specificity instead
+- Placeholder `#` links reduced from 8 to 1 (back-to-top, which uses `event.preventDefault()`). Pet Parent Portal links converted to `<span>` elements with "Coming Soon" label. Footer portal link shows "(Coming Soon)". Social links now point to real platform URLs with `data-placeholder` attribute. Privacy/Terms links converted to muted placeholder `<span>` elements
+- Added `.portal-coming-soon` and `.footer-link-placeholder` utility classes for consistent placeholder styling

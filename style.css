@@ -419,19 +419,20 @@ section {
 }
 
 .service-card h3 {
-  font-size: 1.15rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
   color: #1a2230;
 }
 .service-card p {
   color: #5a6577;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .service-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 1rem;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 0.65rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -444,6 +445,8 @@ section {
 }
 .service-icon svg {
   display: block;
+  width: 36px;
+  height: 36px;
 }
 
 /* Service card color tints */
@@ -473,10 +476,10 @@ section {
 
 /* Service pricing hints */
 .service-price {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--accent-dark);
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
   letter-spacing: 0.3px;
 }
 
@@ -575,9 +578,20 @@ section {
 }
 
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.75rem;
+  scrollbar-width: none;
+}
+.testimonials-grid::-webkit-scrollbar {
+  display: none;
+}
+.testimonials-grid > * {
+  flex: 0 0 85%;
+  scroll-snap-align: center;
 }
 
 .testimonial-card {
@@ -798,10 +812,10 @@ section {
   color: var(--text-muted);
 }
 
-.emergency-note {
+.emergency-box p.emergency-note {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--emergency) !important;
+  color: var(--emergency);
   margin-bottom: 0.75rem;
 }
 
@@ -839,11 +853,11 @@ section {
   color: var(--emergency);
 }
 
-.emergency-response {
+.emergency-box p.emergency-response {
   font-size: 0.85rem;
-  color: var(--text-muted) !important;
-  margin-top: 0.75rem !important;
-  margin-bottom: 0 !important;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  margin-bottom: 0;
 }
 .emergency-faq-link {
   color: var(--accent);
@@ -1360,12 +1374,12 @@ section {
   color: var(--accent);
   letter-spacing: 0.3px;
 }
-.footer-tagline {
-  font-size: 0.85rem !important;
-  color: var(--accent) !important;
+.footer-brand p.footer-tagline {
+  font-size: 0.85rem;
+  color: var(--accent);
   opacity: 0.65;
   letter-spacing: 0.5px;
-  margin-top: 0.25rem !important;
+  margin-top: 0.25rem;
 }
 
 .footer-links h3,
@@ -1501,7 +1515,13 @@ section {
 
 /* --- Desktop Breakpoints --- */
 @media (min-width: 600px) {
-  .services-grid { grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .service-card { padding: 1.75rem 1.5rem; }
+  .service-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+  .service-card p { font-size: 0.95rem; }
+  .service-icon { width: 64px; height: 64px; margin: 0 auto 1rem; }
+  .service-icon svg { width: 48px; height: 48px; }
+  .service-price { font-size: 0.85rem; margin-top: 0.5rem; }
   .team-grid { grid-template-columns: 1fr 1fr; }
   /* 2-col team card layout */
   .team-card--horizontal {
@@ -1509,7 +1529,16 @@ section {
     text-align: center;
   }
   .team-card--horizontal .avatar-photo { margin: 0 auto 1rem; }
-  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding-bottom: 0;
+  }
+  .testimonials-grid > * {
+    flex: none;
+  }
   .emergency-details { flex-direction: row; justify-content: center; gap: 3rem; }
   .form-row { grid-template-columns: 1fr 1fr; }
 }
@@ -1727,6 +1756,25 @@ a.trust-strip-link:active {
   opacity: 0.7;
 }
 
+/* Coming-soon placeholders */
+.portal-coming-soon {
+  opacity: 0.6;
+  cursor: default;
+}
+.footer-link-placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+  cursor: default;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.footer-link-placeholder small {
+  margin-left: 0.3rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
 /* --- Scroll-triggered fade-in-up --- */
 @keyframes fadeInUp {
   from {
@@ -1930,9 +1978,9 @@ a.trust-strip-link:active {
   color: var(--text-muted);
   opacity: 0.6;
 }
-.newsletter-btn {
-  padding: 0.6rem 1.2rem !important;
-  font-size: 0.85rem !important;
+.btn.newsletter-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
   min-height: 44px;
   white-space: nowrap;
 }
