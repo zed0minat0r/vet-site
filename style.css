@@ -529,15 +529,16 @@ section {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Horizontal team card — photo left, text right (breaks vertical card-wall) */
+/* Horizontal team card — stacked + centered on mobile, row layout on tablet+ */
 .team-card--horizontal {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
-  text-align: left;
+  gap: 1rem;
+  text-align: center;
 }
 .team-card--horizontal .team-avatar { flex-shrink: 0; }
-.team-card--horizontal .avatar-photo { margin: 0; }
+.team-card--horizontal .avatar-photo { margin: 0 auto; }
 .team-card--horizontal .team-info { min-width: 0; }
 
 .avatar-photo {
@@ -1056,7 +1057,7 @@ section {
 .btn-sm {
   padding: 0.5rem 1.25rem;
   font-size: 0.9rem;
-  min-height: 40px;
+  min-height: 44px;
 }
 .portal-btn {
   display: inline-flex;
@@ -1590,12 +1591,13 @@ section {
   text-align: center;
   position: relative;
 }
-/* Inline layout: icon left, text right — distinct from stacked service cards */
+/* Inline layout: stacked + centered on mobile, row layout on tablet+ */
 .why-choose-item--inline {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  text-align: left;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
 }
 .why-choose-item--inline .why-choose-icon {
   flex-shrink: 0;
@@ -1627,6 +1629,13 @@ section {
 @media (min-width: 600px) {
   .why-choose-grid {
     grid-template-columns: 1fr 1fr;
+  }
+  /* Restore inline (row) layout on tablet+ where space permits */
+  .why-choose-item--inline {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1rem;
   }
 }
 

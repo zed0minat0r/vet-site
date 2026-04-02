@@ -457,3 +457,9 @@
 - **Local keywords in meta description** — Updated to include "Greenfield, PA" and surrounding communities (Springfield, Cheltenham, Abington, Jenkintown).
 - **Location subtitle with area-served** — Updated "Visit Us" subtitle to list surrounding communities for local SEO.
 - **CSS additions** — `.service-price`, `.services-pricing-note`, `.portal-strip` with features grid, `.btn-sm`, `.portal-btn`. All mobile-first, center-aligned.
+
+### Fixed (Pixel — Mobile Center-Alignment + 375px Audit)
+- **Team horizontal cards center-alignment** — `.team-card--horizontal` now stacks vertically with `text-align: center` on mobile (was `text-align: left`). Row layout preserved at 600px+.
+- **Why-choose inline layout center-alignment** — `.why-choose-item--inline` now stacks vertically with `text-align: center` on mobile (was `text-align: left`). Inline row layout restored at 600px+ breakpoint.
+- **btn-sm tap target** — Bumped `.btn-sm` `min-height` from 40px to 44px to meet minimum tap-target requirement.
+- **375px audit** — Inputs already at 16px font-size (no iOS zoom). All buttons/links meet 44px min-height. No horizontal overflow issues. Padding and spacing clean.
