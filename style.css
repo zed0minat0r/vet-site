@@ -647,7 +647,7 @@ section {
   border-collapse: collapse;
 }
 .hours-table td {
-  padding: 0.4rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   color: var(--text-muted);
   font-size: 0.95rem;
 }
@@ -686,14 +686,18 @@ section {
   color: var(--text-muted);
   text-decoration: none;
   display: block;
+  min-height: 44px;
+  padding: 0.5rem 0;
   transition: color 0.2s ease;
 }
 .address-link:active { color: var(--accent); }
 .directions-cta {
-  display: block;
+  display: inline-block;
   margin-top: 0.4rem;
   font-size: 0.85rem;
   color: var(--accent);
+  min-height: 44px;
+  line-height: 44px;
   font-weight: 600;
 }
 

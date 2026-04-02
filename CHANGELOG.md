@@ -124,3 +124,12 @@
 - Technical: Added preconnect + dns-prefetch for images.unsplash.com in head
 - Technical: Added og:image meta tag for social sharing / iMessage link previews
 - All changes mobile-first, center-aligned, no new sections added
+
+## [2.1.0] - 2026-04-01 — Pixel: Mobile Tap Target Audit (375px)
+- Address link (.address-link): Added min-height 44px + vertical padding for proper tap target
+- Directions CTA (.directions-cta): Added min-height 44px tap target
+- Hours table: Increased row padding from 0.4rem to 0.5rem for better readability and touch spacing
+- Verified: all form inputs already 16px font-size, all buttons/nav links already 44px+ min-height
+- Verified: center alignment consistent across all sections on mobile
+- Verified: no horizontal overflow at 375px viewport
+- No new sections added
