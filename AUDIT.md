@@ -2,7 +2,7 @@
 
 **Auditor:** Nigel
 **Date:** 2026-04-01
-**Version:** v9
+**Version:** v10
 **Perspective:** Mobile (375px)
 **Context:** Template build — placeholders expected; stock content/photos not penalized
 
@@ -21,171 +21,163 @@
 
 ---
 
-## What Changed Since v8
+## What Changed Since v9
 
-1. **Hero: `<picture>` / srcset replaces CSS background-image** (Refiner) — Three breakpoint sources (400w, 768w, 1200w) with quality stepping. `fetchpriority="high"`, `loading="eager"`, proper `width`/`height` for CLS. Overlay now via `::after` on `.hero-bg`. This was v8 rec #2 and a meaningful LCP improvement.
-2. **Time-aware hero greeting** (Refiner/Spark) — JS-driven greeting ("Good morning/afternoon/evening" or "24/7 emergencies") fades in via CSS transition. `aria-live="polite"` for screen readers. No-JS fallback: empty, invisible. A genuine micro-delight that was v8 rec #3(d).
-3. **Team: dark horizontal cards** (Refiner) — Team section uses `var(--bg)` dark background with `team-card--horizontal` layout (photo left, text right) on mobile. Breaks the card-wall pattern. Reverts to stacked/centered at 600px+ 2-col grid.
-4. **Testimonials: blue-tint gradient bg + left accent border** (Refiner) — Background changed from flat `#f9fafb` to gradient `#f0f4fa` to `#f7faf9`. Cards get a left 3px accent border. Visually distinct from services and team sections.
-5. **Why Choose Us: inline icon-left layout + gradient wash + accent bar** (Spark) — Items display icon left / text right. Section bg uses radial gradient wash with accent tint. Top accent bar via `::before`. Left border on items. Distinct visual identity.
-6. **Desktop hover micro-interactions** (Refiner) — `@media (hover: hover)` block with translateY lifts, shadow enhancements, icon scale on service/team/testimonial/why-choose cards. Touch devices unaffected. Correct implementation.
-7. **Service card pricing** (Builder) — "Starting at $X" labels on all 6 service cards. Payment/financing note strip below grid (CareCredit, Scratchpay, pet insurance). Real differentiator — only ~40% of vet sites show pricing.
-8. **Pet Parent Portal strip** (Builder) — Below booking form: feature checklist (vaccination records, Rx refills, post-visit summaries) + "Log in to Pet Portal" CTA. Footer quick links updated.
-9. **Post-visit follow-up messaging** (Builder) — "We Follow Up After Every Visit" in Why Choose Us. Booking form success message mentions post-visit check-in. New FAQ entries.
-10. **Enhanced JSON-LD / Local SEO** (Builder) — VeterinaryCare schema with geo coordinates, areaServed (5 cities), hasOfferCatalog with prices, aggregateRating, paymentAccepted. FAQPage structured data with 6 entries. Meta description includes local keywords.
-11. **New FAQ category: "Your Account & Portal"** (Builder) — 2 new questions (portal access, follow-ups). Plus "Payment & Emergencies" category with 2 questions. Total now 10 FAQs across 4 categories.
-12. **Font size fixes** (Pixel) — Various font-size adjustments for mobile readability.
+1. **Center-alignment violations FIXED** (Pixel) — `team-card--horizontal` and `why-choose-item--inline` now use `flex-direction: column`, `align-items: center`, `text-align: center` on mobile. The inline/horizontal layouts only activate at 600px+. This resolves the #1 v9 recommendation and the AGENT-RULES.md compliance issue.
+2. **Emergency section enriched** (Refiner/Builder) — New "emergency-prep" card with bookmark icon ("Save our emergency number in your phone now"), response time line ("Average after-hours response: under 15 minutes"), deep-link to Emergency billing FAQ, and a "When You Call" 3-step ordered list (no phone trees, urgency assessment, on-call vet meets you). Glow rings added to pulse cross via `::before`/`::after` pseudo-elements with `emergencyRing` keyframes. This addresses v9 rec #2 for Emergency.
+3. **Footer enriched** (Refiner) — Quick Answers pill links (New patient info, Payment options, Emergency care, Book online) with tappable 36px line-height. Footer hours block with Mon-Fri/Sat/Sun schedule and emergency deep-link. Google Business Profile link now uses real `google.com/maps` URL instead of `#`. This addresses v9 rec #2 for Footer.
+4. **Content ecosystem connected** (Refiner/Builder) — Trust strip "4.9 Google" now links to `#testimonials`. Services pricing note deep-links to `#faq-payment`. Why Choose Us has a "Book Your First Visit" CTA at bottom. Emergency section links to billing FAQ. Booking form success message mentions portal with inline link. Footer Quick Answers deep-link to FAQ categories. This addresses v9 rec #3.
+5. **Header declutter at 375px** (Builder) — Logo badge shrinks to 32x18px, nav CTA to 0.85rem, overall nav padding reduced. Trust strip wraps with dividers hidden below 400px.
+6. **Logo animation removed** (Builder) — No keyframe animation on logo badge. Clean static render.
+7. **Razor cleanup** (Razor) — 12 lines removed. CSS is now 1978 lines (lean for this feature set).
+8. **QA: 11/11 perfect pass** — All validation checks passed.
 
-All three v8 recommendations were addressed: (1) visual variety across card sections, (2) hero responsive image, (3) micro-interactions/delight moments.
+All three v9 recommendations were addressed: (1) center-alignment compliance, (2) Emergency/Footer floor-raising, (3) content ecosystem cross-linking.
 
 ---
 
 ## Section-by-Section Breakdown
 
-### 1. Navigation / Header — 7.1 (v8: 7.1, unchanged)
+### 1. Navigation / Header — 7.2 (v9: 7.1, +0.1)
 
 **Positives:**
-- No regressions. SVG paw logo badge, gradient CTA, blur header, aria-expanded, skip-link, phone icon — all intact
-- Nav CTA at 0.95rem/44px min-height remains clear and tappable
+- The 375px refinements are noticeable: logo badge at 32px with 18px SVG, nav CTA at 0.85rem/0.5rem-0.9rem padding, and nav padding at 0.6rem 0.75rem. The header no longer feels cramped at 375px — there is breathing room between the logo, Book Now pill, and hamburger
+- Logo animation removed — the badge renders immediately without a distracting bounce/fade on page load. This is the correct call for a professional site
+- All previous strengths intact: blur backdrop, gradient CTA, skip-link, aria-expanded, phone icon
 
 **Issues:**
-- Header still crowded with logo + phone icon + Book Now pill + hamburger at 375px
-- Logo badge animation on every page load
+- Still four elements competing for space (logo, phone icon, Book Now, hamburger). The phone icon and Book Now pill serve overlapping "contact us" purposes at this viewport width
+- `Book Now` and the phone icon are close enough at 375px that fat-finger taps remain a mild concern
 
-**Assessment:** No changes targeted this section. Holds at 7.1.
+**Assessment:** The 375px refinements and logo animation removal are small but correct improvements. The header reads cleaner on a real phone. Moving from 7.1 to 7.2.
 
-### 2. Hero — 7.5 (v8: 7.3, +0.2)
+### 2. Hero — 7.5 (v9: 7.5, unchanged)
 
 **Positives:**
-- The `<picture>` element with three breakpoint sources (400w/70q, 768w/75q, 1200w/80q) is a correct, meaningful upgrade. On a 375px phone on cellular, the browser now loads a 400px-wide image instead of whatever the CSS background-image would have fetched. `fetchpriority="high"` and `loading="eager"` with explicit `width`/`height` attributes prevent CLS and prioritize LCP correctly. This was v8 rec #2 — fully resolved
-- The time-aware greeting is a genuine delight moment. A pet owner opening the site at 8 PM sees "Good evening! We are here for your furry family." — it feels personal and alive, not static template text. The fade-in transition (0.4s ease) is subtle and appropriate. `aria-live="polite"` means screen readers announce it. No-JS fallback is clean (empty, invisible). This was v8 rec #3(d) — fully resolved
-- Trust strip, dual CTAs, frosted paw badge — all carry over
+- `<picture>` element with three breakpoint sources, time-aware greeting, trust strip (now with linked Google rating), dual CTAs — all carry over
+- Trust strip "4.9 Google" now links to `#testimonials` — a useful cross-reference that was a v9 rec #3 gap
 
 **Issues:**
-- Still no WebP/AVIF `type` attribute on the `<source>` elements — Unsplash's `auto=format` handles format negotiation server-side, but explicit `type="image/webp"` sources would be more robust
-- The greeting text at 0.9rem is readable but modest — on a quick scroll it could be missed below the paw badge and above the h1. It is a nice touch for users who pause at the hero, less impactful for fast scrollers
-- The hero paw SVG (80x80) still adds visual weight without clear purpose
+- Still no explicit `type="image/webp"` on `<source>` elements
+- Hero paw SVG (80x80) still adds visual weight without clear purpose
+- The greeting at 0.9rem can still be missed by fast scrollers
 
-**Assessment:** Two substantive improvements. The `<picture>` element is a real performance win for mobile users — this is not visible but materially improves load time and data usage. The time-aware greeting adds personality that no generic template has. Together they move the hero from technically solid to genuinely differentiated. Moving from 7.3 to 7.5.
+**Assessment:** The trust strip link is a small ecosystem improvement but does not materially change the hero experience. Holds at 7.5.
 
-### 3. Services — 7.4 (v8: 7.2, +0.2)
+### 3. Services — 7.4 (v9: 7.4, unchanged)
 
 **Positives:**
-- Pricing labels ("Starting at $65", "Starting at $250", etc.) on every service card are a significant content differentiator. A pet owner on their phone can now see approximate costs before calling. This is the kind of transparency that builds trust — and as Builder noted, only ~40% of vet sites show any pricing. On a 375px screen, the price appears cleanly below the service description in accent-dark color with 0.85rem/700 weight. It draws the eye without dominating
-- The payment/financing note strip below the grid ("We accept CareCredit, Scratchpay...") adds practical utility. A pet owner worried about a $250 surgery sees immediately that financing is available. The strip has a subtle accent border and background tint — it reads as supplementary info, not a hard sell
-- Color-matched icon strokes, pastel tints, fade-in-up cascade, a11y handling — all carry over
+- Pricing labels, payment/financing note strip, color-matched icons, fade-in cascade — all carry over
+- The pricing note now deep-links to `#faq-payment` (Payment & Emergencies FAQ category) — this was a specific v9 rec #3(a) gap. A pet owner reading about CareCredit can tap directly to the FAQ for details
 
 **Issues:**
-- Six stacked cards remains a long vertical scroll — pricing helps justify the scroll but does not shorten it
-- The pricing note link (".pricing-link") is styled but the FAQ anchor is generic. A direct "See payment options" deep-link to the Payment & Emergencies FAQ category would be more useful
+- Six stacked cards remains a long vertical scroll at 375px
+- No visual break between the six cards (alternating tints or a midpoint separator could help)
 
-**Assessment:** Pricing transparency is a genuinely valuable addition that moves this section from "nice template" to "this practice is being upfront with me." The payment note adds practical value. These are content-level improvements that a real user would notice and appreciate. Moving from 7.2 to 7.4.
+**Assessment:** The deep-link fix is a content ecosystem improvement but the section visual experience is unchanged. Holds at 7.4.
 
-### 4. Meet the Team — 7.3 (v8: 7.2, +0.1)
+### 4. Meet the Team — 7.4 (v9: 7.3, +0.1)
 
 **Positives:**
-- The horizontal card layout (photo left, text right) on mobile is a meaningful visual break from the card-wall pattern. On a 375px phone, each team card now shows the avatar on the left with name/role/bio flowing right. This is visually distinct from the stacked service cards above and the bordered testimonial cards below. A user scrolling at speed can tell they have entered a different section from the layout alone, not just the heading. This addresses v8 rec #1
-- The dark background (`var(--bg)`) creates contrast with the light services section above and the light testimonials section below. The alternating light/dark rhythm helps with visual pacing
-- 4 team members (up from 3) fills out the roster. 104px photos remain clear at mobile scale
+- **CENTER ALIGNMENT FIXED.** The `team-card--horizontal` class now uses `flex-direction: column`, `align-items: center`, `text-align: center` on mobile. The horizontal layout only activates at 600px+ (tablet/desktop). On a 375px phone, team cards display avatar centered above name/role/bio — consistent with the site's center-alignment rule. This resolves the v9 AGENT-RULES.md compliance violation
+- The dark background contrast with surrounding light sections still provides good visual pacing
+- 4 team members, 104px (96px at 375px) photos, dark background — all carry over
 
 **Issues:**
-- **CENTER ALIGNMENT VIOLATION:** The `team-card--horizontal` class sets `text-align: left` on mobile (375px). The AGENT-RULES.md explicitly states "CENTER ALIGNMENT: All content must be consistently center-aligned on mobile. This is a core requirement." The horizontal layout choice directly conflicts with this rule. The layout is arguably better UX for readability, but it breaks a stated project rule. This is a process issue, not a design issue
-- The dark background with `var(--bg-alt)` cards means team cards are slightly lighter boxes on a dark background — the contrast is subtle and the cards can feel like they blend into the section bg rather than floating above it
+- On mobile, the team cards now look similar to other stacked card sections (services, testimonials). The visual differentiation that the horizontal layout provided is lost at 375px. The dark background is now the primary differentiator
+- The `avatar-photo` shrinks to 96px at 375px via the small-screen media query — appropriate but the size difference is barely perceptible
 
-**Assessment:** The horizontal layout and dark background successfully break the card-wall monotony. A user scrolling through the site now encounters visually distinct sections. However, the left-aligned text on mobile violates the center-alignment rule from AGENT-RULES.md. The design improvement is real (+0.1 for visual differentiation), but the rule violation prevents a larger bump. Moving from 7.2 to 7.3.
+**Assessment:** The center-alignment fix resolves a rules compliance issue. The trade-off is that mobile visual differentiation from other card sections is reduced — the dark background alone now does that work. The rule compliance is worth the trade-off. Moving from 7.3 to 7.4 for fixing the violation cleanly.
 
-### 5. Testimonials — 7.3 (v8: 7.2, +0.1)
+### 5. Testimonials — 7.3 (v9: 7.3, unchanged)
 
 **Positives:**
-- The blue-tint gradient background (`#f0f4fa` to `#f7faf9`) gives this section a distinct color identity. On a 375px phone, scrolling from the dark team section into this cool-toned light section creates a clear visual transition. The gradient is subtle — not garish — but distinct enough to register
-- The left accent border (3px solid `var(--accent)`) on testimonial cards replaces the generic top-border pattern. This is a small but effective detail: each card now has a green accent bar on the left that anchors the eye and creates a visual rhythm distinct from service cards (which use a top color border)
-- SVG stars, Google Reviews link, reviewer photos, quote marks — all carry over
+- Blue-tint gradient background, left accent border, SVG stars, Google Reviews link (now using real `google.com/maps` URL in the footer social links), reviewer photos — all carry over
 
 **Issues:**
-- Four testimonials is still the minimum for credibility. More variety (different pet types, different services) would strengthen the section
-- The left border + blue-tint gradient combination is tasteful but neither is particularly bold. A user scrolling quickly might not consciously register the section's visual identity as distinct
+- Four testimonials remains the minimum for credibility
+- The section does not cross-reference other new features (e.g., mentioning the portal or follow-up care in a testimonial would reinforce those differentiators)
 
-**Assessment:** The gradient background and left accent border create measurable visual differentiation from other card sections. The section no longer looks like "another card grid" — it has its own color story. The improvement is incremental but correct. Moving from 7.2 to 7.3.
+**Assessment:** No direct changes to this section. Holds at 7.3.
 
-### 6. Why Choose Us — 7.2 (v8: 7.0, +0.2)
+### 6. Why Choose Us — 7.3 (v9: 7.2, +0.1)
 
 **Positives:**
-- The inline icon-left layout (`why-choose-item--inline`) is the biggest visual change here. On a 375px phone, each item shows the accent icon circle on the left with heading + paragraph flowing right. This is visually distinct from every other section's stacked card pattern. The layout reads faster than stacked cards — the icon serves as a bullet marker and the text flows naturally beside it
-- The gradient wash background (`radial-gradient` with accent tint + `var(--bg)` to `var(--bg-alt)`) gives the section a subtle warmth that distinguishes it from the flat dark and flat light sections around it. The top accent bar (`::before` with gradient from accent to `#0ea5e9`) provides a clear visual separator
-- The left border on each item (3px solid `rgba(45, 212, 168, 0.35)`) adds structure without heaviness
-- Content update: "We Follow Up After Every Visit" replaces "Family-Run/Community-Trusted" (which was redundant with the trust strip). The follow-up messaging is a genuine differentiator — it signals post-visit care that most vet sites do not mention
-- Active states for mobile tap feedback (border-color transition)
+- **CENTER ALIGNMENT FIXED.** The `why-choose-item--inline` class now uses `flex-direction: column`, `align-items: center`, `text-align: center` on mobile. The inline icon-beside-text layout only activates at 600px+. On a 375px phone, each item shows icon centered above heading and paragraph. This resolves the v9 AGENT-RULES.md compliance violation
+- **CTA ADDED.** "Book Your First Visit" link now appears at the bottom of the section. This was a persistent gap noted in v8 and v9 rec #3(b). After reading the differentiators, a user has a clear action to take
+- Gradient wash background, top accent bar, left border on items, follow-up messaging — all carry over
 
 **Issues:**
-- **CENTER ALIGNMENT VIOLATION:** Same as team section. `text-align: left` on mobile via the `--inline` modifier. This breaks the center-alignment rule from AGENT-RULES.md. Same caveat: the left alignment arguably reads better for icon-beside-text layout, but the rule is clear
-- The section subtitle "What sets us apart from the rest" is still generic. The differentiators are strong; the header undersells them
-- No CTA at the bottom of this section — still missing the "Book Your First Visit" link from v8 rec #1 note
+- On mobile, the stacked icon-above-text layout is now similar to the services section pattern. The gradient wash background and accent bar are the primary differentiators
+- The section subtitle "What sets us apart from the rest" remains generic. With strong content below it, the header undersells the section
 
-**Assessment:** The inline layout, gradient wash, accent bar, and left borders together give this section a distinct visual identity that it previously lacked. It no longer looks like "another card section." The follow-up messaging content is a genuine differentiator. The center-alignment violation is a rules issue. Moving from 7.0 to 7.2.
+**Assessment:** The alignment fix and CTA addition are both meaningful. The CTA in particular closes a conversion gap — a user who is persuaded by the differentiators can now act immediately. Moving from 7.2 to 7.3.
 
-### 7. Emergency — 7.0 (v8: 7.0, unchanged)
+### 7. Emergency — 7.3 (v9: 7.0, +0.3)
 
 **Positives:**
-- Bulleted symptoms, pulse animation (with reduced-motion), dark standout, tap-to-call — all intact
+- **Preparedness card** — The `emergency-prep` block with bookmark icon and "Save our emergency number in your phone now — seconds matter in a crisis" is a genuinely useful nudge. On a 375px phone, this appears as a tinted card with red accent text. It is the kind of practical advice a real pet owner benefits from. This was v9 rec #2 for Emergency
+- **Response time** — "Average after-hours response: under 15 minutes" with a link to the Emergency billing FAQ gives a real user two pieces of information they actually want: how fast will help arrive, and what will it cost. The deep-link to `#faq-payment` connects the content ecosystem
+- **"When You Call" 3-step process** — The ordered list (1. A veterinary professional answers — no phone trees, 2. We assess urgency, 3. On-call vet meets you) demystifies the emergency experience. A panicked pet owner can see exactly what will happen. The numbered step circles with accent coloring are clean and scannable
+- **Glow rings** — The `::before` and `::after` pseudo-elements on `.pulse-cross` create two concentric rings that pulse outward. Combined with the existing `emergencyPulse` scale animation, the visual effect is a beating heart / emergency beacon. `prefers-reduced-motion` correctly disables all three animations. This is tasteful — not overdone
+- Bulleted symptoms, tap-to-call, dark standout — all carry over
 
 **Issues:**
-- No changes this round
+- The section is now content-heavy: intro paragraph, phone/hours, symptoms list, prep card, response time, 3-step process. On a 375px phone, this is a long scroll. For a section a user visits in a crisis, scannability matters — the phone number and symptom list should be visually dominant over the prep card and steps
+- The glow rings are subtle enough to miss on a quick scroll — they do not draw the eye dramatically
 
-**Assessment:** Unchanged at 7.0.
+**Assessment:** This is the biggest mover in v10. The emergency section went from "functional dark box with phone number" to "a section that actually helps a panicked pet owner." The prep card, response time, billing FAQ link, and 3-step process each add genuine utility. The glow rings add appropriate visual urgency without being garish. Three items from v9 rec #2 were addressed. Moving from 7.0 to 7.3.
 
-### 8. Location / Hours — 7.1 (v8: 7.0, +0.1)
+### 8. Location / Hours — 7.1 (v9: 7.1, unchanged)
 
 **Positives:**
-- The subtitle now lists surrounding communities ("serving Springfield, Cheltenham, Abington & Jenkintown") — this is both a local SEO signal and a user reassurance ("they serve my area"). On a 375px phone, a pet owner in Cheltenham sees their town name and knows this practice is relevant to them
-- Real Google Maps embed, directions button, parking note — all intact
+- Local community listing in subtitle, real Google Maps embed, directions button, parking note — all carry over
 
 **Issues:**
-- The community list in the subtitle is useful but the section layout itself is unchanged
+- No changes this round. The section layout remains basic compared to the enrichment other sections received
 
-**Assessment:** The local area listing adds practical value for real users searching "vet near Cheltenham PA." Small but genuine improvement. Moving from 7.0 to 7.1.
+**Assessment:** Unchanged at 7.1.
 
-### 9. Booking Form — 7.1 (v8: 7.0, +0.1)
+### 9. Booking Form — 7.2 (v9: 7.1, +0.1)
 
 **Positives:**
-- The Pet Parent Portal strip below the form is a genuinely useful addition. On a 375px phone, after the booking form, existing clients see a clean card with "Existing Clients" header, feature checklist (vaccination records, Rx refill requests, post-visit summaries), and a "Log in to Pet Portal" CTA. This is the kind of utility that separates a real practice site from a generic template — it signals that the practice has modern digital infrastructure
-- The feature checklist uses accent-colored check SVGs with flex-wrap layout — clean and scannable on mobile
-- The post-visit follow-up mention in the form success message ("we'll check in on your pet's recovery too") is a nice touch that reinforces the practice's care philosophy
-- iOS zoom prevention, bold labels, accent focus rings, call fallback — all carry over
+- The form success message now mentions the portal with an inline link (`portal-link-inline` class): "Track your appointments and access records anytime in the Pet Parent Portal." This connects the booking flow to the portal feature — a user who just booked can discover the portal. This was v9 rec #3(d)
+- Pet Parent Portal strip, feature checklist, iOS zoom prevention, bold labels, accent focus rings, call fallback — all carry over
 
 **Issues:**
-- The portal link (`href="#"`) is a placeholder — expected for a template but visible
-- The portal strip uses a white background (`#ffffff`) which, positioned below the dark booking section, creates a visual disconnect. A lighter tinted background matching the section would integrate better
-- The call-fallback link color inconsistency (`#1a8a6a` vs `var(--accent)`) persists from v7
+- The portal link in the success message is a `#` placeholder — same as the portal strip CTA
+- The call-fallback link color inconsistency persists from v7
+- The portal strip white background still creates a visual disconnect below the dark booking section
 
-**Assessment:** The portal strip adds real functional value. A pet owner who already has an account can quickly access records without filling out the booking form. The post-visit messaging reinforces the practice's differentiator. Moving from 7.0 to 7.1.
+**Assessment:** The portal mention in the success message is a small content ecosystem improvement. Moving from 7.1 to 7.2.
 
-### 10. FAQ — 7.2 (v8: 7.1, +0.1)
+### 10. FAQ — 7.2 (v9: 7.2, unchanged)
 
 **Positives:**
-- Now 10 FAQs across 4 categories (Getting Started, During Your Visit, Your Account & Portal, Payment & Emergencies). The two new categories address genuine user needs: portal access questions for existing clients, and payment/financing questions for cost-conscious pet owners
-- The portal FAQ ("How do I access the Pet Parent Portal?") directly supports the new portal strip — a user who sees the portal CTA in the booking section can find detailed instructions here
-- The follow-up FAQ ("Do you follow up after procedures?") reinforces the practice's care commitment with specific detail ("check-in text within 24-48 hours")
-- The payment plan FAQ explicitly names CareCredit and Scratchpay — matching the services pricing note for consistency
-- Category pills, gradient dividers, phone CTA — all carry over
+- 10 FAQs across 4 categories, `id="faq-payment"` on Payment & Emergencies heading for deep-linking (now used by services pricing note and emergency billing link), category pills, gradient dividers — all carry over
 
 **Issues:**
-- 10 FAQs across 4 categories is getting long on mobile. The accordion pattern helps but the category headings add scroll length. A "show more" pattern or collapsible categories could help at scale
+- No direct changes to this section
+- 10 FAQs across 4 categories is getting long on mobile — collapsible categories would help
 
-**Assessment:** The new FAQ entries are well-targeted and reinforce the site's new features (portal, follow-ups, payment). The content ecosystem is becoming more cohesive. Moving from 7.1 to 7.2.
+**Assessment:** Unchanged at 7.2. The section benefits indirectly from other sections now deep-linking to it.
 
-### 11. Footer — 7.0 (v8: 7.0, unchanged)
+### 11. Footer — 7.2 (v9: 7.0, +0.2)
 
 **Positives:**
-- Quick links now include "Pet Parent Portal" — consistent with the new portal feature
-- SVG paw dividers, newsletter signup, gradient background, trust badge — all carry over
+- **Quick Answers pills** — Four tappable pill links (New patient info, Payment options, Emergency care, Book online) with accent border, 36px line-height, and active state (`background: var(--accent)`). On a 375px phone, these wrap into 2x2 grid and provide quick navigation to the most common user needs. This is genuinely useful — a user who scrolls to the bottom without finding what they wanted now has clear shortcuts
+- **Footer hours** — Mon-Fri, Sat, Sun schedule with emergency deep-link ("Emergencies 24/7" linking to `#emergency`). Clean layout with border-top separator and muted text. A user checking hours does not need to scroll back up to the Location section
+- **Google Business Profile link fixed** — The social link for Google now uses `https://www.google.com/maps` with `target="_blank"` and `rel="noopener noreferrer"` instead of `#`. This was v9 rec #2 for Footer
+- SVG paw dividers, newsletter signup, gradient background, trust badge, portal quick link — all carry over
 
 **Issues:**
-- Social links still point to "#"
-- No other changes
+- Facebook and Instagram social links still point to `#` — only Google is real. For a template this is expected but it remains visible
+- The newsletter form has no indication of what users will receive or how often. "Get pet care tips in your inbox" is generic
+- Privacy Policy and Terms of Service links are still `#` placeholders
 
-**Assessment:** The portal link addition is minor. Holds at 7.0.
+**Assessment:** The Quick Answers pills, footer hours, and fixed Google link together make the footer genuinely useful. A user on a 375px phone who reaches the bottom of the page now has quick navigation, contact hours, and real social links. The footer is no longer just a copyright strip — it serves as a secondary navigation hub. Moving from 7.0 to 7.2.
 
-### 12. Sticky Mobile CTA Bar — 7.1 (v8: 7.1, unchanged)
+### 12. Sticky Mobile CTA Bar — 7.1 (v9: 7.1, unchanged)
 
 **Positives:**
 - Frosted glass, emergency badge, entrance glow, touch feedback — all carry over
@@ -195,54 +187,52 @@ All three v8 recommendations were addressed: (1) visual variety across card sect
 
 **Assessment:** Unchanged at 7.1.
 
-### 13. Accessibility & Technical — 7.5 (v8: 7.3, +0.2)
+### 13. Accessibility & Technical — 7.5 (v9: 7.5, unchanged)
 
 **Positives:**
-- **`<picture>` / srcset hero image** resolves the biggest performance gap from v8. Three breakpoint sources with quality stepping, explicit dimensions for CLS prevention, `fetchpriority="high"` for LCP. This is the correct modern approach for the site's largest visual asset
-- **FAQPage structured data** with 6 entries enables Google rich snippets. The questions are practical and match real search queries ("What vaccinations does my puppy need?", "Do you offer payment plans?"). This is real SEO value
-- **Enhanced VeterinaryCare JSON-LD** with geo coordinates, areaServed (5 cities), hasOfferCatalog with 3 service offers and prices, aggregateRating (4.9/500), paymentAccepted. This is comprehensive local business schema that covers all the signals Google Business Profile expects
-- **Time-aware greeting with `aria-live="polite"`** — accessible dynamic content
-- **Desktop hover interactions correctly scoped** to `@media (hover: hover)` — touch devices are not affected. This follows the AGENT-RULES.md rule against desktop-only features (the hover effects degrade gracefully to nothing on mobile)
-- All previous a11y features intact: reduced-motion, no-JS fallback, skip-link, semantic headings, lazy loading, preconnect, OG tags
+- `<picture>` / srcset hero image, FAQPage structured data, VeterinaryCare JSON-LD, time-aware greeting with `aria-live`, hover interactions scoped to `@media (hover: hover)`, reduced-motion support, no-JS fallback, skip-link — all carry over
+- The emergency glow ring animations are correctly included in the `prefers-reduced-motion: reduce` block
+- Center-alignment violations from v9 are resolved — no more AGENT-RULES.md compliance issues
+- Deep-links between sections (`#faq-payment`, `#emergency`, `#testimonials`) improve internal navigation
 
 **Issues:**
-- No explicit `type="image/webp"` on `<source>` elements — Unsplash handles format negotiation, but self-hosted images would need this
+- `!important` declarations have risen to 16 (v9: 13). The new additions include portal link and emergency styling overrides. While many are in `prefers-reduced-motion` blocks (justified), 6+ are in regular rules
+- Still no explicit `type="image/webp"` on `<source>` elements
 - Favicon still a data URI SVG with emoji
-- 13 `!important` declarations remain in CSS
-- **Center-alignment violations** in team-card--horizontal and why-choose-item--inline on mobile (see sections 4 and 6). These are technically rule violations per AGENT-RULES.md
+- Social links (Facebook, Instagram) still `#` placeholders
 
-**Assessment:** The `<picture>` element, structured data enhancements, and properly scoped hover interactions represent meaningful technical improvements. The JSON-LD is now comprehensive enough for a real Google Business listing. The FAQPage schema adds rich snippet potential. Moving from 7.3 to 7.5.
+**Assessment:** The center-alignment fix is a meaningful compliance improvement. The `!important` count increase is a minor concern. Technical quality holds at 7.5.
 
 ---
 
 ## Overall Score
 
-| Section | v8 Score | v9 Score | Change |
-|---------|----------|----------|--------|
-| Navigation / Header | 7.1 | 7.1 | -- |
-| Hero | 7.3 | 7.5 | **+0.2** |
-| Services | 7.2 | 7.4 | **+0.2** |
-| Meet the Team | 7.2 | 7.3 | +0.1 |
-| Testimonials | 7.2 | 7.3 | +0.1 |
-| Why Choose Us | 7.0 | 7.2 | **+0.2** |
-| Emergency | 7.0 | 7.0 | -- |
-| Location / Hours | 7.0 | 7.1 | +0.1 |
-| Booking Form | 7.0 | 7.1 | +0.1 |
-| FAQ | 7.1 | 7.2 | +0.1 |
-| Footer | 7.0 | 7.0 | -- |
+| Section | v9 Score | v10 Score | Change |
+|---------|----------|-----------|--------|
+| Navigation / Header | 7.1 | 7.2 | +0.1 |
+| Hero | 7.5 | 7.5 | -- |
+| Services | 7.4 | 7.4 | -- |
+| Meet the Team | 7.3 | 7.4 | +0.1 |
+| Testimonials | 7.3 | 7.3 | -- |
+| Why Choose Us | 7.2 | 7.3 | +0.1 |
+| Emergency | 7.0 | 7.3 | **+0.3** |
+| Location / Hours | 7.1 | 7.1 | -- |
+| Booking Form | 7.1 | 7.2 | +0.1 |
+| FAQ | 7.2 | 7.2 | -- |
+| Footer | 7.0 | 7.2 | **+0.2** |
 | Sticky Mobile CTA Bar | 7.1 | 7.1 | -- |
-| Accessibility & Technical | 7.3 | 7.5 | **+0.2** |
-| **OVERALL** | **7.13** | **7.23** | **+0.10** |
+| Accessibility & Technical | 7.5 | 7.5 | -- |
+| **OVERALL** | **7.23** | **7.28** | **+0.05** |
 
-**v9 Overall: 7.23 / 9.0**
+**v10 Overall: 7.28 / 9.0**
 
-All three v8 recommendations were addressed. The hero responsive image (rec #2) and visual variety across card sections (rec #1) were the most impactful. The time-aware greeting (rec #3) adds personality.
+All three v9 recommendations were addressed: (1) center-alignment violations fixed in Team and Why Choose Us, (2) Emergency raised from 7.0 to 7.3 and Footer raised from 7.0 to 7.2 — the floor is now 7.1 (Location, CTA Bar), (3) content ecosystem cross-linking added throughout (trust strip, pricing deep-link, Why Choose CTA, emergency billing link, portal mention in booking success, footer Quick Answers).
 
-The improvement is +0.10 — a meaningful step driven by substantive changes rather than polish. The `<picture>` element, pricing transparency, portal strip, card-wall differentiation (horizontal team, gradient testimonials, inline why-choose), JSON-LD enhancements, and time-aware greeting together move the site from "technically solid template" toward "a practice I would actually consider." Multiple agents contributed well-coordinated work.
+The improvement is +0.05. The smaller delta compared to v9 (+0.10) reflects that the site is now in the "diminishing returns" zone above 7.2. Every section is at 7.1 or above. The ceiling remains at 7.5 (Hero, Technical). The floor has risen from 7.0 to 7.1. The spread between sections has narrowed, which indicates more even quality across the site.
 
-The center-alignment violations in team and why-choose sections on mobile are a process concern. The left-aligned text arguably reads better in horizontal/inline layouts, but the project rules are explicit. This needs resolution — either update the rule or revert the alignment.
+Emergency (+0.3) is the standout mover — it went from the weakest section (tied with Footer at 7.0) to a genuinely useful crisis-assistance section. The prep card, response time, and 3-step process each add real value for the target user (a panicking pet owner on their phone). Footer (+0.2) is the second mover — Quick Answers pills and hours transform it from a copyright strip to a secondary navigation hub.
 
-The floor remains at 7.0 (Emergency, Footer). The ceiling has risen to 7.5 (Hero, Technical). The spread between sections is growing, which indicates differentiation is working but unevenly applied.
+The center-alignment resolution is important for process hygiene. The site now complies with AGENT-RULES.md fully.
 
 ---
 
@@ -259,23 +249,24 @@ The floor remains at 7.0 (Emergency, Footer). The ceiling has risen to 7.5 (Hero
 | v7 | 2026-04-01 | 7.05 | Nigel | Scroll animations, hero trust strip, FAQ categories with pill badges, footer SVG paws + newsletter, unified phone SVGs. Eleven sections at 7.0+. A11y regression (no reduced-motion for animations). |
 | v8 | 2026-04-01 | 7.13 | Nigel | Critical a11y fixes (reduced-motion + no-JS), "Why Choose Us" section, CTA bar frosted glass + emergency badge + entrance glow, SVG stars, larger team photos, nav CTA bump, iOS zoom prevention. All 13 sections at 7.0+. |
 | v9 | 2026-04-01 | 7.23 | Nigel | Hero `<picture>`/srcset, time-aware greeting, pricing transparency on services, Pet Parent Portal strip, card-wall differentiation (horizontal team, gradient testimonials, inline why-choose), enhanced JSON-LD + FAQPage schema, post-visit follow-up messaging. 10 FAQs/4 categories. Center-alignment violations noted. |
+| v10 | 2026-04-01 | 7.28 | Nigel | Center-alignment violations fixed. Emergency enriched (+0.3): prep card, response time, 3-step process, glow rings. Footer enriched (+0.2): Quick Answers pills, hours, fixed Google link. Content ecosystem connected: trust strip links, pricing deep-link, Why Choose CTA, portal in booking success. Header declutter at 375px. Logo animation removed. QA 11/11 pass. |
 
 ---
 
 ## Top 3 Priority Recommendations
 
-### 1. Resolve mobile center-alignment violations (Team, Why Choose Us) — RULES COMPLIANCE
+### 1. Location / Hours section needs visual refresh — raise from 7.1
 
-The `team-card--horizontal` and `why-choose-item--inline` classes both set `text-align: left` on mobile (375px). AGENT-RULES.md explicitly requires "CENTER ALIGNMENT: All content must be consistently center-aligned on mobile. This is a core requirement." Two options: (a) Revert to centered stacked layouts on mobile and keep horizontal/inline only for tablet+ breakpoints, or (b) get explicit user approval to update the center-alignment rule for these specific layouts where left-alignment improves readability. Do not leave this ambiguous — it is a stated project rule being broken. This is a process fix, not a design opinion.
+Location/Hours is now tied with Sticky CTA Bar as the lowest-scoring sections. The map embed is real and functional, but the section layout is basic: heading, subtitle, map iframe, hours table, directions button. On a 375px phone, it is a plain white section that looks like every generic "find us" block. Recommendations: (a) Add a visual accent — a tinted background, top accent bar, or card-style wrapper for the hours table to match the visual polish of other sections. (b) Add a "What to expect on your first visit" or "Parking & access" detail card below the map. (c) Consider a landmark/area photo or illustration to give the section visual personality. The hours table already exists in the footer — the main section should offer something more than a duplicate.
 
-### 2. Emergency and Footer sections need attention — raise the floor from 7.0
+### 2. Reduce visual sameness of stacked card sections on mobile
 
-Emergency and Footer are the only sections still at 7.0 and have not been touched since v6/v7. Both are functional but static while the rest of the site has grown more polished. For Emergency: add an "Emergency Prep" tip (e.g., "Save our number in your contacts now"), or a brief reassurance line about response times. For Footer: replace the `#` social links with at least a real Google Business Profile URL (consistent with the testimonials Google Reviews link), and consider a mini-FAQ or "Quick answers" widget. These sections do not need major surgery — small content/polish additions would bring them in line with the 7.1-7.2 range the rest of the site now occupies.
+With the center-alignment fix reverting Team and Why Choose Us to stacked layouts on mobile, the site now has four sections (Services, Team, Testimonials, Why Choose Us) that all display as vertically stacked, center-aligned cards at 375px. The dark/light alternation and accent borders help differentiate them, but a user scrolling quickly encounters a repetitive card-stack rhythm. Recommendations: (a) Services could use a 2-column mini-grid even at 375px (icon + name only, expandable for details). (b) Testimonials could use a horizontal swipe/carousel pattern rather than vertical stack. (c) Consider a "featured" or "highlighted" card pattern where one item in a section gets a larger/accented treatment. These are not urgent — the current layouts are clean and functional — but breaking the stack rhythm would elevate the mobile experience.
 
-### 3. Content ecosystem polish — connect the dots between new features
+### 3. Reduce `!important` declarations and placeholder links
 
-The v9 additions (pricing, portal, follow-ups, local SEO) are individually strong but not always cross-linked. Specific gaps: (a) the services pricing note should deep-link to the "Payment & Emergencies" FAQ category rather than a generic anchor, (b) the "Why Choose Us" section still has no CTA at the bottom — a "Book Your First Visit" or "Explore Our Portal" link would capitalize on the persuasion, (c) the hero trust strip still says "4.9 Google" but does not link to the Google Reviews page (while the testimonials section does), (d) the booking form success message mentions follow-ups but does not mention the portal. Each of these is a small fix, but together they would make the site feel like a cohesive product rather than a collection of well-made parts.
+Technical debt is accumulating: 16 `!important` declarations (up from 13 in v9), and 5+ `#` placeholder links (Facebook, Instagram, Pet Parent Portal x2, Privacy Policy, Terms of Service). Recommendations: (a) Audit `!important` usage outside of `prefers-reduced-motion` blocks and refactor to use specificity instead. (b) Either remove placeholder social links or add a `data-placeholder` attribute and muted styling to signal they are not yet configured. (c) The portal links in particular should either point to a `/portal` page stub or be removed — a user who taps "Log in to Pet Portal" and gets a `#` jump is a broken experience. For a template, placeholders are acceptable, but the accumulation of non-functional links degrades trust on mobile where every tap matters.
 
 ---
 
-*End of v9 audit. The site sits at 7.23 — up from 7.13. All three v8 recommendations addressed. The biggest movers are Hero (+0.2), Services (+0.2), Why Choose Us (+0.2), and Accessibility/Technical (+0.2). The hero now uses responsive `<picture>` with srcset and has a time-aware greeting — two changes that improve both performance and personality. Services gains pricing transparency that most competitor templates lack. The card-wall monotony from v8 is substantially reduced through horizontal team cards, gradient testimonials, and inline why-choose layout. JSON-LD is now comprehensive with FAQPage schema. The main concern is center-alignment violations on mobile in two sections — this needs explicit resolution against the project rules. The path to 7.4+ requires raising the floor (Emergency/Footer at 7.0), resolving the alignment rule conflict, and connecting the content ecosystem so new features cross-reference each other.*
+*End of v10 audit. The site sits at 7.28 — up from 7.23. All three v9 recommendations addressed. The biggest movers are Emergency (+0.3) and Footer (+0.2), which were the two sections at the 7.0 floor. Emergency now features a preparedness card, response time, billing FAQ link, and a 3-step "When You Call" process that genuinely helps a panicking pet owner. Footer now serves as a secondary navigation hub with Quick Answers pills and hours. The center-alignment violations are resolved — full AGENT-RULES.md compliance. The content ecosystem is now connected with cross-links between sections. The site has entered diminishing returns territory above 7.2 — further gains require breaking the stacked-card rhythm on mobile, refreshing the Location section, and cleaning up technical debt. The path to 7.4+ requires visual differentiation at 375px that goes beyond card stacking patterns.*
