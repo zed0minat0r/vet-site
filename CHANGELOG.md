@@ -463,3 +463,23 @@
 - **Why-choose inline layout center-alignment** — `.why-choose-item--inline` now stacks vertically with `text-align: center` on mobile (was `text-align: left`). Inline row layout restored at 600px+ breakpoint.
 - **btn-sm tap target** — Bumped `.btn-sm` `min-height` from 40px to 44px to meet minimum tap-target requirement.
 - **375px audit** — Inputs already at 16px font-size (no iOS zoom). All buttons/links meet 44px min-height. No horizontal overflow issues. Padding and spacing clean.
+
+### v10 — Refiner (Content Ecosystem + Floor Raise)
+
+#### Emergency Section (7.0 → improved)
+- **Emergency preparedness tip** — Added "Save our number in your phone now" prompt with bookmark icon in a styled `.emergency-prep` card.
+- **Response time reassurance** — Added average after-hours response time note with link to emergency billing FAQ.
+
+#### Footer (7.0 → improved)
+- **Quick Answers widget** — Added pill-style shortcut links (New patient info, Payment options, Emergency care, Book online) above footer bottom for fast navigation.
+- **Google Business social link** — Updated from placeholder `#` to real Google Maps URL (consistent with testimonials section).
+
+#### Content Ecosystem Connections
+- **Pricing note deep-link** — Services payment note now links directly to `#faq-payment` (Payment & Emergencies category) instead of generic `#faq`.
+- **Hero trust strip linked** — "4.9 Google" in hero trust strip now links to `#testimonials` section. Styled as accessible `<a>` with proper aria-label.
+- **Why Choose Us closing CTA** — Added "Book Your First Visit" button below the why-choose grid to capitalize on persuasion.
+- **Booking success portal mention** — Form success message now mentions Pet Parent Portal with inline link.
+- **FAQ Payment category anchor** — Added `id="faq-payment"` to Payment & Emergencies heading for deep-linking.
+
+#### CSS
+- `a.trust-strip-link`, `.portal-link-inline`, `.emergency-prep`, `.emergency-response`, `.emergency-faq-link`, `.why-choose-cta`, `.footer-quick-answers`, `.footer-qa-item` — All mobile-first, center-aligned.
