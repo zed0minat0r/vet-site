@@ -369,12 +369,50 @@ section {
   margin: 0 auto;
 }
 
-/* Hero Paw SVG */
-.hero-paw { margin-bottom: 1.5rem; }
-.hero-paw-svg {
+
+/* --- Credentials Strip --- */
+.credentials-strip {
+  background: var(--bg-alt);
+  border-top: 1px solid rgba(45, 212, 168, 0.15);
+  border-bottom: 1px solid rgba(45, 212, 168, 0.15);
+  padding: 0.85rem 0;
+}
+.credentials-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+.credential-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left;
+}
+.credential-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.credential-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+.credential-label strong {
   display: block;
-  margin: 0 auto;
-  filter: drop-shadow(0 0 12px rgba(45, 212, 168, 0.3));
+  color: var(--text);
+  font-size: 0.8rem;
+}
+.credential-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+@media (max-width: 479px) {
+  .credential-divider { display: none; }
+  .credentials-inner { gap: 0.75rem 1.25rem; justify-content: flex-start; padding: 0 0.5rem; }
 }
 
 /* --- Services --- */
@@ -844,7 +882,47 @@ section {
 
 .emergency-box h2 {
   color: var(--emergency);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Emergency phone hero block */
+.emergency-phone-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 107, 107, 0.1);
+  border: 2px solid rgba(255, 107, 107, 0.4);
+  border-radius: var(--radius);
+}
+.emergency-phone-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--emergency);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.emergency-phone--hero {
+  font-size: 2.75rem;
+  font-weight: 900;
+  color: var(--emergency);
+  letter-spacing: -1px;
+  line-height: 1;
+  min-height: unset;
+  background: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  text-decoration: none;
+}
+@media (hover: hover) {
+  .emergency-phone--hero:hover { text-decoration: underline; }
+}
+.emergency-phone-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }
 .emergency-box p {
   color: var(--text-muted);
@@ -1288,6 +1366,87 @@ section {
   font-size: 0.85rem;
   color: var(--accent);
   font-weight: 600;
+}
+
+/* --- Triage Widget --- */
+.triage-widget {
+  max-width: 540px;
+  margin: 0 auto 1.75rem;
+  background: #ffffff;
+  border: 1px solid rgba(45, 212, 168, 0.2);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+.triage-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.triage-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+.triage-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.7rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  background: none;
+  font-family: var(--font);
+  min-height: 44px;
+}
+.triage-option:active { transform: scale(0.97); }
+.triage-option svg { flex-shrink: 0; }
+.triage-option-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.triage-option-sub {
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+.triage-option--emergency {
+  background: rgba(255, 107, 107, 0.06);
+  border-color: rgba(255, 107, 107, 0.3);
+  color: #d44;
+}
+.triage-option--emergency svg { stroke: #d44; }
+@media (hover: hover) {
+  .triage-option--emergency:hover { background: rgba(255, 107, 107, 0.12); border-color: rgba(255, 107, 107, 0.55); }
+}
+.triage-option--sick {
+  background: rgba(245, 158, 11, 0.06);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #b45309;
+}
+.triage-option--sick svg { stroke: #b45309; }
+.triage-option--sick .triage-option-label, .triage-option--sick .triage-option-sub { color: #92400e; }
+@media (hover: hover) {
+  .triage-option--sick:hover { background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.5); }
+}
+.triage-option--wellness {
+  background: rgba(45, 212, 168, 0.06);
+  border-color: rgba(45, 212, 168, 0.3);
+  color: #1a8a6a;
+}
+.triage-option--wellness svg { stroke: #1a8a6a; }
+.triage-option--wellness .triage-option-label, .triage-option--wellness .triage-option-sub { color: #1a6a52; }
+@media (hover: hover) {
+  .triage-option--wellness:hover { background: rgba(45, 212, 168, 0.12); border-color: rgba(45, 212, 168, 0.55); }
 }
 
 /* --- Booking Form --- */
