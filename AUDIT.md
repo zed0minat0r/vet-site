@@ -2,7 +2,7 @@
 
 **Auditor:** Nigel
 **Date:** 2026-04-09
-**Version:** v13
+**Version:** v14
 **Perspective:** Mobile (375px)
 **Context:** Template build — placeholders expected; stock content/photos not penalized
 
@@ -22,263 +22,245 @@
 
 ---
 
-## What Changed Since v12
+## What Changed Since v13
 
-All three v12 recommendations were partially or fully addressed, plus several QA fixes:
+Four targeted changes were made this cycle, all deliberate simplifications rather than additions:
 
-1. **Credentials strip added (addresses hero paw SVG noise)** — The hero paw SVG (decorative, noted as visual noise in v12) has been removed. In its place, a credentials strip sits between the hero and services sections, showing: Fear Free Certified Practice, 4.9 Google / 500+ Reviews, Serving Since 2015, 24/7 Emergency. This moves trust signals that were buried in team bios or hero text to a dedicated homepage-level block.
+1. **Credentials strip removed entirely** — The block between hero and services (Fear Free Certified, 4.9 Google, Serving Since 2015, 24/7 Emergency) is gone. The intent was to eliminate trust signal duplication between the hero and the strip — which was the top recommendation in v13.
 
-2. **Triage decision tree added above booking form (addresses form length UX)** — A 3-branch triage widget (Emergency / Sick Visit / Wellness) now precedes the booking form. Emergency links to the emergency section; Sick and Wellness auto-fill the service-type dropdown and scroll the user to the form. This directly reduces the cognitive load of the form itself.
+2. **Hero trust strip condensed from 3 glass-effect badges to a single text line** — The previous glass-effect badge cluster is replaced by a single inline sentence: "4.9 on Google · 10+ Years · Fear Free Certified". The Google star SVG is inlined. This removes the glassmorphism complexity and flattens the trust signal into body-copy treatment.
 
-3. **Emergency section phone number hierarchy fixed (addresses v12 rec #3)** — The phone number now appears immediately after the h2 heading, at 2.75rem bold, in a bordered tappable block. The h2 is reduced to 1.5rem so the phone number is visually dominant. A panicking user who lands on this section now sees the number first.
+3. **Team cards received specialty pill badges** — Each of the four team cards now displays a colour-coded pill badge: Internal Medicine (teal), Orthopedic Surgery (blue), Fear-Free Handling (rose), Client Relations (amber). This directly addresses v13 recommendation #2.
 
-4. **Nav menu trimmed from 7 to 6 items** — Testimonials removed from the hamburger menu. The section remains accessible via scroll.
-
-5. **Footer newsletter copy made specific** — "Monthly pet health tips, vaccine reminders & seasonal care advice" instead of the generic "Get pet care tips in your inbox."
-
-6. **QA fixes (QA/Pixel/Refiner pass):**
-   - Credentials strip mobile alignment: `justify-content: flex-start` corrected to `center`
-   - Triage sub-text font-size raised from 0.7rem (11.2px) to 0.75rem (12px) — below-minimum font eliminated
-   - Address-link whitespace gap fixed: the 44px min-height causing blank vertical space in the Location section is replaced with negative-margin padding technique
-   - Services grid card height: `align-items: stretch` added to grid, cards given flex column layout — height mismatch between sibling cards resolved
-   - Carousel dot gap fixed: was 0rem (dots rendered as a single merged blob), now 0.25rem with spacing
-   - Mobile CTA Text button: background and border opacity raised for better visibility
-   - Prefers-reduced-motion: `scrollIntoView` calls in triage onclick handlers now respect user preference; html scroll-behavior, CTA bar transition, and triage transitions all covered
+4. **Emergency animation trimmed from 3 to 2** — `pulse-cross::after` now has `animation: none`. The delayed second ring animation is removed. This directly addresses v13 recommendation #3.
 
 ---
 
 ## Section-by-Section Breakdown
 
-### 1. Navigation / Header — 7.5 (v12: 7.4, +0.1)
+### 1. Navigation / Header — 7.5 (v13: 7.5, unchanged)
 
 **Positives:**
-- Nav menu trimmed from 7 to 6 items (Testimonials removed). The hamburger menu is now: Services, Our Team, Emergency, Location, Book Now, Call Us. This is a cleaner list — each item is a genuine action or destination
-- The three-element header at 375px (logo, Book Now pill, hamburger) carries over cleanly
-- "Call Us" remains in the menu as a fallback; no regression in phone accessibility
+- Three-element header at 375px (logo + Book Now pill + hamburger) is clean and functions without scrolling
+- Nav menu at 6 items remains manageable — no trimming regression
+- "Call Us" in the menu continues to serve as a phone fallback for users who open the menu
 
 **Issues:**
-- Book Now still appears both as a persistent header pill and as an item inside the hamburger menu. At this point it is a minor redundancy rather than a real problem — the pill serves scroll-hiding users, the menu item serves those who opened the menu expecting it
-- The nav menu has no visual separator between navigational links and the utility link (Call Us). A user opening the menu for navigation will see "Call Us" in the same list as section links, which could be mildly confusing
-- No changes to the nav active-state highlighting mechanism (JS inline style, not a persistent class)
+- Book Now still appears in both the persistent header pill and the hamburger menu. This is a minor redundancy that has been present since v11 and is not deteriorating, but at this level of finish it is the kind of small inconsistency a polished product would have resolved
+- No active-state class on nav links — active highlighting relies on inline `style.color` set by JS, which is wiped on any style recalculation. Not broken in testing but fragile
 
-**Assessment:** The nav trim is the right call. At 6 items the menu is manageable on 375px without scrolling inside the flyout. Moving from 7.4 to 7.5.
+**Assessment:** No changes this cycle. No regression, no improvement. Holds at 7.5.
 
-### 2. Hero — 7.5 (v12: 7.5, unchanged)
+---
+
+### 2. Hero — 7.6 (v13: 7.5, +0.1)
 
 **Positives:**
-- The decorative paw SVG has been removed — correctly. The v12 note that it was visual noise is resolved. The hero now has: greeting text, h1, tagline, dual CTAs, trust strip. Cleaner content hierarchy
-- `<picture>` with webp sources, time-aware greeting, Google rating trust strip, dual CTAs — all carry over
-- The trust strip (4.9 Google, 10+ Years, 24/7 Emergency) remains the strongest trust element in the hero
+- The condensed trust line ("4.9 on Google · 10+ Years · Fear Free Certified") is materially cleaner than the glass-effect badge cluster it replaced. Three glassmorphism badges was the kind of over-engineering that reads as template. The single line of text reads as editorial confidence
+- The star SVG inline with the Google rating link gives a visual anchor without adding a separate UI component
+- `<picture>` srcset, time-aware greeting, dual CTAs — all carry over
+- The hero section is now: greeting, h1, tagline, 2 buttons, 1 trust line. That is the right hierarchy and right length for a local service hero on 375px
+- The Google rating duplication problem flagged in v13 is gone. It now appears once in the hero (as a link), and once in the testimonials stats bar. Two appearances is appropriate for a local service site; three was not
 
 **Issues:**
-- The credentials strip immediately below the hero now partially duplicates the hero trust strip. Both show 4.9 Google and 24/7 Emergency. A real user sees these twice within a short scroll. The duplication is not harmful, but it weakens the impact of each appearance — if the rating appears twice in the first screenful, it feels like padding rather than endorsement
-- Hero still has no `og:image` webp variant — minor technical gap
-- The greeting at 0.9rem is still the smallest text in the hero section
+- The trust line text at 0.82rem (13.1px) at 375px breakpoint is tight. The content is short enough that it fits on one line, but it is below the 14px comfort threshold for primary trust content. This is not a critical issue but noted
+- The hero-trust-line `color: rgba(255,255,255,0.75)` means the "10+ Years · Fear Free Certified" text renders at approximately 4.5:1 contrast against the hero overlay. Passes WCAG AA for normal text (4.5:1), but only barely. The white "4.9 on Google" link text is stronger
+- The `og:image` still references the Unsplash URL directly — no webp variant specified in the meta tag (minor; carries over since v10)
 
-**Assessment:** The paw removal improves the hero. The trust strip duplication between hero and credentials strip is a new observation — not a regression, but a diminishing return on both elements. Holds at 7.5.
+**Assessment:** The trust strip simplification is a genuine improvement. The hero section now has a tighter, more confident composition. Moving from 7.5 to 7.6.
 
-### 3. Credentials Strip — 7.2 (v12: new section)
+---
+
+### 3. Services — 7.7 (v13: 7.7, unchanged)
 
 **Positives:**
-- This is a good pattern for a local service business: four trust signals in a horizontal row between hero and services
-- The four signals chosen are appropriate: Fear Free certification, Google rating, years in service, emergency availability
-- On 375px the dividers correctly hide and the items wrap to a 2x2 grid — the CSS handles this with `flex-wrap` and the `@media (max-width: 479px)` divider display rule
-- Center alignment QA fix is in — the previous `justify-content: flex-start` bug is corrected
+- 2-column grid, colour-coded top borders, pricing labels, icon tints, card height matching — all carry over clean
+- The QA card height fix from v13 continues to hold — no regression
 
 **Issues:**
-- At 375px the credentials strip is the third time a user sees the Google rating (hero trust strip, credentials strip). The 4.9 / 500+ reviews appears in three places above the fold: hero trust strip, credentials strip, and testimonials stats bar. This is over-repetition of a single data point. One of these appearances should carry a different signal
-- The credential icon for "Emergency Line — 24/7 Available" uses the same phone handset SVG as the hero emergency CTA button. On a small screen, two identical icons in close proximity look like repeated elements rather than distinct signals. A clock or lightning bolt would differentiate this credential from the phone CTA
-- `credential-label` at 0.75rem (12px) is at the minimum legibility threshold on 375px. The `strong` sub-label at 0.8rem is readable; the muted label above it is borderline
-- The strip's `flex-wrap` on 375px causes the four items to stack into two rows of two, with invisible dividers — the result is a 2x2 grid with generous gaps, but no visual separation between items. A real user may not read all four signals because the layout does not guide the eye left-to-right
+- Six distinct top-border colours (teal, blue, purple, orange, pink, sky) remain on a 375px 2-column layout. The variety is intentional but it pushes the section visually busy. A real user scanning for their service type does not benefit from six distinct colour associations at small screen scale — they need legibility of the card titles
+- Description text at 0.875rem (14px) in a 2-column card on 375px is at the edge of comfortable reading. The card width is approximately 155px of content after padding. At that width, 14px text with a 1.6 line height produces roughly 8-9 words per line — acceptable but tight
 
-**Assessment:** A solid structural addition that addresses the v12 hero paw note. The execution has two real problems: trust signal duplication with the hero strip, and 2x2 wrapping without visual separators on 375px. Scoring as a new section at 7.2.
+**Assessment:** No changes. Holds at 7.7.
 
-### 4. Services — 7.7 (v12: 7.6, +0.1)
+---
+
+### 4. Meet the Team — 7.7 (v13: 7.4, +0.3)
 
 **Positives:**
-- **Card height mismatch fixed.** The QA pass added `align-items: stretch` to the grid and flex column layout to each card. On 375px, cards within the same row now match height. This was a visible quality issue on real phones — it is now resolved
-- The 2-column grid at 375px, color-coded top borders, pricing labels, icon tints — all carry over
-- Description text at 0.875rem (14px) remains borderline for a 2-column layout on 375px, but is now the sharpest-looking section in the build thanks to the height fix
+- **Specialty pill badges resolve the v13 differentiation problem.** Each of the four team cards now has a distinct, colour-coded pill: Internal Medicine (teal), Orthopedic Surgery (blue), Fear-Free Handling (rose), Client Relations (amber). On 375px, a user scrolling quickly can now distinguish Dr. Mitchell from Dr. Rivera by both name and specialty badge without needing to read the bio paragraph
+- The four badge colours match the Why Choose Us icon tint system (teal, sky, rose, amber) — this is accidental visual coherence that works
+- The pill badges use `font-size: 0.75rem` at uppercase + bold weight, which is readable even at that size due to the letter-spacing and background contrast
+- Colour contrast on the badges: teal badge uses `color: #1fa882` on `rgba(45,212,168,0.15)` background — this is approximately 3.2:1 against the dark card background. For a UI label it is acceptable; for body text it would be borderline. At pill badge scale with bold uppercase it reads clearly in practice
 
 **Issues:**
-- The `service-card:nth-child(n)` border-top color system uses six different colors (teal, blue, purple, orange, pink, sky). On a 375px screen with 2-column cards, this is a lot of color. The variety is intentional but pushes the Services section toward visually busy. A real user picking a vet does not need six distinct brand-color associations — they need to quickly find their service type
-- Description text size remains the point of tension in 2-column view
+- The four cards are still visually identical in structure: same dark card, same circular photo, same horizontal layout. The specialty badge differentiates them at a glance but the layout itself remains homogeneous. A real user comparing vets still has to read the bio to understand what differentiates each person's approach
+- Bio text at 0.95rem (15.2px) in a full-width card layout is comfortable — no concern there
+- Dr. Rivera's badge colour (blue: `color: #2563eb` on `rgba(59,130,246,0.12)`) may have lower perceived contrast on the dark card than the teal or amber variants — visually it works, but the contrast ratio is approximately 3.5:1
 
-**Assessment:** The height fix is the most concrete quality improvement in the QA pass. It was a real user-facing bug. Services moves from 7.6 to 7.7.
+**Assessment:** The specialty badge addition is exactly the right surgical change recommended in v13. It solves the specific problem (four identical cards at a glance) without restructuring the layout. Moving from 7.4 to 7.7.
 
-### 5. Meet the Team — 7.4 (v12: 7.4, unchanged)
+---
+
+### 5. Testimonials — 7.7 (v13: 7.7, unchanged)
 
 **Positives:**
-- Dark background contrast, 4 team members with 104px circular photos, horizontal card layout — all carry over
-- The vertical stack of four identical dark cards on 375px remains the weakest layout in the build
+- Full ARIA carousel, 44x44 dot tap targets, IntersectionObserver sync, review stats bar — all carry over
+- The carousel dots gap (0.25rem) and prefers-reduced-motion coverage continue to hold from v13
 
 **Issues:**
-- No changes this round. The section is consistent but homogeneous
-- The four cards are visually identical: same background, same layout, same photo style, same role-badge color (accent-dark). A real user scrolling quickly cannot pick out one team member from another at a glance
+- The Google rating (4.9) now appears in: (a) the hero trust line and (b) the testimonials stats bar. Two appearances is appropriate for a local service site. No longer a duplication problem
+- Carousel dot gap of 0.25rem (4px) between 44x44 buttons gives the tap row a total width of 4*(44) + 3*(4) = 188px centred in 375px. Math works; noted from v13 that 0.5rem gap would provide more separation
 
-**Assessment:** No changes. Holds at 7.4.
+**Assessment:** No changes this cycle. No regression, no improvement. Holds at 7.7.
 
-### 6. Testimonials — 7.7 (v12: 7.7, unchanged)
+---
+
+### 6. Why Choose Us — 7.5 (v13: 7.5, unchanged)
 
 **Positives:**
-- Full ARIA carousel pattern, interactive dots with correct tap targets (now 44x44px via the QA fix), IntersectionObserver dot sync, review stats bar — all carry over
-- The carousel dots gap fix (0rem to 0.25rem + spacing) means the dots now visually read as separate buttons rather than a single merged blob. This is a small but real UX improvement
-- Dot `prefers-reduced-motion` coverage added for WCAG 2.2 compliance
+- Specific subtitle, per-icon tint colours, stat lines under each item, CTA at bottom — all carry over
 
 **Issues:**
-- The carousel dots are now visually correct but the gap between dots (0.25rem) is still tight at 375px — four 44x44 buttons with 4px gaps means the dots row is 188px wide centered in a 375px container. The math works, but a user who tries to tap the third or fourth dot from a scroll position where the row is partially off-screen may miss. The `gap: 0.25rem` is an improvement but `gap: 0.5rem` would provide more confident separation
-
-**Assessment:** The QA dot gap fix and prefers-reduced-motion addition are the two changes. Both are correct and improve the section. No structural changes. Holds at 7.7.
-
-### 7. Why Choose Us — 7.5 (v12: 7.5, unchanged)
-
-**Positives:**
-- Specific subtitle ("Care that goes beyond the exam room"), per-icon tint colors, CTA at bottom — all carry over from v12
-
-**Issues:**
-- No changes this round. The section is well-formed but the vertical stack layout on 375px (2-column only activates at 600px) means four inline items with large icon circles stack taller than necessary
-- The "Personalized Care Plans" item's text ("No cookie-cutter treatments... accessible anytime through our Pet Parent Portal") references the portal, which is still "Coming Soon." A real user reading this and then attempting to access the portal would find it unavailable
+- The "Personalized Care Plans" item still references the Pet Parent Portal ("accessible anytime through our Pet Parent Portal") which remains Coming Soon. A real user reading this and clicking the portal link finds it unavailable. This is a content consistency issue that has been present since v9
+- The section's vertical stack on 375px (2-column only activates at 600px) means four inline items stack to substantial height. Not broken, but the section is one of the taller ones on the page relative to the information density it provides
 
 **Assessment:** No changes. Holds at 7.5.
 
-### 8. Emergency — 7.6 (v12: 7.3, +0.3)
+---
+
+### 7. Emergency — 7.7 (v13: 7.6, +0.1)
 
 **Positives:**
-- **Phone number hierarchy fixed.** This is the most meaningful single change in v13. The phone number now appears first after the h2 heading: label ("Emergency Line — Available 24/7") then number at 2.75rem in a bordered red box, then sub-text ("Tap to call now — a vet professional always answers"). A panicking user scanning the emergency section hits the number within one eyeline of the heading
-- The h2 was reduced to 1.5rem so the phone number at 2.75rem is visually dominant over the heading — correct visual hierarchy for an emergency section
-- The phone number block (`emergency-phone-hero`) has `border: 2px solid rgba(255,107,107,0.4)`, `background: rgba(255,107,107,0.1)`, and is tappable with `href="tel:..."`. This is the correct treatment for a mobile emergency CTA
-- Symptoms list, prep card, 3-step process, glow rings, FAQ deep-link — all carry over
-- `prefers-reduced-motion` on all three pulse animations — no regression
+- **Second ring animation removed.** `pulse-cross::after` now has `animation: none` rather than `emergencyRing 2s infinite 0.3s`. This was the v13 recommendation #3. The section now has two simultaneous animations: `emergencyPulse` on the cross element and `emergencyRing` on `::before`. This is the right number — active enough to signal urgency, not so heavy as to look frantic
+- Phone number hierarchy continues from v13: label, then number at 2.75rem in a bordered red box, then sub-text. Still the strongest single usability improvement in recent audit history
+- The GPU compositing load on mid-range Android is reduced by removing the third concurrent transform+opacity animation
 
 **Issues:**
-- The three animations (emergencyPulse, emergencyRing x2) on the cross element still run simultaneously. On a mid-range Android at 60Hz they remain at the edge of "tasteful." The `prefers-reduced-motion` handling is correct, but the default-on animated state is still heavy. Consider dropping to one ring animation (eliminating the 0.3s-delayed second ring)
-- The "emergency-response" paragraph ("Average after-hours response: under 15 minutes") appears after the prep card — good positioning — but uses the same `.text-muted` colour as the surrounding body text. For a claim this specific it should be styled as a stat, not body copy
+- The `emergency-response` paragraph ("Average after-hours response: under 15 minutes") continues to use `.text-muted` colour rather than a styled stat. This was noted in v13 and remains unaddressed
+- The emergency section is still one of the heavier CSS sections: two animations running simultaneously on an element with a `box-shadow` glow. Performance is not a crisis but worth monitoring on lower-end devices
 
-**Assessment:** The phone hierarchy fix is exactly right and resolves a real usability problem. A panicking owner on 375px now sees the number immediately. This is a genuine improvement that changes the user experience. Moving from 7.3 to 7.6.
+**Assessment:** The animation reduction is the right trim. It directly implements v13 recommendation #3. The section is more composed without the frantic triple-ring effect. Moving from 7.6 to 7.7.
 
-### 9. Location / Hours — 7.6 (v12: 7.5, +0.1)
+---
+
+### 8. Location / Hours — 7.6 (v13: 7.6, unchanged)
 
 **Positives:**
-- **Address-link whitespace gap fixed.** The v12-noted visual bug (44px of empty space below the street address before "Get Directions" appeared) is resolved via the negative-margin padding technique. The address block is now visually continuous
-- The "Get Directions" CTA duplication noted in v12 (inside address block and below map) is resolved: the address block now uses the negative-margin tap-target technique without a separate "Get Directions" label, and the map has a distinct "Get Directions" button. The duplication is gone
-- Status pill with live green dot, info card, multi-channel contact pills, first-visit card — all carry over
-- Map directions link now has `min-height: 44px` and flex alignment for a proper tap target
+- Address link whitespace gap fix, Get Directions button, status pill with live dot, info card, multi-channel contact, first-visit card, map embed — all carry over clean from v13
 
 **Issues:**
-- The location section uses the same light green gradient (`#f0faf6` to `#f4f7fa`) as the services section. On a 375px phone scrolling top-to-bottom: services (light green) → team (dark) → testimonials (light grey-blue) → why choose us (dark with radial) → emergency (dark red) → location (light green). The alternation is intentional but services and location having identical backgrounds creates visual repetition across a long page
-- The first-visit card's paw emoji (`\1F43E`) positioned at `top: -12px` via `::before` is a cute touch but renders inconsistently across Android emoji fonts — on some devices it will appear significantly smaller or with a coloured box background
+- Location and Services sections share the same light green gradient background (`#f0faf6` to `#f4f7fa`). On the full page scroll they are separated by the dark team and testimonials sections, so this is not immediately jarring — but it is a visual shortcut that a more refined build would address
+- The first-visit card `::before` paw emoji (`\1F43E`) still renders inconsistently across Android emoji fonts — coloured box background on some devices
 
-**Assessment:** Both v12 Location notes are resolved: the whitespace gap is fixed and the CTA duplication is cleaned up. The section moves from 7.5 to 7.6.
+**Assessment:** No changes. Holds at 7.6.
 
-### 10. Booking Form — 7.4 (v12: 7.3, +0.1)
+---
+
+### 9. Booking Form — 7.4 (v13: 7.4, unchanged)
 
 **Positives:**
-- **Triage widget added above the form.** Three colour-coded options (Emergency, Sick Visit, Wellness) with icons, labels, and sub-text. The widget is correctly grouped with `role="group"` and `aria-labelledby`. On 375px the three-column grid fits cleanly — icon, label, sub-text stack vertically in each cell. The auto-fill behaviour (Sick/Wellness options set the service-type dropdown) is a genuine UX improvement that reduces the form's cognitive load
-- The triage sub-text was raised from 0.7rem to 0.75rem — the below-minimum font is gone
-- Vet name consistency, portal link, form validation, iOS zoom prevention — all carry over from v12
-- The triage's `prefers-reduced-motion` compliance on the `scrollIntoView` calls is correct
+- Triage widget, reduced-motion compliance, iOS zoom prevention, form validation, call fallback — all carry over
 
 **Issues:**
-- The triage widget adds vertical height before the form. On a 375px phone, the page section now shows: section heading + subtitle + triage widget + form + call fallback + portal strip. Total scroll height has increased. The triage widget is worth the trade-off, but it does not make the form shorter — it adds a decision step before the same form
-- The portal strip below the form remains visible even after form submission. A user who just submitted an appointment request is immediately presented with the portal "Coming Soon" strip. This is the wrong moment to advertise a feature that does not yet exist
-- The `form-row` at 375px uses `grid-template-columns: 1fr` (correct single-column), meaning pet type and service type are each full-width — adding vertical height that the triage widget could theoretically eliminate if the form were redesigned to skip service-type post-triage
+- Portal strip below the form remains visible post-submission. A user who just submitted a request immediately sees "Pet Parent Portal — Coming Soon." This is the wrong moment to advertise a feature that does not exist
+- The triage widget adds vertical height before the form without eliminating any form fields. The section remains tall on 375px
+- The `form-row` date/time fields use a two-column grid — but at 375px this collapses to single column per the responsive CSS, which is correct. The layout is fine
 
-**Assessment:** The triage widget is the right structural change. It addresses the form complexity problem identified in v12, though it adds height rather than reducing it. The portal strip post-submission remains a minor UX misstep. Moving from 7.3 to 7.4.
+**Assessment:** No changes this cycle. Holds at 7.4.
 
-### 11. FAQ — 7.4 (v12: 7.3, +0.1)
+---
+
+### 10. FAQ — 7.4 (v13: 7.4, unchanged)
 
 **Positives:**
-- **FAQ CTA now has both Call and Text options.** The v12 recommendation to add `sms:` alongside the call link is implemented. The FAQ CTA now shows "Call Us" (outline button) and "Text Us" (ghost-subtle button) side by side. The phone-only gap is closed
-- The `btn-ghost-subtle` styling for the Text button is tasteful and correctly secondary to the outline Call button — hierarchy is correct
-- 11 FAQs, 4 categories, native `<details>`, pricing FAQ with real numbers, category pill badges — all carry over
-- The FAQ category pills now have a gradient divider line between groups (`.faq-category:not(:first-child)::before`) — the visual separation between categories is cleaner
+- Text Us CTA, FAQ categories with pill badges, 11 questions, category divider lines, pricing FAQ with real numbers — all carry over
 
 **Issues:**
-- 11 FAQs is still a long scroll on 375px. A user who wants the payment FAQ must scroll past Getting Started, During Your Visit, and Your Account first. No category-level collapse exists. This remains the structural gap in the FAQ section
-- The `btn-ghost-subtle` Text button uses `color: var(--text-muted)` — a muted grey text on a transparent background with a faint teal border. On the light green FAQ background, this button is readable but low-contrast. The text "Text Us" renders as grey text on light green, which may not meet WCAG AA for normal text (contrast ratio likely around 3.5:1)
+- 11 FAQs remains a long scroll. No category-level collapse exists. A user seeking the payment FAQ must scroll past 8 items
+- The `btn-ghost-subtle` Text Us button contrast on the light green background remains approximately 3.5:1 — readable but below WCAG AA for normal text
 
-**Assessment:** The Text CTA addition resolves v12 rec #3's first half. The FAQ section moves from stagnant to addressed-and-improved. Moving from 7.3 to 7.4.
+**Assessment:** No changes this cycle. Holds at 7.4.
 
-### 12. Footer — 7.4 (v12: 7.3, +0.1)
+---
+
+### 11. Footer — 7.4 (v13: 7.4, unchanged)
 
 **Positives:**
-- **Newsletter copy is now specific.** "Monthly pet health tips, vaccine reminders & seasonal care advice" directly tells a user what they will receive and at what frequency. This is materially better than the generic v12 copy and increases signup motivation
-- Footer grid (brand, quick links, contact/hours), social links, Quick Answers pills, footer hours with emergency deep-link, paw divider, back-to-top — all carry over
+- Specific newsletter copy, footer grid, social links, Quick Answers pills, hours, paw divider, back-to-top — all carry over
 
 **Issues:**
-- The footer remains 9 distinct visual blocks on 375px: paw divider + brand + quick links + contact + social + newsletter + quick answers + legal + back-to-top. This has not changed. The newsletter copy improvement is correct but the overall footer height on mobile has not been reduced
-- The newsletter success state ("Thanks for subscribing!") disappears below the fold on 375px when the form submits — the user must scroll down to see the confirmation
-- Privacy Policy and Terms of Service remain as placeholder `<span>` elements, not links — a real user or legal requirement would need actual links
+- 9 distinct visual blocks on 375px remains the structural issue. No reduction this cycle
+- Newsletter success state still falls below the fold on 375px after form submission
+- Privacy Policy and Terms of Service remain `<span>` placeholder elements — not real links
 
-**Assessment:** The newsletter copy fix is the right targeted change. Moving from 7.3 to 7.4.
+**Assessment:** No changes. Holds at 7.4.
 
-### 13. Sticky Mobile CTA Bar — 7.5 (v12: 7.3, +0.2)
+---
+
+### 12. Sticky Mobile CTA Bar — 7.5 (v13: 7.5, unchanged)
 
 **Positives:**
-- **Text button visibility improved.** The QA pass raised the Text button background from `rgba(255,255,255,0.06)` to `rgba(255,255,255,0.16)` and border from `rgba(255,255,255,0.15)` to `rgba(255,255,255,0.35)`. On 375px this makes the Text button clearly readable as a distinct button. The v12 observation that the button "blends into the frosted background" is resolved
-- Three actions (Call, Text, Book) now all have clear visual identities: accent-bordered Call, visible-border Text, gradient Book
-- Frosted glass, scroll-to-hide, safe-area inset, glow entrance on Book — all carry over
+- Text button visibility improvement from v13 holds — three distinct buttons visible at 375px
+- Frosted glass, scroll-to-hide, safe-area inset — all carry over
 
 **Issues:**
-- The Text button is now visible, but its styling (white border, white text on near-black background) reads as a different design language from the Call button (teal border, teal text) and Book button (gradient fill). On 375px the three buttons look like they came from three different design systems rather than one cohesive bar
-- The 24/7 badge on the Call button (`0.75rem` font in a 48px button) is small but the intent is clear. The badge background (`var(--emergency)`) is red on a teal-bordered button — the colour combination is technically fine but visually jarring
+- The three buttons (teal-bordered Call, white-bordered Text, gradient Book) continue to use three different visual languages. Cohesion within the bar is the outstanding design inconsistency
+- 24/7 badge on Call button (red on teal) is visually jarring at small scale
 
-**Assessment:** The Text button improvement is a real fix for a real user experience gap. The CTA bar now functions as a 3-button bar rather than a 2-button bar with a ghost element. Moving from 7.3 to 7.5.
+**Assessment:** No changes. Holds at 7.5.
 
-### 14. Accessibility & Technical — 7.8 (v12: 7.7, +0.1)
+---
+
+### 13. Accessibility & Technical — 7.8 (v13: 7.8, unchanged)
 
 **Positives:**
-- **prefers-reduced-motion coverage now comprehensive.** The QA pass added: `html { scroll-behavior: auto }` under reduced-motion, `.mobile-cta-bar { transition: none }`, `.triage-option { transition: none }`, and all `scrollIntoView` calls (both in main.js and inline onclick handlers) now check `window.matchMedia('(prefers-reduced-motion: reduce)')`. This closes the gaps that were identified by the Scout report
-- Carousel dot tap targets fixed to 44x44px via the `::before` pseudo-element technique — the WCAG 2.5.5 gap from v12 is resolved
-- Carousel dot gap fixed (0rem to 0.25rem) — dots are now visually distinct interactive elements
-- Credentials strip `justify-content` alignment bug fixed
-- Services grid `align-items: stretch` — card height matching is a rendering correctness fix
-- Triage sub-text raised above 12px minimum
-- `!important` count: 8 (7 from v12 + 1 new fade-in-up rule under reduced-motion). All 8 are in the prefers-reduced-motion block — justified
-- Address-link minimum tap target maintained via negative-margin padding — no regression
+- prefers-reduced-motion coverage comprehensive — all animation and scroll-behaviour covered
+- Carousel tap targets, ARIA roles, skip link, form validation with accessible error messages — all carry over
+- Third ring animation removed cleanly: `animation: none` on `::after` rather than removing the element, which preserves the visual structure while eliminating the GPU cost
+- `!important` count remains 8, all in the prefers-reduced-motion block — justified
 
 **Issues:**
-- Still no explicit `type="image/webp"` on hero `<source>` elements (noted since v10)
-- Favicon remains a data URI SVG — functional for in-browser use, not ideal for home screen saves on iOS/Android
-- The credentials strip 2x2 wrapping on 375px (at `max-width: 479px`) removes dividers but provides no alternative visual separator. The four items appear as a 2x2 grid with generous gap spacing but no clear grouping. Reading order (left-to-right, top-to-bottom) works for LTR users, but the grid is not obviously scannable as a list of four credentials
+- No `type="image/webp"` on hero `<source>` elements (noted since v10)
+- Favicon remains a data URI SVG — functional for browser tab, not ideal for home screen saves
+- Nav active-state highlighting uses inline `style.color` rather than a CSS class — fragile pattern noted since v12
 
-**Assessment:** The prefers-reduced-motion completeness and the tap target fixes are the meaningful improvements. The technical quality of this build is high. Moving from 7.7 to 7.8.
+**Assessment:** No changes to tech/accessibility this cycle. The animation removal is a CSS correctness improvement but negligible in accessibility terms. Holds at 7.8.
 
 ---
 
 ## Overall Score
 
-| Section | v12 Score | v13 Score | Change |
+| Section | v13 Score | v14 Score | Change |
 |---------|-----------|-----------|--------|
-| Navigation / Header | 7.4 | 7.5 | **+0.1** |
-| Hero | 7.5 | 7.5 | -- |
-| Credentials Strip | — | 7.2 | new |
-| Services | 7.6 | 7.7 | **+0.1** |
-| Meet the Team | 7.4 | 7.4 | -- |
+| Navigation / Header | 7.5 | 7.5 | -- |
+| Hero | 7.5 | 7.6 | **+0.1** |
+| Services | 7.7 | 7.7 | -- |
+| Meet the Team | 7.4 | 7.7 | **+0.3** |
 | Testimonials | 7.7 | 7.7 | -- |
 | Why Choose Us | 7.5 | 7.5 | -- |
-| Emergency | 7.3 | 7.6 | **+0.3** |
-| Location / Hours | 7.5 | 7.6 | **+0.1** |
-| Booking Form | 7.3 | 7.4 | **+0.1** |
-| FAQ | 7.3 | 7.4 | **+0.1** |
-| Footer | 7.3 | 7.4 | **+0.1** |
-| Sticky Mobile CTA Bar | 7.3 | 7.5 | **+0.2** |
-| Accessibility & Technical | 7.7 | 7.8 | **+0.1** |
-| **OVERALL** | **7.45** | **7.55** | **+0.10** |
+| Emergency | 7.6 | 7.7 | **+0.1** |
+| Location / Hours | 7.6 | 7.6 | -- |
+| Booking Form | 7.4 | 7.4 | -- |
+| FAQ | 7.4 | 7.4 | -- |
+| Footer | 7.4 | 7.4 | -- |
+| Sticky Mobile CTA Bar | 7.5 | 7.5 | -- |
+| Accessibility & Technical | 7.8 | 7.8 | -- |
+| **OVERALL** | **7.55** | **7.65** | **+0.10** |
 
-**v13 Overall: 7.55 / 10.0**
+**v14 Overall: 7.65 / 10.0**
 
-The gain of +0.10 is the strongest single-version improvement since v11. Three changes drove this:
+The gain of +0.10 comes from three precise changes, each of which addressed a standing recommendation:
 
-1. **Emergency section phone hierarchy** (+0.3): The most user-facing fix in the batch. A panicking owner now sees the phone number first. This is the kind of change that matters when someone's pet is hurt.
+1. **Meet the Team specialty badges (+0.3):** The most impactful single change in this cycle. Four identical dark cards are now four distinct people at a glance. A user choosing between Dr. Mitchell and Dr. Rivera can now do so at a scroll speed rather than stopping to read. This is the type of change that affects a real choosing decision.
 
-2. **Sticky CTA Bar Text button** (+0.2): The bar now functions as a genuine three-button CTA rather than two visible buttons and one phantom.
+2. **Hero trust strip simplified (+0.1):** The glass-effect badge cluster was over-engineered for a local service site. The single text line is more confident and removes the duplication problem that sat at the top of v13's recommendations. The hero is now the cleanest it has been in this audit series.
 
-3. **QA pass across five sections**: Card heights, dot gaps, address whitespace, font minimums, prefers-reduced-motion — these are the boring fixes that add up. The services card height fix and address gap fix were both visible bugs on real devices.
+3. **Emergency animation reduced to two (+0.1):** The third ring animation was producing a frantic visual rhythm that conflicted with the section's authority. Two animations is the right balance. The section now reads as urgent without reading as chaotic.
 
-The overall score of 7.55 represents a site that is genuinely functional, well-considered, and better than most local service pages. The floor has risen: no section is below 7.2. The ceiling (Testimonials, Accessibility) is at 7.7–7.8. The spread is 0.6 points (7.2 to 7.8), tighter than v12's spread of 0.4 in absolute terms but with the new credentials strip at the low end.
+The overall score of 7.65 represents a site that is now comfortably above the 7.5 line across its section average. No section scores below 7.4. The spread is now 0.4 points (7.4 to 7.8), tighter than any previous version. The ceiling (Team, Testimonials, Emergency, Accessibility) has moved up to 7.7–7.8.
 
-The path to 7.6+ overall requires lifting the credentials strip (7.2) and addressing the trust signal duplication between the hero strip and credentials strip. A single, well-differentiated presentation of trust signals outperforms three repetitions of the same data point.
+The remaining distance to 7.7 overall requires addressing the Booking Form (7.4), FAQ (7.4), and Footer (7.4) — the three sections that have not moved in two cycles. None of these have received recommendations that were acted upon. The portal strip post-submission, the FAQ scroll length, and the footer block count are the concrete issues to address.
 
 ---
 
@@ -299,29 +281,30 @@ The path to 7.6+ overall requires lifting the credentials strip (7.2) and addres
 | v11 | 2026-04-01 | 7.38 | Nigel | Location transformed (+0.4): info card, status pill, multi-channel contact, first-visit card, radial gradient. Layout monotony broken: 2-col services grid, testimonial swipe carousel. Tech debt cleaned: !important 16->7 (all justified), placeholder links 8->1. CTA bar gains text button (+0.2). Pricing FAQ added. Review stats bar on testimonials. |
 | v12 | 2026-04-09 | 7.45 | Nigel | Carousel accessibility complete: full ARIA carousel pattern + interactive dots (+0.2). Header condensed 4->3 elements (+0.2). Why Choose Us subtitle specific + per-icon tint colors (+0.2). A11y section to 7.7. Vet name mismatch in booking form resolved (bug fix, no score change). |
 | v13 | 2026-04-09 | 7.55 | Nigel | Credentials strip added (hero paw removed). Triage widget above booking form. Emergency phone hierarchy fixed (+0.3). FAQ Text CTA added. Newsletter copy specific. CTA bar Text button visible (+0.2). QA pass: card heights, dot gap, address whitespace, font minimums, reduced-motion completeness. |
+| v14 | 2026-04-09 | 7.65 | Nigel | Credentials strip removed (trust signal duplication resolved). Hero trust condensed to single text line. Team specialty pill badges added (+0.3). Emergency third ring animation removed. Three of three v13 recommendations addressed. |
 
 ---
 
 ## Top 3 Priority Recommendations
 
-### 1. Resolve trust signal duplication between hero and credentials strip
+### 1. Remove the portal strip from the post-submission state in the booking form
 
-The site currently shows the Google rating in three consecutive above-the-fold locations: hero trust strip ("4.9 Google"), credentials strip ("4.9 Google Rating / 500+ Reviews"), and testimonials stats bar ("4.9 / 500+ Reviews / 98% Recommend Us"). The first two are visible on the same scrollable section of the 375px hero. This repetition dilutes the impact of each individual signal — a real user's eye learns to skip repeated information.
+The current implementation shows the "Pet Parent Portal — Coming Soon" strip immediately after a user submits an appointment request. The success message ("Thank you! Your appointment request has been received...") already mentions the portal inline. Showing the full portal strip below a just-submitted form presents a "Coming Soon" dead end at the highest-intent moment on the page — a user who has just committed to booking an appointment.
 
-Fix: Remove the Google rating from the credentials strip (it appears in the hero trust strip immediately above it) and replace it with a different signal. Good candidates: "Fear Free + AAHA Standards" (a specific accreditation claim), "Same-Day Appointments Available" (an action-relevant differentiator), or "2,500+ Pets Cared For" (a volume signal that is different from rating). The goal is four genuinely distinct trust signals in the credentials strip, each of which adds new information rather than repeating what the hero already stated.
+Fix: Hide the portal strip on form submission, or move it below the fold out of the immediate confirmation view. The `formSuccess` handler in `main.js` disables form fields but does not touch the portal strip. Add `document.querySelector('.portal-strip').style.display = 'none'` (or a CSS class equivalent) in the `isValid` branch of the form submit handler. This is a two-line change with a real effect on post-submit UX.
 
-### 2. Differentiate the Meet the Team section layout — add one visual differentiator per card
+### 2. Add a "collapse all" or category-level accordion to the FAQ section
 
-The four team cards are the most visually homogeneous section on the site. At 375px, four identical dark cards with circular photos, name, role, and bio text stack with no differentiation. A real user who is choosing between Dr. Mitchell and Dr. Rivera cannot do so at a glance.
+At 375px, 11 individual FAQ items across 4 categories require substantial scrolling. A user who wants the payment FAQ ("Do you offer payment plans?") must scroll past 8 visible `<details>` items. The existing `<details>` / `<summary>` pattern is correct for individual items but provides no mechanism to collapse or skip an entire category.
 
-Fix (surgical, not structural): Add one visually distinctive element per card — a specialty badge or accent. Options: (a) A small pill badge on each card indicating a specialty area: "Internal Medicine", "Orthopedic Surgery", "Fear-Free Handling", "Client Relations" — using the existing accent/role colour system. (b) A subtle left-border colour per card, matching the icon tint system used in Why Choose Us (teal, sky, rose, amber). Either change takes the team from "four identical cards" to "four distinct people" without restructuring the layout. This is a one-class addition per card.
+Fix: Wrap each `faq-category` heading and its associated `faq-item` elements in a wrapping `<details>` element, making the category itself collapsible. The default state should be all categories open (preserving current behaviour), but a user can collapse categories they do not need. Alternatively, add a "Jump to section" anchor strip above the FAQ list linking to each category heading — this is lower engineering effort and achieves the navigation goal without restructuring the DOM.
 
-### 3. Reduce the Emergency section animation from three simultaneous effects to two
+### 3. Resolve the footer visual density — consolidate newsletter and Quick Answers into the footer grid
 
-The `emergency-pulse` animation on the cross element involves three CSS animations running simultaneously: `emergencyPulse` on the element itself (scale + opacity, 2s infinite), `emergencyRing` on `::before` (scale + opacity, 2s infinite, no delay), and `emergencyRing` on `::after` (scale + opacity, 2s infinite, 0.3s delay). On a mid-range Android at 60Hz, three simultaneous opacity-and-transform animations on a single element create GPU compositing cost that can cause frame drops. More importantly, on an emergency section that should feel urgent but calm, three overlapping ring animations read as frantic rather than authoritative.
+The footer currently has 9 distinct visual blocks stacked on 375px: paw divider, footer grid (brand / links / contact), social bar, newsletter form, Quick Answers pills, footer bottom (legal + back-to-top). The newsletter and Quick Answers blocks appear below the footer grid as standalone full-width rows. On 375px this adds approximately 160px of non-essential footer height.
 
-Fix: Remove the `::after` ring animation (the delayed second ring). Keep `emergencyPulse` on the cross and `emergencyRing` on `::before` only. Two animations is still visually active; the third adds no meaningful urgency signal. The CSS change is a single `animation: none` on `.pulse-cross::after`. The `prefers-reduced-motion` coverage already handles the all-off case correctly.
+Fix: Move the newsletter signup into the footer brand column (below the tagline) and move the Quick Answers pill strip into the footer links column (below the link list). This consolidates 6 blocks into 3 without removing any content. The back-to-top and legal footer remain as the footer bottom. The result is a footer that reads as three rows (brand/links/contact grid, social, legal) rather than six.
 
 ---
 
-*End of v13 audit. Score: 7.55 (+0.10 from v12's 7.45). Emergency section is the standout mover (+0.3): the phone number hierarchy fix is a genuine usability improvement that changes the first-user experience on the most time-critical section. CTA bar Text button (+0.2) resolves a real visibility gap. QA pass improvements (card heights, dot gaps, address whitespace, font minimums, reduced-motion) collectively move five sections. The new credentials strip is structurally sound but scored at 7.2 due to trust signal duplication with the hero strip and 2x2 wrapping on 375px. No section below 7.2. The floor across all sections is 7.4 except the new credentials strip. To reach 7.6 overall: address the Google rating duplication and differentiate the team cards.*
+*End of v14 audit. Score: 7.65 (+0.10 from v13's 7.55). Three of three v13 recommendations were implemented and all three moved their target sections. Team specialty badges (+0.3) are the standout improvement — they solve a real first-impression problem on the most relationship-dependent section of a vet practice site. Hero simplification (+0.1) resolves the trust signal duplication that sat atop v13's priorities. Emergency animation trim (+0.1) is a small but correct polish move. The remaining ceiling is the Booking Form, FAQ, and Footer — three sections that have stalled at 7.4 for two consecutive versions. Each has a concrete, low-effort fix available.*
