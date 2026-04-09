@@ -127,7 +127,8 @@
         });
         if (formSuccess) {
           formSuccess.hidden = false;
-          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          formSuccess.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'center' });
         }
       } else {
         // Focus first invalid field
@@ -246,7 +247,8 @@
     cards.forEach(function (card) { dotObserver.observe(card); });
     dots.forEach(function (dot, i) {
       dot.addEventListener('click', function () {
-        cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        cards[i].scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
       });
     });
   }

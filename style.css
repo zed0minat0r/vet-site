@@ -412,7 +412,7 @@ section {
 }
 @media (max-width: 479px) {
   .credential-divider { display: none; }
-  .credentials-inner { gap: 0.75rem 1.25rem; justify-content: flex-start; padding: 0 0.5rem; }
+  .credentials-inner { gap: 0.75rem 1.25rem; justify-content: center; padding: 0 0.5rem; }
 }
 
 /* --- Services --- */
@@ -427,12 +427,15 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
+  align-items: stretch;
 }
 
 .service-card {
   background: #ffffff;
   border-radius: 16px;
   padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   border: 1px solid rgba(45, 212, 168, 0.08);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
@@ -754,8 +757,8 @@ section {
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 0rem;
-  margin-top: 0.25rem;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
 }
 .carousel-dot {
   /* 44x44 tap target, visual dot via ::before */
@@ -784,6 +787,11 @@ section {
 .carousel-dot.active::before {
   background: var(--accent);
   transform: scale(1.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-dot::before { transition: none; }
+  .carousel-dot.active::before { transform: none; }
 }
 
 /* --- Emergency --- */
@@ -854,6 +862,7 @@ section {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .pulse-cross, .pulse-cross::before, .pulse-cross::after { animation: none; }
   .fade-in-up {
     opacity: 1 !important;
@@ -863,6 +872,8 @@ section {
   .mobile-cta-book {
     animation: none !important;
   }
+  .mobile-cta-bar { transition: none; }
+  .triage-option { transition: none; }
 }
 .cross-h, .cross-v {
   position: absolute;
@@ -882,7 +893,8 @@ section {
 
 .emergency-box h2 {
   color: var(--emergency);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 /* Emergency phone hero block */
@@ -1324,9 +1336,12 @@ section {
   height: 220px;
 }
 .map-directions-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 0.65rem 1.5rem;
+  min-height: 44px;
   font-size: 0.9rem;
   font-weight: 700;
   color: #ffffff;
@@ -1352,9 +1367,9 @@ section {
 .address-link {
   color: var(--text-muted);
   text-decoration: none;
-  display: block;
-  min-height: 44px;
-  padding: 0.5rem 0;
+  display: inline-block;
+  padding: 0.6rem 0.5rem;
+  margin: -0.6rem -0.5rem;
   transition: color 0.2s ease;
 }
 .address-link:active { color: var(--accent); }
@@ -1416,7 +1431,7 @@ section {
   line-height: 1.2;
 }
 .triage-option-sub {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   line-height: 1.2;
 }
 .triage-option--emergency {
@@ -2040,9 +2055,9 @@ section {
 }
 
 .mobile-cta-text {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.16);
   color: #e8edf3;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .mobile-cta-book {
