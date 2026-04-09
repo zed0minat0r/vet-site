@@ -426,3 +426,115 @@ Web animation research for 2026 confirms mobile GPUs cannot match desktop. Best 
 - [BOIA — Dark Mode Does Not Satisfy WCAG Contrast](https://www.boia.org/blog/offering-a-dark-mode-doesnt-satisfy-wcag-color-contrast-requirements)
 - [Greeden — Accessibility Guide Dark Mode WCAG 2026](https://blog.greeden.me/en/2026/02/23/complete-accessibility-guide-for-dark-mode-and-high-contrast-color-design-contrast-validation-respecting-os-settings-icons-images-and-focus-visibility-wcag-2-1-aa/)
 - [LifeLearn — 7 Essential Features Every Vet Website Should Have](https://www.lifelearn.com/2024/03/26/veterinary-website-features/)
+
+---
+
+## Round 5 Research — 2026-04-09
+
+**Scope:** Fresh gaps only. Rounds 1-4 covered: mobile-first, online booking, emergency info, trust signals, fear-free badge strip, triage decision tree, site search, async messaging language, video testimonials, prefers-reduced-motion, AI chatbot (future), SEO/schema, wellness plan display, pricing transparency, client portal, WCAG 2.2, and Gen Z/Millennial communication expectations.
+
+### Gap 1 — Telemedicine / Virtual Consult Entry Point (Not On Site)
+
+The veterinary telemedicine market hit $282M in 2025 and is projected to reach $673M by 2030 (Mordor Intelligence). More critically for the website: the standard in 2026 is a prominently placed "Start a Virtual Visit" button on the homepage, not buried in a portal.
+
+**How top practices implement this:**
+- A single "Virtual Visit" or "Telehealth" CTA in the hero or sticky nav, distinct from the booking button (orange vs. green, or outlined vs. filled)
+- The link opens a branded telemedicine platform (Vetstoria, Smart.Vet, InstaPract, or similar) that carries the clinic's logo and color scheme — it does not feel like leaving the site
+- The consult entry collects intake info and payment before the video session starts, so the vet arrives prepared
+- Triage language on the button clarifies scope: "Minor concerns? Talk to us from home. Emergencies: call [phone]."
+- Platform data syncs back to the patient chart automatically — no manual re-entry
+
+**Actionable for this site:** Add a secondary CTA button in the hero section alongside "Book Appointment." Label it "Virtual Visit" or "Talk to a Vet Online." It does not require building a telemedicine platform — it links out to a chosen third-party service (or shows a "Coming Soon" modal if not yet contracted). This single addition signals modern care to Millennial/Gen Z owners who want to avoid an unnecessary in-person trip. Keep it visually subordinate to the primary booking CTA.
+
+### Gap 2 — Automated Waitlist / Real-Time Cancellation Fill (Not On Site)
+
+40% of online bookings happen outside business hours — these are appointments that go to competitors if the site lacks 24/7 booking with a waitlist. Beyond that, practices using automated waitlist tools recover 60-80% of cancelled appointment slots.
+
+**How this works on the front end:**
+- When a pet owner selects a date/time that is full, the booking form shows "This slot is full — join the waitlist for [date/time]" instead of just greying it out
+- When a cancellation opens, the system texts the next waitlisted client automatically ("A slot opened up for Tuesday 2pm — click to confirm")
+- Platforms: Oliver (getoliver.com), Next In Line, VetSyCare — all integrate with standard practice management systems
+- The site does not need to build this from scratch; it's a widget/integration
+
+**Actionable for this site:** The current static booking form cannot surface real-time availability or waitlist state. When the portal goes live, the booking link should route through a platform that supports waitlist functionality. In the interim, add a line to the booking form submission confirmation: "If your preferred time is unavailable, we'll add you to our waitlist and text you when a slot opens." This sets expectations and keeps clients from booking elsewhere.
+
+### Gap 3 — Online Pharmacy / Prescription Refill Link (Not On Site)
+
+Leading vet sites in 2026 prominently surface pharmacy access — not as a buried portal link, but as a standalone nav item or footer quick link. Pet owners who can order refills without calling are more loyal clients.
+
+**What top sites do:**
+- A "Pharmacy" or "Refill Prescriptions" link in the main navigation or footer, visually distinct
+- The link goes to a branded online pharmacy (Vetsource, Mixlab, Wedgewood's Blue Rabbit, or the practice's own Vetsource storefront) that carries the clinic name
+- AutoShip enrollment (monthly auto-delivery of recurring meds like flea/tick, heartworm) is highlighted as a convenience — this locks in recurring revenue and visits
+- Key message: "Order your pet's medications online — free delivery, auto-refills, no phone calls required"
+
+**Actionable for this site:** The portal strip says "Coming Soon." When it launches, pharmacy/refill access should be listed as a primary feature alongside records access. Even before launch, adding "Prescription refills available through our online pharmacy" as a sentence in the services section sets the expectation. This is a content addition, not a code change — very low effort.
+
+### Gap 4 — Wellness Plan Cost Calculator (Underused Differentiator)
+
+Only ~10% of vet sites have any kind of interactive cost tool. Third-party sites like VetCostCalc.com and VetReceipt.com have stepped in to fill this gap — which means clients are leaving the practice's website to do cost math elsewhere. A simple in-page calculator captures that research session.
+
+**What this looks like:**
+- A 3-step tool: (1) Select pet type (dog/cat), (2) Select age range (puppy/adult/senior), (3) See estimated annual care cost vs. wellness plan monthly cost
+- No backend required — all logic is client-side JavaScript with hardcoded ranges
+- Result message: "Your adult dog's annual wellness care averages $X-$Y per year. Our Wellness Plan covers this for $Z/month ($ZZ/year) — you save up to $AAA."
+- Includes a direct CTA: "Enroll in a Wellness Plan" linking to the booking form with service pre-selected
+
+**Actionable for this site:** This could live inside the existing wellness plan / pricing section as a progressive disclosure element (click "Calculate My Savings" to expand). It requires approximately 40-60 lines of JavaScript and a simple form — achievable in one Builder cycle. This is a high-differentiation, low-effort feature that no competitors in the local area likely have.
+
+### Gap 5 — Virtual Clinic Tour (Low Cost, High Trust)
+
+When anxious pet owners research a new vet, the physical environment matters. Seeing the waiting room, exam rooms, and surgical suite before the first visit removes a major psychological barrier — especially for owners of anxious or reactive pets.
+
+**Current state of the art:**
+- Several top practices (Rose-Rich Vet, SurgiPet, Pleasant Valley Vet Clinic) embed 360-degree virtual tours directly on their websites using CloudPano or Google Street View integration
+- For static HTML sites, even a 4-6 photo "Clinic Tour" section with captions ("Our Fear Free exam rooms," "Our digital X-ray suite") achieves 80% of the trust benefit without 360 technology
+- Photos of the actual waiting room (not stock), exam tables, and surgical area outperform any copy about being "state of the art"
+
+**Actionable for this site:** The site currently has no facility photos — only staff photos and a map. A "Tour Our Clinic" section (or subsection of About Us) with 4 real facility photos is a content task, not a code task. If the site owner can provide photos, a Builder can create the section in under one cycle. Flag to the site owner as a content request. This is especially impactful for Fear Free certification claims — showing the Fear Free-certified exam rooms makes the badge credible.
+
+### Gap 6 — Petriage / Symptom Checker Widget (Emerging Standard)
+
+Several vet clinics now embed third-party symptom checker tools directly on their websites. These tools pre-qualify urgency, reduce inappropriate emergency visits, and capture after-hours anxiety visits that would otherwise go to urgent care.
+
+**How it works:**
+- Tools like Petriage, Vet Help Direct, or Tamarack Vet's pet health checker let owners answer 5-7 questions about symptoms
+- Output is a triage recommendation: Non-Threatening / Worrisome / Urgent / Emergency — with corresponding CTAs (call now / book same-day / book routine / monitor at home)
+- The vet receives a copy of the symptom analysis, so the appointment already has context before the client arrives
+- This is distinct from the triage decision tree recommended in Round 4 — that was a simple 3-4 branch decision flow; this is a validated clinical symptom checker with vet-reviewed outcomes
+
+**Actionable for this site:** Petriage and Vet Help Direct both offer embeddable widgets. This can be added as a small card ("Not sure how urgent it is? Check your pet's symptoms") adjacent to the existing triage/booking form. Low implementation cost, meaningful differentiation — the current site has no symptom triage beyond the basic decision tree recommendation from Round 4.
+
+### Updated Feature Gap Summary (Round 5)
+
+| Feature | Site Status | Priority | Build Effort |
+|---|---|---|---|
+| Virtual Visit / Telehealth CTA in hero | Missing | HIGH | Low (link out) |
+| Automated waitlist language in booking | Missing | HIGH | Low (copy only) |
+| Online pharmacy / refill link | Not surfaced | MEDIUM | Low (link + copy) |
+| Wellness plan cost calculator | Missing | MEDIUM | Low-Medium (JS) |
+| Clinic tour / facility photos section | Missing | MEDIUM | Content only |
+| Embedded symptom checker widget (Petriage) | Missing | MEDIUM | Low (embed) |
+
+---
+
+## Round 5 Sources
+
+- [American Pet Products — Telemedicine Movement in Veterinary Care 2026](https://americanpetproducts.org/blog/the-future-of-veterinary-care-telemedicine-movement-in-2026)
+- [Ragus Associates — Revolutionizing Animal Care: Veterinary Telemedicine](https://www.ragusassociates.com/2026/03/19/revolutionizing-anim/)
+- [LifeLearn — How to Choose the Best Telemedicine Service for Veterinarians](https://www.lifelearn.com/2023/05/31/best-telemed-for-veterinarians/)
+- [Smart.Vet — Virtual Care Platform](https://smart.vet/platform/)
+- [VetSyCare — Online Booking for Veterinary Clinics 2026](https://vetsycare.com/blog/online-booking-veterinary-clinics)
+- [Oliver — Automated Waitlist for Veterinary Clinics](https://getoliver.com/waitlist)
+- [Next In Line — Veterinary Appointment Scheduling](https://www.nextinline.io/)
+- [Vetsource — Prescription Management](https://vetsource.com/products/prescription-management/)
+- [Mixlab — eMix Veterinary Pharmacy Platform](https://mixlab.com/)
+- [VetCostCalc — 2026 Veterinary Cost Calculator](https://vetcostcalc.com/)
+- [IDEXX — ROI of Pet Wellness Plans in Veterinary Practice](https://software.idexx.com/resources/blog/the-roi-of-pet-wellness-plans-in-veterinary-practice)
+- [CloudPano — Benefits of Virtual Tours for Veterinary Clinics](https://www.cloudpano.com/learn/benefits-of-virtual-tours-for-veterinary-clinics)
+- [Rose-Rich Veterinary Clinic — Virtual Tour](https://www.roserichvet.com/hospital-tour)
+- [MacCormick Vet — Petriage Symptom Checker](https://maccormickvet.com/telemedicine-pet-triage-tool/)
+- [Vet Help Direct — Interactive Pet Symptom Checker](https://vethelpdirect.com/interactive-pet-symptom-checker/)
+- [Tamarack Vet — Pet Health Checker](https://tamarackvet.com/pet-health-resources/pet-health-checker/)
+- [IDEXX — 7 Digital Trends Shaping Veterinary Practices in 2026](https://software.idexx.com/resources/blog/7-digital-veterinary-technology-trends-shaping-practices-in-2026)
+- [Levitate.ai — Creating an Impactful Veterinary Website Design in 2026](https://www.levitate.ai/blog-posts/creating-an-impactful-veterinary-website-design-in-2026)
