@@ -716,20 +716,34 @@ section {
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 0rem;
+  margin-top: 0.25rem;
 }
 .carousel-dot {
+  /* 44x44 tap target, visual dot via ::before */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+  position: relative;
+}
+.carousel-dot::before {
+  content: '';
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: none;
   background: rgba(45, 212, 168, 0.25);
-  cursor: pointer;
-  padding: 0;
   transition: background 0.25s ease, transform 0.25s ease;
+  flex-shrink: 0;
 }
-.carousel-dot.active {
+.carousel-dot.active::before {
   background: var(--accent);
   transform: scale(1.2);
 }
@@ -1879,7 +1893,7 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.03em;
   color: #fff;
@@ -1921,7 +1935,7 @@ section {
   .nav-cta { font-size: 0.85rem; padding: 0.5rem 0.9rem; }
   .mobile-cta-bar { padding: 0.5rem 0.5rem; padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
   .mobile-cta-btn { font-size: 0.85rem; padding: 0.65rem 0.4rem; min-height: 48px; gap: 0.25rem; }
-  .cta-emergency-badge { font-size: 0.7rem; padding: 0.15rem 0.35rem; }
+  .cta-emergency-badge { font-size: 0.75rem; padding: 0.15rem 0.35rem; }
   .faq-item summary { padding: 1rem 1rem; }
   .faq-item p { padding: 0 1rem 1rem; }
   .booking-form { padding: 1.5rem 1.25rem; }
@@ -2005,7 +2019,7 @@ a.trust-strip-link:active {
 }
 .footer-link-placeholder small {
   margin-left: 0.3rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   opacity: 0.7;
 }
 
@@ -2123,7 +2137,7 @@ a.trust-strip-link:active {
 .why-choose-stat {
   display: inline-block;
   margin-top: 0.5rem;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
