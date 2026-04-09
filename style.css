@@ -171,6 +171,7 @@ section {
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--text);
+  min-height: 44px;
 }
 
 .nav-logo .logo-svg { flex-shrink: 0; }
@@ -370,7 +371,6 @@ section {
 }
 
 
-/* --- Credentials Strip --- */
 /* --- Services --- */
 .services {
   background: linear-gradient(180deg, #f0faf6 0%, #f4f7fa 100%);
@@ -550,7 +550,7 @@ section {
 /* Specialty pill badges on team cards */
 .team-specialty {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.4px;
   text-transform: uppercase;
@@ -746,7 +746,7 @@ section {
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
   margin-top: 0.5rem;
 }
 .carousel-dot {
@@ -1013,9 +1013,15 @@ section {
 
 .emergency-box p.emergency-response {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--emergency);
+  font-weight: 600;
+  background: rgba(255, 107, 107, 0.08);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.85rem;
   margin-top: 0.75rem;
   margin-bottom: 0;
+  display: inline-block;
 }
 .emergency-faq-link {
   color: var(--accent);
@@ -1266,6 +1272,8 @@ section {
   color: #1a8a6a;
   font-weight: 600;
   text-decoration: none;
+  display: inline-block;
+  padding: 0.75rem 0 0.75rem;
 }
 
 /* Today's hours highlight */
@@ -1703,8 +1711,8 @@ section {
 }
 .faq-cta .btn-ghost-subtle {
   background: transparent;
-  color: var(--text-muted);
-  border: 2px solid rgba(45, 212, 168, 0.25);
+  color: #3a6a5a;
+  border: 2px solid rgba(45, 212, 168, 0.45);
   padding: 0.65rem 1.5rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
@@ -1808,6 +1816,7 @@ section {
   display: inline-block;
   min-height: 44px;
   line-height: 44px;
+  min-width: 44px;
 }
 .footer-contact address {
   font-style: normal;
