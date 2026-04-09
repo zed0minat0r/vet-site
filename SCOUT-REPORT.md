@@ -333,3 +333,96 @@ After analyzing dozens of vet websites, the gap between a "good" site (7/10) and
 - [GeniusVets — Vet Website Design Trends](https://www.geniusvets.com/veterinary-marketing/blog/4-trends-veterinary-website-design-you-should-follow-and-3-you-shouldnt)
 - [Hibu — Veterinary Website Design Best Practices](https://hibu.com/blog/industries/veterinary-website-design-best-practices)
 - [PetDesk — Ultimate Veterinary Website Guide](https://petdesk.com/blog/ultimate-veterinary-website-guide)
+
+---
+
+## Round 4 Research — 2026-04-09
+
+**Scope:** New findings only. Site audit confirms the following are already present: booking form, FAQ section, portal strip (coming soon), fear-free mention in team bios, social links in footer, schema markup. Research below targets gaps not yet addressed.
+
+### Gap 1 — AI Chatbot / Triage Widget (Not On Site Yet)
+
+AI chatbots for vet clinics have crossed from "future" to "expected" status in 2026. Specific findings:
+
+- Chatbots synced with practice management software auto-fill cancelled slots from a waitlist, recovering 60–80% of appointments that would otherwise go empty.
+- Smart scheduling bots analyze appointment type, vet availability, historical no-show patterns, and seasonal demand to suggest optimal time slots — not just surface an open calendar.
+- Emergency triage bots must include a clear disclaimer that they do not replace professional diagnosis. Best implementations route urgency (call now / come in / book soon) rather than giving diagnostic answers.
+- Top platforms in 2026: IDEXX AI chatbot (integrates with Cornerstone/Neo), LifeLearn Sofie, Voiceflow-based custom bots for smaller practices.
+- Actionable: The current booking form is good but static. A lightweight triage widget above the form ("Is this an emergency? Tell us what's happening and we'll guide you") would capture after-hours anxiety visits and pre-qualify urgency. This does not require a full chatbot — a simple decision tree with 3–4 branches (emergency / sick visit / wellness / dental) leading to the correct CTA covers 80% of use cases.
+
+### Gap 2 — Fear Free Certification Badge (Visible Trust Signal, Currently Buried)
+
+Fear Free certification is currently mentioned only in a staff bio (Maya Chen). In 2026, this is a prominent differentiator:
+
+- Fear Free Certified Practice status (not just individual staff) is a homepage-level trust signal. Top vet sites display the Fear Free badge prominently near the hero or in a credentials strip alongside AAHA accreditation.
+- 79% of pet owners research clinics online before choosing. Anxious pet owners — specifically cat owners and owners of reactive dogs — actively search "Fear Free vet near me."
+- Actionable: Add a credentials/badges strip (1 row, small icons) between the hero and services sections. Include: Fear Free Certified badge, years in practice, Google 4.9 star rating. This is a single HTML row — low build cost, high trust payoff. Do NOT add a new section (respect the 10–12 section cap) — integrate into existing hero footer area or Why Choose Us section.
+
+### Gap 3 — Millennials and Gen Z Expect Async Digital Communication
+
+Gen Z and Millennials now represent the majority of pet owners in the US (50%+ of households). Their expectations differ from older demographics in one critical way: they do not want to call.
+
+- 7x higher payment rate when payment links are sent via messaging vs. SMS alone.
+- Preferred channels: texting, WhatsApp-style messaging — not phone calls or email.
+- Younger owners expect to handle everything digitally: booking, intake forms, prescription refills, post-visit follow-up — all without calling the front desk.
+- 60% of pet owners cite cost as the primary concern. Younger owners are MORE likely to pre-screen costs online before booking.
+- Actionable: The portal strip (coming soon) addresses this well. When it goes live, messaging should explicitly call out "Text us, don't call us" and "No phone calls required." The booking confirmation language ("we'll confirm within 1 business day via text or email") is already strong — keep and reinforce this throughout.
+
+### Gap 4 — Site Search (30% of Motivated Visitors Use It)
+
+Roughly 30% of website visitors who use a search bar are highly motivated and will follow through on their search. Vet sites without search lose these high-intent visitors.
+
+- The current site has no search functionality.
+- For a static HTML site, a lightweight client-side search (Fuse.js or similar) can index: service names, FAQ questions and answers, team member names, species served.
+- Actionable: Add a search icon to the sticky nav that reveals a search input on click. This is achievable with approximately 50 lines of JavaScript and no backend. Low build cost, meaningful UX improvement for motivated visitors.
+
+### Gap 5 — Mobile Animation Budget (Audit prefers-reduced-motion Compliance)
+
+Web animation research for 2026 confirms mobile GPUs cannot match desktop. Best practice is adaptive animation.
+
+- Target 60fps desktop, 45–50fps mobile. At smallest screen sizes only essential animations should remain.
+- `prefers-reduced-motion` media query should suppress all non-essential animations for users who have set this OS-level preference. This is both an accessibility requirement and a performance win.
+- Simple scroll-triggered fade-ins and click-triggered button state changes are the only animations appropriate for mobile-first sites.
+- Actionable: Audit current CSS/JS for animations that do NOT respect `prefers-reduced-motion`. Any animation not wrapped in `@media (prefers-reduced-motion: no-preference)` is a potential accessibility and performance issue. Quick audit task for Refiner — not Scout.
+
+### Gap 6 — Video Social Proof (Low Priority, High Impact When Budget Allows)
+
+79% of pet owners check social media and online reviews before choosing a vet. Video testimonials are the highest-credibility social proof format.
+
+- Short (15–30 second) unscripted phone-quality video clips of real clients with their pets outperform polished production.
+- Best placement: inside the testimonials section, adjacent to existing text quotes.
+- The current site has four text testimonials. Adding one video testimonial card (embedded short video, autoplay-off, captioned) would be the single highest-impact content upgrade.
+- Actionable: Flag for the client/site owner to capture a phone video of a willing pet owner. No production required. Embed as a `<video>` element with `muted playsinline controls` — no autoplay on mobile. This is a content gap, not a code gap.
+
+### Updated Feature Gap Summary (Round 4)
+
+| Feature | Site Status | Priority | Build Effort |
+|---|---|---|---|
+| Triage decision tree above booking form | Missing | HIGH | Low-Medium |
+| Fear Free / credentials badge strip | Buried in bio | HIGH | Low |
+| `prefers-reduced-motion` audit | Unknown status | HIGH (accessibility) | Low |
+| Site search in sticky nav | Missing | MEDIUM | Low |
+| Async-first messaging language in portal section | Weak | MEDIUM | Low |
+| Video testimonial (1 phone clip) | Missing | MEDIUM | Content only |
+| Full AI chatbot integration | Missing | LOWER (future) | High |
+
+---
+
+## Round 4 Sources
+
+- [LifeLearn — AI Chatbots for Vet Booking](https://www.lifelearn.com/2025/07/22/ai-powered-vet-website-chatbots-for-booking-saving-time-strengthening-client-relationships/)
+- [IDEXX — 5 Reasons to Use AI Chatbot on Vet Website](https://software.idexx.com/resources/blog/5-reasons-to-use-an-ai-chatbot-on-your-veterinary-practice-website)
+- [Conferbot — AI Chatbots for Vet Clinics](https://www.conferbot.com/blog/chatbot-for-veterinary-clinics)
+- [VoiceFleet — AI Receptionist for Vet Clinics 2026](https://voicefleet.ai/blog/complete-guide-ai-receptionist-vet-clinics-2026)
+- [Fear Free — Certified Veterinary Practice Program](https://www.fearfree.com/certifications/fear-free-certified-veterinary-practice/)
+- [iVet360 — 10 Best Veterinary Hospital Websites 2026](https://ivet360.com/10-best-veterinary-hospital-websites/)
+- [DVMelite — Next Generation Pet Owners](https://www.dvmelite.com/4-things-to-know-about-the-next-generation-of-pet-owners)
+- [PetFood Industry — Gen Z Pet Ownership Trends](https://www.petfoodindustry.com/pet-food-market/market-trends-and-reports/news/15741428/report-pet-ownership-expands-as-gen-z-shifts-trends)
+- [VetTimes — Next Gen Owners Digital Expectations](https://www.vettimes.com/news/business/digital/next-gen-owners-are-you-on-their-wavelength-cpdclientcare)
+- [WebPeak — CSS/JS Animation Trends 2026](https://webpeak.org/blog/css-js-animation-trends/)
+- [Shadow Digital — Website Animations Best Practices 2026](https://www.shadowdigital.cc/resources/do-you-need-website-animations)
+- [Vev Design — Mobile-Friendly Animation Design](https://www.vev.design/blog/mobile-friendly-website-design/)
+- [TheWritersBlockPH — Power of Pet Testimonials](https://thewritersblockph.com/2025/09/08/the-power-of-pet-testimonials-using-social-proof-to-grow-your-vet-practice/)
+- [BOIA — Dark Mode Does Not Satisfy WCAG Contrast](https://www.boia.org/blog/offering-a-dark-mode-doesnt-satisfy-wcag-color-contrast-requirements)
+- [Greeden — Accessibility Guide Dark Mode WCAG 2026](https://blog.greeden.me/en/2026/02/23/complete-accessibility-guide-for-dark-mode-and-high-contrast-color-design-contrast-validation-respecting-os-settings-icons-images-and-focus-visibility-wcag-2-1-aa/)
+- [LifeLearn — 7 Essential Features Every Vet Website Should Have](https://www.lifelearn.com/2024/03/26/veterinary-website-features/)
