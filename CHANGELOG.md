@@ -1,5 +1,24 @@
 # Changelog
 
+## v13 — Builder/Spark (2026-04-09)
+
+### Hero Image Performance
+- Added `type="image/webp"` to hero `<source>` elements and `&fm=webp` to Unsplash URLs
+- Browsers that support WebP will now serve the lighter format, improving load speed on mobile
+- Addresses Accessibility & Technical audit note (missing webp type attribute)
+
+### Why Choose Us — Micro-Stats
+- Added `.why-choose-stat` pill badges to each of the 4 differentiator items
+- "100% of staff certified", "Mon–Sat availability", "Tailored to every breed & age", "Check-in within 24–48 hrs"
+- Styled as compact accent-colored uppercase badges — makes each item scannable and concrete
+- Replaces generic bullet text feel with verifiable specifics
+
+### FAQ — Text Us Option
+- Added "Text Us" button alongside "Call Us" in FAQ CTA footer
+- Uses `sms:` link to open native messaging app directly
+- Addresses audit note: FAQ CTA was call-only despite text being available site-wide
+- Styled as ghost button to maintain visual hierarchy (Call is primary action)
+
 ## [1.0.0] - 2026-04-01
 ### Added
 - Initial site build for Pawsitive Care Veterinary
