@@ -216,18 +216,6 @@ section {
   box-shadow: 0 2px 8px rgba(45, 212, 168, 0.25);
 }
 
-.nav-phone {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(45, 212, 168, 0.12);
-  color: var(--accent);
-  font-size: 1.15rem;
-}
-
 /* Hamburger */
 .nav-toggle {
   display: flex;
@@ -406,7 +394,7 @@ section {
 .service-card {
   background: #ffffff;
   border-radius: 16px;
-  padding: 1.25rem 0.75rem;
+  padding: 1.25rem 1rem;
   text-align: center;
   border: 1px solid rgba(45, 212, 168, 0.08);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
@@ -425,7 +413,7 @@ section {
 }
 .service-card p {
   color: #5a6577;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   line-height: 1.5;
 }
 
@@ -604,7 +592,7 @@ section {
   line-height: 1.1;
 }
 .review-stat-label {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.8px;
@@ -998,6 +986,8 @@ section {
 .location-status-pill {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.4rem;
   background: rgba(45, 212, 168, 0.08);
   border: 1px solid rgba(45, 212, 168, 0.2);
@@ -1008,6 +998,7 @@ section {
   margin: 0.5rem auto 0;
   letter-spacing: 0.2px;
   line-height: 1.4;
+  max-width: 100%;
 }
 .status-dot {
   width: 6px;
@@ -1251,7 +1242,7 @@ section {
 .map-directions-link:active { opacity: 0.85; transform: scale(0.97); }
 .map-parking-note {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: #5a7a6a;
   margin-top: 0.25rem;
   padding: 0.4rem 0 0.6rem;
@@ -1521,6 +1512,31 @@ section {
   background: var(--accent-dark);
   color: #ffffff;
 }
+.faq-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+.faq-cta .btn-ghost-subtle {
+  background: transparent;
+  color: var(--text-muted);
+  border: 2px solid rgba(45, 212, 168, 0.25);
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.faq-cta .btn-ghost-subtle:active {
+  background: rgba(45, 212, 168, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
 
 /* --- Footer --- */
 .site-footer {
@@ -1761,7 +1777,6 @@ section {
   .hero-actions { flex-direction: row; justify-content: center; align-items: center; max-width: none; }
 
   .nav-toggle { display: none; }
-  .nav-phone { display: none; }
   .nav-menu-phone { display: none; }
   .carousel-dots { display: none; }
   .nav-cta {
@@ -2105,6 +2120,18 @@ a.trust-strip-link:active {
   font-size: 0.93rem;
   line-height: 1.6;
 }
+.why-choose-stat {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(45, 212, 168, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+}
 
 .why-choose-cta {
   text-align: center;
@@ -2233,7 +2260,7 @@ a.trust-strip-link:active {
   margin-bottom: 0.5rem;
 }
 .footer-quick-answers-label {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--text-muted);
