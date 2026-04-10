@@ -538,3 +538,109 @@ Several vet clinics now embed third-party symptom checker tools directly on thei
 - [Tamarack Vet — Pet Health Checker](https://tamarackvet.com/pet-health-resources/pet-health-checker/)
 - [IDEXX — 7 Digital Trends Shaping Veterinary Practices in 2026](https://software.idexx.com/resources/blog/7-digital-veterinary-technology-trends-shaping-practices-in-2026)
 - [Levitate.ai — Creating an Impactful Veterinary Website Design in 2026](https://www.levitate.ai/blog-posts/creating-an-impactful-veterinary-website-design-in-2026)
+
+---
+
+## Round 6 Research — 2026-04-09
+
+**Scope:** Fresh gaps only. Rounds 1-5 covered: mobile-first, online booking, emergency info, trust signals, fear-free badge strip, triage decision tree, site search, async messaging language, video testimonials, prefers-reduced-motion, AI chatbot (future), SEO/schema, wellness plan display, pricing transparency, client portal, WCAG 2.2, Gen Z/Millennial communication expectations, telehealth CTA, automated waitlist, online pharmacy link, wellness plan cost calculator, clinic tour photos, and embedded symptom checker widget.
+
+### Gap 1 — Live Google Reviews Widget (Site Shows Static Text, Not Live Data)
+
+The site currently displays a static "4.9 on Google" rating and four hardcoded testimonial cards — none of which are pulled from real Google reviews. 86% of pet owners check Google reviews before choosing a veterinarian. A live widget changes static claims into verifiable, real-time social proof.
+
+**What top practices do:**
+- Tools like EmbedSocial, Elfsight, or Widgetgen sync with the Google Business Profile and display the most recent reviews automatically. New 5-star reviews appear on the site minutes after posting on Google.
+- The widget is placed inside or directly above the existing testimonials section, replacing or supplementing the four static cards.
+- The live feed also signals to Google's algorithm that the site is connected to an active, reviewed business — a minor but real local SEO signal.
+- Free tiers exist for basic embed; paid tiers (~$9-19/month) unlock custom styling and filtering to show only 4-5 star reviews.
+
+**Actionable for this site:** Replace or augment the four static testimonial cards with a live Google reviews embed. EmbedSocial and Elfsight both offer embed codes requiring only a `<script>` tag and a `<div>` container — compatible with the site's static HTML structure. No backend required. This closes the credibility gap between "we claim 4.9 stars" and "here is the live proof." Priority: HIGH. Build effort: Low (one Builder cycle, content-only change).
+
+### Gap 2 — Google Business Profile Optimization Signal on the Website
+
+93% of pet owners use Google to find their nearest vet. Clinics in the Google Map Pack (local 3-pack) capture 42% of all clicks for "veterinarian near me" queries. The site has a Google Maps embed but does not surface any signals that help the associated Google Business Profile rank higher.
+
+**What top practices do:**
+- Embed a visible "Find us on Google" button linking directly to the Google Business Profile listing (not just the map embed). This link gets crawled and associated with the GBP.
+- Display NAP (Name, Address, Phone) in consistent, crawlable plain text in the footer — not only inside an iframe or image. Currently the footer shows the address as text but the phone should also appear as a literal string matching the GBP exactly.
+- Add a direct "Leave a Google Review" CTA link in the footer or post-visit confirmation message. Review velocity (2-3 new reviews per week) is the single strongest local ranking signal for vet practices.
+- Include the practice's Google Business Profile category ("Veterinarian") in the structured data schema — the current schema uses "VeterinaryCare" which is valid, but adding explicit GBP-matching keywords in the LocalBusiness schema strengthens the association.
+
+**Actionable for this site:** Add a "Leave us a Google review" text link in the footer (opens the GBP review panel directly). Confirm phone number in footer exactly matches the GBP listing. These are two-minute copy changes with meaningful local SEO impact. Priority: HIGH. Build effort: Minimal (copy + one link).
+
+### Gap 3 — Pet Insurance Partner Information (Not Surfaced Prominently)
+
+The site mentions "we accept pet insurance" in a pricing note and an FAQ answer, but buries it. With pet insurance adoption rising sharply — Trupanion alone covers over 1 million pets and integrates direct payment (VetDirect Pay) with 30,000+ vet locations — this is a decision-making factor for a growing segment of clients.
+
+**What top practices do:**
+- A dedicated "Pet Insurance" section or sidebar card in the services area naming which carriers are accepted (Trupanion, Nationwide, Embrace, Lemonade, etc.)
+- Trupanion's VetDirect Pay integration allows the clinic to receive payment directly from Trupanion at checkout — client pays only their copay. Clinics that advertise this integration attract insured clients who strongly prefer practices where claims are handled at the desk.
+- A "We work with your insurance" trust badge strip (similar to the Fear Free badge) listing 4-5 accepted carrier logos
+- A link to a pet insurance comparison resource (AVMA, PetInsuranceReview.com) positions the practice as an advisor, not just a biller
+
+**Actionable for this site:** Expand the current payment FAQ answer into a dedicated visual element — a small "Pet Insurance" card below the pricing grid, listing accepted carriers by name and noting Trupanion VetDirect Pay if applicable. This requires a content decision from the site owner (which carriers are accepted) but the design shell can be built now as a placeholder. Priority: MEDIUM. Build effort: Low (copy + minor layout addition).
+
+### Gap 4 — Client Referral Program CTA (Missing Entirely)
+
+Referral programs are among the most cost-effective client acquisition channels for veterinary practices — referred clients arrive with higher trust, higher lifetime value, and require no ad spend. The site has no referral language anywhere.
+
+**How top practices surface this on their website:**
+- A simple "Refer a Friend" section in the footer or after the booking form: "Love Pawsitive Care? Send a friend our way. When they complete their first visit, you both receive $25 in clinic credits."
+- A digital referral form (Jotform embed, or a simple mailto link) captures the referrer's name and the referred client's name so the front desk can apply credits automatically
+- Some practices use PetDesk's built-in referral tracking; others simply use an honor system tracked in their PMS
+- The CTA does not need to be prominent — a footer line or a post-booking confirmation message is sufficient to plant the seed
+
+**Actionable for this site:** Add a single line to the post-booking confirmation screen and the footer: "Love your experience? Refer a friend and you'll both receive $25 in clinic credit." No platform integration required at launch — the front desk handles credit application manually. This is a content-only addition with zero code complexity. Priority: MEDIUM. Build effort: Minimal (copy only).
+
+### Gap 5 — Core Web Vitals and Performance Transparency (Unknown Status, Risks Local SEO)
+
+Google's Core Web Vitals (LCP, INP, CLS) are confirmed ranking signals. A 1-second delay in page load reduces conversions by 7%. For mobile-first users on cellular connections — the primary audience for a vet site — performance gaps are directly felt. The current site has not been audited for CWV status in any prior round.
+
+**What matters for this site:**
+- LCP (Largest Contentful Paint) target: under 2.5 seconds. The hero section uses an Unsplash `<picture>` element as background — large images are the most common LCP offender on static sites.
+- INP (Interaction to Next Paint) target: under 200ms. The site's JavaScript (main.js) handles animations, booking form logic, and nav toggle — worth auditing for blocking scripts.
+- CLS (Cumulative Layout Shift) target: under 0.1. The team section loads external Unsplash avatar images; if these images lack explicit width/height attributes, they cause layout shift.
+- The hero `<picture>` element should use `fetchpriority="high"` on the largest source and `loading="eager"` to avoid LCP penalty.
+
+**Actionable for this site:** Run a PageSpeed Insights audit at https://pagespeed.web.dev/ on the live GitHub Pages URL. Share results with Builder. Key quick wins: (1) Add explicit width/height to all `<img>` tags in the team and testimonials sections. (2) Add `fetchpriority="high"` to the hero image source. (3) Verify main.js is deferred and not render-blocking. None of these changes alter visual design. Priority: HIGH (SEO impact). Build effort: Low.
+
+### Gap 6 — Multilingual / Spanish-Language Accessibility (Gap Increasingly Common in PA)
+
+38% of the US Latinx population owns dogs or cats. Pennsylvania has a significant and growing Spanish-speaking population, particularly in cities like Philadelphia and Reading. Fewer than 10% of vet practices offer any Spanish-language support on their website. This is a low-cost differentiator with real community impact.
+
+**What the minimum viable implementation looks like:**
+- A single "Se habla Espanol" line in the nav or hero — even as plain text, it signals inclusion and drives calls from Spanish-speaking pet owners who otherwise skip to the next result
+- A toggle that switches key page elements (hero headline, services, emergency contact info, hours) to Spanish — not machine translation of the entire site, just the decision-critical fields
+- The AVMA provides free Spanish-language client education PDFs on common topics (vaccines, microchipping, dental care) that can be linked from the services section
+
+**Actionable for this site:** At minimum, add "Se habla Espanol" as a nav or footer line if the practice has any Spanish-speaking staff. If not, note it as a future hire criterion. A full bilingual toggle is a medium-effort feature; even the single text line is a meaningful differentiator. Flag to site owner: does the practice have Spanish-speaking staff? Priority: MEDIUM (community differentiation). Build effort: Minimal to Low.
+
+### Updated Feature Gap Summary (Round 6)
+
+| Feature | Site Status | Priority | Build Effort |
+|---|---|---|---|
+| Live Google reviews widget (EmbedSocial/Elfsight) | Static text only | HIGH | Low (script embed) |
+| "Leave a Google review" CTA link in footer | Missing | HIGH | Minimal (copy + link) |
+| Pet insurance partner section (named carriers) | Buried in FAQ | MEDIUM | Low (copy + layout) |
+| Client referral program CTA | Missing entirely | MEDIUM | Minimal (copy only) |
+| Core Web Vitals audit + hero image fetchpriority | Unaudited | HIGH (SEO) | Low |
+| "Se habla Espanol" / Spanish accessibility signal | Missing | MEDIUM | Minimal to Low |
+
+---
+
+## Round 6 Sources
+
+- [EmbedSocial — How to Embed Google Reviews on Website for FREE in 2026](https://embedsocial.com/blog/embed-google-reviews/)
+- [Sprypt — Google Review Widgets for Clinics](https://www.sprypt.com/blog/google-review-widgets-complete-guide)
+- [VisionPath — How Do Google Reviews Impact My Veterinary Practice](https://visionpathmarketing.com/how-do-google-reviews-impact-my-veterinary-practice/)
+- [DVMelite — Veterinary SEO 2026: 22 Google + AI Tips That Win Clients](https://www.dvmelite.com/the-21-veterinary-seo-tips-every-practitioner-should-know)
+- [GeniusVets — 5 Local SEO Signals Google Uses to Rank Veterinary Clinics](https://www.geniusvets.com/veterinary-marketing/blog/5-local-seo-signals-google-uses-rank-your-veterinary-practice)
+- [Trupanion — Partnership Opportunities for Veterinary Practices](https://www.trupanion.com/about/partner-with-trupanion)
+- [VeterinaryHA — How to Build a Successful Referral Program for Your Veterinary Clinic](https://veterinaryha.org/how-to-build-a-successful-referral-program-for-your-veterinary-clinic/)
+- [VeterinaryHA — ADA Compliance Guide for Veterinary Clinics](https://veterinaryha.org/compliance-compassion-a-guide-to-online-ada-compliance-for-veterinary-clinics/)
+- [Solid App Maker — Web Performance in 2026: Best Practices for Speed, Security & Core Web Vitals](https://solidappmaker.com/web-performance-in-2026-best-practices-for-speed-security-core-web-vitals/)
+- [Sky SEO Digital — Core Web Vitals Optimization Guide 2026](https://skyseodigital.com/core-web-vitals-optimization-complete-guide-for-2026/)
+- [Roo.vet — The Growing Need for Spanish-Speaking Veterinary Professionals](https://www.roo.vet/roo4you/need-for-spanish-speaking-veterinary-professionals)
+- [AAHA — Vetspacito: Overcoming Language Barriers in Veterinary Care](https://www.aaha.org/newstat/2023-5/vetspacito-overcoming-language-barriers-in-veterinary-care/)
+- [PetDesk — Veterinary Loyalty Program and Referral Tools](https://petdesk.com/customized-veterinary-loyalty-program/)
