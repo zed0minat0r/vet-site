@@ -1283,8 +1283,6 @@ section {
 }
 .hours-table tr.is-today td { color: #1a8a6a; }
 
-.location-light .directions-cta { color: #1a8a6a; }
-
 .hours-table {
   width: 100%;
   max-width: 320px;
@@ -1343,7 +1341,6 @@ section {
   font-weight: 700;
   color: #ffffff;
   text-decoration: none;
-  min-height: 44px;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   border-radius: var(--radius-sm);
   margin: 0.75rem auto 0.25rem;
@@ -1372,14 +1369,6 @@ section {
 .address-link:active { color: var(--accent); }
 .location-light .address-link { color: #4a5568; }
 .location-light .address-link:active { color: #1a8a6a; }
-.directions-cta {
-  display: inline-block;
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  color: var(--accent);
-  font-weight: 600;
-}
-
 /* --- Triage Widget --- */
 .triage-widget {
   max-width: 540px;
@@ -2589,4 +2578,95 @@ a.trust-strip-link:active {
 .why-choose-item:active {
   border-color: rgba(45, 212, 168, 0.3);
   border-left-color: var(--accent);
+}
+
+/* --- FAQ Jump Nav --- */
+.faq-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem auto 1.5rem;
+  max-width: 680px;
+}
+.faq-jump-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.9rem;
+  min-height: 44px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0e7a5f;
+  background: rgba(45, 212, 168, 0.08);
+  border: 1px solid rgba(45, 212, 168, 0.2);
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.faq-jump-link:active {
+  background: #0e7a5f;
+  color: #ffffff;
+  border-color: #0e7a5f;
+}
+@media (hover: hover) {
+  .faq-jump-link:hover {
+    background: rgba(45, 212, 168, 0.15);
+    border-color: #1fa882;
+  }
+}
+
+/* --- Footer Inline Newsletter (inside footer-brand column) --- */
+.footer-newsletter-inline {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(45, 212, 168, 0.08);
+  text-align: center;
+}
+.footer-newsletter-inline .footer-newsletter-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.3px;
+}
+.footer-newsletter-inline .newsletter-form {
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .footer-newsletter-inline {
+    text-align: left;
+  }
+}
+
+/* --- Footer Inline Quick Answers (inside footer-links column) --- */
+.footer-qa-inline {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(45, 212, 168, 0.08);
+}
+.footer-qa-inline .footer-quick-answers-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-bottom: 0.6rem;
+}
+.footer-qa-inline .footer-qa-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+.footer-qa-inline .footer-qa-item {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.7rem;
+  min-height: 36px;
+  line-height: 1;
+}
+@media (min-width: 768px) {
+  .footer-qa-inline .footer-qa-items {
+    justify-content: flex-start;
+  }
 }
