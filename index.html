@@ -213,7 +213,7 @@
             <p>Core and lifestyle vaccines tailored to your pet's age, breed, and risk factors.</p>
             <p class="service-price">Starting at $35/vaccine</p>
           </div>
-          <div class="service-card fade-in-up">
+          <div class="service-card fade-in-up services-collapsible" hidden>
             <div class="service-icon" aria-hidden="true">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3.3.8-4.5 2.1C10.8 3.8 9.3 3 7.5 3A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7 7-7z"/><path d="M12 8v4"/><path d="M10 10h4"/></svg>
             </div>
@@ -221,7 +221,7 @@
             <p>Heartworm, flea, and tick prevention plus microchipping and nutrition counseling.</p>
             <p class="service-price">Starting at $45/month</p>
           </div>
-          <div class="service-card fade-in-up">
+          <div class="service-card fade-in-up services-collapsible" hidden>
             <div class="service-icon" aria-hidden="true">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v7.4a4 4 0 0 1-.8 2.4L6 17c-1.3 1.7-.2 4 2 4h8c2.2 0 3.3-2.3 2-4l-3.2-4.2a4 4 0 0 1-.8-2.4V3"/><path d="M8.5 14h7"/></svg>
             </div>
@@ -230,6 +230,7 @@
             <p class="service-price">Starting at $85</p>
           </div>
         </div>
+        <button class="collapse-toggle" id="servicesToggle" aria-expanded="false">View all 6 services +</button>
         <p class="services-pricing-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           We accept CareCredit, Scratchpay, pet insurance &amp; payment plans. <a href="#faq-cat-payment" class="pricing-link">See payment FAQ &rarr;</a>
@@ -265,7 +266,7 @@
               <p>Board-eligible surgeon specializing in orthopedic and soft tissue procedures with a gentle approach.</p>
             </div>
           </div>
-          <div class="team-card team-card--horizontal fade-in-up">
+          <div class="team-card team-card--horizontal fade-in-up team-collapsible" hidden>
             <div class="team-avatar">
               <img class="avatar-photo" src="https://images.unsplash.com/photo-1594824476967-48c8b964ac31?auto=format&fit=crop&w=200&h=200&q=80" alt="Emily Nguyen" loading="lazy">
             </div>
@@ -276,7 +277,7 @@
               <p>Expert in anesthesia monitoring and post-operative care. Fear-free certified for low-stress visits.</p>
             </div>
           </div>
-          <div class="team-card team-card--horizontal fade-in-up">
+          <div class="team-card team-card--horizontal fade-in-up team-collapsible" hidden>
             <div class="team-avatar">
               <img class="avatar-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80" alt="Marcus Johnson" loading="lazy">
             </div>
@@ -288,6 +289,7 @@
             </div>
           </div>
         </div>
+        <button class="collapse-toggle" id="teamToggle" aria-expanded="false">Meet the full team +</button>
       </div>
     </section>
 
@@ -451,14 +453,14 @@
             <strong>Be prepared:</strong> Save our emergency number in your phone now &mdash; seconds matter in a crisis.
           </div>
           <p class="emergency-response">Average after-hours response: under 15 minutes. <a href="#faq-cat-payment" class="emergency-faq-link">Emergency billing FAQ &rarr;</a></p>
-          <div class="emergency-expect">
-            <h3>When You Call</h3>
+          <details class="collapse-details">
+            <summary>What happens when you call</summary>
             <ol class="emergency-steps" role="list">
               <li>A veterinary professional answers &mdash; no phone trees</li>
               <li>We assess urgency and guide you through next steps</li>
               <li>If needed, our on-call vet meets you at the clinic</li>
             </ol>
-          </div>
+          </details>
         </div>
       </div>
     </section>
@@ -521,18 +523,15 @@
                 </div>
               </div>
             </div>
-            <div class="location-first-visit">
-              <h4>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                First Visit? Here's What to Bring
-              </h4>
+            <details class="collapse-details">
+              <summary>First visit? Here's what to bring</summary>
               <ul class="first-visit-list">
                 <li>Previous medical or vaccination records</li>
                 <li>List of current medications or supplements</li>
                 <li>Carrier (cats) or leash (dogs)</li>
               </ul>
               <p class="first-visit-note">Arrive 10 minutes early. Free parking on-site, curbside check-in for anxious pets. <a href="#booking">Book your first visit &rarr;</a></p>
-            </div>
+            </details>
           </div>
           <div class="map-embed">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3050.5!2d-75.15!3d40.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDA2JzAwLjAiTiA3NcKwMDknMDAuMCJX!5e0!3m2!1sen!2sus!4v1711929600000" width="100%" height="220" style="border:0;border-radius:var(--radius);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Pawsitive Care Veterinary location map"></iframe>

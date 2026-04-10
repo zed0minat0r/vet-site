@@ -283,4 +283,19 @@
     });
   }
 
+  // --- Collapsible Sections ---
+  function setupToggle(btnId, hiddenClass) {
+    var btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var items = document.querySelectorAll('.' + hiddenClass);
+      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach(function (item) { item.hidden = isExpanded; });
+      btn.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+      btn.textContent = isExpanded ? btn.textContent.replace('−', '+') : btn.textContent.replace('+', '−');
+    });
+  }
+  setupToggle('servicesToggle', 'services-collapsible');
+  setupToggle('teamToggle', 'team-collapsible');
+
 })();
