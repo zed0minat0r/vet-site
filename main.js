@@ -269,9 +269,9 @@
           var id = entry.target.getAttribute('id');
           navLinks.forEach(function (link) {
             if (link.getAttribute('href') === '#' + id) {
-              link.style.color = 'var(--accent)';
+              link.classList.add('nav-link-active');
             } else {
-              link.style.color = '';
+              link.classList.remove('nav-link-active');
             }
           });
         }
