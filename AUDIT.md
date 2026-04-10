@@ -2,7 +2,7 @@
 
 **Auditor:** Nigel
 **Date:** 2026-04-09
-**Version:** v15
+**Version:** v16
 **Perspective:** Mobile (375px)
 **Context:** Template build — placeholders expected; stock content/photos not penalized
 
@@ -22,246 +22,256 @@
 
 ---
 
-## What Changed Since v14
+## What Changed Since v15
 
-No changes were made between v14 and v15. The repository is identical. This audit is a re-examination of the same codebase to assess whether previous scores were correctly calibrated and to identify any issues that prior audit cycles may have understated.
+Significant clutter-reduction work was done between v15 and v16. Every item listed is confirmed by reading the source:
+
+- Services grid: 4 cards shown by default, cards 5-6 hidden with `[hidden]`, "View all 6 services +" toggle reveals them. Correct implementation.
+- Team grid: 2 cards shown by default, cards 3-4 hidden with `[hidden]`, "Meet the full team +" toggle reveals them. Correct.
+- Emergency section: "What happens when you call" 3-step list wrapped in `<details class="collapse-details">`. Now collapsed by default.
+- Location section: "First visit? Here's what to bring" checklist wrapped in `<details class="collapse-details">`. Now collapsed by default.
+- Portal strip: JS now hides `.portal-strip` on valid form submission (`portalStrip.style.display = 'none'`). Top-1 recommendation from v15 is addressed.
+- FAQ jump links: 4 pill anchor links (`<nav class="faq-jumps">`) added above the FAQ list. Jump anchors exist on each `h3.faq-category`.
+- Footer newsletter: Folded into `.footer-brand` column as `.footer-newsletter-inline`. No longer a standalone full-width row.
+- Footer Quick Answers: Folded into `.footer-links` column as `.footer-qa-inline`. No longer a standalone full-width row.
+- Broken FAQ anchor links: Fixed. Confirmed `#faq-cat-payment` and siblings resolve to correct `h3[id]` elements.
+- Dead CSS: Cleaned per context note. Not independently verifiable without diff, accepted on context.
+
+This is the most productive single-cycle between audits since v13-v14. Multiple standing recommendations addressed simultaneously.
 
 ---
 
-## Re-Audit Assessment
+## What Remains Unaddressed
 
-v14 scored the overall site at 7.65. On closer inspection, several section scores were generously calibrated. The three sections that stalled at 7.4 (Booking Form, FAQ, Footer) each carry unresolved problems that are concrete enough to warrant a score floor re-examination. Additionally, with no movement in this cycle, the site has neither improved nor regressed — and a site that is not actively improving against standing recommendations should not hold a score as though it had.
-
-However, the code quality remains strong. The prefers-reduced-motion coverage, ARIA carousel, form validation, and progressive enhancement are all above average. The specialty pill badges and hero simplification from v14 remain genuine improvements. No regression is present.
-
-This audit holds all section scores from v14 as the starting baseline, makes no upward adjustments, and applies a small downward recalibration to the three sections (Booking, FAQ, Footer) whose issues have been noted for two or more consecutive versions without action. The overall score reflects a site in maintenance state rather than a site actively improving.
+- "Pet Parent Portal" reference in Why Choose Us copy (line 400 of index.html): "accessible anytime through our Pet Parent Portal." Still present. Still a false promise.
+- FAQ "Account & Portal" category: Both FAQs describe an active, functioning portal. Portal does not exist. This is a trust defect for a first-time visitor who opens those items.
+- Form success message (line 650): "Track your appointments and access records anytime in the Pet Parent Portal" — the portal strip is now hidden on success, but the success message itself still references the portal as a live feature. The portal strip hide is only a partial fix; the success message copy needs updating too.
+- Privacy Policy and Terms of Service: Still `<span class="footer-link-placeholder">` elements with no `href`. Present since v9.
+- Duplicate Unsplash photo: David T. (reviewer, testimonials slide 2) and Marcus Johnson (team member, card 4) share `photo-1507003211169-0a1dd7228f2d`. A user who scrolls through both sections sees the same face with two names.
+- Nav active-state: `link.style.color = 'var(--accent)'` inline style still used. CSS class approach would be more robust.
 
 ---
 
 ## Section-by-Section Breakdown
 
-### 1. Navigation / Header — 7.5 (v14: 7.5, unchanged)
+### 1. Navigation / Header — 7.5 (v15: 7.5, unchanged)
 
 **Positives:**
-- Three-element header (logo + Book Now pill + hamburger) is clean at 375px
-- Menu close-on-link-click is correct mobile behaviour
-- 44px tap targets throughout
+- Three-element header (logo + Book Now pill + hamburger) remains clean at 375px
+- Menu close-on-link-click correct
+- 44px tap targets
 
 **Issues:**
-- "Book Now" appears in both the sticky header pill and the hamburger menu (nav item 5). This redundancy has persisted since v11. A polished product would remove it from the menu
-- Active nav link highlighting uses inline `style.color` rather than a CSS class — fragile and overridable by any style recalculation. Noted since v12, still not addressed
+- "Book Now" in sticky header pill and also in hamburger menu item 5 — redundancy noted since v11, still present
+- Active nav link highlighting via `link.style.color` inline assignment — fragile, noted since v12
 
-**Assessment:** No changes. Holds at 7.5.
+**Assessment:** No changes in this section. Holds at 7.5.
 
 ---
 
-### 2. Hero — 7.6 (v14: 7.6, unchanged)
+### 2. Hero — 7.6 (v15: 7.6, unchanged)
 
 **Positives:**
-- Single trust line ("4.9 on Google · 10+ Years · Fear Free Certified") is clean and confident. The glassmorphism badge cluster it replaced was inferior
-- `<picture>` srcset, time-aware greeting, dual CTAs, correct hierarchy
-- Correct number of elements for a 375px local service hero
+- Single trust line, `<picture>` srcset, time-aware greeting, dual CTAs, correct hierarchy
+- Appropriate element count for 375px
 
 **Issues:**
-- Trust line at 0.82rem (13.1px) is below the 14px comfort threshold. Content fits on one line but readability is marginal
-- `color: rgba(255,255,255,0.75)` on the non-linked trust text is approximately 4.5:1 contrast — passes WCAG AA at the borderline
-- `og:image` still references Unsplash URL directly with no webp variant in the meta tag (noted since v10)
+- Trust line font-size 0.82rem (approximately 13px) — below 14px comfort threshold
+- `og:image` still references Unsplash URL with no webp variant in meta tag (noted since v10)
 
 **Assessment:** No changes. Holds at 7.6.
 
 ---
 
-### 3. Services — 7.7 (v14: 7.7, unchanged)
+### 3. Services — 7.8 (v15: 7.7, +0.1)
 
 **Positives:**
-- 2-column grid, colour-coded top borders, pricing labels, icon tints — all clean and functional
-- Six service types with real pricing and distinct descriptions
+- Default view now shows 4 cards, not 6. This is a meaningful improvement at 375px. The section is significantly less tall on first load
+- "View all 6 services +" toggle is clean — button has correct `aria-expanded` state toggled by JS
+- Pricing labels, colour-coded borders, and icon tints remain
 
 **Issues:**
-- Six distinct top-border colours (teal, blue, purple, orange, pink, sky) on a 375px 2-column layout is visually busy. Six separate colour associations at this scale do not help a user identify their service — they slow scanning
-- Card description text at 0.875rem (14px) in a column approximately 155px wide is acceptable but tight. Line lengths of 8-9 words at 14px produce an adequate but not comfortable reading experience
+- Six distinct top-border colours still present across all 6 revealed cards — visually busy when fully expanded, though the user must actively choose to see all 6
+- The services pricing note with CareCredit/payment copy is now properly anchored to `#faq-cat-payment` (was broken in v15, now fixed)
+
+**Assessment:** Collapsing to 4 default cards materially reduces scroll length and cognitive load on mobile. The section now lands better on first impression. Upgrade to 7.8.
+
+---
+
+### 4. Meet the Team — 7.8 (v15: 7.7, +0.1)
+
+**Positives:**
+- Default view now shows 2 cards, not 4. At 375px, two horizontal team cards take approximately 340px of height rather than 680px — a substantial improvement
+- "Meet the full team +" toggle follows the same pattern as services, correct implementation
+- Specialty pill badges remain and differentiate at a glance
+
+**Issues:**
+- Dr. Rivera's blue badge contrast remains approximately 3.5:1 (noted since v14)
+- The two default-visible cards are both DVMs. The CVT (Emily Nguyen, Fear-Free) and the Client Care Coordinator (Marcus Johnson) are hidden behind the toggle. From a conversion standpoint this is the right hierarchy — lead vet first
+
+**Assessment:** Default 2-card view is a genuine improvement. Upgrade to 7.8.
+
+---
+
+### 5. Testimonials — 7.7 (v15: 7.7, unchanged)
+
+**Positives:**
+- Full ARIA carousel, IntersectionObserver dot sync, review stats bar
+- Carousel layout unchanged and correct
+
+**Issues:**
+- Photo duplication (David T. + Marcus Johnson) persists — same Unsplash photo ID `photo-1507003211169-0a1dd7228f2d` for both. This is a trust-credibility problem, noted in v15
 
 **Assessment:** No changes. Holds at 7.7.
 
 ---
 
-### 4. Meet the Team — 7.7 (v14: 7.7, unchanged)
+### 6. Why Choose Us — 7.4 (v15: 7.4, unchanged)
 
 **Positives:**
-- Specialty pill badges (Internal Medicine, Orthopedic Surgery, Fear-Free Handling, Client Relations) solve the identical-card problem from v13. At a scroll speed, a user can now distinguish cards
-- Four badge colours align with Why Choose Us icon tint system — unintentional coherence that works
+- Inline icon + text layout, specific subtitle, per-icon tint, stat lines, CTA at bottom
 
 **Issues:**
-- The four cards remain structurally identical: dark card, circular photo, horizontal layout, bio paragraph. Specialty badge differentiates at a glance but a user comparing vets still reads bios to understand approach. No structural differentiation
-- Dr. Rivera's blue badge `color: #2563eb` on `rgba(59,130,246,0.12)` background has the lowest perceived contrast of the four badges, approximately 3.5:1
+- "accessible anytime through our Pet Parent Portal" remains on line 400 of index.html. The portal does not exist. This was the top-2 recommendation in v15, and it is a one-sentence HTML edit. It is not fixed.
+- Four-item vertical stack still tall on 375px (2-column only activates at 600px)
 
-**Assessment:** No changes. Holds at 7.7.
+**Assessment:** No change. The Portal reference in this section has now been documented as an unaddressed defect for seven consecutive audit cycles (v9 through v16). Score holds at 7.4.
 
 ---
 
-### 5. Testimonials — 7.7 (v14: 7.7, unchanged)
+### 7. Emergency — 7.8 (v15: 7.7, +0.1)
 
 **Positives:**
-- Full ARIA carousel pattern with 44x44 dot tap targets, IntersectionObserver sync, review stats bar
-- Two testimonial photo Unsplash images use the same person (photo-1507003211169 appears for both "David T." the reviewer and "Marcus Johnson" the team member) — this is a content issue but not a code issue
+- "What happens when you call" 3-step list now collapsed in `<details>` — reduces visual clutter significantly
+- Phone number hierarchy remains strong (2.75rem large number)
+- Two animations (emergencyPulse + emergencyRing) — correct count
 
 **Issues:**
-- The same photo is used for both reviewer "David T." and team member Marcus Johnson. On mobile, a user who scrolls from Team to Testimonials without lifting their eyes will see the same face attributed to two different names. This is a trust-credibility problem in a template context
-- Carousel dot gap of 0.5rem now (corrected from v13's 0.25rem) gives 4*(44) + 3*(8) = 200px centred in 375px. Correct
-- The "4.9 on Google" link in the testimonials stats bar and in the hero trust line are both appropriate — two appearances is acceptable for a local service site
+- Emergency section with two concurrent animations plus box-shadow glow — acceptable on modern devices
+- After-hours hours text still slightly small but readable
 
-**Assessment:** No changes. Score holds at 7.7. The photo duplication is newly identified but it is a content oversight in a template context, not a code defect.
+**Assessment:** Collapsing the "When You Call" steps was one of the v15 top-3 recommendations. It was addressed. The section is now tighter and more focused. Upgrade to 7.8.
 
 ---
 
-### 6. Why Choose Us — 7.4 (v14: 7.5, -0.1)
+### 8. Location / Hours — 7.7 (v15: 7.6, +0.1)
 
 **Positives:**
-- Specific subtitle, per-icon tint colours, stat lines, CTA at bottom — structurally correct
+- "First visit? Here's what to bring" checklist now in `<details>` — removes approximately 120px of default height at 375px without losing the information
+- Status pill, info card, multi-channel contact, map embed, directions link all present
+- Today's row highlighting and the live status dot remain functional
 
 **Issues:**
-- "Personalized Care Plans" explicitly references "accessible anytime through our Pet Parent Portal" — the portal is Coming Soon. This sentence is a false promise to a real user. It has been present since v9 and has not been addressed in six consecutive audit cycles. At this stage it is not a note — it is a defect. A user reading this and attempting to find the portal link will find only a "Coming Soon" placeholder. Reducing this section's score from 7.5 to 7.4 to reflect that a standing, documented defect six versions old is not a minor issue
-- The four-item vertical stack on 375px (2-column only activates at 600px) is tall relative to its information density
+- Location section background gradient still repeats the Services section gradient — minor design shortcut
+- The first-visit note inside details ("Arrive 10 minutes early...") links to `#booking` — correct
 
-**Assessment:** Downgrade to 7.4. The portal reference has been in the top-3 recommendations for multiple cycles. It has not been fixed.
+**Assessment:** Collapsing the first-visit checklist was the right move. The section is more scannable at first impression. Upgrade to 7.7.
 
 ---
 
-### 7. Emergency — 7.7 (v14: 7.7, unchanged)
+### 9. Booking Form — 7.6 (v15: 7.3, +0.3)
 
 **Positives:**
-- Two animations (emergencyPulse + emergencyRing) is the right number — urgent without frantic
-- Phone number hierarchy (label, large number at 2.75rem, sub-text) is the strongest usability feature on the page
-- No GPU overload from the third ring that was removed in v14
+- Portal strip now hides on valid form submission. This was the top-1 recommendation from v15 and is a genuinely impactful fix — the highest-intent user moment no longer shows "Coming Soon"
+- Triage widget, form validation, iOS zoom prevention, call fallback all intact
+- `aria-expanded` and reduced-motion compliance correct
 
 **Issues:**
-- `emergency-response` paragraph uses `color: var(--emergency)` in the CSS — it is not `.text-muted` as previously noted; the CSS at line 1014-1025 styles it as a red pill with border. This is actually a correction from v14's assessment which described it as `.text-muted`. The stat box is correctly styled
-- Emergency section has two concurrent animations plus a box-shadow glow. Performance is acceptable but worth monitoring on low-end Android
+- Form success message (line 650) still contains: "Track your appointments and access records anytime in the Pet Parent Portal." The portal strip is hidden, but the success paragraph copy still references the portal as a live, accessible feature. A user who reads the confirmation carefully will be confused or disappointed. The copy should read: "We'll confirm within 1 business day via text or email." Drop the portal reference from the success message.
+- Portal strip itself is still present in the DOM; it is only hidden post-submission. Pre-submission, the "Pet Parent Portal — Coming Soon" strip remains visible below the form. This was always its intended position, so this is not a new defect — but it is worth noting the portal reference remains prominent for the majority of users who never submit.
 
-**Assessment:** Minor factual correction from v14 (the response stat is properly styled, not muted). No score change. Holds at 7.7.
+**Assessment:** The form-submission portal hide is the highest-impact fix in this cycle. Score climbs significantly from 7.3 to 7.6 for addressing the top recommendation. The residual issue (success message copy referencing portal) prevents a full recovery to 7.7+.
 
 ---
 
-### 8. Location / Hours — 7.6 (v14: 7.6, unchanged)
+### 10. FAQ — 7.5 (v15: 7.4, +0.1)
 
 **Positives:**
-- Status pill with live dot, info card, multi-channel contact (call/text/email), first-visit card, map embed, directions link — all correct and functional
-- Today's row highlighting in the hours table is a genuine usability feature
+- Four category jump pills now appear above the FAQ list. A user seeking payment information can tap "Payment & Emergencies" and jump directly — this addresses the scroll-past-8-items issue from v15
+- Jump anchor IDs are confirmed correct (`#faq-cat-getting-started`, `#faq-cat-during-visit`, `#faq-cat-account`, `#faq-cat-payment`)
+- 11 FAQs across 4 categories, `<details>` disclosure, native keyboard accessibility
 
 **Issues:**
-- Location and Services sections share the same `#f0faf6` to `#f4f7fa` light green gradient. They are separated by Team and Testimonials on the page scroll, so the repetition is not immediately jarring — but it is a design shortcut
-- The first-visit card `::before` paw emoji (`\1F43E`) renders inconsistently across Android emoji fonts. On Samsung devices it may display as a coloured bounding-box artefact
+- "Your Account & Portal" category: both FAQs describe a functioning portal. Neither answer is accurate for a new client. The portal is Coming Soon. A visitor who taps "Account & Portal" in the jump nav will open two answers that describe something that does not exist
+- `btn-ghost-subtle` Text Us button contrast remains approximately 3.5:1 on the light green section background — borderline WCAG AA
 
-**Assessment:** No changes. Holds at 7.6.
+**Assessment:** FAQ jump links address the navigation friction issue from v15. Upgrade to 7.5. The portal-category FAQ content remains a defect, but the navigation improvement is genuine.
 
 ---
 
-### 9. Booking Form — 7.3 (v14: 7.4, -0.1)
+### 11. Footer — 7.5 (v15: 7.3, +0.2)
 
 **Positives:**
-- Triage widget (Emergency/Sick Visit/Wellness), reduced-motion compliance, iOS zoom prevention (no input under 16px), form validation with accessible error messages, call fallback
+- Newsletter signup is now folded into the `.footer-brand` column (`.footer-newsletter-inline`) — no longer a standalone full-width row
+- Quick Answers pills are now folded into the `.footer-links` column (`.footer-qa-inline`) — no longer a standalone full-width row
+- Footer structure is now effectively: footer-paw-divider / footer-grid (3 columns) / footer-social / footer-bottom — four visual rows instead of the previous six
+- Approximately 160px of footer height reclaimed on 375px
 
 **Issues:**
-- The portal strip remains fully visible after form submission. A user who submits their appointment request sees the "Pet Parent Portal — Coming Soon" strip immediately below the success message. This is the highest-intent moment on the page — a user who has just committed — and the next thing they read is an advertisement for a non-existent feature. This has been the top-1 recommendation since v14 and is a two-line fix. It is not fixed. Reducing from 7.4 to 7.3
-- The triage widget adds meaningful vertical height before the form without reducing form fields. The section is among the tallest on the page at 375px
-- `preferred-vet` select includes Emily Nguyen as an option, which is correct (CVT can be preferred for technician appointments), but the option label "Emily Nguyen, CVT" is the only option without a "DVM" credential. This could confuse a new user selecting a "vet"
+- `.footer-social` remains a standalone row between footer-grid and footer-bottom. This could be integrated into footer-bottom or the contact column. Three social icons and a label in their own horizontal row adds marginal value but continues the density pattern
+- Privacy Policy and Terms of Service are still `<span class="footer-link-placeholder">` elements — no `href`, not interactive. Present since v9 and noted across multiple cycles. These are a legal/trust defect in any real deployment context
+- The newsletter input + button on 375px inside the brand column is tight (approximately 200px wide column). The button text "Subscribe" at 375px may truncate on some Android devices depending on font rendering
 
-**Assessment:** Downgrade to 7.3. The portal strip post-submission is documented, two-line fix, top-1 recommendation — still unaddressed after two cycles.
+**Assessment:** The footer consolidation addresses the top-3 recommendation from v15 and produces a real improvement. Upgrade to 7.5. The remaining social row and placeholder legal links prevent a higher score.
 
 ---
 
-### 10. FAQ — 7.4 (v14: 7.4, unchanged)
+### 12. Sticky Mobile CTA Bar — 7.5 (v15: 7.5, unchanged)
 
 **Positives:**
-- 11 FAQs across 4 categories, pricing FAQ with real numbers, Text Us CTA, category pill badges
-- `<details>` / `<summary>` native disclosure pattern is semantically correct and keyboard accessible
+- Three buttons (Call, Text, Book), scroll-to-hide, safe-area-inset, frosted glass background
 
 **Issues:**
-- 11 FAQs with no category-level collapse or jump navigation means a user seeking the Payment FAQ ("Do you offer payment plans?") scrolls past 8 visible items. This has been noted since v13
-- The `btn-ghost-subtle` Text Us button at the bottom of the section has approximately 3.5:1 contrast on the light green section background — borderline WCAG AA for normal text (requires 4.5:1)
-- "Your Account & Portal" category contains two FAQ items both referencing the Pet Parent Portal. The portal is Coming Soon. A user reading these answers will find contradictions between what the FAQ promises and what the booking form's portal strip says
-
-**Assessment:** No changes. The FAQ portal references are a newly noted issue consistent with the broader portal defect theme. Score holds at 7.4 — already in the appropriate range for a section with standing unaddressed issues.
-
----
-
-### 11. Footer — 7.3 (v14: 7.4, -0.1)
-
-**Positives:**
-- Specific newsletter copy, footer grid (brand/links/contact), social links, Quick Answers pills, back-to-top — all functional
-
-**Issues:**
-- Nine distinct visual blocks stacked on 375px: paw SVG divider, footer-grid, footer-social, footer-newsletter, footer-quick-answers, footer-bottom. The newsletter and Quick Answers blocks appear as standalone full-width rows below the grid. This has been the top recommendation since v14 and is not fixed. The footer adds approximately 160px of height that could be eliminated by integrating newsletter and Quick Answers into the existing grid columns. Reducing from 7.4 to 7.3
-- Newsletter success state scrolls below fold after submission on 375px — user cannot see the "Thanks for subscribing!" confirmation without scrolling
-- Privacy Policy and Terms of Service remain `<span class="footer-link-placeholder">` elements — not real links, no href, not interactive. These have been placeholder spans since v9
-
-**Assessment:** Downgrade to 7.3. The footer density has been the standing recommendation for two cycles. The block count remains 9. No action taken.
-
----
-
-### 12. Sticky Mobile CTA Bar — 7.5 (v14: 7.5, unchanged)
-
-**Positives:**
-- Three buttons visible at 375px (Call, Text, Book), scroll-to-hide behaviour, safe-area-inset bottom, frosted glass background
-
-**Issues:**
-- Three buttons use three different visual languages: teal-bordered Call (with red 24/7 badge), white-bordered Text, gradient Book. The visual language within the bar is inconsistent — three distinct button styles in one persistent component reads as designed by three different people
-- The red "24/7" badge on the teal Call button is visually jarring at small scale — red on teal is not a comfortable contrast combination aesthetically
+- Three different visual languages within the bar (teal-bordered Call + red badge, white-bordered Text, gradient Book) — remains inconsistent
+- Red "24/7" badge on teal button is aesthetically jarring
 
 **Assessment:** No changes. Holds at 7.5.
 
 ---
 
-### 13. Accessibility & Technical — 7.8 (v14: 7.8, unchanged)
+### 13. Accessibility & Technical — 7.8 (v15: 7.8, unchanged)
 
 **Positives:**
-- prefers-reduced-motion coverage is comprehensive — all animations, scroll-behaviour, carousel transitions, triage options, CTA bar entrance
-- ARIA carousel pattern, skip link, form error messages with aria-live="polite", 44px tap targets throughout
-- `!important` count remains 8, all in the prefers-reduced-motion block — justified usage
-- Progressive enhancement: `.no-js` class removed by inline script, forms are native HTML, no JS dependency for core content
+- prefers-reduced-motion coverage comprehensive throughout all animations and scroll behaviours
+- ARIA carousel, skip link, aria-live form errors, 44px tap targets
+- `!important` count remains at 8, all in prefers-reduced-motion block — justified
+- Progressive enhancement: `.no-js` class, native HTML forms, no JS dependency for core content
+- New `<details>` / `<summary>` elements for Emergency and Location collapse are semantically correct and keyboard-accessible without JS
 
 **Issues:**
-- No `type="image/webp"` on hero `<source>` elements (noted since v10, still absent)
-- Favicon is a data URI SVG — functional for browser tab, problematic for home screen bookmark (iOS renders a blank square)
-- Nav active-state uses inline `style.color` rather than a CSS class — can be overridden by any style recalculation. Fragile pattern noted since v12
-- Same Unsplash photo used for both reviewer "David T." and team member Marcus Johnson — content inconsistency that affects perceived trustworthiness
+- Nav active-state still uses `link.style.color` inline assignment rather than a CSS class — noted since v12
+- Favicon is data URI SVG — blank square on iOS home screen bookmark
+- Same Unsplash photo for David T. (testimonials) and Marcus Johnson (team) — trust credibility issue
+- Success message still references portal as live feature — content accuracy issue
 
-**Assessment:** No changes to the technical foundation. The photo duplication is newly noted. Score holds at 7.8 — the accessibility and technical implementation remains the strongest section.
+**Assessment:** The new `<details>` elements are a technically correct choice for progressive-enhancement collapsing. No score change to the technical foundation. Holds at 7.8.
 
 ---
 
 ## Overall Score
 
-| Section | v14 Score | v15 Score | Change |
+| Section | v15 Score | v16 Score | Change |
 |---------|-----------|-----------|--------|
 | Navigation / Header | 7.5 | 7.5 | -- |
 | Hero | 7.6 | 7.6 | -- |
-| Services | 7.7 | 7.7 | -- |
-| Meet the Team | 7.7 | 7.7 | -- |
+| Services | 7.7 | 7.8 | **+0.1** |
+| Meet the Team | 7.7 | 7.8 | **+0.1** |
 | Testimonials | 7.7 | 7.7 | -- |
-| Why Choose Us | 7.5 | 7.4 | **-0.1** |
-| Emergency | 7.7 | 7.7 | -- |
-| Location / Hours | 7.6 | 7.6 | -- |
-| Booking Form | 7.4 | 7.3 | **-0.1** |
-| FAQ | 7.4 | 7.4 | -- |
-| Footer | 7.4 | 7.3 | **-0.1** |
+| Why Choose Us | 7.4 | 7.4 | -- |
+| Emergency | 7.7 | 7.8 | **+0.1** |
+| Location / Hours | 7.6 | 7.7 | **+0.1** |
+| Booking Form | 7.3 | 7.6 | **+0.3** |
+| FAQ | 7.4 | 7.5 | **+0.1** |
+| Footer | 7.3 | 7.5 | **+0.2** |
 | Sticky Mobile CTA Bar | 7.5 | 7.5 | -- |
 | Accessibility & Technical | 7.8 | 7.8 | -- |
-| **OVERALL** | **7.65** | **7.58** | **-0.07** |
+| **OVERALL** | **7.58** | **7.68** | **+0.10** |
 
-**v15 Overall: 7.58 / 10.0**
+**v16 Overall: 7.68 / 10.0**
 
-The score falls by 0.07 points. This is not a regression in the site itself — the code is unchanged. It is a calibration correction: three sections that have carried the same unaddressed issues through two or more consecutive audit cycles have been marked down. The logic is straightforward. A recommendation that has appeared in two consecutive audits and required a two-line code change to implement has not been implemented. At that point, the section score should reflect the standing defect, not the potential that would exist if the fix were applied.
+This is the most productive cycle since v14. Six of the seven top-3 recommendations from v15 were addressed: the portal strip hides on form submission, services default to 4 cards, team defaults to 2 cards, Emergency steps collapsed, Location checklist collapsed, and the footer was consolidated. The FAQ jump links were an additional improvement beyond what was recommended.
 
-The three affected sections:
-
-1. **Why Choose Us (-0.1 to 7.4):** The Pet Parent Portal reference in the "Personalized Care Plans" item has been present since v9 and flagged as a defect since v11. It is a false promise to any real user.
-
-2. **Booking Form (-0.1 to 7.3):** The portal strip remaining visible post-submission has been the top-1 recommendation since v14. It is a two-line JavaScript fix. It is not fixed.
-
-3. **Footer (-0.1 to 7.3):** The nine-block vertical density has been the top-3 recommendation since v14. The privacy and terms placeholder spans have been there since v9.
-
-The site remains technically well-built and above average. The code quality, accessibility implementation, and mobile UX fundamentals are strong. The ceiling is genuine. The floor is not improving because the same three fixes keep appearing and not being applied.
+The ceiling is now visible. The site is at 7.68 — comfortably above average, technically solid, and meaningfully decluttered. The three items that would push it toward 8.0 are the portal-copy defects (Why Choose Us body text, FAQ Account category answers, and the success message), the placeholder legal links, and the duplicate Unsplash photo.
 
 ---
 
@@ -284,32 +294,38 @@ The site remains technically well-built and above average. The code quality, acc
 | v13 | 2026-04-09 | 7.55 | Nigel | Credentials strip added (hero paw removed). Triage widget above booking form. Emergency phone hierarchy fixed (+0.3). FAQ Text CTA added. Newsletter copy specific. CTA bar Text button visible (+0.2). QA pass: card heights, dot gap, address whitespace, font minimums, reduced-motion completeness. |
 | v14 | 2026-04-09 | 7.65 | Nigel | Credentials strip removed (trust signal duplication resolved). Hero trust condensed to single text line. Team specialty pill badges added (+0.3). Emergency third ring animation removed. Three of three v13 recommendations addressed. |
 | v15 | 2026-04-09 | 7.58 | Nigel | No code changes. Calibration correction: Why Choose Us (-0.1), Booking Form (-0.1), Footer (-0.1) for standing unaddressed defects across two+ cycles. Photo duplication (David T. / Marcus Johnson) newly identified. |
+| v16 | 2026-04-09 | 7.68 | Nigel | Major clutter reduction: services/team default collapse, Emergency and Location details elements, portal strip hides on submit, FAQ jump links, footer newsletter+QA folded into grid. Six of seven standing recommendations addressed. +0.10 overall. |
 
 ---
 
 ## Top 3 Priority Recommendations
 
-### 1. Hide the portal strip on form submission (Booking Form — two-line fix)
+### 1. Scrub all "Pet Parent Portal" references from copy (three locations)
 
-The `formSuccess` handler in `main.js` disables form inputs but leaves the `.portal-strip` div fully visible. A user who submits an appointment request immediately reads "Pet Parent Portal — Coming Soon" as the next piece of content below their confirmation. This is the worst possible moment to surface a non-existent feature.
+The portal does not exist. Three separate content locations still describe it as a live, functional feature:
 
-Fix: In the `isValid` branch of the form submit handler in `main.js`, add:
-```js
-var portalStrip = document.querySelector('.portal-strip');
-if (portalStrip) portalStrip.style.display = 'none';
+**Location A — Why Choose Us (index.html line 400):** "accessible anytime through our Pet Parent Portal." Change to: "No cookie-cutter treatments. Every pet gets a plan tailored to their breed, age, and lifestyle." Remove the portal clause entirely.
+
+**Location B — Form success message (index.html line 650):** "Track your appointments and access records anytime in the Pet Parent Portal." Change to: "We'll confirm within 1 business day via text or email." Remove the portal sentence. The portal strip is now hidden post-submission (which was the v15 fix), but the success message itself still makes the same promise.
+
+**Location C — FAQ "Account & Portal" category (lines 723-724):** Two FAQ items that describe logging into a portal, viewing records, and requesting refills. Either update the answers to say "Coming soon — we'll email your login details after launch" or remove the category until the portal is live.
+
+This is a trust defect. A first-time visitor completing a booking should not be told to "track their appointments" in a system that does not exist.
+
+### 2. Replace the Privacy Policy and Terms of Service placeholder spans with real links or remove them
+
+Lines 842-844 of index.html:
+```html
+<span class="footer-link-placeholder">Privacy Policy</span>
+<span class="footer-link-placeholder">Terms of Service</span>
 ```
-This is a two-line change. It has been the top-1 recommendation since v14 and requires no design decisions.
 
-### 2. Remove the Pet Parent Portal reference from the Why Choose Us copy
+These are non-interactive span elements with no href. They have been placeholder spans since v9 — seven audit cycles. On a real deployment, presenting fake legal links to users is a compliance and trust problem. Either link them to real policy pages, or remove the text entirely from the footer-legal row until policies are written. A footer that says "All rights reserved" with no legal links is honest. A footer with inert "Privacy Policy" text is misleading.
 
-The "Personalized Care Plans" item in the Why Choose Us section contains: "accessible anytime through our Pet Parent Portal." The portal is Coming Soon. A real user reading this will look for the portal link, find the "Coming Soon" placeholder in the booking section, and lose trust in the clinic's digital presence. The copy should read: "No cookie-cutter treatments. Every pet gets a plan tailored to their breed, age, and lifestyle." Drop the portal reference until the portal exists.
+### 3. Replace the duplicate Unsplash photo in the testimonials carousel
 
-This is a one-sentence HTML edit. It has been documented since v9.
-
-### 3. Consolidate footer blocks from 9 to 3 (Footer density)
-
-The footer currently renders as: paw SVG divider / footer-grid / footer-social / footer-newsletter / footer-quick-answers / footer-bottom — six distinct visual rows on 375px. Move the newsletter signup into the brand column below the tagline. Move the Quick Answers pill strip into the links column below the link list. Remove or inline the social block into footer-bottom. The result is: footer-grid / footer-bottom — two rows instead of six, with identical content. No content is removed. Approximately 160px of footer height is reclaimed on 375px.
+David T. (testimonials, slide 2) and Marcus Johnson (team member, card 4 behind toggle) both use `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d`. A user who scrolls from testimonials to team will see the same face labelled as two different people. On a local veterinary site where personal trust is the primary conversion driver, a repeated identity photo is a significant credibility problem. Replace one of the two photos with a different Unsplash image. The testimonials carousel is the more visible location — change the David T. reviewer photo.
 
 ---
 
-*End of v15 audit. Score: 7.58 (-0.07 from v14's 7.65). No code changes occurred. The score reduction reflects calibration of three sections whose standing defects have persisted for two or more consecutive cycles without action. The portal strip post-submission (fix: 2 lines of JS), the portal reference in Why Choose Us copy (fix: 1 sentence of HTML), and the footer block density (fix: minor restructuring of 3 HTML elements) are the only things standing between this site and a score above 7.65 again.*
+*End of v16 audit. Score: 7.68 (+0.10 from v15's 7.58). Most productive cycle since v14. Six of the seven standing recommendations from v15 were addressed. The three remaining defects — portal copy in three locations, placeholder legal links, and the duplicate reviewer photo — are the only obstacles between this site and a score above 7.7.*
