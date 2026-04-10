@@ -684,8 +684,14 @@
       <div class="container">
         <h2>Frequently Asked Questions</h2>
         <p class="section-subtitle">Quick answers to common questions</p>
+        <nav class="faq-jumps" aria-label="FAQ categories">
+          <a href="#faq-cat-getting-started" class="faq-jump-link">Getting Started</a>
+          <a href="#faq-cat-during-visit" class="faq-jump-link">During Your Visit</a>
+          <a href="#faq-cat-account" class="faq-jump-link">Account &amp; Portal</a>
+          <a href="#faq-cat-payment" class="faq-jump-link">Payment &amp; Emergencies</a>
+        </nav>
         <div class="faq-list">
-          <h3 class="faq-category">Getting Started</h3>
+          <h3 class="faq-category" id="faq-cat-getting-started">Getting Started</h3>
           <details class="faq-item">
             <summary>How often should my pet have a wellness exam?</summary>
             <p>We recommend annual exams for adult pets and bi-annual exams for seniors (7+ years). Puppies and kittens need more frequent visits during their first year for vaccinations and growth monitoring.</p>
@@ -699,7 +705,7 @@
             <p>Please bring any previous medical records, a list of current medications or supplements, and your pet in a carrier or on a leash. Arrive 10 minutes early to complete new client paperwork, or download the forms from our website ahead of time.</p>
           </details>
 
-          <h3 class="faq-category">During Your Visit</h3>
+          <h3 class="faq-category" id="faq-cat-during-visit">During Your Visit</h3>
           <details class="faq-item">
             <summary>Can I stay with my pet during the exam?</summary>
             <p>Absolutely! We encourage pet parents to be present during exams. For certain procedures, we may ask you to wait in our comfortable lobby, but we'll keep you informed every step of the way.</p>
@@ -713,7 +719,7 @@
             <p>Yes! Dental disease affects over 80% of pets by age three. We recommend annual dental exams and professional cleanings as needed. Regular dental care prevents pain, infection, and more serious health problems down the road.</p>
           </details>
 
-          <h3 class="faq-category">Your Account &amp; Portal</h3>
+          <h3 class="faq-category" id="faq-cat-account">Your Account &amp; Portal</h3>
           <details class="faq-item">
             <summary>How do I access the Pet Parent Portal?</summary>
             <p>After your first visit, we'll email you a login link for our Pet Parent Portal. From there you can view vaccination records, request prescription refills, see post-visit summaries, and manage upcoming appointments.</p>
@@ -723,7 +729,7 @@
             <p>Yes! After every surgery, dental cleaning, or sick visit, we'll send a check-in text within 24-48 hours to see how your pet is doing. If anything seems off, reply directly and our team will respond promptly.</p>
           </details>
 
-          <h3 class="faq-category" id="faq-payment">Payment &amp; Emergencies</h3>
+          <h3 class="faq-category" id="faq-cat-payment">Payment &amp; Emergencies</h3>
           <details class="faq-item">
             <summary>How much does a typical visit cost?</summary>
             <p>Wellness exams start at $55. Vaccinations range from $25&ndash;$45 each. Dental cleanings typically run $350&ndash;$600 depending on complexity. We always provide a written estimate before any procedure so there are no surprises. Ask about our Wellness Plans for bundled savings on routine care.</p>
@@ -775,6 +781,14 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             Your family is our family
           </span>
+          <div class="footer-newsletter-inline">
+            <p class="footer-newsletter-label">Monthly tips &amp; vaccine reminders</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault();this.querySelector('.newsletter-success').hidden=false;this.querySelector('input').disabled=true;this.querySelector('button').disabled=true;">
+              <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required>
+              <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
+              <p class="newsletter-success" hidden>Thanks for subscribing!</p>
+            </form>
+          </div>
         </div>
         <div class="footer-links">
           <h3>Quick Links</h3>
@@ -785,6 +799,15 @@
             <li><span class="footer-link-placeholder">Pet Parent Portal <small>(Coming Soon)</small></span></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
+          <div class="footer-qa-inline">
+            <p class="footer-quick-answers-label">Quick Answers</p>
+            <div class="footer-qa-items">
+              <a href="#faq" class="footer-qa-item">New patient info</a>
+              <a href="#faq-cat-payment" class="footer-qa-item">Payment options</a>
+              <a href="#emergency" class="footer-qa-item">Emergency care</a>
+              <a href="#booking" class="footer-qa-item">Book online</a>
+            </div>
+          </div>
         </div>
         <div class="footer-contact">
           <h3>Contact</h3>
@@ -813,23 +836,6 @@
         <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile" class="social-link">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </a>
-      </div>
-      <div class="footer-newsletter">
-        <p class="footer-newsletter-label">Monthly pet health tips, vaccine reminders &amp; seasonal care advice</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault();this.querySelector('.newsletter-success').hidden=false;this.querySelector('input').disabled=true;this.querySelector('button').disabled=true;">
-          <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required>
-          <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
-          <p class="newsletter-success" hidden>Thanks for subscribing!</p>
-        </form>
-      </div>
-      <div class="footer-quick-answers">
-        <p class="footer-quick-answers-label">Quick Answers</p>
-        <div class="footer-qa-items">
-          <a href="#faq" class="footer-qa-item">New patient info</a>
-          <a href="#faq-payment" class="footer-qa-item">Payment options</a>
-          <a href="#emergency" class="footer-qa-item">Emergency care</a>
-          <a href="#booking" class="footer-qa-item">Book online</a>
-        </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Pawsitive Care Veterinary. All rights reserved.</p>

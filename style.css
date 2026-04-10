@@ -2357,6 +2357,94 @@ a.trust-strip-link:active {
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
+/* --- FAQ Jump Links --- */
+.faq-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.faq-jump-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--accent-dark);
+  background: rgba(45, 212, 168, 0.08);
+  border: 1px solid rgba(45, 212, 168, 0.2);
+  border-radius: 2rem;
+  text-decoration: none;
+  min-height: 36px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.faq-jump-link:hover,
+.faq-jump-link:focus {
+  background: rgba(45, 212, 168, 0.18);
+  color: var(--accent);
+  outline: none;
+}
+.faq-jump-link:active {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* --- Footer Newsletter Inline (inside brand column) --- */
+.footer-newsletter-inline {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(138, 150, 168, 0.12);
+}
+.footer-newsletter-inline .footer-newsletter-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.3px;
+}
+.footer-newsletter-inline .newsletter-form {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.4rem;
+  max-width: 100%;
+  margin: 0;
+}
+.footer-newsletter-inline .newsletter-form input[type="email"] {
+  flex: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.footer-newsletter-inline .btn.newsletter-btn {
+  width: 100%;
+}
+
+/* --- Quick Answers Inline (inside links column) --- */
+.footer-qa-inline {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(138, 150, 168, 0.12);
+}
+.footer-qa-inline .footer-quick-answers-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  opacity: 0.7;
+  margin-bottom: 0.6rem;
+}
+.footer-qa-inline .footer-qa-items {
+  justify-content: flex-start;
+}
+.footer-qa-inline .footer-qa-item {
+  font-size: 0.78rem;
+  padding: 0.35rem 0.75rem;
+  min-height: 36px;
+  line-height: 1.2;
+}
+
 /* --- Footer Paw Divider --- */
 .footer-paw-divider {
   display: flex;

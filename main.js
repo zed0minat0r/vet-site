@@ -125,6 +125,11 @@
         form.querySelectorAll('input, select, textarea, button').forEach(function (el) {
           el.disabled = true;
         });
+        // Hide portal strip so "Coming Soon" doesn't appear at the worst possible moment
+        var portalStrip = document.querySelector('.portal-strip');
+        if (portalStrip) {
+          portalStrip.style.display = 'none';
+        }
         if (formSuccess) {
           formSuccess.hidden = false;
           var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
