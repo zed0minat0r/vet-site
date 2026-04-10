@@ -469,29 +469,6 @@ section {
 }
 
 /* Services pricing note */
-/* --- Services / Team Collapse Toggle --- */
-.collapse-toggle {
-  display: block;
-  width: 100%;
-  max-width: 680px;
-  margin: 1rem auto 0;
-  padding: 0.6rem 1rem;
-  min-height: 44px;
-  background: transparent;
-  border: 1px solid rgba(45, 212, 168, 0.25);
-  border-radius: var(--radius-sm);
-  color: var(--accent);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
-  font-family: var(--font);
-}
-.collapse-toggle:active {
-  background: rgba(45, 212, 168, 0.08);
-  border-color: var(--accent);
-}
-
 .services-pricing-note {
   text-align: center;
   margin-top: 1.75rem;
