@@ -1082,7 +1082,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 /* ---- Booking / Calendar ---- */
 .booking-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 .booking-intro {
   max-width: 480px;
@@ -1093,6 +1093,10 @@ p { font-size: 1rem; color: var(--brown-mid); }
   display: flex;
   flex-direction: column;
   gap: 36px;
+}
+
+@media (max-width: 767px) {
+  .booking-shell .contact-info { display: none; }
 }
 
 /* hours note in sidebar */
