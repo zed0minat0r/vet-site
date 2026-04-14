@@ -367,6 +367,17 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding: 48px 0;
 }
 
+.why-eyebrow {
+  color: var(--green-mid);
+  margin-bottom: 8px;
+}
+
+.why-heading {
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  color: var(--brown-text);
+  margin-bottom: 28px;
+}
+
 .why-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -521,7 +532,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
   display: flex;
   gap: 6px;
   align-items: center;
-  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -823,11 +833,23 @@ p { font-size: 1rem; color: var(--brown-mid); }
   position: absolute;
   top: 16px;
   right: 20px;
-  width: 64px;
-  height: 64px;
-  opacity: 0.12;
+  width: 96px;
+  height: 96px;
+  opacity: 0.22;
   pointer-events: none;
   color: #fff;
+}
+
+.team-leaf-mirror {
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  width: 72px;
+  height: 72px;
+  opacity: 0.10;
+  pointer-events: none;
+  color: #fff;
+  transform: scaleX(-1) rotate(180deg);
 }
 
 .team-header .section-eyebrow {

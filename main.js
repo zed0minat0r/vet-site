@@ -347,6 +347,7 @@
   }());
 
   // ---- Services dot indicator + counter ----
+  // 5-dot sliding window: shows 2 before active, active, 2 after
   (function () {
     var grid = document.querySelector('.services-grid');
     var dotsRow = document.getElementById('services-dots-row');
@@ -357,14 +358,17 @@
     var total = cards.length;
     if (!total) return;
 
-    // Build dots
-    for (var i = 0; i < total; i++) {
+    var WINDOW = 5; // always show exactly 5 dots
+
+    // Build exactly 5 dots
+    var dots = [];
+    for (var i = 0; i < WINDOW; i++) {
       var dot = document.createElement('span');
-      dot.className = 'services-dot' + (i === 0 ? ' active' : '');
+      dot.className = 'services-dot';
       dotsRow.appendChild(dot);
+      dots.push(dot);
     }
 
-    var dots = dotsRow.querySelectorAll('.services-dot');
     counter.textContent = '1 of ' + total;
 
     function getActiveIndex() {
@@ -374,10 +378,21 @@
 
     function updateDots() {
       var idx = getActiveIndex();
-      for (var j = 0; j < dots.length; j++) {
-        dots[j].classList.toggle('active', j === idx);
-      }
       counter.textContent = (idx + 1) + ' of ' + total;
+
+      // Compute window start so active dot is at position 2 (center)
+      var winStart = idx - 2;
+      // Clamp so we don't go out of bounds
+      if (winStart < 0) winStart = 0;
+      if (winStart > total - WINDOW) winStart = Math.max(0, total - WINDOW);
+
+      for (var j = 0; j < WINDOW; j++) {
+        var cardIdx = winStart + j;
+        var isActive = (cardIdx === idx);
+        dots[j].classList.toggle('active', isActive);
+        // If total <= WINDOW, hide extra dots
+        dots[j].style.display = (cardIdx < total) ? '' : 'none';
+      }
     }
 
     grid.addEventListener('scroll', updateDots, { passive: true });
@@ -441,7 +456,10 @@
       });
     }, { threshold: 0.5 });
 
-    statNumbers.forEach(function (el) { counterObserver.observe(el); });
+    statNumbers.forEach(function (el) {
+      if (el.hasAttribute('data-no-counter')) return;
+      counterObserver.observe(el);
+    });
   }());
 
   // ---- Hero parallax on scroll ----
