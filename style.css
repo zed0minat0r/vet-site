@@ -379,7 +379,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .why-icon svg { width: 22px; height: 22px; }
 
 .why-item strong { font-size: 0.9rem; font-weight: 700; color: var(--brown-text); }
-.why-item span { font-size: 0.82rem; color: var(--brown-light); line-height: 1.4; }
+.why-item span { font-size: 0.85rem; color: var(--brown-light); line-height: 1.4; }
 
 /* ---- About ---- */
 .about {
@@ -405,7 +405,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .about-stat-card {
   position: absolute;
   bottom: -20px;
-  right: -8px;
+  right: 0;
   background: var(--warm-white);
   border: 1px solid var(--sand-dark);
   border-radius: var(--radius-md);
@@ -431,10 +431,23 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 .services h2 { margin-bottom: 12px; }
 
+.services-scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--brown-light);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-top: 16px;
+  justify-content: center;
+}
+.services-scroll-hint svg { width: 14px; height: 14px; flex-shrink: 0; }
+
 .services-grid {
   display: flex;
   gap: 16px;
-  margin-top: 40px;
+  margin-top: 12px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -481,47 +494,55 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .service-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; color: var(--brown-text); }
 .service-card p { font-size: 0.85rem; color: var(--brown-mid); line-height: 1.5; }
 
-/* ---- Photo feature (scroll-driven) ---- */
-.photo-feature {
-  position: relative;
+/* ---- Trust stats strip ---- */
+.trust-strip {
   background: var(--green-dark);
-  overflow: hidden;
-  padding: 0 0 56px;
-}
-
-.photo-feature-track {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding: 40px 20px 28px;
-  cursor: grab;
-}
-.photo-feature-track:active { cursor: grabbing; }
-.photo-feature-track::-webkit-scrollbar { display: none; }
-
-.photo-feature-item {
-  flex: 0 0 260px;
-  scroll-snap-align: start;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  aspect-ratio: 3/4;
-}
-.photo-feature-item img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-
-.photo-feature-text {
-  padding: 0;
+  padding: 64px 0;
   text-align: center;
 }
-.photo-feature-text .section-eyebrow { color: var(--green-pale); }
-.photo-feature-text h2 { color: #fff; margin-bottom: 12px; }
-.photo-feature-text p {
+
+.trust-strip .section-eyebrow { color: var(--green-pale); }
+.trust-strip h2 { color: #fff; margin-bottom: 12px; }
+.trust-strip > .container > p {
   color: rgba(255,255,255,0.78);
   max-width: 480px;
-  margin: 0 auto;
+  margin: 0 auto 48px;
   font-size: 1rem;
+}
+
+.trust-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 0;
+}
+
+.trust-stat {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.trust-stat-number {
+  font-size: clamp(1.8rem, 8vw, 2.6rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  font-family: var(--font-serif);
+}
+
+.trust-stat-label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-align: center;
 }
 
 /* ---- Team ---- */
@@ -666,6 +687,17 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .hours-table td { text-align: right; color: var(--brown-mid); }
 .hours-table tr.closed th,
 .hours-table tr.closed td { color: var(--brown-light); }
+.hours-table tr.today th,
+.hours-table tr.today td {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+.hours-table tr.today th::after {
+  content: ' (today)';
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--green-mid);
+}
 
 .hours-note { font-size: 0.88rem; color: var(--brown-light); margin-bottom: 24px; line-height: 1.5; }
 
@@ -702,8 +734,8 @@ p { font-size: 1rem; color: var(--brown-mid); }
   font-size: 1rem;
 }
 .contact-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -764,6 +796,43 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding: 14px;
   background: var(--green-pale);
   border-radius: var(--radius-sm);
+}
+
+/* ---- Sticky call bar (mobile only) ---- */
+.sticky-call-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 800;
+  background: var(--green-dark);
+  padding: 12px 20px;
+  box-shadow: 0 -2px 16px rgba(46, 36, 25, 0.18);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.sticky-call-bar.visible {
+  transform: translateY(0);
+}
+.sticky-call-bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  min-height: 44px;
+}
+.sticky-call-bar a:hover { text-decoration: none; }
+.sticky-call-bar svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+@media (max-width: 767px) {
+  .sticky-call-bar { display: block; }
+  /* Ensure content above sticky bar is not obscured */
+  .site-footer { padding-bottom: 80px; }
 }
 
 /* ---- Footer ---- */
@@ -876,13 +945,14 @@ p { font-size: 1rem; color: var(--brown-mid); }
   .about-text { flex: 1; padding-top: 0; }
 
   /* Services */
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
+  .services-scroll-hint { display: none; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; margin-top: 40px; }
   .service-card { flex: none; max-width: none; }
   .service-card--compassion { }
   .service-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
 
-  /* Photo */
-  .photo-feature-item { flex: 0 0 320px; }
+  /* Trust stats */
+  .trust-stats { grid-template-columns: repeat(4, 1fr); }
 
   /* Team */
   .team-grid { grid-template-columns: 1fr 1fr; }
@@ -910,7 +980,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
 @media (min-width: 1024px) {
   :root { --gutter: 48px; }
   .services-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .photo-feature-item { flex: 0 0 380px; }
 }
 
 /* ---- Focus ---- */

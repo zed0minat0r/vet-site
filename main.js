@@ -31,34 +31,6 @@
     });
   }
 
-  // ---- Photo track drag-to-scroll ----
-  var track = document.getElementById('photo-track');
-  if (track) {
-    var isDragging = false;
-    var startX = 0;
-    var scrollLeft = 0;
-
-    track.addEventListener('mousedown', function (e) {
-      isDragging = true;
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
-      track.style.userSelect = 'none';
-    });
-
-    document.addEventListener('mouseup', function () {
-      isDragging = false;
-      track.style.userSelect = '';
-    });
-
-    document.addEventListener('mousemove', function (e) {
-      if (!isDragging) return;
-      e.preventDefault();
-      var x = e.pageX - track.offsetLeft;
-      var walk = (x - startX) * 1.4;
-      track.scrollLeft = scrollLeft - walk;
-    });
-  }
-
   // ---- Testimonial carousel ----
   var quotes = document.querySelectorAll('.pull-quote-block');
   var dots = document.querySelectorAll('.quote-dot');
@@ -173,6 +145,37 @@
     form.querySelectorAll('input, textarea').forEach(function (field) {
       field.addEventListener('input', function () { clearError(field); });
     });
+  }
+
+  // ---- Highlight today's hours ----
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var todayName = days[new Date().getDay()];
+  var hoursRows = document.querySelectorAll('.hours-table tbody tr');
+  hoursRows.forEach(function (row) {
+    var th = row.querySelector('th');
+    if (th && th.textContent.trim() === todayName) {
+      row.classList.add('today');
+    }
+  });
+
+  // ---- Sticky call bar (mobile) ----
+  var stickyBar = document.getElementById('sticky-call-bar');
+  var heroSection = document.querySelector('.hero');
+  if (stickyBar && heroSection) {
+    var stickyObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) {
+          stickyBar.classList.add('visible');
+          stickyBar.setAttribute('aria-hidden', 'false');
+          stickyBar.querySelector('a').removeAttribute('tabindex');
+        } else {
+          stickyBar.classList.remove('visible');
+          stickyBar.setAttribute('aria-hidden', 'true');
+          stickyBar.querySelector('a').setAttribute('tabindex', '-1');
+        }
+      });
+    }, { threshold: 0.1 });
+    stickyObserver.observe(heroSection);
   }
 
   // ---- Footer year ----
