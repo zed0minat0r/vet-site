@@ -31,44 +31,6 @@
     });
   }
 
-  // ---- Testimonial carousel ----
-  var quotes = document.querySelectorAll('.pull-quote-block');
-  var dots = document.querySelectorAll('.quote-dot');
-  var current = 0;
-  var autoTimer;
-
-  function showQuote(idx) {
-    quotes.forEach(function (q, i) {
-      q.classList.toggle('active', i === idx);
-      q.setAttribute('aria-hidden', i !== idx ? 'true' : 'false');
-    });
-    dots.forEach(function (d, i) {
-      d.classList.toggle('active', i === idx);
-      d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
-    });
-    current = idx;
-  }
-
-  function advance() {
-    showQuote((current + 1) % quotes.length);
-  }
-
-  function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(advance, 4500);
-  }
-
-  if (quotes.length > 1) {
-    dots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
-        var idx = parseInt(dot.getAttribute('data-idx'), 10);
-        showQuote(idx);
-        startAuto();
-      });
-    });
-    startAuto();
-  }
-
   // ---- Scroll reveal ----
   var revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length && 'IntersectionObserver' in window) {
@@ -362,6 +324,87 @@
       progressBar.style.width = Math.min(pct, 100) + '%';
     }, { passive: true });
   }
+
+  // ---- Services carousel scroll indicator ----
+  (function () {
+    var grid = document.querySelector('.services-grid');
+    var thumb = document.getElementById('services-scroll-thumb');
+    if (!grid || !thumb) return;
+
+    function updateThumb() {
+      var scrollLeft = grid.scrollLeft;
+      var maxScroll = grid.scrollWidth - grid.clientWidth;
+      if (maxScroll <= 0) { thumb.style.width = '100%'; return; }
+      var pct = scrollLeft / maxScroll;
+      var thumbW = Math.max(grid.clientWidth / grid.scrollWidth * 100, 15);
+      var thumbLeft = pct * (100 - thumbW);
+      thumb.style.width = thumbW + '%';
+      thumb.style.left = thumbLeft + '%';
+    }
+
+    grid.addEventListener('scroll', updateThumb, { passive: true });
+    updateThumb();
+  }());
+
+  // ---- Trust stat counter animation ----
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+
+    var statNumbers = document.querySelectorAll('.trust-stat-number');
+    if (!statNumbers.length) return;
+
+    // Parse numeric value from text, preserving suffix (+ or star)
+    function parseStatValue(text) {
+      text = text.trim();
+      var suffix = '';
+      var prefix = '';
+      if (text.indexOf('+') !== -1) { suffix = '+'; text = text.replace('+', ''); }
+      if (text.indexOf('\u2605') !== -1) { suffix = '\u2605'; text = text.replace('\u2605', ''); }
+      var num = parseFloat(text.replace(/,/g, ''));
+      return { num: num, suffix: suffix, prefix: prefix, original: text };
+    }
+
+    function animateCounter(el, target, suffix, duration) {
+      var start = 0;
+      var startTime = null;
+      var isFloat = target % 1 !== 0;
+      var formatNum = function (n) {
+        if (isFloat) return n.toFixed(1);
+        if (n >= 1000) return Math.round(n).toLocaleString();
+        return Math.round(n).toString();
+      };
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        // Ease out quad
+        var eased = 1 - (1 - progress) * (1 - progress);
+        var current = start + (target - start) * eased;
+        el.textContent = formatNum(current) + suffix;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          el.textContent = formatNum(target) + suffix;
+        }
+      }
+      window.requestAnimationFrame(step);
+    }
+
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var parsed = parseStatValue(el.textContent);
+          if (!isNaN(parsed.num) && parsed.num > 0) {
+            animateCounter(el, parsed.num, parsed.suffix, 1200);
+          }
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach(function (el) { counterObserver.observe(el); });
+  }());
 
   // ---- Hero parallax on scroll ----
   var heroImg = document.querySelector('.hero-img');
