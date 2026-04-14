@@ -347,14 +347,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 .hero-actions .btn svg { flex-shrink: 0; }
 
-.hero-trust {
-  margin-top: 24px;
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.65);
-  letter-spacing: 0.03em;
-  font-weight: 500;
-}
-
 .hero-scroll-cue {
   position: absolute;
   bottom: 28px;
@@ -538,14 +530,55 @@ p { font-size: 1rem; color: var(--brown-mid); }
   transition: background 0.22s ease;
 }
 
-/* end-of-life: warmer, slightly darker overlay */
+/* category overlay variants */
+.service-card--preventive::before {
+  background: linear-gradient(
+    to top,
+    rgba(8, 38, 18, 0.90) 0%,
+    rgba(18, 58, 32, 0.40) 55%,
+    rgba(10, 40, 20, 0.08) 100%
+  );
+}
+.service-card--digital::before {
+  background: linear-gradient(
+    to top,
+    rgba(8, 24, 48, 0.90) 0%,
+    rgba(18, 42, 72, 0.44) 55%,
+    rgba(10, 28, 52, 0.08) 100%
+  );
+}
+.service-card--foundational::before {
+  background: linear-gradient(
+    to top,
+    rgba(38, 24, 10, 0.88) 0%,
+    rgba(56, 36, 14, 0.42) 55%,
+    rgba(40, 26, 10, 0.08) 100%
+  );
+}
+/* end-of-life: warmer amber-brown overlay */
 .service-card--eol::before {
   background: linear-gradient(
     to top,
-    rgba(20, 10, 10, 0.90) 0%,
-    rgba(20, 10, 10, 0.50) 55%,
-    rgba(20, 10, 10, 0.10) 100%
+    rgba(52, 18, 8, 0.92) 0%,
+    rgba(70, 24, 10, 0.52) 55%,
+    rgba(50, 16, 8, 0.10) 100%
   );
+}
+
+/* category label chip */
+.service-card-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 8px;
+  backdrop-filter: blur(4px);
 }
 
 .service-card-inner {
@@ -672,7 +705,9 @@ p { font-size: 1rem; color: var(--brown-mid); }
 /* ---- Team ---- */
 .team {
   padding: 80px 0;
-  background: var(--cream);
+  background: var(--sand);
+  border-top: 1px solid var(--sand-dark);
+  border-bottom: 1px solid var(--sand-dark);
   position: relative;
   text-align: center;
 }
@@ -704,9 +739,30 @@ p { font-size: 1rem; color: var(--brown-mid); }
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--green-mid);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   letter-spacing: 0.04em;
 }
+
+.team-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.team-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--green-dark);
+  background: var(--green-pale);
+  border: 1px solid rgba(74, 124, 89, 0.25);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
 .team-info p { font-size: 0.95rem; }
 
 /* Truncate long bios on mobile for clean card appearance */
@@ -1678,6 +1734,8 @@ p { font-size: 1rem; color: var(--brown-mid); }
   .team-grid { grid-template-columns: 1fr 1fr; }
   .team-card { flex-direction: row; }
   .team-img-wrap { flex: 0 0 200px; aspect-ratio: 1; }
+  .team-info { text-align: left; }
+  .team-credentials { justify-content: flex-start; }
 
   /* Hours */
   .hours-layout { flex-direction: row; align-items: flex-start; gap: 64px; }
