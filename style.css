@@ -432,11 +432,16 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .services h2 { margin-bottom: 12px; }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 16px;
   margin-top: 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  scrollbar-width: none;
 }
+.services-grid::-webkit-scrollbar { display: none; }
 
 .service-card {
   background: var(--warm-white);
@@ -444,11 +449,13 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding: 24px 20px;
   border: 1px solid var(--sand-dark);
   transition: box-shadow 0.18s, transform 0.18s;
+  flex: 0 0 75vw;
+  max-width: 280px;
+  scroll-snap-align: start;
 }
 .service-card:active { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
 
 .service-card--compassion {
-  grid-column: 1 / -1;
   background: linear-gradient(135deg, #fdf6f0 0%, #f5ece4 100%);
   border-color: rgba(201, 124, 58, 0.25);
 }
@@ -869,8 +876,9 @@ p { font-size: 1rem; color: var(--brown-mid); }
   .about-text { flex: 1; padding-top: 0; }
 
   /* Services */
-  .services-grid { grid-template-columns: repeat(3, 1fr); }
-  .service-card--compassion { grid-column: auto; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
+  .service-card { flex: none; max-width: none; }
+  .service-card--compassion { }
   .service-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
 
   /* Photo */
@@ -902,7 +910,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
 @media (min-width: 1024px) {
   :root { --gutter: 48px; }
   .services-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .service-card--compassion { grid-column: auto; }
   .photo-feature-item { flex: 0 0 380px; }
 }
 
