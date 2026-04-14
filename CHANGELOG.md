@@ -672,3 +672,24 @@
 - All new CSS is mobile-first, no `!important`, no hover-only effects
 - Carousel dot JS is lightweight, progressive (no-op if elements missing), uses IntersectionObserver
 - `nav-menu-phone` hidden on desktop via existing 768px breakpoint
+
+## 2026-04-09 — Builder+Spark — AUDIT.md top 3 priorities (score 7.4)
+
+### PRIORITY 1: Full-bleed photo background on testimonials
+- Replaced flat cream bg with dark-overlay pet photo (Unsplash 1507146153580 — new, not previously used)
+- Linear gradient overlay (dark green to dark brown-black) ensures readability
+- Cards now float above the photo with enhanced box-shadow (0 8px 32px)
+- Eyebrow and h2 now colored for dark-background contrast
+- scroll hint text updated to rgba white for legibility
+
+### PRIORITY 2: Footer CTA button inline style removed
+- Removed `style="border-color:#fff;color:#fff;"` from Book Online button in footer-cta
+- Added `.footer-cta-outline` class; styles moved to `.footer-cta-actions .footer-cta-outline` in CSS
+- Clean code signal for template buyers inspecting source
+
+### PRIORITY 3: Services dot indicator + "N of 11" counter
+- Added `.services-dots` container with `.services-dots-row` (pill dots) and `.services-counter` span
+- Active dot expands to 18px pill in accent-warm, inactive dots are 6px translucent white
+- Counter reads "1 of 11", "2 of 11" etc. as user drags
+- Both dots and counter hidden on desktop (grid layout, no scroll needed)
+- JS: card-width-based active index, updates on scroll event, progressive enhancement

@@ -346,6 +346,44 @@
     updateThumb();
   }());
 
+  // ---- Services dot indicator + counter ----
+  (function () {
+    var grid = document.querySelector('.services-grid');
+    var dotsRow = document.getElementById('services-dots-row');
+    var counter = document.getElementById('services-counter');
+    if (!grid || !dotsRow || !counter) return;
+
+    var cards = grid.querySelectorAll('.service-card');
+    var total = cards.length;
+    if (!total) return;
+
+    // Build dots
+    for (var i = 0; i < total; i++) {
+      var dot = document.createElement('span');
+      dot.className = 'services-dot' + (i === 0 ? ' active' : '');
+      dotsRow.appendChild(dot);
+    }
+
+    var dots = dotsRow.querySelectorAll('.services-dot');
+    counter.textContent = '1 of ' + total;
+
+    function getActiveIndex() {
+      var cardW = cards[0].offsetWidth + 12; // gap
+      return Math.min(Math.round(grid.scrollLeft / cardW), total - 1);
+    }
+
+    function updateDots() {
+      var idx = getActiveIndex();
+      for (var j = 0; j < dots.length; j++) {
+        dots[j].classList.toggle('active', j === idx);
+      }
+      counter.textContent = (idx + 1) + ' of ' + total;
+    }
+
+    grid.addEventListener('scroll', updateDots, { passive: true });
+    updateDots();
+  }());
+
   // ---- Trust stat counter animation ----
   (function () {
     if (!('IntersectionObserver' in window)) return;
