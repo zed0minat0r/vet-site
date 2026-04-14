@@ -1520,6 +1520,20 @@ p { font-size: 1rem; color: var(--brown-mid); }
   .about-text .btn { display: inline-block; }
 }
 
+/* ---- Footer CTA ---- */
+.footer-cta {
+  background: linear-gradient(135deg, var(--green-dark) 0%, #1a3a28 100%);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  text-align: center;
+  margin-bottom: 48px;
+}
+.footer-cta h2 { color: #fff; font-size: clamp(1.4rem, 5vw, 2rem); margin-bottom: 8px; }
+.footer-cta p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 24px; }
+.footer-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.footer-cta-actions .btn-primary { background: #fff; color: var(--green-dark); border-color: #fff; }
+.footer-cta-actions .btn-primary:hover { background: var(--green-pale); border-color: var(--green-pale); }
+
 /* ---- Footer ---- */
 .site-footer {
   background: var(--brown-text);
