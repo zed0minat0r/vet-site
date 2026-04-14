@@ -272,7 +272,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
-.hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -325,6 +325,15 @@ p { font-size: 1rem; color: var(--brown-mid); }
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
+}
+.hero-actions .btn svg { flex-shrink: 0; }
+
+.hero-trust {
+  margin-top: 24px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.03em;
+  font-weight: 500;
 }
 
 .hero-scroll-cue {
