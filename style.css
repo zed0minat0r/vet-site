@@ -19,8 +19,8 @@
   --accent-warm: #c97c3a;
   --accent-warm-pale: #f5e8d8;
 
-  --font-serif: Georgia, 'Times New Roman', serif;
-  --font-sans: 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
 
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -61,6 +61,7 @@ h1, h2, h3, h4 {
   line-height: 1.2;
   color: var(--brown-text);
   font-weight: 700;
+  font-family: var(--font-serif);
 }
 h1 { font-size: clamp(2rem, 8vw, 3.6rem); }
 h2 { font-size: clamp(1.6rem, 5vw, 2.6rem); }
@@ -1441,6 +1442,20 @@ p { font-size: 1rem; color: var(--brown-mid); }
   .sticky-call-bar { display: block; }
   /* Ensure content above sticky bar is not obscured */
   .site-footer { padding-bottom: 80px; }
+
+  /* About section: prevent stat card from overflowing 375px viewport */
+  .about-media { overflow: visible; }
+  .about-stat-card {
+    position: static;
+    margin-top: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  /* Center about headings/eyebrows on mobile to match rest of site */
+  .about-text { text-align: center; }
+  .about-text .btn { display: inline-block; }
 }
 
 /* ---- Footer ---- */
