@@ -86,66 +86,213 @@
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }
 
-  // ---- Contact form validation ----
-  var form = document.getElementById('contact-form');
-  var successMsg = document.getElementById('form-success');
+  // ---- Interactive Calendar Booking ----
+  (function () {
+    var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var DAY_SLOTS = {
+      1: ['12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM','7 PM'],          // Mon
+      2: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM'], // Tue
+      3: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM','7 PM'], // Wed
+      4: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM']                // Thu
+    };
 
-  function showError(input, msg) {
-    var errEl = input.parentElement.querySelector('.form-error');
-    if (errEl) errEl.textContent = msg;
-  }
+    var calGrid   = document.getElementById('cal-grid');
+    var calLabel  = document.getElementById('cal-month-label');
+    var calPrev   = document.getElementById('cal-prev');
+    var calNext   = document.getElementById('cal-next');
+    var tsSection = document.getElementById('timeslot-section');
+    var tsDateLbl = document.getElementById('timeslot-date-label');
+    var tsGrid    = document.getElementById('timeslot-grid');
+    var bfSection = document.getElementById('booking-form-section');
+    var bSummary  = document.getElementById('booking-summary-bar');
+    var bForm     = document.getElementById('booking-form');
+    var bConfirm  = document.getElementById('booking-confirm');
+    var confirmDetail = document.getElementById('confirm-detail');
+    var bookAnother   = document.getElementById('book-another');
 
-  function clearError(input) {
-    var errEl = input.parentElement.querySelector('.form-error');
-    if (errEl) errEl.textContent = '';
-  }
+    if (!calGrid) return;
 
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var valid = true;
+    var today = new Date();
+    today.setHours(0,0,0,0);
+    var viewYear  = today.getFullYear();
+    var viewMonth = today.getMonth();
+    var selectedDate = null;
+    var selectedTime = null;
 
-      var name = form.querySelector('#name');
-      var email = form.querySelector('#email');
-      var message = form.querySelector('#message');
+    function formatDateLong(d) {
+      var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      return days[d.getDay()] + ', ' + MONTH_NAMES[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    }
 
-      // Name
-      if (!name.value.trim() || name.value.trim().length < 2) {
-        showError(name, 'Please enter your name.');
-        valid = false;
-      } else {
-        clearError(name);
+    function renderCalendar() {
+      calLabel.textContent = MONTH_NAMES[viewMonth] + ' ' + viewYear;
+      calGrid.innerHTML = '';
+
+      var firstDay = new Date(viewYear, viewMonth, 1).getDay();
+      var daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+      // Empty cells before first day
+      for (var i = 0; i < firstDay; i++) {
+        var empty = document.createElement('div');
+        empty.className = 'cal-day cal-day--empty';
+        empty.setAttribute('aria-hidden', 'true');
+        calGrid.appendChild(empty);
       }
 
-      // Email
-      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!email.value.trim() || !emailRe.test(email.value.trim())) {
-        showError(email, 'Please enter a valid email address.');
-        valid = false;
-      } else {
-        clearError(email);
+      for (var d = 1; d <= daysInMonth; d++) {
+        var date = new Date(viewYear, viewMonth, d);
+        var dow  = date.getDay(); // 0=Sun,1=Mon,...,6=Sat
+        var isPast   = date < today;
+        var isClosed = (dow === 0 || dow === 5 || dow === 6); // Sun, Fri, Sat
+        var isToday  = date.getTime() === today.getTime();
+        var isSelected = selectedDate && date.getTime() === selectedDate.getTime();
+
+        var btn = document.createElement((!isPast && !isClosed) ? 'button' : 'div');
+        btn.className = 'cal-day';
+
+        if (isPast) {
+          btn.className += ' cal-day--past';
+          btn.setAttribute('aria-label', d + ' (past)');
+        } else if (isClosed) {
+          btn.className += ' cal-day--closed';
+          btn.setAttribute('aria-label', d + ' (closed)');
+        } else {
+          btn.className += ' cal-day--available';
+          if (isSelected) btn.className += ' cal-day--selected';
+          btn.setAttribute('type', 'button');
+          btn.setAttribute('aria-label', formatDateLong(date) + (isSelected ? ', selected' : ''));
+          btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+          btn.setAttribute('tabindex', '0');
+          (function(capturedDate) {
+            btn.addEventListener('click', function () { selectDate(capturedDate); });
+            btn.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectDate(capturedDate); }
+            });
+          })(date);
+        }
+
+        if (isToday) btn.classList.add('cal-day--today-marker');
+        btn.textContent = d;
+        calGrid.appendChild(btn);
       }
 
-      // Message
-      if (!message.value.trim() || message.value.trim().length < 10) {
-        showError(message, 'Please tell us a bit more (at least 10 characters).');
-        valid = false;
-      } else {
-        clearError(message);
-      }
+      // Disable prev button if already at current month
+      var minMonth = today.getMonth();
+      var minYear  = today.getFullYear();
+      calPrev.disabled = (viewYear === minYear && viewMonth === minMonth);
+      calPrev.style.opacity = calPrev.disabled ? '0.35' : '';
+    }
 
-      if (valid && successMsg) {
-        form.reset();
-        successMsg.hidden = false;
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+    function selectDate(date) {
+      selectedDate = date;
+      selectedTime = null;
+
+      renderCalendar();
+
+      var dow = date.getDay();
+      var slots = DAY_SLOTS[dow] || [];
+
+      tsDateLbl.textContent = formatDateLong(date);
+      tsGrid.innerHTML = '';
+      slots.forEach(function (slot) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'timeslot-btn';
+        btn.textContent = slot;
+        btn.setAttribute('aria-label', slot + ' on ' + formatDateLong(date));
+        btn.addEventListener('click', function () { selectTime(slot, btn); });
+        tsGrid.appendChild(btn);
+      });
+
+      tsSection.hidden = false;
+      bfSection.hidden = true;
+      bConfirm.hidden = true;
+
+      tsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function selectTime(slot, btnEl) {
+      selectedTime = slot;
+
+      // Highlight selected time
+      tsGrid.querySelectorAll('.timeslot-btn').forEach(function (b) {
+        b.classList.toggle('timeslot-btn--selected', b === btnEl);
+      });
+
+      bSummary.textContent = formatDateLong(selectedDate) + '  \u2022  ' + selectedTime;
+      bfSection.hidden = false;
+      bConfirm.hidden = true;
+
+      bfSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function showFormError(input, msg) {
+      var errEl = input.parentElement.querySelector('.form-error');
+      if (errEl) errEl.textContent = msg;
+    }
+    function clearFormError(input) {
+      var errEl = input.parentElement.querySelector('.form-error');
+      if (errEl) errEl.textContent = '';
+    }
+
+    if (bForm) {
+      bForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var petName  = bForm.querySelector('#bf-pet-name');
+        var owner    = bForm.querySelector('#bf-owner');
+        var phone    = bForm.querySelector('#bf-phone');
+        var email    = bForm.querySelector('#bf-email');
+        var petType  = bForm.querySelector('#bf-pet-type');
+        var reason   = bForm.querySelector('#bf-reason');
+        var valid    = true;
+
+        if (!petName.value.trim()) { showFormError(petName, 'Enter your pet\'s name.'); valid = false; } else { clearFormError(petName); }
+        if (!owner.value.trim() || owner.value.trim().length < 2) { showFormError(owner, 'Enter your name.'); valid = false; } else { clearFormError(owner); }
+        if (!phone.value.trim()) { showFormError(phone, 'Enter a phone number.'); valid = false; } else { clearFormError(phone); }
+        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRe.test(email.value.trim())) { showFormError(email, 'Enter a valid email.'); valid = false; } else { clearFormError(email); }
+
+        if (valid) {
+          confirmDetail.textContent = owner.value.trim() + ' & ' + petName.value.trim() + ' (' + petType.value + ') \u2014 ' + reason.value + ' on ' + formatDateLong(selectedDate) + ' at ' + selectedTime + '.';
+          bfSection.hidden = true;
+          tsSection.hidden = true;
+          bConfirm.hidden = false;
+          bConfirm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+
+      bForm.querySelectorAll('input').forEach(function (field) {
+        field.addEventListener('input', function () { clearFormError(field); });
+      });
+    }
+
+    if (bookAnother) {
+      bookAnother.addEventListener('click', function () {
+        selectedDate = null;
+        selectedTime = null;
+        bConfirm.hidden = true;
+        tsSection.hidden = true;
+        bfSection.hidden = true;
+        if (bForm) bForm.reset();
+        renderCalendar();
+        calGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+
+    calPrev.addEventListener('click', function () {
+      viewMonth--;
+      if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+      renderCalendar();
     });
 
-    // Clear errors on input
-    form.querySelectorAll('input, textarea').forEach(function (field) {
-      field.addEventListener('input', function () { clearError(field); });
+    calNext.addEventListener('click', function () {
+      viewMonth++;
+      if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+      renderCalendar();
     });
-  }
+
+    renderCalendar();
+  })();
 
   // ---- Highlight today's hours ----
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

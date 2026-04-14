@@ -468,15 +468,19 @@
       </div>
     </section>
 
-    <section class="contact" id="contact" aria-label="Contact us">
+    <section class="contact" id="contact" aria-label="Book an appointment">
       <div class="container">
-        <div class="contact-layout">
 
+        <div class="booking-header">
+          <p class="section-eyebrow">Schedule a Visit</p>
+          <h2>Book Your Appointment</h2>
+          <p class="booking-intro">Pick a date and time below. We'll confirm by phone or email within 24 hours.</p>
+        </div>
+
+        <div class="booking-shell">
+
+          <!-- Left: contact info -->
           <div class="contact-info">
-            <p class="section-eyebrow">Get In Touch</p>
-            <h2>Ready to book a visit?</h2>
-            <p>Call us, send a message, or reach out on social. We're here Monday through Thursday.</p>
-
             <ul class="contact-details" role="list">
               <li>
                 <span class="contact-icon" aria-hidden="true">
@@ -503,41 +507,112 @@
                 <a href="https://www.facebook.com/MainLineMobileVeterinaryServices" target="_blank" rel="noopener noreferrer">Facebook</a>
               </li>
             </ul>
+
+            <div class="hours-note">
+              <strong>Available days</strong>
+              <ul role="list">
+                <li>Mon: 12 PM – 7 PM</li>
+                <li>Tue: 9 AM – 6 PM</li>
+                <li>Wed: 9 AM – 7 PM</li>
+                <li>Thu: 9 AM – 3 PM</li>
+                <li class="closed-note">Fri – Sun: Closed</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="contact-form-wrap">
-            <form class="contact-form" id="contact-form" novalidate aria-label="Contact form">
-              <div class="form-group">
-                <label for="name">Your name</label>
-                <input type="text" id="name" name="name" autocomplete="name" required minlength="2" placeholder="Jane Smith">
-                <span class="form-error" role="alert" aria-live="polite"></span>
-              </div>
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email" autocomplete="email" required placeholder="jane@example.com">
-                <span class="form-error" role="alert" aria-live="polite"></span>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone number</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(610) 555-1234">
-                <span class="form-error" role="alert" aria-live="polite"></span>
-              </div>
-              <div class="form-group">
-                <label for="pet">Pet name &amp; type</label>
-                <input type="text" id="pet" name="pet" placeholder="Max — Golden Retriever, 4 years">
-                <span class="form-error" role="alert" aria-live="polite"></span>
-              </div>
-              <div class="form-group">
-                <label for="message">How can we help?</label>
-                <textarea id="message" name="message" rows="4" required minlength="10" placeholder="Tell us about your pet's needs..."></textarea>
-                <span class="form-error" role="alert" aria-live="polite"></span>
-              </div>
-              <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-              <p class="form-success" id="form-success" role="status" aria-live="polite" hidden>Thank you! We'll be in touch soon.</p>
-            </form>
-          </div>
+          <!-- Right: calendar + booking flow -->
+          <div class="booking-panel">
 
-        </div>
+            <!-- Calendar -->
+            <div class="cal-card" role="region" aria-label="Appointment calendar">
+              <div class="cal-nav">
+                <button class="cal-nav-btn" id="cal-prev" aria-label="Previous month">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <span class="cal-month-label" id="cal-month-label" aria-live="polite"></span>
+                <button class="cal-nav-btn" id="cal-next" aria-label="Next month">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </div>
+              <div class="cal-weekdays" aria-hidden="true">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+              </div>
+              <div class="cal-grid" id="cal-grid" role="grid" aria-label="Calendar days"></div>
+              <div class="cal-legend" aria-hidden="true">
+                <span class="legend-dot legend-avail"></span> Available
+                <span class="legend-dot legend-closed"></span> Closed
+              </div>
+            </div>
+
+            <!-- Time slots (hidden until date selected) -->
+            <div class="timeslot-section" id="timeslot-section" hidden aria-live="polite">
+              <p class="timeslot-heading">Pick a time for <strong id="timeslot-date-label"></strong></p>
+              <div class="timeslot-grid" id="timeslot-grid" role="group" aria-label="Available time slots"></div>
+            </div>
+
+            <!-- Booking form (hidden until time selected) -->
+            <div class="booking-form-section" id="booking-form-section" hidden>
+              <div class="booking-summary-bar" id="booking-summary-bar" aria-live="polite"></div>
+              <form class="booking-form" id="booking-form" novalidate aria-label="Appointment request form">
+                <div class="bform-row">
+                  <div class="form-group">
+                    <label for="bf-pet-name">Pet name</label>
+                    <input type="text" id="bf-pet-name" name="pet_name" required placeholder="Bella">
+                    <span class="form-error" role="alert" aria-live="polite"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="bf-pet-type">Pet type</label>
+                    <select id="bf-pet-type" name="pet_type">
+                      <option value="Dog">Dog</option>
+                      <option value="Cat">Cat</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="bform-row">
+                  <div class="form-group">
+                    <label for="bf-owner">Owner name</label>
+                    <input type="text" id="bf-owner" name="owner_name" required placeholder="Jane Smith">
+                    <span class="form-error" role="alert" aria-live="polite"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="bf-phone">Phone</label>
+                    <input type="tel" id="bf-phone" name="phone" required placeholder="(610) 555-1234">
+                    <span class="form-error" role="alert" aria-live="polite"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="bf-email">Email</label>
+                  <input type="email" id="bf-email" name="email" required placeholder="jane@example.com">
+                  <span class="form-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                  <label for="bf-reason">Reason for visit</label>
+                  <select id="bf-reason" name="reason">
+                    <option value="Wellness Exam">Wellness Exam</option>
+                    <option value="Vaccination">Vaccination</option>
+                    <option value="Sick Visit">Sick Visit</option>
+                    <option value="End of Life Care">End of Life Care</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Request Appointment</button>
+              </form>
+            </div>
+
+            <!-- Confirmation (hidden until submitted) -->
+            <div class="booking-confirm" id="booking-confirm" hidden role="status" aria-live="polite">
+              <div class="confirm-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              </div>
+              <h3>You're all set!</h3>
+              <p id="confirm-detail"></p>
+              <p class="confirm-note">We'll confirm your appointment via phone or email within 24 hours.</p>
+              <button class="btn btn-outline" id="book-another">Book another visit</button>
+            </div>
+
+          </div><!-- /booking-panel -->
+        </div><!-- /booking-shell -->
       </div>
     </section>
 

@@ -1036,6 +1036,372 @@ p { font-size: 1rem; color: var(--brown-mid); }
   border-radius: var(--radius-sm);
 }
 
+/* ---- Booking / Calendar ---- */
+.booking-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.booking-intro {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.booking-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* hours note in sidebar */
+.hours-note {
+  margin-top: 24px;
+  padding: 16px 18px;
+  background: var(--green-pale);
+  border-radius: var(--radius-md);
+}
+.hours-note strong {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+.hours-note ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hours-note li {
+  font-size: 0.9rem;
+  color: var(--brown-mid);
+}
+.hours-note .closed-note {
+  color: var(--brown-light);
+}
+
+/* Calendar card */
+.booking-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cal-card {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sand-dark);
+  box-shadow: var(--shadow-card);
+  padding: 20px 16px 16px;
+}
+
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cal-month-label {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--brown-text);
+}
+
+.cal-nav-btn {
+  background: none;
+  border: 1.5px solid var(--sand-dark);
+  border-radius: var(--radius-sm);
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brown-text);
+  transition: background 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+.cal-nav-btn:hover {
+  background: var(--green-pale);
+  border-color: var(--green-mid);
+}
+.cal-nav-btn svg { width: 16px; height: 16px; }
+
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 6px;
+}
+.cal-weekdays span {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brown-light);
+  padding: 4px 0;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: default;
+  min-height: 44px;
+  min-width: 0;
+  border: 2px solid transparent;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  position: relative;
+}
+
+.cal-day--empty { background: none; }
+
+.cal-day--available {
+  color: var(--green-dark);
+  background: var(--green-pale);
+  cursor: pointer;
+  font-weight: 600;
+}
+.cal-day--available:hover {
+  background: var(--green-light);
+  color: #fff;
+}
+.cal-day--available:focus-visible {
+  outline: none;
+  border-color: var(--green-dark);
+  box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.25);
+}
+
+.cal-day--selected {
+  background: var(--green-dark) !important;
+  color: #fff !important;
+  border-color: var(--green-dark);
+}
+
+.cal-day--closed {
+  color: var(--sand-dark);
+  background: none;
+}
+
+.cal-day--past {
+  color: var(--sand-dark);
+  background: none;
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.cal-day--today-marker::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-warm);
+}
+
+.cal-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--sand);
+  font-size: 0.78rem;
+  color: var(--brown-light);
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+.legend-avail { background: var(--green-light); }
+.legend-closed { background: var(--sand-dark); }
+
+/* Time slots */
+.timeslot-section {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sand-dark);
+  box-shadow: var(--shadow-card);
+  padding: 20px 16px;
+  animation: slideDown 0.22s ease;
+}
+.timeslot-heading {
+  font-size: 0.95rem;
+  color: var(--brown-text);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.timeslot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.timeslot-btn {
+  background: var(--cream);
+  border: 1.5px solid var(--sand-dark);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--brown-text);
+  cursor: pointer;
+  min-height: 44px;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.timeslot-btn:hover {
+  background: var(--green-pale);
+  border-color: var(--green-mid);
+  color: var(--green-dark);
+}
+.timeslot-btn--selected {
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+  color: #fff;
+}
+.timeslot-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.25);
+}
+
+/* Booking form section */
+.booking-form-section {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sand-dark);
+  box-shadow: var(--shadow-card);
+  padding: 20px 16px;
+  animation: slideDown 0.22s ease;
+}
+
+.booking-summary-bar {
+  background: var(--green-dark);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bform-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.booking-form .form-group select {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--brown-text);
+  background: var(--cream);
+  border: 1.5px solid var(--sand-dark);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  min-height: 48px;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235c4a38' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.booking-form .form-group select:focus {
+  outline: none;
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.15);
+}
+
+/* Confirmation */
+.booking-confirm {
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--green-pale);
+  box-shadow: var(--shadow-card);
+  padding: 36px 20px;
+  text-align: center;
+  animation: slideDown 0.25s ease;
+}
+.confirm-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--green-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--green-dark);
+}
+.confirm-icon svg { width: 30px; height: 30px; }
+.booking-confirm h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--green-dark);
+}
+.booking-confirm p { color: var(--brown-mid); margin-bottom: 8px; }
+.confirm-note {
+  font-size: 0.88rem;
+  color: var(--brown-light);
+  margin-bottom: 24px;
+}
+#book-another { min-height: 44px; }
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+  .booking-shell {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 52px;
+  }
+  .contact-info { flex: 0 0 220px; }
+  .booking-panel { flex: 1; }
+  .cal-card { padding: 24px 20px 18px; }
+  .cal-day { font-size: 0.95rem; }
+}
+
+@media (max-width: 400px) {
+  .bform-row { grid-template-columns: 1fr; }
+  .cal-day { font-size: 0.82rem; min-height: 40px; }
+}
+
 /* ---- Sticky call bar (mobile only) ---- */
 .sticky-call-bar {
   display: none;
