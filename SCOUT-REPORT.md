@@ -644,3 +644,105 @@ Google's Core Web Vitals (LCP, INP, CLS) are confirmed ranking signals. A 1-seco
 - [Roo.vet — The Growing Need for Spanish-Speaking Veterinary Professionals](https://www.roo.vet/roo4you/need-for-spanish-speaking-veterinary-professionals)
 - [AAHA — Vetspacito: Overcoming Language Barriers in Veterinary Care](https://www.aaha.org/newstat/2023-5/vetspacito-overcoming-language-barriers-in-veterinary-care/)
 - [PetDesk — Veterinary Loyalty Program and Referral Tools](https://petdesk.com/customized-veterinary-loyalty-program/)
+
+---
+
+## Round 7 Research — 2026-04-09
+
+**Scope:** Marketplace intelligence only. What makes vet/pet templates sell on ThemeForest, TemplateMonster, and Creative Market — features, pricing, preview page tactics, and 2025-2026 design trends buyers respond to. No overlap with Rounds 1-6.
+
+### Finding 1 — The $19 vs $59 Pricing Gap Is About Page Count and Demo Depth, Not Code Quality
+
+The clearest separator between low-end and premium vet templates on ThemeForest is the number of included pages and demo variations. The data from current bestsellers:
+
+- Templates priced $18-$19: typically 35-50 HTML files, single homepage demo, basic Bootstrap layout, minimal documentation
+- Templates priced $59-$79: 3+ homepage demo variations, 15+ inner pages (Team, Blog, Blog Single, Service Detail, FAQ, 404, adoption pages), visual page builder compatibility, and detailed setup documentation
+- The top-grossing vet/pet template at 531 sales is priced at $79 and leads with "a wide assortment of superb pet shop layouts" — the variety of layouts is the headline value prop, not individual features
+
+**Implication for this template:** The current site is a single-page design. Before listing on any marketplace, it needs at minimum: a standalone Services page, a Team page, a Contact page, and an About page. These inner pages are what justify a $39-$59 price point. Without them, the template competes in the $18-$22 tier against dozens of Bootstrap clones.
+
+### Finding 2 — Marketplace Preview Pages Are the Product — Buyers Decide in Under 10 Seconds
+
+ThemeForest buyers compare dozens of items before purchasing. The preview page (the live demo link) is the primary decision trigger. Key data points:
+
+- Buyers are "buying speed, confidence, and a finished look" — not HTML files
+- Templates with generic Lorem Ipsum content sell significantly less than those with realistic, industry-specific copy
+- The hero section must immediately communicate the niche: a vet template with a generic "Welcome to Our Services" headline loses to one that says "Compassionate Care for Every Paw"
+- Preview image on the ThemeForest listing page must be exactly 590x300 pixels; a poor preview image is a confirmed conversion killer
+- A short "setup in 10 minutes" YouTube walkthrough linked from the item description measurably increases sales by reducing buyer uncertainty
+- The current site already has realistic copy and photography — this is a genuine advantage over most competitor templates that use placeholder content
+
+**Actionable:** If this template is headed toward marketplace listing, the preview demo must use the real site content (not stripped placeholders), the hero must render within 1 second on the live demo URL, and a 5-10 item description bulleted feature list should lead with "Realistic veterinary content included" as a differentiator.
+
+### Finding 3 — Top-Selling Pet/Vet Templates All Include a Pet Shop / E-Commerce Section
+
+Without exception, the top 5 bestselling vet templates on ThemeForest include a pet shop section or WooCommerce/product grid integration. Templates marketed as "vet clinic only" peak around 200-300 sales. Templates that add a shop layer (pet food, accessories, prescriptions) consistently reach 400-530+ sales. The word "shop" in the template title or first line of description is associated with higher sales rank.
+
+The current site has no shop section and no product listing UI. This is a significant gap relative to the market's top earners.
+
+**Actionable for the template:** Add a minimal "Pet Shop" section — even a 3-column product card grid with placeholder products (dental chews, flea prevention, wellness supplements) — before marketplace submission. This one addition likely moves the template from the $19 tier to the $39-$59 tier and from the "vet clinic" subcategory into the broader "pet + vet" category, which has 3x more buyer traffic on ThemeForest.
+
+### Finding 4 — Bento Grid Layouts Are the 2026 Design Signal Buyers Associate With Premium Templates
+
+2026's dominant UI trend in template marketplaces is the bento grid — asymmetric card grids inspired by Japanese lunch box layouts, with mixed-size content blocks displaying stats, CTAs, service categories, and imagery together. Templates using bento grids in their services or features section rank higher in "Most Popular" filters because buyers perceive them as more modern.
+
+Current vet templates using bento grids: Patsezone (Figma, ThemeForest), Petopia HTML (Creative Market), several Webflow vet templates.
+
+The current site uses a standard 3-column card grid for services — clean and functional but reads as 2022-era design to a marketplace buyer in 2026.
+
+**Actionable:** Replacing the services grid with a bento layout (two large cards + four smaller cards in an asymmetric arrangement, or a featured-service card spanning two columns) would be a single CSS/HTML change with a significant visual impact on perceived modernity. This is a high-ROI visual change specifically for marketplace positioning, even if the live site keeps the current grid.
+
+### Finding 5 — Documentation Quality Is a Tier-1 Sales Signal on ThemeForest
+
+ThemeForest mandates a documentation file for all submissions, but quality varies dramatically. High-rated templates (4.7+ stars, 400+ sales) consistently pair their template with:
+
+- An HTML or PDF setup guide covering: unzip, edit, deploy steps
+- A customization reference listing all CSS variables and color tokens
+- A "How to change the logo / hero image / phone number" step-by-step that non-developers can follow
+- A YouTube or Loom video walkthrough (5-10 minutes) linked in the item description
+
+Low-rated templates (3.9-4.3 stars) almost universally have thin or absent documentation. Negative reviews on ThemeForest are dominated by "no documentation" and "support took 2 weeks." A template with 4.9 stars will outsell an identical template with 3.8 stars by 3-5x due to the marketplace sort algorithm weighting ratings heavily.
+
+**Actionable:** Before any marketplace submission, produce a documentation HTML file with the five points above. This is a 2-3 hour investment that directly affects long-term sales rank.
+
+### Finding 6 — "Adoption Page" Is an Untapped Differentiator in the Vet Template Niche
+
+The search surfaces a recurring pattern: vet templates that include an "Adoption" or "Rescue Partner" page consistently stand out in buyer descriptions and listing copy. Not because every buyer runs an adoption program — but because the page signals design completeness and community values, which resonate with the target buyer (vet clinic owners who see themselves as animal advocates, not just business operators).
+
+The Petie template (ThemeForest, ~400 sales) specifically calls out "Adoption" as a featured inner page. The Peto template (24+ demos) includes an adoption demo variant.
+
+**Actionable for this template:** Adding a single "Adoptable Pets" page — or a section on the homepage with 2-3 placeholder pet cards styled like adoption listings — is a content-only addition that gives the template a third unique selling point in its marketplace listing copy (alongside mobile-first and realistic copy). It can be positioned as "Optional Adoption Partners section — perfect for clinics that partner with local shelters."
+
+### Updated Marketplace Readiness Summary (Round 7)
+
+| Gap | Priority for Marketplace | Build Effort |
+|---|---|---|
+| Inner pages (Services, Team, About, Contact as standalone pages) | CRITICAL — unlocks $39-$59 pricing tier | Medium |
+| Pet shop / product grid section | HIGH — top-seller differentiator | Medium |
+| Bento grid services layout variant | HIGH — 2026 design signal | Low-Medium |
+| Documentation HTML file + variable reference | HIGH — directly affects star rating | Low (writing only) |
+| Adoption/rescue partner page or section | MEDIUM — differentiator in listing copy | Low |
+| Preview image optimized at 590x300px | HIGH — ThemeForest listing requirement | Minimal |
+
+---
+
+## Round 7 Sources
+
+- [How to Sell Custom Website Templates on ThemeForest — mohtaweb.com (2026)](https://www.mohtaweb.com/2026/04/how-to-sell-templates-themeforest.html?m=1)
+- [How to Sell Website Templates Online (2025 Guide) — fourthwall.com](https://fourthwall.com/blog/selling-website-templates-turn-your-designs-into-profit)
+- [How to Upload and Sell Your Web Template on Themeforest — Hayk Simonyan, Medium](https://hayk-simonyan.medium.com/how-to-upload-and-sell-your-web-template-on-themeforest-aaf233ea7a94)
+- [25+ Master Tips on How to Get Your Theme Approved on ThemeForest — themeim.com](https://themeim.com/how-to-get-your-theme-approved-on-themeforest/)
+- [Envato Author Support — Themes Item Preparation & Technical Requirements](https://help.author.envato.com/hc/en-us/articles/360000470826-Themes-Item-Preparation-Technical-Requirements)
+- [PetVet Vet Pet Responsive Site Template — ThemeForest](https://themeforest.net/item/petvet-vet-pet-responsive-site-template/12899418)
+- [Pet Clinic Bootstrap 5 Template — ThemeForest (EnvyTheme)](https://themeforest.net/item/pet-clinic-veterinary-responsive-html-template/21037880)
+- [VET FOR PET Bootstrap Template — ThemeForest (DuruThemes)](https://themeforest.net/item/vet-for-pet-pet-animal-doctor-veterinarian-bootstrap-template/23396917)
+- [Peto Animal Shop & Veterinary WordPress Theme — ThemeForest](https://themeforest.net/item/peto-responsive-woocommerce-wordpress-theme-for-pets-and-vets/20491309)
+- [Petie Pet Care Center & Veterinary WordPress Theme — ThemeForest](https://themeforest.net/item/petie-pet-care-center-veterinary-wordpress-theme/23230464)
+- [Vet Website Templates — TemplateMonster (85 templates, from $14 HTML)](https://www.templatemonster.com/category/vet-website-templates/)
+- [Pet Veterinary Bootstrap Template — Creative Market (VALIASOLUTION)](https://creativemarket.com/valiasolution/1643801-Pet-Veterinary)
+- [11 Web Design Trends in 2026 With Live Demos — Gezar (bento grid)](https://gezar.dk/en/blog/web-design-trends-2026)
+- [10 Best Web Design Trends to Follow in 2026 — activegrowthtech.com](https://www.activegrowthtech.com/10-best-web-design-trends-in-2026/)
+- [20 Best Veterinary Website Design Examples 2026 — Colorlib](https://colorlib.com/wp/veterinary-websites/)
+- [Is ThemeForest Worth It? Honest Review — bigcloudy.com](https://www.bigcloudy.com/blog/themeforest-review/)
+- [25 Best Veterinary Website Templates — 128.digital](https://www.128.digital/webflow-templates/veterinary)
+- [18 Veterinary Website Templates of 2025 — wixfresh.com](https://www.wixfresh.com/post/veterinary-website-templates)
