@@ -486,103 +486,107 @@ p { font-size: 1rem; color: var(--brown-mid); }
 
 /* ---- Services ---- */
 .services {
-  padding: 80px 0;
-  background: var(--sand);
+  padding: 72px 0 80px;
+  background: #1a1f1c;
 }
-.services h2 { margin-bottom: 12px; }
-
-.services-scroll-hint {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  color: var(--brown-light);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  margin-top: 16px;
-  justify-content: center;
-}
-.services-scroll-hint svg { width: 14px; height: 14px; flex-shrink: 0; }
+.services .section-eyebrow { color: rgba(255,255,255,0.5); }
+.services h2 { color: #fff; margin-bottom: 10px; }
+.services .section-intro { color: rgba(255,255,255,0.65); }
 
 .services-grid {
   display: flex;
-  gap: 16px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 36px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
+  padding: 0 var(--gutter) 20px;
+  margin-left: calc(var(--gutter) * -1);
+  margin-right: calc(var(--gutter) * -1);
+  width: calc(100% + var(--gutter) * 2);
   scrollbar-width: none;
 }
 .services-grid::-webkit-scrollbar { display: none; }
 
 .service-card {
-  background: var(--warm-white);
-  border-radius: var(--radius-md);
-  padding: 24px 20px;
-  border: 1px solid var(--sand-dark);
-  transition: box-shadow 0.18s, transform 0.18s;
-  flex: 0 0 75vw;
-  max-width: 280px;
+  position: relative;
+  flex: 0 0 72vw;
+  max-width: 260px;
+  height: 280px;
+  border-radius: 14px;
+  overflow: hidden;
   scroll-snap-align: start;
-}
-.service-card:active { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
-
-.service-card--compassion {
-  background: linear-gradient(135deg, #fdf6f0 0%, #f5ece4 100%);
-  border-color: rgba(201, 124, 58, 0.25);
-}
-.service-card--compassion .service-icon {
-  background: rgba(201, 124, 58, 0.12);
-  color: var(--accent-warm);
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  cursor: default;
 }
 
-/* Category: Preventive / Wellness — soft green */
-.service-card--preventive {
-  background: linear-gradient(135deg, #eef7f0 0%, #dff0e3 100%);
-  border-color: rgba(74, 124, 89, 0.2);
-}
-.service-card--preventive .service-icon {
-  background: rgba(74, 124, 89, 0.15);
-  color: var(--green-dark);
-}
-
-/* Category: Digital / Telemedicine — pale blue-green */
-.service-card--digital {
-  background: linear-gradient(135deg, #f0f5f8 0%, #e4eff5 100%);
-  border-color: rgba(74, 114, 145, 0.18);
-}
-.service-card--digital .service-icon {
-  background: rgba(74, 114, 145, 0.12);
-  color: #3a6b8a;
+/* dark gradient overlay — always readable */
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 20, 12, 0.88) 0%,
+    rgba(10, 20, 12, 0.42) 55%,
+    rgba(10, 20, 12, 0.08) 100%
+  );
+  border-radius: inherit;
+  transition: background 0.22s ease;
 }
 
-/* Category: Foundational / Everyday — warm sand */
-.service-card--foundational {
-  background: linear-gradient(135deg, #faf6ef 0%, #f3ede1 100%);
-  border-color: rgba(140, 122, 106, 0.2);
-}
-.service-card--foundational .service-icon {
-  background: rgba(140, 122, 106, 0.12);
-  color: var(--brown-mid);
+/* end-of-life: warmer, slightly darker overlay */
+.service-card--eol::before {
+  background: linear-gradient(
+    to top,
+    rgba(20, 10, 10, 0.90) 0%,
+    rgba(20, 10, 10, 0.50) 55%,
+    rgba(20, 10, 10, 0.10) 100%
+  );
 }
 
-.service-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--green-pale);
-  border-radius: var(--radius-sm);
-  color: var(--green-dark);
-  margin-bottom: 14px;
-  flex-shrink: 0;
+.service-card-inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 18px;
+  z-index: 1;
 }
-.service-icon svg { width: 22px; height: 22px; }
 
-.service-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; color: var(--brown-text); }
-.service-card p { font-size: 0.85rem; color: var(--brown-mid); line-height: 1.5; }
+.service-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 5px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.service-card p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* hover — desktop only, no-motion safe */
+@media (hover: hover) {
+  .service-card:hover::before {
+    background: linear-gradient(
+      to top,
+      rgba(10, 20, 12, 0.78) 0%,
+      rgba(10, 20, 12, 0.28) 55%,
+      rgba(10, 20, 12, 0.04) 100%
+    );
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .service-card { transition: transform 0.2s ease; }
+  .service-card:hover { transform: scale(1.025); }
+}
 
 /* ---- Trust stats strip ---- */
 .trust-strip {
@@ -1634,11 +1638,17 @@ p { font-size: 1rem; color: var(--brown-mid); }
   .about-text { flex: 1; padding-top: 0; }
 
   /* Services */
-  .services-scroll-hint { display: none; }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; margin-top: 40px; }
-  .service-card { flex: none; max-width: none; }
-  .service-card--compassion { }
-  .service-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: visible;
+    margin-top: 40px;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  .service-card { flex: none; max-width: none; height: 300px; }
 
   /* Trust stats */
   .trust-stats { grid-template-columns: repeat(4, 1fr); }
@@ -1674,7 +1684,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
    ======================================================= */
 @media (min-width: 1024px) {
   :root { --gutter: 48px; }
-  .services-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .services-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
 }
 
 /* ---- Focus ---- */
