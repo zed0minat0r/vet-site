@@ -540,7 +540,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 
 .services-counter {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: rgba(255,255,255,0.5);
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -1652,7 +1652,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   text-align: center;
 }
 
-.footer-brand .nav-logo { color: #fff; margin-bottom: 12px; }
+.footer-brand .nav-logo { color: #fff; margin-bottom: 12px; justify-content: center; }
 .footer-brand p { font-size: 0.9rem; color: rgba(255,255,255,0.65); }
 
 .footer-links h4,
@@ -1794,6 +1794,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 
   /* Footer */
   .footer-grid { grid-template-columns: 2fr 1fr 1fr; text-align: left; }
+  .footer-brand .nav-logo { justify-content: flex-start; }
   .footer-links ul { align-items: flex-start; }
   .footer-social { flex-direction: row; gap: 16px; align-items: flex-start; }
 }
