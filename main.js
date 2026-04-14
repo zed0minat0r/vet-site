@@ -182,4 +182,58 @@
   var yearEl = document.getElementById('footer-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // ---- Testimonials drag-to-scroll ----
+  var testiTrack = document.querySelector('.testimonials-track-wrap');
+  if (testiTrack) {
+    var isDown = false;
+    var startX = 0;
+    var scrollLeft = 0;
+
+    testiTrack.addEventListener('mousedown', function (e) {
+      isDown = true;
+      startX = e.pageX - testiTrack.offsetLeft;
+      scrollLeft = testiTrack.scrollLeft;
+    });
+    testiTrack.addEventListener('mouseleave', function () { isDown = false; });
+    testiTrack.addEventListener('mouseup', function () { isDown = false; });
+    testiTrack.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - testiTrack.offsetLeft;
+      var walk = (x - startX) * 1.4;
+      testiTrack.scrollLeft = scrollLeft - walk;
+    });
+  }
+
+  // ---- Scroll progress bar ----
+  var progressBar = document.getElementById('scroll-progress');
+  if (progressBar && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    window.addEventListener('scroll', function () {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = Math.min(pct, 100) + '%';
+    }, { passive: true });
+  }
+
+  // ---- Hero parallax on scroll ----
+  var heroImg = document.querySelector('.hero-img');
+  if (heroImg && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    var heroSection = heroImg.closest('.hero');
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var scrollY = window.pageYOffset;
+          var heroH = heroSection ? heroSection.offsetHeight : window.innerHeight;
+          if (scrollY < heroH) {
+            heroImg.style.transform = 'translateY(' + (scrollY * 0.3) + 'px)';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
 })();
