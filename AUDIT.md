@@ -1,146 +1,110 @@
-# Audit: Main Line Mobile Veterinary Services
-
-**Auditor:** Nigel
+# Nigel's Audit — Main Line Mobile Vet Template
 **Date:** 2026-04-09
-**Site:** https://zed0minat0r.github.io/vet-site/
-**Perspective:** Real pet owner — 375px mobile
-**Context:** Fresh rebuild, first audit. Scored as a live business site.
+**Auditor:** Nigel (strict British auditor — buyer perspective)
+**Viewport:** 375px mobile
+**Context:** Template for sale. Scoring from the perspective of a veterinary practice owner evaluating design quality and UX against commercial alternatives.
 
 ---
 
-## Scoring Scale
+## Overall Score: 6.8 / 10
 
-| Score | Meaning |
-|-------|---------|
-| 5.0 | Average — functional but unremarkable |
-| 5.5 | Functional but generic |
-| 6.0 | Generic template feel |
-| 7.0 | Genuinely better than most — HIGH bar |
-| 8.0 | Client would choose over competitors |
-| 9.0 | Award-worthy |
-| 10.0 | Perfect |
+This is a genuinely competent template that is better than the average Squarespace or ThemeForest offering, but it has not yet crossed the threshold where a discerning buyer would choose it over a premium competitor without hesitation. The interactive calendar booking system and horizontal swipe testimonials are differentiating features. The visual identity is warm and coherent. However, several execution details hold it back from the 7.0+ tier where buyers open their wallets confidently.
 
 ---
 
-## Section-by-Section Scores
+## Section Scores
 
-### 1. First Impression / Hero — 6.2 / 10
+### 1. Design System and Visual Identity — 7.5 / 10
+The green/cream token system is well-considered and consistent. The serif/sans pairing (Georgia + Helvetica Neue) is appropriate for a warm, professional practice. The warm amber accent is used sparingly and effectively. The dark footer with warm-white body creates a proper visual arc. Minor issue: `--sand` and `--cream` backgrounds are very close in value. On mobile the transitions between sections feel samey rather than structured. A more deliberate section rhythm — perhaps alternating with a full-bleed dark-green section sooner — would create clearer visual pacing.
 
-The headline "Vet care in the comfort of your home." is clear and benefit-focused. Dr. Overhiser's name appears in the sub-line, which is correct. The call-to-action phone number is front and center — good instinct for a service business.
+### 2. Hero (Mobile 375px) — 7.0 / 10
+Strong fundamentals: full-bleed photograph, gradient overlay, clear headline hierarchy, dual CTAs. The headline "Your vet comes to your door." is good copywriting. The parallax on scroll is smooth and properly rAF-gated. Issues: (a) The hero-eyebrow pill and the hero-trust line below the CTAs add two small blocks of text that create five distinct text elements before the scroll cue — crowded on 375px. (b) The scroll-cue bob animation is the default pattern from every AI-generated template in 2026. (c) The hero extends to 100vh, meaning users must scroll a full phone-height before any content is visible — acceptable, but risks higher drop-off rates on mobile.
 
-Problems: the hero image is a generic Unsplash dog-in-field stock photo (photo-1587300003388-59208cc962cb). A real pet owner immediately registers this as a template site. The "See services" ghost button on a dark overlay competes with the primary CTA and dilutes the call to action. The animated scroll cue arrow adds motion for no functional gain on mobile — most users know to scroll. The hero is full-viewport-height which is appropriate, but the composition is entirely standard and indistinguishable from 200 other mobile-first vet sites.
+### 3. Navigation — 7.5 / 10
+Excellent implementation. The hamburger-to-X transition is clean, the full-screen overlay menu centres well at 375px, and tap targets are 52px height — proper accessibility practice. The sticky header is minimal and does not compete with content. The "Book a Visit" CTA is appropriately styled. Score docked only because the nav-logo text at 0.95rem beside a 36px image is slightly tight, and there is no 320px protection for the logo text, though 375px renders correctly.
 
-Score rationale: competent, but anyone who has seen a website before will feel this was built with a template. Nothing here is distinctive to Main Line Mobile Vet specifically.
+### 4. Why Strip — 6.5 / 10
+The 2x2 grid with divider-line gaps is a clever visual trick on mobile. However, the icons are the same Heroicons set used by approximately 40% of templates built in 2025-2026. They feel borrowed rather than owned. The copy is solid, but all four cells carry equal visual weight — there is no hierarchy guiding the eye to the most persuasive benefit. The sand background is nearly indistinct from the cream section above, undermining the section boundary.
 
----
+### 5. About Section — 7.0 / 10
+The floating dark-green stat card over the photo is a genuinely premium detail for minimal code cost. The 4/3 aspect ratio image with rounded corners works well. However, the stat card is positioned at `bottom: -24px; right: 0` — at 375px this clips the right edge of the card outside the viewport. This is a visual bug a buyer will notice. The copy is good. The left-aligned heading and eyebrow contrast with the centre-aligned headings in services and trust sections — inconsistent treatment.
 
-### 2. Navigation — 6.5 / 10
+### 6. Services — 6.5 / 10
+Horizontal scroll at 75vw with scroll-snap is a competent mobile pattern. The "Compassionate End-of-Life Care" warm-amber card variant is a thoughtful visual break. However, all other 10 cards are visually identical: white background, green Heroicon, two lines of text. This is the default output from any AI site builder. No visual differentiation by category, no pricing indication, no scannable hierarchy. The section collectively reads as a list rather than a curated service portfolio.
 
-Hamburger menu is properly implemented with aria-expanded, body overflow lock, and close-on-outside-click. Tap targets hit 44px minimum. The full-screen overlay mobile menu is a reasonable choice.
+### 7. Trust Stats Strip — 7.0 / 10
+Dark green with large serif numerals is the right approach. The subtle decorative circles via ::before/::after add depth without noise. The 2x2 grid at 375px is appropriate. Score penalised because the stats are modest from a template showcase perspective — "11 services" and "2 counties served" will not impress a prospective buyer demoing the template. Illustrative numbers should be larger (e.g., 1,200+ patients) so buyers can envision the template at scale. The section rhythm also feels slightly off — it lands between services and team rather than anchoring a natural break.
 
-Problems: the nav logo reads "Main Line Mobile Vet" as plain text with a generic paw SVG — no real brand presence. The "Book a Visit" CTA in the nav does not link to a booking system; it anchors to the contact form which requires the user to fill out a message. For a service business, this is a significant friction point. Users expect to see available times or at minimum a phone call trigger, not a web form.
+### 8. Team Section — 6.5 / 10
+Stacked single-column cards on mobile are appropriate. The image aspect ratio and object-position top are correct for portrait photos. However, the team bios are very long on mobile — Dr. Overhiser's bio runs to six lines of body copy with no truncation. A buyer evaluating this sees a wall of text at 375px. The heading "The people behind the paw prints." is a good line. The section background (sand) matches the preceding services section — two sand sections without a break.
 
----
+### 9. Testimonials (Horizontal Swipe) — 7.5 / 10
+The clearest differentiator on mobile. Three varied card colours (cream, warm amber, dark green) break the monotony. Serif italic body copy feels premium. Scroll-snap and drag-to-scroll are correctly implemented. Issues: (a) The 5rem quote mark takes up significant vertical space before the actual testimonial text on a 375px card. (b) The initial-letter avatars (a green circle with a single letter) are generic. Score would reach 8.0 with slightly more avatar visual distinction and a tighter quote-mark size on mobile.
 
-### 3. Why Strip (Value Propositions) — 5.8 / 10
+### 10. Hours and Location — 7.0 / 10
+The hours table with today's row highlighted in dark green with "(today)" appended is a polished, useful detail. The map embed rounds nicely into its card container. Score penalised because at 375px the vertical gap between the hours panel and map panel is 56px — generous to the point of feeling disconnected. Cumulative scroll depth across the full page is substantial on mobile.
 
-Four 2-column grid items covering "We come to you," "No waiting rooms," "Anxiety-friendly," "One-on-one care." These are the correct selling points for a mobile vet.
+### 11. Interactive Calendar Booking — 8.0 / 10
+The strongest feature and clearest commercial differentiator. The three-step flow (calendar to time slots to form to confirmation) is well-conceived. Cal-day circles at 44px minimum maintain proper tap targets. The today marker (warm amber dot) is a micro-detail buyers will notice. The booking-summary-bar (dark green strip showing selected date/time above the form) is a genuinely professional UX pattern rarely seen in template markets. The confirmation state is complete.
 
-Problems: these are generic to all mobile vets. There is nothing here specific to Dr. Overhiser or Main Line. The icons (house, clock, heart, people) are stock Heroicon outlines — the visual vocabulary of a thousand SaaS landing pages, not a warm veterinary practice. The 2-column grid at 375px is tight; the text "Your pet stays in their safe space" wraps awkwardly at narrow widths. This section does its job but adds no distinctiveness.
+Score held at 8.0 rather than 8.5 for two reasons: (a) The hours in the booking sidebar (Monday 12 PM-7 PM) do not match the hours table in the Hours section (Monday 12 PM-8 PM) — a data inconsistency a sharp buyer will catch. (b) The `bform-row` two-column layout at 375px is tight; the `max-width: 400px` breakpoint that converts it to single-column means 375-400px users receive cramped side-by-side fields.
 
----
+### 12. Sticky Call Bar — 7.5 / 10
+Correctly implemented. Appears after hero exits viewport, has a phone icon, full-width dark green treatment. Functions properly. Minor note: no visible animation on appearance beyond translateY — a very brief fade-in combined with the slide would feel more polished.
 
-### 4. About Section — 6.0 / 10
+### 13. Footer — 7.0 / 10
+Correct three-column to single-column collapse on mobile. The dark brown provides a proper visual terminus. The paw logo SVG is a nice brand reinforcement. Footer links have 44px min-height via flex — good accessibility practice. Footer-bottom copyright is appropriately subordinate. No significant issues.
 
-Copy is honest and direct. The service area is stated clearly. The floating stat card ("Chester Springs, PA / Serving Chester & Montgomery County") is an attempt at visual interest.
+### 14. Scroll Interactions and Animations — 7.0 / 10
+The scroll progress bar is tasteful at 3px with a green gradient. The staggered reveal animations (0.05s to 0.26s delays) are correctly implemented and feel polished. The parallax is smooth. The reduced-motion override is properly implemented — earns points with conscientious buyers. Score penalised because the page now runs four concurrent animation systems simultaneously (bob, parallax, progress bar, scroll-reveal) plus slideDown on calendar elements. Individually each is tasteful; collectively they tip into "AI-animated" territory and undermine the claim to a distinct visual identity.
 
-Problems: the about image is a Unsplash happy-dog photo, not a photo of Dr. Overhiser at work. For a solo-practitioner mobile vet, the doctor's face and personality IS the product. A real pet owner choosing between two mobile vets will go with the one whose doctor they can see and relate to. The stat card contains no actual stat — it just restates the location already in the text. Wasted opportunity. The CTA "See what we offer" scrolling to services is weak — a better CTA here would be "Meet Dr. Overhiser" or a direct booking prompt.
+### 15. Typography — 7.0 / 10
+The clamp() usage on headings is correct and produces good proportional scaling. The serif Georgia for pull quotes and stat numbers adds warmth. Body text at 1rem with 1.6 line-height is legible. The eyebrow labels are correctly subordinate. Score penalised because: (a) system fonts (Georgia, Helvetica Neue) give the template a slightly dated, stock feel — a custom Google Fonts pairing would increase perceived premium value significantly for a paid template without adding meaningful performance cost. (b) Section eyebrow labels are stylistically identical everywhere, reducing visual distinction between sections.
 
----
-
-### 5. Services Grid — 6.3 / 10
-
-Eleven services listed, which is comprehensive and accurate for a mobile vet practice. The horizontal scroll carousel on mobile is appropriately implemented with scroll-snap. The compassionate end-of-life card has distinct warm styling, which is correct — this service deserves visual differentiation.
-
-Problems: at 375px, cards are 75vw wide, meaning users see ~1.3 cards — the scroll affordance is not obvious. There is no scroll indicator, drag handle hint, or "scroll for more" cue. On iOS Safari, many users will simply not discover the remaining 9 cards. The service descriptions are single-sentence, which is appropriate for a card, but the icons are all generic Heroicons — the vaccine card uses a flask icon and the medical services card uses a sun icon, which are not intuitive mappings. Eleven cards is also heavy for mobile scroll — consider whether some could be grouped.
-
----
-
-### 6. Photo Feature Strip — 5.5 / 10
-
-A horizontally scrollable strip of six Unsplash pet photos on a dark green background. The accompanying text is "Your home is the best exam room" — a decent line.
-
-Problems: every single image is a stock photo. A pet owner looking at this section will instinctively know these are not Dr. Overhiser's patients. The section adds visual bulk without adding trust or information. It reads as filler. The dark green background with white text and a strip of random dog/cat photos is the most "AI-built website" section on the page. If real photos are unavailable, this section should be replaced with something that builds credibility — a short bio video embed, a Google review summary, or a simple stat block (e.g., "500+ home visits across Chester County").
-
----
-
-### 7. Team Section — 5.8 / 10
-
-Two team members: Dr. Sarah Overhiser and Donna. The bios reference real credentials (Iowa State 2015, Harcum College Bryn Mawr) which adds authenticity.
-
-Problems: both team photos are Unsplash stock portrait photos — generic professional headshots of people who are clearly not Dr. Overhiser or Donna. This is the single biggest trust problem on the site. A prospective client who recognises that the team photos are stock photos will immediately question whether the practice is legitimate. The bio copy is well-written but undone by fake faces. Additionally, "Donna" has no last name, which reads as incomplete content.
+### 16. Mobile Layout and Centre Alignment — 6.5 / 10
+Most sections centre correctly at 375px. However, centre-alignment is cited as a core requirement in AGENT-RULES.md and there are inconsistencies: (a) The about-text section heading and eyebrow are left-aligned on mobile while the services section uses explicit `.center` — this inconsistency breaks the contract. (b) The available-days list in the contact sidebar is left-aligned inside a pale-green card with no visual container logic. (c) The `bform-row` two-column grid at 375px is tight (see note under Calendar). The overall page achieves adequate but not excellent centre-alignment consistency at 375px.
 
 ---
 
-### 8. Testimonials / Pull Quotes — 5.2 / 10
+## Top 5 Actionable Recommendations for Improving Sellability
 
-Three rotating testimonials with dot navigation. The testimonial content is relevant and emotionally resonant, particularly the end-of-life quote.
+**1. Add a web font pairing (highest single impact on perceived premium quality)**
+Replace Georgia + Helvetica Neue with a Google Fonts pair. Recommended: Playfair Display for headings and stat numbers; Inter for body copy. One link tag and six CSS variable changes. This change alone will move the template from "looks competent" to "looks expensive" in buyer demos. Cost: zero. Performance impact: negligible with preconnect and font-display swap.
 
-Problems: the citations are generic to the point of uselessness — "Chester County pet owner," "Montgomery County family," "Main Line pet parent." No first name, no pet name, no date. These read as invented quotes. On a real business site in 2026, pet owners cross-reference Google reviews. Unattributed quotes with auto-rotate at 4.5 seconds feel like filler. The carousel auto-advances without any pause-on-hover or user control beyond dots — a minor accessibility concern. This section would perform better as a link to actual Google reviews or as two or three static attributed quotes with at minimum a first name.
+**2. Fix the about-stat-card viewport overflow and unify mobile heading alignment**
+The stat card at `right: 0; bottom: -24px` clips outside the 375px viewport. Set `right: 16px` and reduce card padding slightly. Simultaneously add `text-align: center` to `.about-text .section-eyebrow` and `.about-text h2` inside a mobile media query — this makes the about section consistent with the centred treatment used everywhere else. Both fixes are two-line CSS changes.
 
----
+**3. Introduce visual category variants across service cards**
+The services section is the lowest-perceived-value section on the page. Using the existing design tokens, assign 3-4 colour variants to service cards by category (preventive care, specialist services, end-of-life, telemedicine). No new tokens needed — green-pale, sand, accent-warm-pale, and warm-white already exist. This transforms the section from a list into a portfolio and is the highest-visibility improvement after the font change.
 
-### 9. Hours and Map — 7.0 / 10
+**4. Reconcile hours data between the Hours section and the booking sidebar, and fix the bform-row breakpoint**
+Monday shows 12 PM-8 PM in the hours table and 12 PM-7 PM in the booking sidebar. A buyer will notice this and question attention to detail. Fix the sidebar to match the hours table. Separately, move the `bform-row` single-column breakpoint from 400px to 480px so all common 375-400px devices receive properly spaced single-column form fields.
 
-This is the best-executed section on the site. The hours table is accurate to the actual business (Monday 12–8, Tuesday–Wednesday 9–7/8, Thursday 9–4, closed Fri–Sun). The map embeds Chester Springs, PA. The phone CTA repeats here, which is correct. The layout at mobile is single-column stack, which works well.
-
-Minor issues: the hours table has no visual emphasis on today's hours (a useful pattern for users checking "are they open now?"). The map embed uses a placeholder iframe src with fake coordinates that may not render correctly. The "hours note" ("Serving Chester and Montgomery County, PA. Travel available upon request.") is appropriate but could be more specific about what "travel available" means in terms of radius or fee.
-
----
-
-### 10. Contact Form — 6.5 / 10
-
-Good: five fields (name, email, phone, pet name/type, message), client-side validation, success state. The pet name and type field is a thoughtful touch specific to vet care. Form styling is clean, focus states are accessible.
-
-Problems: the form does not submit to any backend. The "success" message fires on client-side validation only — no email is sent anywhere. A real business deploying this site today would have zero contact form leads. This is a critical gap. Additionally, no email address is displayed as a fallback. For mobile users, the preferred action should be a tap-to-call button — the phone number should be more visually dominant than the form submission.
+**5. Reduce the animation layer count and replace the bob scroll cue**
+Remove the bob animation from the hero scroll cue — replace it with a static downward chevron or remove it entirely. The scroll context is already clear from the full-bleed hero layout. This removes one of the four concurrent animation systems and makes the remaining three (parallax, scroll-reveal, progress bar) feel more intentional and less AI-generated. The resulting page will photograph better in template marketplace previews and feel more editorially controlled.
 
 ---
 
-### 11. Footer — 6.5 / 10
+## Summary Scorecard
 
-Three-column footer (brand, navigate, reach us) collapses to single column on mobile. Social links are present (Instagram, Facebook). Copyright year is dynamically set via JS.
+| Section | Score |
+|---|---|
+| Design System and Visual Identity | 7.5 |
+| Hero (Mobile 375px) | 7.0 |
+| Navigation | 7.5 |
+| Why Strip | 6.5 |
+| About Section | 7.0 |
+| Services | 6.5 |
+| Trust Stats Strip | 7.0 |
+| Team Section | 6.5 |
+| Testimonials (Horizontal Swipe) | 7.5 |
+| Hours and Location | 7.0 |
+| Interactive Calendar Booking | 8.0 |
+| Sticky Call Bar | 7.5 |
+| Footer | 7.0 |
+| Scroll Interactions and Animations | 7.0 |
+| Typography | 7.0 |
+| Mobile Layout and Centre Alignment | 6.5 |
+| **Overall** | **6.8** |
 
-Minor issues: the footer nav links are redundant with the main nav. The social handles link to real-seeming URLs but are unverified. No email address visible anywhere on the page — unusual for a professional services site.
-
----
-
-## Overall Score: 6.1 / 10
-
-**Verdict:** This is a competent, well-structured first build. The code quality is genuinely good — semantic HTML, accessible markup, reasonable CSS architecture, mobile-first layout. The developer clearly knows what they are doing technically.
-
-However, from a real pet owner's perspective, this site has a fundamental trust problem: stock photos throughout, unattributed testimonials, a non-functional contact form, and no real photography of Dr. Overhiser or her patients. The design language is polished but entirely generic — warm greens, cream backgrounds, Heroicons, Georgia serif, the now-ubiquitous "section eyebrow + large heading" pattern. It looks like every other mobile-first small-business site built in 2024–2026.
-
-A pet owner in Chester County comparing two mobile vet websites would not choose this one over a competitor site that shows the actual vet's face, real patient photos, and a Google review count. The site communicates competence but not personality, trust, or differentiation.
-
----
-
-## Top 5 Actionable Recommendations
-
-### Priority 1 — Replace stock team photos (Critical)
-Dr. Overhiser's face is the product. The Unsplash headshots will destroy trust with any user who recognises them as stock photos. At minimum, use a real photo of Dr. Overhiser — even a good smartphone portrait. Until real photos are available, consider replacing the team section with a text-only bio card to avoid the stock photo credibility problem.
-
-### Priority 2 — Connect the contact form to a real backend
-The form silently "succeeds" without sending any data. Integrate Formspree, Netlify Forms, or a similar no-cost static-site form handler so that actual leads are captured. Until this is fixed, the site cannot generate business. This is the single most damaging functional gap.
-
-### Priority 3 — Replace or radically rethink the photo feature strip
-Six random Unsplash pet photos on a dark background adds no trust and screams "AI-built site." Replace with: (a) a Google Reviews widget showing real review count and stars, (b) a simple stat block ("Est. 2015 / 500+ home visits / Chester & Montgomery County"), or (c) remove the section entirely and use the space for a stronger testimonial with attribution.
-
-### Priority 4 — Add real attributed testimonials
-"Chester County pet owner" is not a testimonial — it is a placeholder. Replace with quotes that include at minimum a first name and pet name (e.g., "— Jennifer S. and her golden retriever Max"). Real pet owners check Google before booking a vet. Either embed Google reviews or link directly to the Google Business profile. The auto-rotating carousel at 4.5 seconds should also slow down or pause on focus.
-
-### Priority 5 — Make phone number the primary CTA on mobile, not the form
-A pet owner with an urgent or anxious pet will tap to call, not fill out a form. On mobile at 375px, the primary action should be a large, sticky tap-to-call button (or at minimum a floating call button). The current "Send Message" form as the main contact mechanism is a desktop-era pattern. Ensure the phone number is immediately visible and tappable in the hero, the contact section, and ideally a persistent sticky bar.
-
----
-
-*Audited by Nigel — strict scoring from a real pet owner's perspective. Scores reflect live business standards, not template standards.*
+With the five recommendations above implemented, this template would comfortably score 7.3-7.5 and represent a compelling commercial purchase. Currently it sits at 6.8 — better than most, not yet the one buyers choose without deliberation.
