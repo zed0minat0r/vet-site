@@ -90,9 +90,9 @@
   (function () {
     var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     var DAY_SLOTS = {
-      1: ['12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM','7 PM'],          // Mon
-      2: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM'], // Tue
-      3: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM','7 PM'], // Wed
+      1: ['12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM','7 PM','8 PM'],     // Mon (12 PM–8 PM)
+      2: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM','7 PM'], // Tue (9 AM–7 PM)
+      3: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM','7 PM','8 PM'], // Wed (9 AM–8 PM)
       4: ['9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM']                // Thu
     };
 
