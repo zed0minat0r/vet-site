@@ -488,6 +488,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .services {
   padding: 72px 0 80px;
   background: #1a1f1c;
+  text-align: center;
 }
 .services .section-eyebrow { color: rgba(255,255,255,0.5); }
 .services h2 { color: #fff; margin-bottom: 10px; }
@@ -673,6 +674,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding: 80px 0;
   background: var(--cream);
   position: relative;
+  text-align: center;
 }
 
 .team-grid {
@@ -959,7 +961,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   gap: 36px;
 }
 
-.hours-panel h2 { margin-bottom: 24px; }
+.hours-panel h2 { margin-bottom: 24px; text-align: center; }
 
 .hours-table {
   width: 100%;
@@ -990,7 +992,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 
 .hours-note { font-size: 0.88rem; color: var(--brown-light); margin-bottom: 24px; line-height: 1.5; }
 
-.map-panel h2 { margin-bottom: 16px; }
+.map-panel h2 { margin-bottom: 16px; text-align: center; }
 
 .map-embed {
   border-radius: var(--radius-lg);
