@@ -1862,12 +1862,10 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding: 10px 16px;
   box-shadow: 0 -2px 16px rgba(46, 36, 25, 0.18);
   transform: translateY(100%);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.4s ease;
 }
 .sticky-call-bar.visible {
   transform: translateY(0);
-  opacity: 1;
 }
 .sticky-call-btn,
 .sticky-sms-btn {
@@ -2262,8 +2260,16 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 
 /* ---- Hero CTA glow ---- */
+.hero-actions .btn-primary {
+  box-shadow: 0 0 20px rgba(74, 124, 89, 0.4), 0 4px 16px rgba(45, 90, 61, 0.25);
+  animation: heroButtonGlow 3s ease-in-out infinite;
+}
+@keyframes heroButtonGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(74, 124, 89, 0.4), 0 4px 16px rgba(45, 90, 61, 0.25); }
+  50% { box-shadow: 0 0 32px rgba(74, 124, 89, 0.65), 0 4px 24px rgba(45, 90, 61, 0.4); }
+}
 .hero-actions .btn-primary:hover {
-  box-shadow: 0 0 24px rgba(74, 124, 89, 0.55), 0 4px 20px rgba(45, 90, 61, 0.35);
+  box-shadow: 0 0 36px rgba(74, 124, 89, 0.7), 0 4px 24px rgba(45, 90, 61, 0.45);
 }
 .hero-actions .btn-ghost:hover {
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
@@ -2273,16 +2279,16 @@ p { font-size: 1rem; color: var(--brown-mid); }
 /* ---- Why strip icon glow pulse (soft, on dark bg) ---- */
 @keyframes iconGlowPulse {
   0%, 100% { box-shadow: 0 0 0 0 transparent; }
-  50%       { box-shadow: 0 0 14px 3px rgba(255,255,255,0.1); }
+  50%       { box-shadow: 0 0 20px 6px rgba(212, 234, 217, 0.35), 0 0 40px 8px rgba(111, 168, 122, 0.2); }
 }
-.why-item:nth-child(1) .why-icon { animation: iconGlowPulse 4s ease-in-out infinite; animation-delay: 0s; }
-.why-item:nth-child(2) .why-icon { animation: iconGlowPulse 4s ease-in-out infinite; animation-delay: 1s; }
-.why-item:nth-child(3) .why-icon { animation: iconGlowPulse 4s ease-in-out infinite; animation-delay: 2s; }
-.why-item:nth-child(4) .why-icon { animation: iconGlowPulse 4s ease-in-out infinite; animation-delay: 3s; }
+.why-item:nth-child(1) .why-icon { animation: iconGlowPulse 3s ease-in-out infinite; animation-delay: 0s; }
+.why-item:nth-child(2) .why-icon { animation: iconGlowPulse 3s ease-in-out infinite; animation-delay: 0.75s; }
+.why-item:nth-child(3) .why-icon { animation: iconGlowPulse 3s ease-in-out infinite; animation-delay: 1.5s; }
+.why-item:nth-child(4) .why-icon { animation: iconGlowPulse 3s ease-in-out infinite; animation-delay: 2.25s; }
 
 /* ---- Trust stat number glow ---- */
 .trust-stat-number {
-  text-shadow: 0 0 20px rgba(111, 168, 122, 0.4), 0 0 40px rgba(111, 168, 122, 0.15);
+  text-shadow: 0 0 24px rgba(111, 168, 122, 0.6), 0 0 48px rgba(111, 168, 122, 0.3), 0 0 8px rgba(212, 234, 217, 0.4);
 }
 
 /* ---- Service card hover: lift + shadow deepening ---- */
