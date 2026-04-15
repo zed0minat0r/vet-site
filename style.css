@@ -527,22 +527,11 @@ p { font-size: 1rem; color: var(--brown-mid); }
   background: var(--green-dark);
   border-radius: var(--radius-md);
   padding: 18px 20px;
-  box-shadow: 0 8px 32px rgba(45, 90, 61, 0.3), 0 0 0 3px var(--accent-warm);
+  box-shadow: 0 8px 32px rgba(45, 90, 61, 0.3);
   display: flex;
   align-items: center;
   gap: 16px;
   overflow: hidden;
-}
-/* Warm amber accent band on the left edge of the stat card */
-.about-stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--accent-warm);
-  border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
 .about-stat-item {
   display: flex;
