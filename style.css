@@ -963,10 +963,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .team-card:nth-child(1) { border-top-color: var(--accent-warm); }
 /* Green-dark accent on card 2 */
 .team-card:nth-child(2) { border-top-color: var(--green-dark); }
-/* Sky accent on card 3 */
-.team-card:nth-child(3) { border-top-color: #90c4e0; }
-/* Blush accent on card 4+ */
-.team-card:nth-child(n+4) { border-top-color: #f4a0b0; }
 
 .team-img-wrap { aspect-ratio: 4/3; overflow: hidden; }
 .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
@@ -1006,8 +1002,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
 /* Light overlay to keep text readable over photo — amber-pale/green-pale tint cycling */
 .team-card:nth-child(1) .team-info { background: linear-gradient(to bottom, rgba(250,235,210,0.95) 0%, rgba(240,233,221,0.92) 100%); }
 .team-card:nth-child(2) .team-info { background: linear-gradient(to bottom, rgba(220,238,225,0.95) 0%, rgba(240,233,221,0.92) 100%); }
-.team-card:nth-child(3) .team-info { background: linear-gradient(to bottom, rgba(140,190,220,0.18) 0%, var(--sand) 60px); }
-.team-card:nth-child(n+4) .team-info { background: linear-gradient(to bottom, rgba(244,160,176,0.18) 0%, var(--sand) 60px); }
 .team-info h3 { margin-bottom: 4px; }
 .team-title {
   font-size: 0.85rem;
