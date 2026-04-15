@@ -2203,7 +2203,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   height: 220px;
   background: radial-gradient(circle, rgba(201, 124, 58, 0.09) 0%, transparent 70%);
   bottom: 18%;
-  right: -4%;
+  right: 0;
   animation: orbDrift2 22s ease-in-out infinite alternate;
 }
 .hero-orb-3 {
@@ -2384,25 +2384,32 @@ p { font-size: 1rem; color: var(--brown-mid); }
   text-shadow: 0 2px 16px rgba(0,0,0,0.4);
 }
 
-/* ---- Hero CTA — static glow, intensifies on hover ---- */
+/* ---- Hero CTA — reduced ambient glow on mobile, intensifies on hover for desktop ---- */
 .hero-actions .btn-primary {
-  box-shadow: 0 0 18px rgba(74, 124, 89, 0.45), 0 4px 14px rgba(45, 90, 61, 0.3);
+  box-shadow: 0 0 10px rgba(74, 124, 89, 0.25), 0 4px 10px rgba(45, 90, 61, 0.2);
 }
-.hero-actions .btn-primary:hover {
-  box-shadow: 0 0 44px rgba(74, 124, 89, 0.85), 0 4px 28px rgba(45, 90, 61, 0.55);
+@media (hover: hover) {
+  .hero-actions .btn-primary {
+    box-shadow: 0 0 18px rgba(74, 124, 89, 0.45), 0 4px 14px rgba(45, 90, 61, 0.3);
+  }
+  .hero-actions .btn-primary:hover {
+    box-shadow: 0 0 44px rgba(74, 124, 89, 0.85), 0 4px 28px rgba(45, 90, 61, 0.55);
+  }
 }
 
-/* ---- Why strip icons — static ambient glow, scale on hover ---- */
-.why-item:nth-child(1) .why-icon { box-shadow: 0 0 12px rgba(212, 234, 217, 0.35); }
-.why-item:nth-child(2) .why-icon { box-shadow: 0 0 12px rgba(240, 176, 112, 0.4); }
-.why-item:nth-child(3) .why-icon { box-shadow: 0 0 12px rgba(244, 160, 176, 0.35); }
-.why-item:nth-child(4) .why-icon { box-shadow: 0 0 12px rgba(144, 196, 224, 0.35); }
+/* ---- Why strip icons — clean on mobile, ambient glow + scale on desktop hover ---- */
 .why-item .why-icon { transition: box-shadow 0.25s ease, transform 0.25s ease; }
-.why-item:hover .why-icon { transform: scale(1.08); }
-.why-item:hover:nth-child(1) .why-icon { box-shadow: 0 0 20px rgba(212, 234, 217, 0.65); }
-.why-item:hover:nth-child(2) .why-icon { box-shadow: 0 0 20px rgba(240, 176, 112, 0.7); }
-.why-item:hover:nth-child(3) .why-icon { box-shadow: 0 0 20px rgba(244, 160, 176, 0.65); }
-.why-item:hover:nth-child(4) .why-icon { box-shadow: 0 0 20px rgba(144, 196, 224, 0.65); }
+@media (hover: hover) {
+  .why-item:nth-child(1) .why-icon { box-shadow: 0 0 12px rgba(212, 234, 217, 0.35); }
+  .why-item:nth-child(2) .why-icon { box-shadow: 0 0 12px rgba(240, 176, 112, 0.4); }
+  .why-item:nth-child(3) .why-icon { box-shadow: 0 0 12px rgba(244, 160, 176, 0.35); }
+  .why-item:nth-child(4) .why-icon { box-shadow: 0 0 12px rgba(144, 196, 224, 0.35); }
+  .why-item:hover .why-icon { transform: scale(1.08); }
+  .why-item:hover:nth-child(1) .why-icon { box-shadow: 0 0 20px rgba(212, 234, 217, 0.65); }
+  .why-item:hover:nth-child(2) .why-icon { box-shadow: 0 0 20px rgba(240, 176, 112, 0.7); }
+  .why-item:hover:nth-child(3) .why-icon { box-shadow: 0 0 20px rgba(244, 160, 176, 0.65); }
+  .why-item:hover:nth-child(4) .why-icon { box-shadow: 0 0 20px rgba(144, 196, 224, 0.65); }
+}
 
 /* ---- Trust stat numbers — clean, no text-shadow glow ---- */
 
