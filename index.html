@@ -90,13 +90,22 @@
 
     <section class="hero" id="top" aria-label="Welcome">
       <div class="hero-bg" aria-hidden="true">
-        <img
-          src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&w=1600&q=80"
-          alt="Happy dogs running outdoors"
-          class="hero-img"
-          loading="eager"
-          fetchpriority="high"
-        >
+        <picture>
+          <source
+            type="image/webp"
+            srcset="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fm=webp&w=800&q=80 800w,
+                    https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fm=webp&w=1200&q=80 1200w,
+                    https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fm=webp&w=1600&q=80 1600w"
+            sizes="100vw"
+          >
+          <img
+            src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&w=1600&q=80"
+            alt="Happy dogs running outdoors"
+            class="hero-img"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </picture>
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">

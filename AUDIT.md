@@ -18,10 +18,11 @@
 | 2026-04-09 | 7.9 | +0.2 | Why strip dark green background with cream/amber/blush/sky icon accents + botanical SVG overlays; about section paper grain texture + botanical watermark behind h2 + amber accent band on stat card; team mirrored leaf opacity raised to 0.18; hero reduced to 80vh, content centered, image less zoomed; footer spacing tightened; dead code cleaned |
 | 2026-04-09 | 8.0 | +0.1 | Section boundary borders applied across all 10 transitions (amber/sand/green); hours section upgraded with dark green header card + map panel matching; team cards given top colour bands (amber/green/sky/blush); about stat card amber ring removed; footer 6px amber top border; scroll-margin-top confirmed |
 | 2026-04-09 (this audit) | 8.1 | +0.1 | Testimonials dot counter + "1 of 4" position indicator added; team card bodies given SVG grain texture at 4% opacity + gradient tint cycling; about botanical watermark raised to 0.14 opacity; footer compacted (horizontal links, 16px grid gap); amber stat card accent removed; testimonials background changed to golden retriever; all section boundaries confirmed with 5px borders; why strip heading centered |
+| 2026-04-09 | 8.2 | +0.1 | Team card bodies switched to sand background + grain raised to 9% (perceptible texture); hero wrapped in picture element with WebP srcset + JPEG fallback; team-info border-top 2px sand-dark added for image-to-info separation |
 
 ---
 
-## Overall Score: 8.1 / 10
+## Overall Score: 8.2 / 10
 
 The v9 brief delivers the first item from v8's top 3 recommendations precisely: the testimonials carousel now has a dot counter and "1 of 4" position indicator mirroring the services carousel logic. The implementation is clean — four dots, one per card, driven by the scroll position of the track wrapper, with the counter updating on scroll. This was the clearest functional UX gap from v8 and it is now closed. The testimonials section score moves accordingly.
 
