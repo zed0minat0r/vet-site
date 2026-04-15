@@ -380,6 +380,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   contain: paint;
   margin-top: 0;
   border-top: 5px solid var(--accent-warm);
+  border-bottom: 5px solid var(--accent-warm);
 }
 
 /* Textural leaf overlay — large ghosted botanical shapes behind the grid */
