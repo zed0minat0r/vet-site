@@ -1844,13 +1844,16 @@ p { font-size: 1rem; color: var(--brown-mid); }
 /* ---- Sticky call bar (mobile only) ---- */
 .sticky-call-bar {
   display: none;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 800;
   background: var(--green-dark);
-  padding: 12px 20px;
+  padding: 10px 16px;
   box-shadow: 0 -2px 16px rgba(46, 36, 25, 0.18);
   transform: translateY(100%);
   opacity: 0;
@@ -1860,22 +1863,43 @@ p { font-size: 1rem; color: var(--brown-mid); }
   transform: translateY(0);
   opacity: 1;
 }
-.sticky-call-bar a {
+.sticky-call-btn,
+.sticky-sms-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  color: #fff;
+  gap: 8px;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
   text-decoration: none;
   min-height: 44px;
+  border-radius: 6px;
+  flex: 1;
+  transition: background 0.15s, color 0.15s;
 }
-.sticky-call-bar a:hover { text-decoration: none; }
-.sticky-call-bar svg { width: 20px; height: 20px; flex-shrink: 0; }
+.sticky-call-btn {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 2px solid #fff;
+}
+.sticky-call-btn:hover {
+  background: rgba(255,255,255,0.25);
+  text-decoration: none;
+}
+.sticky-sms-btn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.55);
+}
+.sticky-sms-btn:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+  text-decoration: none;
+}
+.sticky-call-bar svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 @media (max-width: 767px) {
-  .sticky-call-bar { display: block; }
+  .sticky-call-bar { display: flex; }
 
   /* About section: prevent stat card from overflowing 375px viewport */
   .about-media { overflow: visible; }
@@ -1982,7 +2006,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding: 20px 0;
   text-align: center;
 }
-.footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+.footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
 
 /* Sticky call bar clears footer content on mobile */
 @media (max-width: 767px) {
