@@ -1796,14 +1796,14 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .footer-cta {
   background: linear-gradient(135deg, var(--green-dark) 0%, #1a3a28 100%);
   border-radius: var(--radius-lg);
-  padding: 48px 24px;
+  padding: 32px 20px;
   text-align: center;
-  margin-bottom: 48px;
-  border: 3px solid rgba(255,255,255,0.12);
+  margin-bottom: 32px;
+  border: 2px solid rgba(255,255,255,0.12);
   box-shadow: 0 4px 32px rgba(0,0,0,0.4);
 }
-.footer-cta h2 { color: #fff; font-size: clamp(1.4rem, 5vw, 2rem); margin-bottom: 8px; }
-.footer-cta p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 24px; }
+.footer-cta h2 { color: #fff; font-size: clamp(1.2rem, 4.5vw, 1.6rem); margin-bottom: 6px; }
+.footer-cta p { color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 16px; }
 .footer-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .footer-cta-actions .btn-primary { background: #fff; color: var(--green-dark); border-color: #fff; }
 .footer-cta-actions .btn-primary:hover { background: var(--green-pale); border-color: var(--green-pale); }
@@ -1814,7 +1814,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .site-footer {
   background: var(--brown-text);
   color: rgba(255,255,255,0.8);
-  padding-top: 56px;
+  padding-top: 40px;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
@@ -1824,8 +1824,8 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-  padding-bottom: 32px;
+  gap: 16px;
+  padding-bottom: 20px;
   text-align: center;
 }
 
@@ -1841,7 +1841,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   margin-bottom: 14px;
 }
 
-.footer-links ul { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.footer-links ul { display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: center; }
 .footer-links a {
   color: rgba(255,255,255,0.65);
   font-size: 0.95rem;
@@ -1863,7 +1863,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 .footer-contact a:hover { color: var(--green-light); }
 
-.footer-social { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; align-items: center; }
+.footer-social { display: flex; flex-direction: row; gap: 16px; margin-top: 12px; justify-content: center; }
 .footer-social a {
   display: flex;
   align-items: center;
