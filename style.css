@@ -866,7 +866,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 /* ---- Team ---- */
 .team {
   padding: 0 0 80px;
-  background: var(--sand);
+  background: var(--warm-white);
   border-top: 5px solid var(--accent-warm);
   border-bottom: 3px solid var(--sand-dark);
   position: relative;
@@ -875,7 +875,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 
 /* Botanical decorative header band for team section */
 .team-header {
-  background: var(--green-dark);
+  background: var(--brown-text);
   padding: 52px var(--gutter) 40px;
   position: relative;
   overflow: hidden;
