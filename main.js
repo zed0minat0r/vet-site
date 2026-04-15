@@ -314,6 +314,44 @@
     });
   }
 
+  // ---- Testimonials dot indicator + counter ----
+  (function () {
+    var wrap = document.querySelector('.testimonials-track-wrap');
+    var dotsRow = document.getElementById('testi-dots-row');
+    var counter = document.getElementById('testi-counter');
+    if (!wrap || !dotsRow || !counter) return;
+
+    var cards = wrap.querySelectorAll('.testi-card');
+    var total = cards.length;
+    if (!total) return;
+
+    // Build dots (one per card)
+    var dots = [];
+    for (var i = 0; i < total; i++) {
+      var dot = document.createElement('span');
+      dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+      dotsRow.appendChild(dot);
+      dots.push(dot);
+    }
+    counter.textContent = '1 of ' + total;
+
+    function getActiveIdx() {
+      var cardW = cards[0].offsetWidth + 20; // 20px gap
+      return Math.min(Math.round(wrap.scrollLeft / cardW), total - 1);
+    }
+
+    function updateDots() {
+      var idx = getActiveIdx();
+      counter.textContent = (idx + 1) + ' of ' + total;
+      dots.forEach(function (d, j) {
+        d.classList.toggle('active', j === idx);
+      });
+    }
+
+    wrap.addEventListener('scroll', updateDots, { passive: true });
+    updateDots();
+  }());
+
   // ---- Scroll progress bar ----
   var progressBar = document.getElementById('scroll-progress');
   if (progressBar && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {

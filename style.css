@@ -502,7 +502,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   width: 120px;
   height: 120px;
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 4 C32 4, 52 16, 52 32 C52 52, 32 60, 32 60 C32 60, 12 52, 12 32 C12 16, 32 4, 32 4Z' fill='%234a7c59'/%3E%3Cpath d='M32 4 L32 60' stroke='%234a7c59' stroke-width='1.5' opacity='0.5'/%3E%3C/svg%3E") center/contain no-repeat;
-  opacity: 0.11;
+  opacity: 0.14;
   pointer-events: none;
   z-index: 0;
 }
@@ -968,7 +968,20 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .team-img-wrap { aspect-ratio: 4/3; overflow: hidden; }
 .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-.team-info { padding: 24px 24px 28px; background: var(--warm-white); }
+.team-info { padding: 24px 24px 28px; background: var(--warm-white); position: relative; overflow: hidden; }
+/* SVG grain texture at 4% opacity over team card bodies */
+.team-info::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+/* Ensure team-info children sit above the grain */
+.team-info > * { position: relative; z-index: 1; }
 /* Subtle background tint cycling — makes each card distinct without heavy colour */
 .team-card:nth-child(1) .team-info { background: linear-gradient(to bottom, var(--accent-warm-pale) 0%, var(--warm-white) 60px); }
 .team-card:nth-child(2) .team-info { background: linear-gradient(to bottom, rgba(212,234,217,0.55) 0%, var(--warm-white) 60px); }
@@ -1180,6 +1193,43 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 
 .testi-card--green .testi-pet { color: rgba(255,255,255,0.65); }
+
+/* ---- Testimonials dot indicator ---- */
+.testi-dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0 40px;
+}
+
+.testi-dots-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.testi-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.testi-dot.active {
+  background: var(--accent-warm);
+  transform: scale(1.3);
+}
+
+.testi-counter {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+}
 
 
 /* ---- Hours + Location ---- */
