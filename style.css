@@ -869,6 +869,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   border-bottom: 3px solid var(--sand-dark);
   position: relative;
   text-align: center;
+  overflow-x: hidden;
 }
 
 /* Team header — full-bleed photo with overlay */
