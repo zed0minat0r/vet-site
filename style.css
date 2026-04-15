@@ -372,9 +372,10 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .why-strip {
   background: linear-gradient(to bottom, #1e3a28 0%, var(--green-dark) 60px, var(--green-dark) 100%);
   position: relative;
-  padding: 56px 0;
+  padding: 64px 0;
   overflow: hidden;
-  margin-top: -1px;
+  margin-top: 0;
+  border-top: 5px solid var(--accent-warm);
 }
 
 /* Textural leaf overlay — large ghosted botanical shapes behind the grid */
@@ -476,15 +477,15 @@ p { font-size: 1rem; color: var(--brown-mid); }
   background-color: var(--cream);
 }
 
-/* Top border accent — same green gradient */
+/* Top border accent — bright cream-to-green band clearly marking transition from dark green */
 .about::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent 0%, var(--green-pale) 30%, var(--green-mid) 50%, var(--green-pale) 70%, transparent 100%);
+  height: 5px;
+  background: linear-gradient(90deg, var(--cream) 0%, var(--green-pale) 20%, var(--green-mid) 50%, var(--green-pale) 80%, var(--cream) 100%);
 }
 
 /* Botanical watermark behind the h2 in the text block */
@@ -570,6 +571,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding: 72px 0 80px;
   background: #1a1f1c;
   text-align: center;
+  border-top: 5px solid var(--sand-dark);
 }
 .services .section-eyebrow { color: rgba(255,255,255,0.5); }
 .services h2 { color: #fff; margin-bottom: 10px; }
@@ -779,6 +781,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-top: 6px solid rgba(255,255,255,0.18);
 }
 
 /* Decorative circle elements */
@@ -867,8 +870,8 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .team {
   padding: 0 0 80px;
   background: var(--sand);
-  border-top: 1px solid var(--sand-dark);
-  border-bottom: 1px solid var(--sand-dark);
+  border-top: 5px solid var(--accent-warm);
+  border-bottom: 3px solid var(--sand-dark);
   position: relative;
   text-align: center;
 }
@@ -1028,20 +1031,9 @@ p { font-size: 1rem; color: var(--brown-mid); }
     ),
     url('https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
   overflow: hidden;
-  border-top: none;
+  border-top: 5px solid var(--sand-dark);
+  border-bottom: 5px solid var(--sand);
   position: relative;
-}
-/* Soft fade at the bottom of testimonials to ease transition into hours section */
-.testimonials::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: linear-gradient(to bottom, transparent, rgba(240, 233, 221, 0.35));
-  pointer-events: none;
-  z-index: 2;
 }
 
 .testimonials-header {
@@ -1197,8 +1189,9 @@ p { font-size: 1rem; color: var(--brown-mid); }
 /* ---- Hours + Location ---- */
 .hours-location {
   padding: 80px 0;
-  background: linear-gradient(180deg, var(--sand) 0%, var(--cream) 100%);
+  background: var(--sand);
   position: relative;
+  border-bottom: 5px solid var(--sand-dark);
 }
 
 .hours-layout {
@@ -1313,10 +1306,12 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 .map-embed iframe { display: block; }
 
-/* ---- Contact ---- */
+/* ---- Contact / Booking ---- */
 .contact {
   padding: 80px 0;
-  background: var(--cream);
+  background: var(--warm-white);
+  border-top: 5px solid var(--green-pale);
+  border-bottom: 5px solid var(--sand-dark);
 }
 
 .contact-details { display: flex; flex-direction: column; gap: 16px; }
@@ -1808,6 +1803,8 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding: 48px 24px;
   text-align: center;
   margin-bottom: 48px;
+  border: 3px solid rgba(255,255,255,0.12);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
 }
 .footer-cta h2 { color: #fff; font-size: clamp(1.4rem, 5vw, 2rem); margin-bottom: 8px; }
 .footer-cta p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 24px; }
@@ -1825,6 +1822,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
+  border-top: 6px solid var(--accent-warm);
 }
 
 .footer-grid {

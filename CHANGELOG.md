@@ -693,3 +693,17 @@
 - Counter reads "1 of 11", "2 of 11" etc. as user drags
 - Both dots and counter hidden on desktop (grid layout, no scroll needed)
 - JS: card-width-based active index, updates on scroll event, progressive enhancement
+
+## 2026-04-09 — Builder — Section boundary overhaul
+
+### Every section now has a clear visual identity and distinct transition
+- Why strip: removed margin-top bleed into hero; added 5px amber top border
+- About (cream): upgraded accent bar to 5px full-width green gradient; clear exit from dark green
+- Services (dark charcoal): added 5px sand-dark top border marking exit from cream
+- Trust stats (dark green): added 6px semi-white top border separating from charcoal services
+- Team (sand): replaced thin 1px border with 5px amber top border + 3px sand-dark bottom
+- Testimonials (dark photo): added 5px sand-dark top border + 5px sand bottom border
+- Hours & Location: changed gradient bg to solid sand; added 5px sand-dark bottom border
+- Booking/Contact: changed background from cream to warm-white; added 5px green-pale top + sand bottom
+- Footer CTA: added border + box-shadow for floating card effect inside dark footer
+- Footer: added 6px amber top border marking the hard site footer boundary
