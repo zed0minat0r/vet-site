@@ -363,31 +363,62 @@ p { font-size: 1rem; color: var(--brown-mid); }
 
 /* ---- Why strip ---- */
 .why-strip {
-  background: var(--sand);
-  border-top: 1px solid var(--sand-dark);
-  border-bottom: 1px solid var(--sand-dark);
-  padding: 48px 0;
+  background: var(--green-dark);
+  position: relative;
+  padding: 56px 0;
+  overflow: hidden;
+}
+
+/* Textural leaf overlay — large ghosted botanical shapes behind the grid */
+.why-strip::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 4 C32 4, 52 16, 52 32 C52 52, 32 60, 32 60 C32 60, 12 52, 12 32 C12 16, 32 4, 32 4Z' fill='%23ffffff'/%3E%3Cpath d='M32 4 L32 60' stroke='%23ffffff' stroke-width='1.5' opacity='0.4'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.why-strip::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -50px;
+  width: 260px;
+  height: 260px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 4 C32 4, 52 16, 52 32 C52 52, 32 60, 32 60 C32 60, 12 52, 12 32 C12 16, 32 4, 32 4Z' fill='%23ffffff'/%3E%3Cpath d='M32 4 L32 60' stroke='%23ffffff' stroke-width='1.5' opacity='0.4'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  transform: scaleX(-1) rotate(120deg);
 }
 
 .why-eyebrow {
-  color: var(--green-mid);
+  color: var(--green-pale);
   margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
 }
 
 .why-heading {
   font-size: clamp(1.2rem, 4vw, 1.7rem);
-  color: var(--brown-text);
+  color: #fff;
   margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
 }
 
 .why-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  background: var(--sand-dark);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--sand-dark);
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  z-index: 1;
 }
 
 .why-item {
@@ -397,7 +428,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   text-align: center;
   gap: 10px;
   padding: 28px 16px;
-  background: var(--warm-white);
+  background: rgba(255,255,255,0.06);
   transition: background 0.18s;
 }
 
@@ -407,30 +438,35 @@ p { font-size: 1rem; color: var(--brown-mid); }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--green-pale);
+  background: rgba(255,255,255,0.12);
   border-radius: var(--radius-md);
-  color: var(--green-dark);
+  color: var(--green-pale);
   flex-shrink: 0;
 }
 .why-icon svg { width: 26px; height: 26px; }
 
-/* Give each why-item a distinct icon color for visual hierarchy */
-.why-item:nth-child(1) .why-icon { background: var(--green-pale); color: var(--green-dark); }
-.why-item:nth-child(2) .why-icon { background: rgba(201, 124, 58, 0.12); color: var(--accent-warm); }
-.why-item:nth-child(3) .why-icon { background: #fce8ec; color: #b04060; }
-.why-item:nth-child(4) .why-icon { background: rgba(74, 114, 145, 0.12); color: #3a6b8a; }
+/* Distinct icon accents on dark green — cream/amber palette */
+.why-item:nth-child(1) .why-icon { background: rgba(212, 234, 217, 0.15); color: var(--green-pale); }
+.why-item:nth-child(2) .why-icon { background: rgba(201, 124, 58, 0.2); color: #f0b070; }
+.why-item:nth-child(3) .why-icon { background: rgba(255, 200, 210, 0.12); color: #f4a0b0; }
+.why-item:nth-child(4) .why-icon { background: rgba(140, 190, 220, 0.15); color: #90c4e0; }
 
-.why-item strong { font-size: 0.92rem; font-weight: 700; color: var(--brown-text); line-height: 1.3; }
-.why-item span { font-size: 0.82rem; color: var(--brown-light); line-height: 1.4; }
+.why-item strong { font-size: 0.92rem; font-weight: 700; color: #fff; line-height: 1.3; }
+.why-item span { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.4; }
 
 /* ---- About ---- */
 .about {
   padding: 80px 0;
   background: var(--cream);
   position: relative;
+  /* Paper grain texture via SVG noise pattern */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='overlay' result='blend'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
+    none;
+  background-color: var(--cream);
 }
 
-/* Subtle decorative element */
+/* Top border accent — same green gradient */
 .about::before {
   content: '';
   position: absolute;
@@ -439,6 +475,23 @@ p { font-size: 1rem; color: var(--brown-mid); }
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, transparent 0%, var(--green-pale) 30%, var(--green-mid) 50%, var(--green-pale) 70%, transparent 100%);
+}
+
+/* Botanical watermark behind the h2 in the text block */
+.about-text {
+  position: relative;
+}
+.about-text::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 4 C32 4, 52 16, 52 32 C52 52, 32 60, 32 60 C32 60, 12 52, 12 32 C12 16, 32 4, 32 4Z' fill='%234a7c59'/%3E%3Cpath d='M32 4 L32 60' stroke='%234a7c59' stroke-width='1.5' opacity='0.5'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .about-layout {
@@ -463,10 +516,22 @@ p { font-size: 1rem; color: var(--brown-mid); }
   background: var(--green-dark);
   border-radius: var(--radius-md);
   padding: 18px 20px;
-  box-shadow: 0 8px 32px rgba(45, 90, 61, 0.25);
+  box-shadow: 0 8px 32px rgba(45, 90, 61, 0.3), 0 0 0 3px var(--accent-warm);
   display: flex;
   align-items: center;
   gap: 16px;
+  overflow: hidden;
+}
+/* Warm amber accent band on the left edge of the stat card */
+.about-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-warm);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
 .about-stat-item {
   display: flex;
@@ -485,9 +550,10 @@ p { font-size: 1rem; color: var(--brown-mid); }
 }
 
 .about-text { padding-top: 28px; }
-.about-text h2 { margin-bottom: 16px; }
-.about-text p { margin-bottom: 16px; }
-.about-text .btn { margin-top: 8px; }
+.about-text h2 { margin-bottom: 16px; position: relative; z-index: 1; }
+.about-text p { margin-bottom: 16px; position: relative; z-index: 1; }
+.about-text .btn { margin-top: 8px; position: relative; z-index: 1; }
+.about-text .section-eyebrow { position: relative; z-index: 1; }
 
 /* ---- Services ---- */
 .services {
@@ -848,7 +914,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   left: 16px;
   width: 72px;
   height: 72px;
-  opacity: 0.10;
+  opacity: 0.18;
   pointer-events: none;
   color: #fff;
   transform: scaleX(-1) rotate(180deg);
