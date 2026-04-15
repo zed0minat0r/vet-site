@@ -22,114 +22,115 @@
 | 2026-04-09 | 8.3 | +0.1 | Hero img width/height attributes added (CLS fix); testimonial cards given amber star ratings (3x 5-star, 1x 4-star with hollow fifth); team card bodies upgraded to photo-informed backgrounds at 6% opacity with tinted gradients; dead CSS cleaned (4 orphan nth-child rules); Safari -webkit-backdrop-filter prefixes confirmed |
 | 2026-04-09 | 8.4 | +0.1 | Third team member added (Alex Torres, Veterinary Assistant, blush/rose band); testimonial letter-circle avatars replaced with circular Unsplash pet photos; hours table buyer-guide HTML comments added; QA fixed 4 WCAG contrast issues; Safari -webkit-backdrop-filter prefixes confirmed across three sites |
 | 2026-04-09 | 8.5 | +0.1 | Footer copyright raised to rgba(255,255,255,0.65) (passes WCAG AA); Alex Torres card gains explicit PLACEHOLDER comment; sticky call bar gains SMS "Text Us" button side-by-side with Call |
+| 2026-04-09 | 8.4 | -0.1 | Animation pass: scroll reveals, icon glow pulses, hero button glow, trust stat text glow, testimonial hover glow, team card slide-in, floating hero orbs, parallax, sticky bar pulse, animated footer CTA border. Net over-animation penalty applied. |
 
 ---
 
-## Overall Score: 8.5 / 10
+## Overall Score: 8.4 / 10
 
-This v13 audit covers three specific changes since v12: (1) footer copyright opacity raised from 0.55 to 0.65, closing the last open WCAG flag; (2) Alex Torres card gains an explicit PLACEHOLDER comment clarifying all three fields must be replaced; (3) the sticky call bar gains a second button — `sms:+16104126660` "Text Us" — rendered side-by-side with the existing Call button.
+This v14 audit evaluates the full animation pass added since v13. The changes are: scroll reveals on section headings and eyebrows (.section-reveal), icon glow pulse on Why strip icons (looping 3s keyframe per icon), hero CTA button glow animation (looping 3s), trust stat number text-shadow glow (static), testimonial card border glow on hover, team card directional slide-in reveals (left/right alternating), three floating ambient orbs on the hero (looping 18–26s), hero image parallax on scroll, about image parallax on scroll, sticky call bar shadow pulse (looping 3.5s), and an animated gradient border ring on the footer CTA card.
 
-**Footer copyright contrast — Recommendation 1 delivered.** The `.footer-bottom p` rule now reads `rgba(255,255,255,0.65)` on `#2e2419`. At this opacity level the contrast ratio clears 4.5:1 for the 0.82rem body text and formally passes WCAG AA at small text sizes. This resolves the last open accessibility flag in the template. A buyer who runs an axe or Lighthouse audit will no longer see a contrast failure on the copyright line. One-line fix, full value.
+**The honest assessment from a buyer's perspective:** The scroll reveals (section headings, team cards, service cards, why items) are executed correctly — they are one-shot, respect prefers-reduced-motion, and feel considered rather than gratuitous. The team card alternating left/right slide-in is a genuine premium differentiator. Hero orbs are tasteful: 12%, 9%, and 7% opacity with blur-48, barely perceptible on a real screen, and they drift on 18–26 second cycles that read as atmosphere rather than distraction. The hero parallax is subtly handled (0.3x scroll ratio), and the about section parallax is even lighter (22px range). These are the additions that justify the word "premium."
 
-**Alex Torres placeholder comment — Recommendation 2 delivered.** Line 405 now carries `<!-- PLACEHOLDER: This third team member is a demo card. Replace or remove for your clinic. -->` directly above the article element, with the pre-existing `<!-- EDIT: Replace with your third team member's photo, name, title, and bio -->` on line 406. The dual-comment pattern — one flagging placeholder status, one giving editing instructions — is exactly what was recommended. A buyer who inspects the source before going live will see both comments and understand the card requires replacement. The risk of accidental deployment with Alex Torres intact is substantially reduced.
+The problems are the looping animations that never stop. The hero CTA button glows continuously on a 3s cycle. Four Why strip icons pulse on a staggered 3s cycle simultaneously. The sticky bar shadow pulses on a 3.5s cycle whenever visible. The footer CTA card has a rotating gradient border ring running at 4s per revolution, every second the page is open. From a buyer's perspective — a vet practice owner previewing this template — these effects feel busy. A veterinary practice website signals trust, calm, and professionalism. Continuously glowing buttons and pulsing icon halos run counter to that tone. They read as AI-generated design choices rather than deliberate craft.
 
-**SMS button in sticky call bar — Recommendation 3 delivered.** The bar now contains two `<a>` elements: a `tel:` Call button (white text, white border, semi-transparent fill) and an `sms:` Text Us button (white text, 55%-opacity white border, transparent fill). Both occupy 50% of the bar width via `flex: 1`. The visual hierarchy is correct: Call is primary (higher fill opacity), Text Us is secondary (transparent fill, dimmer border). The background remains `var(--green-dark)`. On a 375px viewport this renders as two tappable columns of equal width, each with an SVG icon and label. This is the single structural addition that most differentiates this template from ThemeForest alternatives in the veterinary category, which universally default to a single-button voice-only bar. The implementation is clean — no third-party dependency, no JavaScript, degrades gracefully on desktop (bar is `display: none` above 767px).
+The trust stat text-shadow glow is the most problematic single change. Numbers rendered with multiple glow layers (24px, 48px, 8px radii) look like a gaming UI or a crypto site, not a veterinary practice. This is a category-tone mismatch. A buyer evaluating this template against a clean ThemeForest competitor will pause here.
 
-**Is the ceiling now reached?** Yes. All three recommendations from v12 have been implemented. The template now has: three-person team with photo, credential badges, and placeholder guidance; four testimonials with pet photo avatars, star ratings, and dot counter; a dual-action sticky bar; WCAG-clean contrast on all text; buyer-editable hours table with HTML comments; WebP hero with intrinsic dimensions; and a functioning calendar booking flow. At 8.5, this template sits above the realistic ceiling for a single-page static template without external integrations (live Google review widget, real-time booking via a third-party scheduler). The final 0.5 points to reach a theoretical 9.0 would require multi-page architecture or external service integrations — both are out of scope for a template of this type and price point. The template is commercially ready.
+The animated footer CTA gradient border ring is visually interesting but again — continuous rotation on a card that sits above the footer on a healthcare professional's website is incongruous. It works on a SaaS landing page. It does not work here.
+
+Net assessment: the one-shot reveals and the hero orbs/parallax add genuine premium feel. The looping glows, the trust stat text-shadow, and the rotating footer border ring introduce visual clutter that a discerning buyer will flag. The score moves down 0.1 from 8.5 to 8.4 — not a collapse, but a signal that the animation layer has crossed the optimal threshold and is now working against the template's core value proposition.
 
 ---
 
 ## Section Scores
 
 ### 1. Design System and Visual Identity — 8.3 / 10
-Unchanged. Amber/sand/green-pale border rhythm, botanical motif, colour token set, and dark/cream/photo/sand section register all confirmed. No regression.
+Unchanged. Amber/sand/green-pale border rhythm, botanical motif, colour token set, dark/cream/photo/sand section register all confirmed.
 
-### 2. Hero (Mobile 375px) — 8.0 / 10
-Unchanged. WebP srcset, JPEG fallback, intrinsic dimensions (1600×1067), eager loading, high fetchpriority, correct alt text. Technically clean.
+### 2. Hero (Mobile 375px) — 8.1 / 10
+Three floating ambient orbs (12%, 9%, 7% opacity, blur-48, 18–26s drift cycles) and hero image parallax (0.3x ratio, rAF-gated) both pass muster. The orbs are invisible to casual users and provide atmosphere to attentive ones — a rare balance. Score moves from 8.0 to 8.1. The hero CTA button glow animation (looping 3s, box-shadow pulsing from 40% to 65% opacity) is the only deduction — it reads as restless on a calm brand.
 
 ### 3. Navigation — 7.5 / 10
-Unchanged.
+Unchanged. Nav link underline slide-from-left on hover is a nice touch — hover-only, no loop.
 
-### 4. Why Strip — 7.8 / 10
-Unchanged. `.why-item span` subtext at `rgba(255,255,255,0.75)` on dark green is borderline AA at 0.82rem but has been present since v5 and is a conscious design decision.
+### 4. Why Strip — 7.5 / 10
+Down from 7.8. The icon glow pulse animation (iconGlowPulse, 3s looping, staggered per icon) runs continuously and visibly. Four icon halos cycling in sequence on a dark green background is the most distracting continuous animation on the page. On mobile at 375px, this draws the eye constantly while the user is trying to read the proposition text. The amber border top and bottom (both 5px) is a good structural change — it brackets the section cleanly. But the icon pulse undoes the calm. Score drops 0.3.
 
 ### 5. About Section — 7.8 / 10
-Unchanged.
+Unchanged. About image parallax (22px range, rAF passive listener) is correctly subtle.
 
 ### 6. Services — 8.3 / 10
-Unchanged.
+Unchanged. Service card scale-up entry (scale 0.93 to 1, one-shot) is tasteful.
 
-### 7. Trust Stats Strip — 8.0 / 10
-Unchanged.
+### 7. Trust Stats Strip — 7.7 / 10
+Down from 8.0. The trust stat number text-shadow glow (24px green, 48px green, 8px cream-white, all simultaneous) applied via static CSS is the most category-inappropriate change in this build. Trust statistics are supposed to convey credibility. Rendering "1,200+" with a multi-layer glow makes the section read like a dashboard widget from a gaming app. A veterinary practice owner evaluating this template will not recognise this as premium — they will register it as cheap digital effects. Score drops 0.3.
 
-### 8. Team Section — 8.3 / 10
-Unchanged from v12. The PLACEHOLDER comment is additive to the HTML comment layer only — no visual change. Score held.
+### 8. Team Section — 8.4 / 10
+Up from 8.3. The team card alternating slide-in reveals (left/right, 0.65s cubic-bezier ease, 0.12s stagger per card) are the best animation addition in this build. They feel choreographed and human. The dark brown header (replacing dark green) provides a warmer register that pairs better with the team photography. Score moves to 8.4.
 
 ### 9. Testimonials — 8.8 / 10
-Unchanged from v12. Highest-scoring section on the page.
+Unchanged. Testimonial hover glow (border-color + box-shadow on hover:hover) is desktop-only and correct. No regression.
 
 ### 10. Hours and Location — 7.8 / 10
-Unchanged from v12.
+Unchanged.
 
 ### 11. Interactive Calendar Booking — 8.0 / 10
-Unchanged.
+Unchanged. Calendar available-day glow on hover (14px green glow) is a functional affordance, not decoration.
 
-### 12. Sticky Call Bar — 8.3 / 10
-SMS button added. Two-button layout (`tel:` + `sms:`) with correct visual hierarchy: Call is primary (semi-transparent white fill + white border), Text Us is secondary (transparent fill + 55%-opacity border). Both fill 50% of the bar width via `flex: 1`. SVG icons on both buttons. Renders correctly at 375px. Score moves from 7.5 to 8.3. The implementation is pure HTML/CSS — no JavaScript dependency, no third-party service. The only remaining improvement — a WhatsApp `wa.me` link as a third option — would require a three-column layout that risks crowding on narrow viewports and is not recommended.
+### 12. Sticky Call Bar — 8.1 / 10
+Down from 8.3. The stickyBarPulse animation (box-shadow cycling from 16px brown to 28px green, 3.5s loop) runs every time the bar is visible — which is most of a mobile scroll session. A call bar should be stable and clearly actionable. A pulsing shadow on the bar's top edge sends mixed signals about urgency. The dual-button layout (Call + SMS) remains strong. Score drops 0.2 to account for the pulse.
 
-### 13. Footer CTA Banner — 8.0 / 10
-Unchanged.
+### 13. Footer CTA Banner — 7.7 / 10
+Down from 8.0. The animated gradient border ring (borderRotate, 4s linear infinite, amber-green gradient rotating around the card perimeter) is the second most problematic looping animation. A continuously spinning border ring on a healthcare website's call-to-action is a SaaS pattern deployed in the wrong category. The card content is good. The border animation undermines the trust register. Score drops 0.3.
 
 ### 14. Footer — 8.0 / 10
-Copyright contrast confirmed at `rgba(255,255,255,0.65)` on `#2e2419`. This passes WCAG AA at small text. Score moves from 7.6 to 8.0. The last open accessibility flag on the page is closed.
+Unchanged. Copyright contrast confirmed at WCAG AA.
 
-### 15. Scroll Interactions and Animations — 7.7 / 10
-Unchanged.
+### 15. Scroll Interactions and Animations — 7.6 / 10
+Down from 7.7 (was a blended score). The one-shot reveals (section-reveal, team slide-in, service-card scale entry) are well-implemented. The reduced-motion block is thorough. What drops the score: five distinct looping animations are active simultaneously on a mobile scroll (hero button glow, why icon pulses, sticky bar pulse, footer CTA ring). This is one looping effect too many — or three too many depending on the section. The page feels like it cannot stop moving.
 
 ### 16. Typography — 8.0 / 10
 Unchanged.
 
 ### 17. Mobile Layout and Centre Alignment — 7.8 / 10
-Unchanged.
+Unchanged. Pixel's 6-fix alignment audit holds.
 
 ---
 
-## Top Remaining Observations (Post-Ceiling)
+## Top 3 Recommendations
 
-These are not blocking issues. The template is ready for sale. These notes are for a buyer who wishes to further customise.
+**1. Kill or replace all looping glow animations — hero button, why strip icons, trust stat text-shadow, sticky bar pulse.**
+The one-shot reveals are good. The looping effects are not. A veterinary brand communicates steadiness and trust. Continuous pulsing on a CTA button, four icon halos, and a sticky bar all running at the same time is antithetical to that brand register. At minimum: remove the hero button animation (keep the static glow box-shadow on hover only); remove the iconGlowPulse from why-icon selectors (keep the coloured backgrounds); remove the stickyBarPulse from sticky-call-bar.visible. This alone would bring the score back to 8.5+.
 
-**1. Alex Torres photo is Unsplash stock**
-Acceptable for a template — buyers understand placeholders. The dual HTML comment now flags this clearly. A buyer using real team photos will see an immediate quality jump in the team section.
+**2. Remove the trust stat number text-shadow glow.**
+The three-layer text-shadow on .trust-stat-number is a category mismatch. "1,200+ pets served" in glowing green text reads as a scoreboard, not a professional credential. Remove the text-shadow entirely or replace with a single subtle 8px shadow at 20% opacity. The counter animation (number count-up on entry) was already the differentiator in this section — the glow adds nothing and subtracts professionalism.
 
-**2. The sticky bar SMS button border opacity is 55%**
-The `border: 2px solid rgba(255,255,255,0.55)` on `.sticky-sms-btn` is a deliberate hierarchy signal (primary vs secondary). It is technically passing contrast for the white text on green-dark background. Raising to 0.7 would make the secondary button more visually distinct from the bar background without competing with the primary Call button — minor preference note, not a bug.
-
-**3. No live review integration**
-The testimonials section is as strong as it can be within a static template. A buyer who deploys this with a real Google review widget (via a platform like Elfsight or EmbedSocial) will unlock the 8.8 section's final headroom. This requires a paid third-party account and is not template scope.
+**3. Replace the animated footer CTA gradient border ring with a static amber border.**
+The borderRotate animation (4s linear infinite) on the footer CTA card is too conspicuous for a healthcare template. A static 2px amber border — matching the amber top border established elsewhere in the design system — would provide the same visual emphasis without motion. The card's dark green background and white text already make it the most visually dominant element above the footer. It does not need a spinning ring to stand out.
 
 ---
 
 ## Summary Scorecard
 
-| Section | v12 Score | v13 Score | Delta |
+| Section | v13 Score | v14 Score | Delta |
 |---|---|---|---|
 | Design System and Visual Identity | 8.3 | 8.3 | 0 |
-| Hero (Mobile 375px) | 8.0 | 8.0 | 0 |
+| Hero (Mobile 375px) | 8.0 | 8.1 | +0.1 |
 | Navigation | 7.5 | 7.5 | 0 |
-| Why Strip | 7.8 | 7.8 | 0 |
+| Why Strip | 7.8 | 7.5 | -0.3 |
 | About Section | 7.8 | 7.8 | 0 |
 | Services | 8.3 | 8.3 | 0 |
-| Trust Stats Strip | 8.0 | 8.0 | 0 |
-| Team Section | 8.3 | 8.3 | 0 |
+| Trust Stats Strip | 8.0 | 7.7 | -0.3 |
+| Team Section | 8.3 | 8.4 | +0.1 |
 | Testimonials | 8.8 | 8.8 | 0 |
 | Hours and Location | 7.8 | 7.8 | 0 |
 | Interactive Calendar Booking | 8.0 | 8.0 | 0 |
-| Sticky Call Bar | 7.5 | 8.3 | +0.8 |
-| Footer CTA Banner | 8.0 | 8.0 | 0 |
-| Footer | 7.6 | 8.0 | +0.4 |
-| Scroll Interactions and Animations | 7.7 | 7.7 | 0 |
+| Sticky Call Bar | 8.3 | 8.1 | -0.2 |
+| Footer CTA Banner | 8.0 | 7.7 | -0.3 |
+| Footer | 8.0 | 8.0 | 0 |
+| Scroll Interactions and Animations | 7.7 | 7.6 | -0.1 |
 | Typography | 8.0 | 8.0 | 0 |
 | Mobile Layout and Centre Alignment | 7.8 | 7.8 | 0 |
-| **Overall** | **8.4** | **8.5** | **+0.1** |
+| **Overall** | **8.5** | **8.4** | **-0.1** |
 
-Two sections move in v13: Sticky Call Bar (7.5 to 8.3, SMS button added alongside Call) and Footer (7.6 to 8.0, WCAG copyright contrast resolved). All three v12 recommendations delivered. Single-page ceiling reached. The template is commercially ready for sale.
+The animation pass delivered real improvements in two areas (hero atmosphere, team slide-in reveals) and introduced over-animation in four others (why strip icon pulses, trust stat glow, sticky bar pulse, footer CTA ring). The net effect is a slight regression. The one-shot scroll reveals are the correct instinct — they should be kept. The looping decorative effects should be trimmed. Implementing recommendation 1 alone (remove looping glows) would likely push the score back to 8.5 or above.
