@@ -48,6 +48,64 @@
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }
 
+  // ---- Section-level reveals (headings, eyebrows, etc.) ----
+  var sectionRevealEls = document.querySelectorAll('.section-reveal');
+  if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    sectionRevealEls.forEach(function (el) { sectionObserver.observe(el); });
+  } else {
+    sectionRevealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // ---- Team card directional slide reveals ----
+  var teamCards = document.querySelectorAll('.team-card--from-left, .team-card--from-right');
+  if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    var teamObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          teamObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    teamCards.forEach(function (card, idx) {
+      card.style.transitionDelay = (idx * 0.12) + 's';
+      teamObserver.observe(card);
+    });
+  } else {
+    teamCards.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // ---- About image parallax ----
+  var aboutImg = document.querySelector('.about-img-wrap img');
+  if (aboutImg && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    var aboutSection = document.querySelector('.about');
+    var aboutTicking = false;
+    window.addEventListener('scroll', function () {
+      if (!aboutTicking) {
+        window.requestAnimationFrame(function () {
+          if (aboutSection) {
+            var rect = aboutSection.getBoundingClientRect();
+            var viewH = window.innerHeight;
+            if (rect.top < viewH && rect.bottom > 0) {
+              var progress = 1 - (rect.bottom / (viewH + rect.height));
+              aboutImg.style.transform = 'translateY(' + (progress * -22) + 'px)';
+            }
+          }
+          aboutTicking = false;
+        });
+        aboutTicking = true;
+      }
+    }, { passive: true });
+  }
+
   // ---- Interactive Calendar Booking ----
   (function () {
     var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];

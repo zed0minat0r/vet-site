@@ -2168,10 +2168,271 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .reveal.visible .service-card:nth-child(10) { opacity: 1; transform: none; transition-delay: 0.48s; }
 .reveal.visible .service-card:nth-child(11) { opacity: 1; transform: none; transition-delay: 0.52s; }
 
+/* =====================================================
+   SCROLL + GLOW ENHANCEMENTS
+   ===================================================== */
+
+/* ---- Section-level scroll reveals (replaces flat static appearance) ---- */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.section-reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Team cards slide from alternating sides */
+.team-card--from-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.team-card--from-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.team-card--from-left.visible,
+.team-card--from-right.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Service cards scale up on viewport entry */
+.service-card--enter {
+  opacity: 0;
+  transform: scale(0.93) translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service-card--enter.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Hero ambient orbs ---- */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(48px);
+}
+.hero-orb-1 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(106, 168, 122, 0.12) 0%, transparent 70%);
+  top: 10%;
+  left: -8%;
+  animation: orbDrift1 18s ease-in-out infinite alternate;
+}
+.hero-orb-2 {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(201, 124, 58, 0.09) 0%, transparent 70%);
+  bottom: 18%;
+  right: -4%;
+  animation: orbDrift2 22s ease-in-out infinite alternate;
+}
+.hero-orb-3 {
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(248, 244, 238, 0.07) 0%, transparent 70%);
+  top: 55%;
+  left: 38%;
+  animation: orbDrift1 26s ease-in-out infinite alternate-reverse;
+}
+@keyframes orbDrift1 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(24px, -32px); }
+}
+@keyframes orbDrift2 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-20px, 28px); }
+}
+
+/* ---- Hero scroll cue bounce ---- */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(7px); }
+}
+.hero-scroll-cue {
+  animation: scrollBounce 2.2s ease-in-out infinite;
+}
+
+/* ---- Hero CTA glow ---- */
+.hero-actions .btn-primary:hover {
+  box-shadow: 0 0 24px rgba(74, 124, 89, 0.55), 0 4px 20px rgba(45, 90, 61, 0.35);
+}
+.hero-actions .btn-ghost:hover {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
+  text-decoration: none;
+}
+
+/* ---- Why strip icon glow pulse (soft, on dark bg) ---- */
+@keyframes iconGlowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50%       { box-shadow: 0 0 14px 3px rgba(255,255,255,0.1); }
+}
+.why-item:nth-child(1) .why-icon { animation: iconGlowPulse 4s ease-in-out infinite; animation-delay: 0s; }
+.why-item:nth-child(2) .why-icon { animation: iconGlowPulse 4s ease-in-out infinite; animation-delay: 1s; }
+.why-item:nth-child(3) .why-icon { animation: iconGlowPulse 4s ease-in-out infinite; animation-delay: 2s; }
+.why-item:nth-child(4) .why-icon { animation: iconGlowPulse 4s ease-in-out infinite; animation-delay: 3s; }
+
+/* ---- Trust stat number glow ---- */
+.trust-stat-number {
+  text-shadow: 0 0 20px rgba(111, 168, 122, 0.4), 0 0 40px rgba(111, 168, 122, 0.15);
+}
+
+/* ---- Service card hover: lift + shadow deepening ---- */
+@media (hover: hover) {
+  .service-card:hover {
+    box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.25);
+  }
+}
+
+/* ---- Team card photo zoom on hover ---- */
+@media (hover: hover) {
+  .team-img-wrap {
+    overflow: hidden;
+  }
+  .team-img-wrap img {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .team-card:hover .team-img-wrap img {
+    transform: scale(1.06);
+  }
+}
+
+/* ---- Testimonial card border glow on hover ---- */
+@media (hover: hover) {
+  .testi-card {
+    transition: box-shadow 0.28s ease, transform 0.28s ease, border-color 0.28s ease;
+  }
+  .testi-card:hover {
+    border-color: rgba(74, 124, 89, 0.45);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.38), 0 0 0 1px rgba(74, 124, 89, 0.25);
+    transform: translateY(-3px);
+  }
+  .testi-card--warm:hover {
+    border-color: rgba(201, 124, 58, 0.5);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.38), 0 0 0 1px rgba(201, 124, 58, 0.3);
+  }
+  .testi-card--green:hover {
+    border-color: rgba(111, 168, 122, 0.6);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.38), 0 0 12px rgba(74, 124, 89, 0.35);
+  }
+}
+
+/* ---- Calendar available days glow on hover ---- */
+.cal-day--available:hover {
+  background: var(--green-mid);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(74, 124, 89, 0.45);
+}
+
+/* ---- Nav link underline slides from left ---- */
+.nav-menu a:not(.nav-cta) {
+  position: relative;
+}
+.nav-menu a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--green-mid);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 2px;
+}
+.nav-menu a:not(.nav-cta):hover::after {
+  transform: scaleX(1);
+}
+
+/* ---- Sticky call bar gentle pulse ---- */
+@keyframes stickyBarPulse {
+  0%, 100% { box-shadow: 0 -2px 16px rgba(46, 36, 25, 0.18); }
+  50%       { box-shadow: 0 -2px 28px rgba(74, 124, 89, 0.35), 0 -2px 16px rgba(46, 36, 25, 0.18); }
+}
+.sticky-call-bar.visible {
+  animation: stickyBarPulse 3.5s ease-in-out infinite;
+}
+
+/* ---- Footer CTA animated gradient border ---- */
+@keyframes borderRotate {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.footer-cta {
+  position: relative;
+  /* remove the hard border + bg, let the animated pseudo-elements handle it */
+  background: transparent;
+  border: none;
+  overflow: visible;
+  padding: 34px 22px;
+  isolation: isolate;
+}
+/* Animated gradient border ring */
+.footer-cta::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius-lg) + 3px);
+  background: linear-gradient(
+    90deg,
+    rgba(74, 124, 89, 0.9) 0%,
+    rgba(201, 124, 58, 0.8) 25%,
+    rgba(111, 168, 122, 0.85) 50%,
+    rgba(201, 124, 58, 0.8) 75%,
+    rgba(74, 124, 89, 0.9) 100%
+  );
+  background-size: 200% 100%;
+  animation: borderRotate 4s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+/* Dark bg layer to cover the center of the gradient ring */
+.footer-cta::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--green-dark) 0%, #1a3a28 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+/* Ensure children sit above the pseudo-elements */
+.footer-cta > * { position: relative; z-index: 1; }
+
+/* ---- Footer CTA button warm glow on hover ---- */
+.footer-cta-actions .btn-primary:hover {
+  box-shadow: 0 0 22px rgba(255, 255, 255, 0.35), 0 4px 16px rgba(0,0,0,0.2);
+}
+.footer-cta-actions .footer-cta-outline:hover {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+}
+
+/* ---- About image subtle parallax container ---- */
+.about-img-wrap img {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   html { scroll-behavior: auto; }
-  .hero-scroll-cue { display: none; }
+  .hero-scroll-cue { display: none; animation: none; }
+  .hero-orb-1, .hero-orb-2, .hero-orb-3 { animation: none; }
+  .why-icon { animation: none !important; }
+  .sticky-call-bar.visible { animation: none; }
+  .footer-cta::before { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .section-reveal { opacity: 1; transform: none; transition: none; }
+  .team-card--from-left, .team-card--from-right { opacity: 1; transform: none; transition: none; }
+  .service-card--enter { opacity: 1; transform: none; transition: none; }
 }
