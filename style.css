@@ -1223,7 +1223,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
   background: var(--cream);
 }
 
-
 .contact-details { display: flex; flex-direction: column; gap: 16px; }
 .contact-details li {
   display: flex;
@@ -1257,8 +1256,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--brown-text); }
-.form-group input,
-.form-group textarea {
+.form-group input {
   font-family: var(--font-sans);
   font-size: 1rem;
   color: var(--brown-text);
@@ -1271,9 +1269,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   width: 100%;
   -webkit-appearance: none;
 }
-.form-group textarea { min-height: 120px; resize: vertical; }
-.form-group input:focus,
-.form-group textarea:focus {
+.form-group input:focus {
   outline: none;
   border-color: var(--green-mid);
   box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.15);
