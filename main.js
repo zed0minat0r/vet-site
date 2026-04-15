@@ -421,78 +421,96 @@
     }, { passive: true });
   }
 
-  // ---- Services carousel scroll indicator ----
+  // ---- Sticky scroll-driven services horizontal pan ----
   (function () {
-    var grid = document.querySelector('.services-grid');
-    var thumb = document.getElementById('services-scroll-thumb');
-    if (!grid || !thumb) return;
+    var outer = document.querySelector('.services-sticky-outer');
+    var inner = document.querySelector('.services-sticky-inner');
+    var track = document.getElementById('services-cards-track');
+    var progressFill = document.getElementById('services-progress-fill');
+    if (!outer || !inner || !track) return;
 
-    function updateThumb() {
-      var scrollLeft = grid.scrollLeft;
-      var maxScroll = grid.scrollWidth - grid.clientWidth;
-      if (maxScroll <= 0) { thumb.style.width = '100%'; return; }
-      var pct = scrollLeft / maxScroll;
-      var thumbW = Math.max(grid.clientWidth / grid.scrollWidth * 100, 15);
-      var thumbLeft = pct * (100 - thumbW);
-      thumb.style.width = thumbW + '%';
-      thumb.style.left = thumbLeft + '%';
+    // If reduced motion, fall back to native horizontal scroll
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      track.style.overflowX = 'auto';
+      track.style.scrollSnapType = 'x mandatory';
+      return;
     }
 
-    grid.addEventListener('scroll', updateThumb, { passive: true });
-    updateThumb();
+    var ticking = false;
+
+    function update() {
+      var outerRect = outer.getBoundingClientRect();
+      var outerH = outer.offsetHeight;
+      var innerH = inner.offsetHeight;
+      // scrolled distance within the outer container
+      var scrolled = -outerRect.top;
+      var maxScroll = outerH - innerH;
+
+      if (maxScroll <= 0) return;
+
+      var progress = Math.max(0, Math.min(1, scrolled / maxScroll));
+
+      // How far we need to translate horizontally
+      var trackW = track.scrollWidth;
+      var viewW = inner.offsetWidth;
+      var maxTranslate = trackW - viewW;
+      if (maxTranslate <= 0) { progress = 0; }
+
+      var translateX = -progress * Math.max(0, maxTranslate);
+      track.style.transform = 'translateX(' + translateX + 'px)';
+
+      if (progressFill) {
+        progressFill.style.width = (progress * 100) + '%';
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Run once on load
+    update();
   }());
 
-  // ---- Services dot indicator + counter ----
-  // 5-dot sliding window: shows 2 before active, active, 2 after
+  // ---- Parallax photo breaks ----
   (function () {
-    var grid = document.querySelector('.services-grid');
-    var dotsRow = document.getElementById('services-dots-row');
-    var counter = document.getElementById('services-counter');
-    if (!grid || !dotsRow || !counter) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var cards = grid.querySelectorAll('.service-card');
-    var total = cards.length;
-    if (!total) return;
+    var breaks = document.querySelectorAll('.parallax-break-img');
+    if (!breaks.length) return;
 
-    var WINDOW = 5; // always show exactly 5 dots
+    var ticking = false;
 
-    // Build exactly 5 dots
-    var dots = [];
-    for (var i = 0; i < WINDOW; i++) {
-      var dot = document.createElement('span');
-      dot.className = 'services-dot';
-      dotsRow.appendChild(dot);
-      dots.push(dot);
+    function updateParallax() {
+      var scrollY = window.pageYOffset;
+      breaks.forEach(function (img) {
+        var parent = img.parentElement;
+        var rect = parent.getBoundingClientRect();
+        var viewH = window.innerHeight;
+        if (rect.bottom > 0 && rect.top < viewH) {
+          // progress: 0 when bottom just enters, 1 when top just leaves
+          var progress = 1 - (rect.bottom / (viewH + rect.height));
+          // move bg image at 40% of scroll speed (parallax depth)
+          var shift = progress * -28;
+          img.style.transform = 'translateY(' + shift + '%)';
+        }
+      });
+      ticking = false;
     }
 
-    counter.textContent = '1 of ' + total;
-
-    function getActiveIndex() {
-      var cardW = cards[0].offsetWidth + 12; // gap
-      return Math.min(Math.round(grid.scrollLeft / cardW), total - 1);
-    }
-
-    function updateDots() {
-      var idx = getActiveIndex();
-      counter.textContent = (idx + 1) + ' of ' + total;
-
-      // Compute window start so active dot is at position 2 (center)
-      var winStart = idx - 2;
-      // Clamp so we don't go out of bounds
-      if (winStart < 0) winStart = 0;
-      if (winStart > total - WINDOW) winStart = Math.max(0, total - WINDOW);
-
-      for (var j = 0; j < WINDOW; j++) {
-        var cardIdx = winStart + j;
-        var isActive = (cardIdx === idx);
-        dots[j].classList.toggle('active', isActive);
-        // If total <= WINDOW, hide extra dots
-        dots[j].style.display = (cardIdx < total) ? '' : 'none';
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
       }
-    }
+    }, { passive: true });
 
-    grid.addEventListener('scroll', updateDots, { passive: true });
-    updateDots();
+    updateParallax();
   }());
 
   // ---- Trust stat counter animation ----
