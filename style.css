@@ -367,10 +367,11 @@ p { font-size: 1rem; color: var(--brown-mid); }
 
 /* ---- Why strip ---- */
 .why-strip {
-  background: var(--green-dark);
+  background: linear-gradient(to bottom, #1e3a28 0%, var(--green-dark) 60px, var(--green-dark) 100%);
   position: relative;
   padding: 56px 0;
   overflow: hidden;
+  margin-top: -1px;
 }
 
 /* Textural leaf overlay — large ghosted botanical shapes behind the grid */
@@ -403,6 +404,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   margin-bottom: 8px;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
 .why-heading {
@@ -411,6 +413,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   margin-bottom: 28px;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
 .why-list {
