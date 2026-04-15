@@ -284,7 +284,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   text-align: center;
   overflow: hidden;
 }
@@ -1627,7 +1627,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 @media (max-width: 767px) {
   .sticky-call-bar { display: block; }
   /* Ensure content above sticky bar is not obscured */
-  .site-footer { padding-bottom: 80px; }
+  .site-footer { padding-bottom: 64px; }
 
   /* About section: prevent stat card from overflowing 375px viewport */
   .about-media { overflow: visible; }
@@ -1670,8 +1670,8 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 36px;
-  padding-bottom: 48px;
+  gap: 24px;
+  padding-bottom: 32px;
   text-align: center;
 }
 
