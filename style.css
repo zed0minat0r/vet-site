@@ -309,6 +309,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
   z-index: 2;
   padding: 0 var(--gutter);
   max-width: 640px;
+  width: 100%;
 }
 
 .hero-eyebrow {
@@ -324,6 +325,9 @@ p { font-size: 1rem; color: var(--brown-mid); }
   border-radius: var(--radius-pill);
   backdrop-filter: blur(4px);
   white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hero-headline {
@@ -1715,8 +1719,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
 
 @media (max-width: 767px) {
   .sticky-call-bar { display: block; }
-  /* Ensure content above sticky bar is not obscured */
-  .site-footer { padding-bottom: 64px; }
 
   /* About section: prevent stat card from overflowing 375px viewport */
   .about-media { overflow: visible; }
@@ -1821,6 +1823,11 @@ p { font-size: 1rem; color: var(--brown-mid); }
   text-align: center;
 }
 .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+
+/* Sticky call bar clears footer content on mobile */
+@media (max-width: 767px) {
+  .site-footer { padding-bottom: 64px; }
+}
 
 /* =======================================================
    DESKTOP 768px+
