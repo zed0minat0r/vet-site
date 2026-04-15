@@ -16,115 +16,130 @@
 | 2026-04-09 | 7.6 | +0.2 | Testimonials full-bleed photo background + floating card shadows, footer CTA inline style moved to CSS, services dot indicator + "1 of 11" live counter, team dark-green botanical banner, trust stat counter animation, services stagger-reveal, hero sub-copy trimmed, testimonials border-top separation, broken puppy image fixed |
 | 2026-04-09 | 7.7 | +0.1 | 2015 stat fixed to static, botanical leaf strengthened (22% opacity/96px + mirrored second leaf), services condensed to 5-dot sliding window, why strip eyebrow + heading added, services counter font fixed to 12px, footer brand logo centered on mobile |
 | 2026-04-09 | 7.9 | +0.2 | Why strip dark green background with cream/amber/blush/sky icon accents + botanical SVG overlays; about section paper grain texture + botanical watermark behind h2 + amber accent band on stat card; team mirrored leaf opacity raised to 0.18; hero reduced to 80vh, content centered, image less zoomed; footer spacing tightened; dead code cleaned |
-| 2026-04-09 (this audit) | 8.0 | +0.1 | Section boundary borders applied across all 10 transitions (amber/sand/green); hours section upgraded with dark green header card + map panel matching; team cards given top colour bands (amber/green/sky/blush); about stat card amber ring removed; footer 6px amber top border; scroll-margin-top confirmed |
+| 2026-04-09 | 8.0 | +0.1 | Section boundary borders applied across all 10 transitions (amber/sand/green); hours section upgraded with dark green header card + map panel matching; team cards given top colour bands (amber/green/sky/blush); about stat card amber ring removed; footer 6px amber top border; scroll-margin-top confirmed |
+| 2026-04-09 (this audit) | 8.1 | +0.1 | Testimonials dot counter + "1 of 4" position indicator added; team card bodies given SVG grain texture at 4% opacity + gradient tint cycling; about botanical watermark raised to 0.14 opacity; footer compacted (horizontal links, 16px grid gap); amber stat card accent removed; testimonials background changed to golden retriever; all section boundaries confirmed with 5px borders; why strip heading centered |
 
 ---
 
-## Overall Score: 8.0 / 10
+## Overall Score: 8.1 / 10
 
-The v8 brief addresses the two items that were explicitly holding the template below 8.0: the hours section and the section boundary cohesion. Both have been meaningfully resolved.
+The v9 brief delivers the first item from v8's top 3 recommendations precisely: the testimonials carousel now has a dot counter and "1 of 4" position indicator mirroring the services carousel logic. The implementation is clean — four dots, one per card, driven by the scroll position of the track wrapper, with the counter updating on scroll. This was the clearest functional UX gap from v8 and it is now closed. The testimonials section score moves accordingly.
 
-The hours section has received its first designed treatment across eight audit rounds. The dark green header band on the hours panel matches the visual language of the trust strip, the team header, and the why strip. The map panel has an equivalent dark green header with a 5% botanical leaf watermark. These are not decorative touches — they connect a section that was previously an aesthetic orphan to the template's visual system. Score moves from 7.0 to 7.5. This is the largest single-section improvement in v8 and the direct reason the overall score clears 8.0.
+The team card grain texture at 4% opacity is a marginal improvement over flat warm-white bodies. On a real OLED mobile screen at 375px the grain is not perceptible to the naked eye — the SVG feTurbulence filter at this opacity requires a viewer to be looking for it. The gradient tint cycling (amber-pale to warm-white for card 1, green-pale to warm-white for card 2, sky-tint to warm-white for card 3) adds the first 60px of colour register differentiation and is visible in practice. Together these two techniques move the team card bodies from "warm-white rectangle" to "warm-white rectangle with some effort applied" — not yet the photographic or strong-textured treatment that would close the gap, but a genuine step.
 
-The section boundary borders are the second significant change. Every transition now has an explicit marker: 5px amber on the why strip top, 5px sand-dark on services, 6px semi-white on trust stats, 5px amber on team, 5px sand-dark on testimonials top, 5px sand on testimonials bottom, 5px sand-dark on hours bottom, 5px green-pale on contact top, 6px amber on footer. These are not random colours — they follow the template's token set (amber, sand, green-pale) in a legible rhythm. A buyer scrolling the full page on mobile will now register section changes as intentional beats rather than abrupt background shifts.
+The about botanical watermark raised to 0.14 is the correct change and is confirmed in CSS at line 505. On a cream background, 0.14 moves the watermark from borderline to perceptible on most mobile OLED screens. This is the second v8 recommendation delivered.
 
-The team card top colour bands (amber/green-dark/sky/blush cycling) give the cards a deliberate jewellery treatment without changing their warm-white body. This is the minimum viable differentiation for the team card bodies — it is not the photographic card treatment I specified as a recommendation, but it is a genuine step.
+The footer compaction from 1348px to approximately 990px via horizontal link layout (flex-wrap: wrap, gap: 4px 16px on the links list) and 16px grid gap on the footer-grid is a sound decision. The footer was the section with the most scroll dead weight on mobile. The compacted layout respects the 44px tap target on individual links and the grid still collapses to single-column on mobile.
 
-The about stat card amber ring shadow removal is correct. The ring was fighting the stat card's green background and the amber accent was already doing work elsewhere in the section. The card is cleaner without it.
+The amber stat card accent removal was already recommended in v8 and logged as delivered in that audit. Its appearance in the v9 brief is a repeat confirmation, not new work. No additional score credit is assigned.
 
-The delta is +0.1. That is an honest score for these changes. The section boundary work and the hours section fix together constitute a threshold crossing — this template now scores at a level where a buyer would choose it over a generic ThemeForest alternative with genuine confidence. What prevents 8.5: the team card bodies remain warm-white rectangles with no photographic treatment; the about botanical watermark remains borderline invisible on mobile OLED at 11% opacity; and the testimonials section has no navigation indicators (no dot counter, no card counter) despite being a scroll carousel, which is a UX gap that a buyer who tests on mobile will notice.
+The golden retriever background image change to the testimonials section is confirmed in CSS: the `url` at line 1041 points to `photo-1534361960057-19889db9621e` which is a golden retriever photo. The dark green-brown overlay gradient (rgba 20,40,25 at 0.82 to rgba 10,30,20 at 0.72 to rgba 30,20,10 at 0.78) is unchanged. The new background image adds warmth — the previous image was cooler in tone. On its own this is a styling preference, not a structural improvement. It is noted but does not move the score independently.
+
+The section boundary borders are confirmed at every transition. The why strip hero exit (5px amber top), services entry (5px sand-dark), trust strip entry (6px semi-white), team entry (5px amber), testimonials top/bottom (5px sand-dark / 5px sand), hours bottom (5px sand-dark), contact top/bottom (5px green-pale / 5px sand-dark), and footer top (6px amber) are all present. This is a carry-over from v8, not new work in v9. Confirm, no regression.
+
+The why strip heading is confirmed in CSS as `.why-heading { text-align: center }` via inheritance from `.center` class applied in HTML. Confirmed, no regression.
+
+The delta is +0.1. Three reasons:
+
+First, the testimonials position indicator is a genuine UX improvement that a mobile buyer would notice and appreciate — it closes the most concrete functional complaint from v8.
+
+Second, the team card gradient tints, while subtle, are a step toward the photographic treatment that remains the ceiling. They are not zero.
+
+Third, the watermark at 0.14 is now in the perceptible range on mobile. The botanical motif is the template's primary differentiator and it is now consistently visible across all sections on the primary purchase decision screen.
+
+What prevents 8.2: the team card bodies still read as cream gradient rectangles at first glance. The grain is invisible at 4% on cream. The gradient tints are subtle but not distinctive. A buyer who compares this template against a competitor with full-bleed team photography will still notice the gap. This is the single remaining structural weakness.
 
 ---
 
 ## Section Scores
 
 ### 1. Design System and Visual Identity — 8.3 / 10
-The section boundary colour system is now the fourth layer of the template's design vocabulary, joining the botanical motif, the colour token set, and the section-type register (dark green / cream / photo / sand). The amber/sand/green-pale border rhythm is coherent and not arbitrary. Score moves from 8.2 to 8.3. This is the clearest evidence that the template has a deliberate design system rather than assembled styles.
+Unchanged from v8. The amber/sand/green-pale border rhythm, botanical motif, colour token set, and dark/cream/photo/sand section register are all confirmed. No regression.
 
 ### 2. Hero (Mobile 375px) — 7.5 / 10
-Unchanged from v7. 80vh, centered content, correct overlay gradient, eyebrow contained. No regression.
+Unchanged. 80vh, centered content, correct overlay gradient, eyebrow contained, eager loading with fetchpriority high. No regression. The changelog notes a WebP source addition but the HTML shows a plain `<img>` tag without a `<picture>` element or `<source>` — the WebP optimisation referenced in the changelog does not appear to be present in the current HTML. This is not a regression from v8 but the changelog claim is inaccurate. Score holds.
 
 ### 3. Navigation — 7.5 / 10
-Unchanged. Hamburger-to-X transition correct, overlay clean, tap targets 52px, sticky header minimal. No regression.
+Unchanged. No regression.
 
 ### 4. Why Strip — 7.8 / 10
-Unchanged from v7. The dark green treatment with cream/amber/blush/sky icon accents and botanical overlays is confirmed. The 5px amber top border is a correct v8 addition — it marks the hard exit from the hero and gives the strip a deliberate entry point. No regression.
+Unchanged. Heading confirmed center-aligned. 5px amber top border confirmed. Botanical overlays confirmed. No regression.
 
 ### 5. About Section — 7.8 / 10
-The amber ring shadow on the stat card has been removed. The card is now a clean dark green rectangle with Est. 2015 / 500+ Home Visits, sitting below the about image on mobile. The botanical watermark at 11% is confirmed in CSS (opacity: 0.11 at line 502). It remains borderline on OLED mobile. Score holds at 7.8. No regression.
+The botanical watermark is now confirmed at 0.14 opacity (CSS line 505). This is the correct change. On cream background at 375px, 0.14 is perceptible on most mobile OLED screens. Score holds at 7.8 — the watermark fix was a recommendation, not a structural correction, and the overall section layout is unchanged. No regression.
 
 ### 6. Services — 8.3 / 10
-Unchanged. The 5-dot sliding window, scroll progress indicator, and photo-backed cards with category-colour overlays remain the most technically considered mobile UX element on the page. The 5px sand-dark top border cleanly separates services from the cream about section. No regression.
+Unchanged. No regression.
 
 ### 7. Trust Stats Strip — 8.0 / 10
-Unchanged. Static 2015 confirmed, three animated counters clean, 6px semi-white top border provides adequate separation from charcoal services background. No regression.
+Unchanged. No regression.
 
-### 8. Team Section — 7.6 / 10
-The top colour bands on team cards are confirmed in CSS: amber for card 1, green-dark for card 2, sky for card 3, blush for card 4 and beyond. On a 375px screen these 4px bands are immediately visible — they give each card a distinct header signal without requiring a full redesign. Score moves from 7.5 to 7.6. The 5px amber top border on the team section itself matches the why strip entry treatment and gives the section a strong mobile entry. The card bodies remain warm-white with centered text (inherited from `.team { text-align: center }`) — not distinguished, but not wrong. The ceiling remains a photographic card treatment.
+### 8. Team Section — 7.7 / 10
+The gradient tint cycling on team card bodies is confirmed (CSS lines 986-989): card 1 gets accent-warm-pale to warm-white, card 2 gets rgba(212,234,217,0.55) to warm-white, card 3 gets rgba(140,190,220,0.18) to warm-white. The SVG grain texture at 4% opacity is confirmed (CSS lines 972-982). The top colour bands (amber/green-dark/sky/blush via border-top-color on nth-child) are unchanged from v8. These three layers together constitute a genuine improvement over flat warm-white bodies. Score moves from 7.6 to 7.7. The ceiling remains a photographic or strongly textured treatment.
 
-### 9. Testimonials — 8.0 / 10
-Unchanged. The full-bleed golden retriever photo background with dark green-brown overlay and floating cream cards is confirmed. The 5px sand-dark / sand borders on both sides cleanly mark the section entry and exit. One genuine UX gap that a mobile buyer will notice: there is no dot counter or position indicator for the testimonial carousel. A user on mobile who swipes and sees a second or third card has no feedback about how many remain. Score holds at 8.0 but this gap would prevent movement to 8.5.
+### 9. Testimonials — 8.2 / 10
+The dot counter and "1 of 4" position indicator are confirmed in both HTML (lines 459-463) and JS (lines 317-353). The implementation correctly tracks scroll position of the track wrapper, derives the active card index, and updates both the dot highlight and the counter text. This mirrors the services carousel logic exactly. The golden retriever background image adds warmth to the section without changing its structure. Score moves from 8.0 to 8.2.
 
 ### 10. Hours and Location — 7.5 / 10
-The long-overdue intervention. The hours panel now has a dark green header band (`hours-header` with `background: var(--green-dark)`, `color: #fff`) containing the "Hours" eyebrow in green-pale and the "When we're available." heading in white. The map panel has an equivalent dark green header with a 5% botanical leaf watermark and the "Location" / "Chester Springs, PA" treatment. Both panels are contained in warm-white cards with sand-dark borders and card-level box-shadows. Score moves from 7.0 to 7.5. This is the most consequential single change in v8. The section no longer reads as aesthetically inert — it now speaks the same visual language as the rest of the template. The today-row highlight (amber left-shadow, amber-tinted background) was already present and remains functional.
+Unchanged from v8. Dark green header bands on both the hours panel and map panel confirmed. Today-row highlight confirmed. No regression.
 
 ### 11. Interactive Calendar Booking — 8.0 / 10
-Unchanged. Calendar remains the clearest commercial differentiator. Form breakpoint at 480px collapses bform-row to single column correctly. Contact info sidebar hidden on mobile. 5px green-pale top border and 5px sand-dark bottom border cleanly delineate the section. No regression.
+Unchanged. No regression.
 
 ### 12. Sticky Call Bar — 7.5 / 10
-Unchanged. Transform + opacity transition, 44px tap target, correct z-index. The 64px footer padding-bottom on mobile prevents the sticky bar from obscuring footer content. No regression.
+Unchanged. No regression.
 
 ### 13. Footer CTA Banner — 8.0 / 10
-The border (3px rgba white at 0.12) and box-shadow (0 4px 32px rgba black 0.4) confirmed in CSS. The CTA now reads as a floating card inside the dark footer rather than a flush panel. No regression.
+Unchanged. No regression.
 
-### 14. Footer — 7.5 / 10
-The 6px amber top border is the footer's clearest v8 improvement. It matches the amber entry treatment on the why strip and team section, closing the amber rhythm at the page bottom. Score moves from 7.4 to 7.5. The footer structure is clean and correctly centered on mobile. Brand logo `justify-content: center` confirmed. No regression.
+### 14. Footer — 7.6 / 10
+The compaction from approximately 1348px to 990px is confirmed: the footer-links list now uses `display: flex; flex-wrap: wrap; gap: 4px 16px; justify-content: center` (CSS line 1894), and the footer-grid has `gap: 16px; padding-bottom: 20px` (CSS lines 1877-1878). This removes the substantial scroll dead weight the footer carried on mobile. Links remain accessible at minimum 44px tap target via `min-height: 44px; display: flex; align-items: center`. Score moves from 7.5 to 7.6.
 
 ### 15. Scroll Interactions and Animations — 7.7 / 10
-Unchanged. Four animation systems present and correctly gated behind prefers-reduced-motion. scroll-margin-top on all section[id] elements at `calc(var(--nav-h) + 16px)` is confirmed at line 58. No regression.
+Unchanged. No regression.
 
 ### 16. Typography — 8.0 / 10
-Unchanged. Playfair Display / Inter pairing applied consistently. No regression.
+Unchanged. No regression.
 
 ### 17. Mobile Layout and Centre Alignment — 7.8 / 10
-Unchanged. Consistent center-alignment confirmed across all sections on mobile. No regression.
+Unchanged. No regression.
 
 ---
 
 ## Top 3 Recommendations (Buyer-Impact Order)
 
-**1. Add a dot or position indicator to the testimonials carousel**
-The testimonials section is a horizontal scroll carousel with four cards. On mobile there is no feedback about how many cards exist or where the user is in the sequence. This is a functional gap, not a styling gap. The services carousel has a 5-dot sliding window and a "1 of 11" counter — the same pattern applied to testimonials would take the section from 8.0 to 8.2 and give buyers a concrete demonstration of UX polish. Implementation is approximately 20 lines of JS mirroring the existing services counter logic.
+**1. Apply a photographed or strongly textured treatment to team card bodies**
+The gradient tint cycling and 4% grain are genuine improvements but they do not close the fundamental gap: the team card bodies read as cream rectangles. The services section demonstrates the correct technique — photo as background, dark gradient overlay, text on top. The inverse (photo as background, 90% cream overlay, text on top) would give the team cards a second visual register. Alternatively, a stronger grain at 8-10% opacity over a light sand background (not warm-white) would add visible texture. Either option moves team from 7.7 to 8.0 and is the single change with the highest buyer-impression impact remaining on the page.
 
-**2. Apply a photographic or coloured-overlay treatment to the team card bodies**
-The top colour bands (amber/green/sky/blush) are the minimum viable differentiation. They work but they don't resolve the core issue: below the colour band the cards are warm-white rectangles. The services cards use a photo-as-background with a dark gradient overlay — the same technique inverted (photo-as-background, 90% cream overlay, text on top) would give the team cards a second visual register. Alternatively, a thin pattern background (the existing SVG grain texture from the about section, at 4% opacity over var(--warm-white)) would add texture without a photograph. Either option moves team from 7.6 to 7.9.
+**2. Implement a `<picture>` element with WebP source for the hero image**
+The changelog claims WebP was added in v13 but the current HTML at lines 93-99 shows a plain `<img>` tag with no `<picture>` element and no `&fm=webp` parameter on the Unsplash URL. On mobile, the hero image is the single largest performance cost. A `<picture>` element with a `<source type="image/webp" srcset="...fm=webp">` and a JPEG fallback is approximately 10 lines of HTML and delivers a 20-35% file size reduction on supporting browsers. This is a commercial template — buyers who run Lighthouse will notice a missing WebP optimisation on the LCP image.
 
-**3. Increase the about section botanical watermark opacity to 0.14 on mobile**
-At 11% the watermark is perceptible on desktop but still borderline on most mobile OLED screens. The team leaf at 22% opacity and the why strip overlays at 5-6% white on dark establish the valid range — on a light cream background 14% would be equivalent in perceived weight to 6% on dark. This is one number change. The botanical motif is the template's signature device; it should be perceptible on the primary purchase decision screen (mobile) in every section where it appears.
+**3. Add a border-top or subtle colour band to the team card image-to-info transition**
+The 4px top border on the card container is correct. The gap is between the image and the info area: the transition from the photo to the warm-white gradient body is abrupt. A 2px sand-dark rule between `.team-img-wrap` and `.team-info`, or a `box-shadow: 0 -4px 12px rgba(46,36,25,0.08)` inset on `.team-info`, would soften the transition and give the card body an entry point. This is a two-line CSS change.
 
 ---
 
 ## Summary Scorecard
 
-| Section | v7 Score | v8 Score | Delta |
+| Section | v8 Score | v9 Score | Delta |
 |---|---|---|---|
-| Design System and Visual Identity | 8.2 | 8.3 | +0.1 |
+| Design System and Visual Identity | 8.3 | 8.3 | 0 |
 | Hero (Mobile 375px) | 7.5 | 7.5 | 0 |
 | Navigation | 7.5 | 7.5 | 0 |
 | Why Strip | 7.8 | 7.8 | 0 |
 | About Section | 7.8 | 7.8 | 0 |
 | Services | 8.3 | 8.3 | 0 |
 | Trust Stats Strip | 8.0 | 8.0 | 0 |
-| Team Section | 7.5 | 7.6 | +0.1 |
-| Testimonials | 8.0 | 8.0 | 0 |
-| Hours and Location | 7.0 | 7.5 | +0.5 |
+| Team Section | 7.6 | 7.7 | +0.1 |
+| Testimonials | 8.0 | 8.2 | +0.2 |
+| Hours and Location | 7.5 | 7.5 | 0 |
 | Interactive Calendar Booking | 8.0 | 8.0 | 0 |
 | Sticky Call Bar | 7.5 | 7.5 | 0 |
 | Footer CTA Banner | 8.0 | 8.0 | 0 |
-| Footer | 7.4 | 7.5 | +0.1 |
+| Footer | 7.5 | 7.6 | +0.1 |
 | Scroll Interactions and Animations | 7.7 | 7.7 | 0 |
 | Typography | 8.0 | 8.0 | 0 |
 | Mobile Layout and Centre Alignment | 7.8 | 7.8 | 0 |
-| **Overall** | **7.9** | **8.0** | **+0.1** |
+| **Overall** | **8.0** | **8.1** | **+0.1** |
 
-The v8 changes delivered precisely what was needed to cross 8.0. The hours section fix (+0.5) is the largest single-section gain in v8 and the direct cause of the threshold crossing. The section boundary borders add coherence without clutter. The team card bands add minimum viable differentiation. The template is now at a level where a buyer with genuine aesthetic judgment would prefer it over a generic ThemeForest alternative. The remaining gap to 8.5 requires the testimonials carousel indicator, a photographic or textured treatment on team card bodies, and consistent botanical watermark visibility on mobile OLED.
+The v9 changes deliver two of the three items from v8's top 3 recommendations: the testimonials carousel indicator (+0.2 on that section, the largest single-section gain in v9) and the botanical watermark opacity increase. The third recommendation — photographic or strongly textured team card bodies — remains outstanding and is the single highest-impact item remaining. The footer compaction removes a legitimate usability complaint. The template now sits at 8.1, which is a credible score for a commercial template in this category. A buyer with genuine aesthetic judgment would choose this over most ThemeForest alternatives.
