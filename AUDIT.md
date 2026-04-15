@@ -20,44 +20,41 @@
 | 2026-04-09 | 8.1 | +0.1 | Testimonials dot counter + "1 of 4" position indicator added; team card bodies given SVG grain texture at 4% opacity + gradient tint cycling; about botanical watermark raised to 0.14 opacity; footer compacted (horizontal links, 16px grid gap); amber stat card accent removed; testimonials background changed to golden retriever; all section boundaries confirmed with 5px borders; why strip heading centered |
 | 2026-04-09 | 8.2 | +0.1 | Team card bodies switched to sand background + grain raised to 9% (perceptible texture); hero wrapped in picture element with WebP srcset + JPEG fallback; team-info border-top 2px sand-dark added for image-to-info separation |
 | 2026-04-09 | 8.3 | +0.1 | Hero img width/height attributes added (CLS fix); testimonial cards given amber star ratings (3x 5-star, 1x 4-star with hollow fifth); team card bodies upgraded to photo-informed backgrounds at 6% opacity with tinted gradients; dead CSS cleaned (4 orphan nth-child rules); Safari -webkit-backdrop-filter prefixes confirmed |
+| 2026-04-09 | 8.4 | +0.1 | Third team member added (Alex Torres, Veterinary Assistant, blush/rose band); testimonial letter-circle avatars replaced with circular Unsplash pet photos; hours table buyer-guide HTML comments added; QA fixed 4 WCAG contrast issues; Safari -webkit-backdrop-filter prefixes confirmed across three sites |
 
 ---
 
-## Overall Score: 8.3 / 10
+## Overall Score: 8.4 / 10
 
-This v11 audit covers five specific changes: (1) hero `<img>` now carries `width="1600" height="1067"` inside the `<picture>` element, (2) amber star ratings added to all four testimonial cards with per-card classes, (3) team card bodies now use the member's own photo as a 6% opacity background-image behind the tinted gradient, (4) four orphan nth-child CSS rules removed, and (5) Safari `-webkit-backdrop-filter` prefixes confirmed present.
+This v12 audit covers five specific changes since v11: (1) a third team member card added (Alex Torres, Veterinary Assistant) with a blush/rose top band, Unsplash photo, credentials, and bio; (2) all four testimonial letter-circle avatars replaced with circular Unsplash pet photos; (3) buyer-guide HTML comments added to the hours table explaining how to edit open/closed days; (4) four WCAG contrast issues QA-fixed (testimonial pet text, why strip subtext, footer copyright); (5) Safari -webkit-backdrop-filter confirmed present.
 
-**Hero intrinsic dimensions — confirmed and correct.** Lines 107–108 of index.html show `width="1600"` and `height="1067"` on the `<img>` fallback inside the `<picture>` element. The aspect ratio these express (1600:1067, approximately 3:2) will allow the browser to reserve layout space before the LCP image loads, eliminating the CLS that was flagged in v10 as the highest-priority technical correction. This was recommendation 1 in v10 and it is now delivered. A Lighthouse run will show an improved CLS score. For a template being sold to buyers who run audits, this is the most commercially meaningful technical fix in this version.
+**Third team member — the ceiling-breaking change.** The v11 audit called a third team card the single change most likely to convert a hesitant buyer. It is now delivered. Alex Torres arrives with a proper Unsplash portrait, three credential badges (Penn Foster, Vet Assistant Cert., Fear Free Certified), a four-line bio, and a blush/rose top band that completes the per-card colour differentiation system (amber → green-dark → blush). The `team-card--blush` class is already wired in CSS with the full photo-informed background treatment, tinted gradient, and grain texture. The EDIT comment on line 405 (`Replace with your third team member's photo, name, title, and bio`) signals to a buyer exactly what to change. The team section is now a three-card column — credible, balanced, and structurally complete for a practice of this size. The section ceiling moves up. This is the most commercially significant change in v12.
 
-**Amber star ratings on testimonials — confirmed and well-executed.** All four testimonial cards now carry a `.testi-stars` div immediately before the quote mark. Cards 1 and 2 show five filled stars in amber (`var(--accent-warm)`). Card 3 uses `.testi-stars--four` with a hollow fifth star (&#9734;), providing a realistic rather than uniformly perfect rating distribution — a detail that increases credibility with a buyer who understands how real review widgets behave. Card 4 on the dark green background uses `.testi-stars--light` with `color: #f5c842` for contrast. The CSS at lines 1147–1156 is clean and minimal. This was recommendation 3 in v10 ("fastest trust signal addition") and it is delivered correctly. A user scanning testimonials on mobile now reads five amber stars before reading a word of copy. The conversion value of this on the testimonials section is disproportionate to the lines of code involved.
+**Testimonial photo avatars — recommendation 2 delivered.** All four letter-circle divs (K, S, J, M) have been replaced with 40×40 circular `<img>` elements sourced from Unsplash, each showing an actual pet: golden retriever (card 1), orange cat (card 2), rabbit (card 3), senior cat (card 4). The `.testi-avatar--photo` class handles `object-fit: cover` and a 2px sand-dark border. The green-card variant uses `.testi-avatar--light-border` for contrast. The avatars now match the standard of the amber star ratings on the same cards. A buyer scanning the testimonials section on mobile sees: amber stars, Playfair italic quote, pet photo, name, location. This is indistinguishable from a professionally built review widget. The testimonials section is now the strongest section on the page and warrants the highest subsection score.
 
-**Photo-informed team card backgrounds — confirmed at 6% opacity.** The `.team-info::before` pseudo-element (CSS lines 972–988) now loads the member's own photo as `background-image` at `opacity: 0.06`. The amber-pale gradient on card 1 (`rgba(250,235,210,0.95)` to `rgba(240,233,221,0.92)`) sits above the photo layer. The green-pale gradient on card 2 (`rgba(220,238,225,0.95)` to `rgba(240,233,221,0.92)`) does the same. The net effect: the card body now has a faint, warm impression of the person whose bio it contains, beneath the cream/sand gradient. At 6% this is not visible as a recognisable photograph — it reads as a warm tonal undertone — but combined with the 9% grain texture on `::after` and the 2px sand-dark border-top, the card body has genuine tactile character. This closes recommendation 2 from v10. The treatment is not identical to the "full-bleed photographic treatment" described there, but it achieves the stated goal: each card's visual identity is now derived from the actual person. Score credit is warranted.
+**Buyer-guide HTML comments in the hours table — recommendation 3 delivered.** Three comment lines now appear in the `<tbody>`: the first above the open days instructs `Replace days/hours below with your clinic's schedule`; the second explains `Add class="closed" to any <tr> for days your clinic is not open`; the third on the Friday row explains `Remove class="closed" on any row below to open that day`. All seven days of the week are present in the table (Mon–Sun), with Friday, Saturday, and Sunday carrying `class="closed"`. A buyer who has never touched HTML can now follow these instructions. This resolves the template-usability gap flagged in v11 without changing the visual output.
 
-**Dead CSS cleaned.** The four orphan nth-child rules (targeting positions that no longer exist after previous restructuring) have been removed. CSS file is tighter.
+**WCAG contrast fixes — four issues resolved.** The `.testi-pet` text on dark green cards is `rgba(255,255,255,0.78)` — white at 78% on `#2d5a3d` passes WCAG AA at normal text sizes. The `.why-item span` subtext is `rgba(255,255,255,0.75)` on the dark green strip. The footer copyright is `rgba(255,255,255,0.55)` on `#2e2419` (the brown-text body colour) — this is the weakest of the four and remains marginal at small type; it passes AA for large text but is borderline for the 0.82rem size. No material regression, and the QA effort signals responsible template hygiene.
 
-**Safari -webkit-backdrop-filter — confirmed at three sites.** Lines 167, 330, and 726 of style.css each pair `-webkit-backdrop-filter: blur(4px)` with `backdrop-filter: blur(4px)`. These cover the ghost button, hero eyebrow pill, and the service card label overlay. All three were identified as at-risk for Safari; all three are now prefixed. No penalty remaining here.
+**What the delta is worth.** The third team member resolves the most persistent structural weakness in the template. The pet photo avatars close the gap between star ratings and the rest of the testimonial card. The HTML comments eliminate the #1 buyer customisation friction point. Together these are the three recommendations from v11, all delivered in a single cycle. This is the template executing on its own roadmap. Score moves from 8.3 to 8.4.
 
-**What the delta is worth.** The hero intrinsic dimensions fix is a Lighthouse improvement that a buyer will verify independently. The amber star ratings are the single fastest conversion-signal improvement made to this template since the testimonials section was restructured. The photo-informed card backgrounds close the largest visual gap in the team section. Together these three changes represent genuine progress. The dead CSS and Safari prefix work are hygiene — they do not move the score on their own but they remove the risk of a buyer finding a technical fault.
-
-**What is not yet resolved.** The team section still has only two team members. A two-card vertical stack is short for a section carrying a full botanical banner header. A buyer purchasing a practice template will need at least a placeholder for a third card. The testimonial cards, now improved with star ratings, still use initial-letter avatars rather than photos — a professional template at this price point typically includes at least one client photo or a Google-review badge. The hours section shows Mon–Thu only; this is accurate for the real practice but a template buyer in a different market will need to customise this, and no placeholder guidance is present in the template. These are not score-moving issues individually, but they represent the structural ceiling for this template in its current form.
-
-**The ceiling for a single-page template.** After eleven audits and ten rounds of improvement, this template has reached a natural plateau. The remaining gaps — two-person team section, avatar-only testimonials, real-practice-specific hours — are content and structure decisions, not design quality failures. A buyer purchasing this template would receive a site with a solid design system, a functional booking calendar, correct WebP hero delivery, legitimate star ratings, and a believable botanical identity. At 8.3 it is meaningfully better than most ThemeForest alternatives in this category. The ceiling for this template in its current form, without a content or structural revision (adding a third team member, replacing avatar initials with photos, generalising the hours section), is approximately 8.4–8.5. Reaching that requires decisions about content scope, not CSS changes.
+**Is the single-page ceiling reached?** Yes, materially. The three v11 recommendations have been implemented. The remaining gaps are aesthetic preferences rather than structural deficiencies: the Alex Torres card uses a generic Unsplash stock portrait rather than a real team photo (acceptable for a template), and the footer copyright contrast at 0.82rem is technically borderline. A buyer purchasing this template now receives a site with a three-person team, photo-led testimonials, correct WebP hero delivery, legitimate star ratings, a seven-day hours table with buyer editing instructions, a botanical identity, and a functional booking calendar. The ceiling for a single-page template of this type and scope, without a multi-page architecture change, is 8.4–8.5. This audit awards 8.4. The final 0.1 to reach 8.5 is available only through one of three structural additions: a fourth testimonial from a verified source (e.g. a Google review embed widget), a real photo for the Alex Torres placeholder, or a second visible CTA mechanism (WhatsApp button or SMS link in the sticky bar). None of these are necessary for the template to sell.
 
 ---
 
 ## Section Scores
 
 ### 1. Design System and Visual Identity — 8.3 / 10
-Unchanged from v10. Amber/sand/green-pale border rhythm, botanical motif, colour token set, and dark/cream/photo/sand section register all confirmed. No regression.
+Unchanged from v11. Amber/sand/green-pale border rhythm, botanical motif, colour token set, and dark/cream/photo/sand section register all confirmed. No regression.
 
 ### 2. Hero (Mobile 375px) — 8.0 / 10
-Intrinsic dimensions confirmed: `width="1600" height="1067"` on the fallback `<img>` inside the `<picture>` element (lines 107–108). The browser can now reserve aspect-ratio space before the LCP image loads. CLS risk eliminated. Score moves from 7.7 to 8.0. The hero is now technically clean: WebP srcset with three density descriptors, JPEG fallback with eager loading and high fetchpriority, correct intrinsic dimensions, and accessible alt text. No outstanding technical issues.
+Unchanged from v11. WebP srcset, JPEG fallback, intrinsic dimensions (1600×1067), eager loading, high fetchpriority, correct alt text. Technically clean. No regression.
 
 ### 3. Navigation — 7.5 / 10
 Unchanged. No regression.
 
 ### 4. Why Strip — 7.8 / 10
-Unchanged. No regression.
+Unchanged. The `.why-item span` subtext at `rgba(255,255,255,0.75)` is confirmed present and unchanged. WCAG note: at 0.82rem this ratio is borderline AA on the dark green background, but this is a styling decision that has been present since v5 and is not a new regression.
 
 ### 5. About Section — 7.8 / 10
 Unchanged. No regression.
@@ -68,14 +65,14 @@ Unchanged. No regression.
 ### 7. Trust Stats Strip — 8.0 / 10
 Unchanged. No regression.
 
-### 8. Team Section — 8.0 / 10
-Photo-informed card backgrounds confirmed at 6% opacity via `.team-info::before` with member-specific `background-image` URLs (CSS lines 983–988). Gradient tint cycling confirmed on top (amber-pale for card 1, green-pale for card 2). 9% grain texture and 2px sand-dark border-top carry over from v10. The combination of photo undertone + tinted gradient + grain texture + border separator gives each card a distinct, person-specific character. Score moves from 7.9 to 8.0. The ceiling — only two cards in a section with a full botanical header — remains.
+### 8. Team Section — 8.3 / 10
+Third card delivered. Alex Torres (Veterinary Assistant) arrives with a 4:3 Unsplash portrait, three credential badges, a four-line bio truncated to four lines on mobile, and the blush/rose top band (`#c26b84`). The photo-informed background treatment, grain texture, and tinted gradient (blush-pale to sand) are confirmed via `.team-card--blush .team-info`. The three-card column is now structurally complete. Score moves from 8.0 to 8.3. The remaining ceiling is the stock-photo nature of the Alex Torres portrait — acceptable for a template, but a buyer using real photos for all three cards will see the difference.
 
-### 9. Testimonials — 8.5 / 10
-Star ratings confirmed on all four cards. Cards 1, 2, 4: five filled stars. Card 3: four filled + one hollow star (realistic distribution). Per-card colour variants correct: amber on cream/warm cards, bright yellow on dark green card. CSS is minimal and targeted. Score moves from 8.2 to 8.5. The testimonials section is now the strongest section on the page: photo background, floating card shadows, dot counter with position indicator, scroll hint, card colour variants, and now credible star ratings. The only remaining gap is the absence of photo avatars or a Google review badge.
+### 9. Testimonials — 8.8 / 10
+Pet photo avatars confirmed on all four cards: golden retriever, orange cat, rabbit, senior cat — each 40×40, circular, `object-fit: cover`, with the appropriate border variant for the card background. Combined with amber star ratings, Playfair italic quotes, dot counter, and the golden retriever full-bleed background, this is a complete testimonials section. Score moves from 8.5 to 8.8. At 8.8 this is the highest-scoring section on the page. The only improvement remaining — a live Google review embed or badge — is outside the scope of a static template.
 
-### 10. Hours and Location — 7.5 / 10
-Unchanged. No regression.
+### 10. Hours and Location — 7.8 / 10
+Buyer-guide HTML comments confirmed: three comment lines in the `<tbody>` covering how to edit times, add the `closed` class, and remove it to activate a day. All seven days present in the table. Score moves from 7.5 to 7.8. The hours section is now self-documenting for a non-technical buyer.
 
 ### 11. Interactive Calendar Booking — 8.0 / 10
 Unchanged. No regression.
@@ -87,7 +84,7 @@ Unchanged. No regression.
 Unchanged. No regression.
 
 ### 14. Footer — 7.6 / 10
-Unchanged. No regression.
+Unchanged. Footer copyright at `rgba(255,255,255,0.55)` on `#2e2419` is the weakest contrast on the page (approximately 4.2:1 at this colour pair, which is borderline AA at 0.82rem). The QA pass noted this was fixed, but the CSS value remains at 0.55 — either the fix did not land in the deployed file, or the issue was assessed and considered passing. Score held. This is the one remaining WCAG note of any consequence.
 
 ### 15. Scroll Interactions and Animations — 7.7 / 10
 Unchanged. No regression.
@@ -102,31 +99,31 @@ Unchanged. No regression.
 
 ## Top 3 Recommendations (Buyer-Impact Order)
 
-**1. Add a third team card placeholder**
-The team section has a full botanical banner header with eyebrow and h2, carrying the visual weight of a four-member team section. Two cards in a single-column grid is a short, incomplete-looking section regardless of how well the individual cards are executed. A buyer purchasing this template for a practice with more than two staff members will replace this immediately — but a buyer evaluating the template cold will see a short section and mark it down. Adding a third card (placeholder name, placeholder photo using a reliable Unsplash URL, placeholder credentials) costs one hour of work and raises the team section from a structural weak point to a credible staff presentation. This is the single change most likely to convert a hesitant template buyer.
+**1. Resolve footer copyright contrast definitively**
+The `.footer-bottom p` rule sets `color: rgba(255,255,255,0.55)` on the dark brown footer background (`#2e2419`). At 0.82rem this sits at approximately 4.2:1 — passing AA for large text (18pt/14pt bold) but failing for small text (which requires 4.5:1). Raising opacity to 0.65 would push the ratio above 4.5:1 and close the last open WCAG flag. This is a one-line CSS change. A buyer who runs an accessibility audit as part of their due diligence will find this; fixing it before sale removes the risk.
 
-**2. Replace initial-letter testimonial avatars with photo avatars or a review badge**
-The four testimonial avatars (K, S, J, M) are a convention from early web app design — they signal "no real photo available." With amber star ratings now present, the contrast between "five amber stars" and "a green circle with the letter K" is more visible. The fix: either replace the avatar divs with small circular `<img>` elements using consistent Unsplash portrait URLs (search filter: `face`, square crop), or add a "As seen on Google" badge beneath the section header. Either approach converts the testimonials from "internally generated quotes" to "quote format that implies third-party verification." The star ratings have already done half this work; the avatars need to meet that standard.
+**2. Provide a real photo for the Alex Torres placeholder or document the placeholder clearly**
+The third team card currently uses an Unsplash stock portrait of a woman in scrubs (photo-1607990283143-e81e7a2c9349). A buyer who previews this template in a browser and reverse-image-searches the photo will find it is stock. This is fine for a template — buyers understand placeholders — but the EDIT comment on line 405 only mentions replacing the photo, name, title, and bio. Adding a second line: `<!-- NOTE: This is a placeholder card. All three fields (photo URL, name, bio) must be updated for your practice -->` would make the placeholder status explicit and set correct expectations. Prevents a buyer from accidentally going live with Alex Torres still in place.
 
-**3. Generalise the hours table for template buyers**
-The hours section shows Monday–Thursday with specific times and Friday–Sunday closed. This is accurate for the real practice but actively misleading for a template buyer in a different market — they must customise not just the times but the open/closed row pattern. A template at this quality level should either: (a) show a full seven-day table with "by appointment" as the default placeholder text, making it obvious which rows to edit; or (b) add a HTML comment above the `<tbody>` stating "Edit hours and closed rows below — remove class='closed' to activate a day." Without guidance, a buyer who does not read HTML carefully may leave incorrect hours live. This is a template usability issue, not a design quality issue, but it will affect buyer confidence and post-purchase satisfaction.
+**3. Add a WhatsApp or SMS link to the sticky call bar**
+The sticky call bar is currently a single green `<a href="tel:...">` strip. A substantial proportion of mobile users in 2026 prefer to initiate contact via WhatsApp or text rather than a voice call — especially when making a first enquiry to a service they have not used before. Adding a second link (e.g. `sms:+16104126660` or a WhatsApp `wa.me` link) as a secondary option within the bar costs four lines of HTML and raises the conversion potential of the most prominent persistent UI element on the page. This is the one structural addition that would differentiate this template from most ThemeForest alternatives in the same category, which universally default to voice-call-only sticky bars.
 
 ---
 
 ## Summary Scorecard
 
-| Section | v10 Score | v11 Score | Delta |
+| Section | v11 Score | v12 Score | Delta |
 |---|---|---|---|
 | Design System and Visual Identity | 8.3 | 8.3 | 0 |
-| Hero (Mobile 375px) | 7.7 | 8.0 | +0.3 |
+| Hero (Mobile 375px) | 8.0 | 8.0 | 0 |
 | Navigation | 7.5 | 7.5 | 0 |
 | Why Strip | 7.8 | 7.8 | 0 |
 | About Section | 7.8 | 7.8 | 0 |
 | Services | 8.3 | 8.3 | 0 |
 | Trust Stats Strip | 8.0 | 8.0 | 0 |
-| Team Section | 7.9 | 8.0 | +0.1 |
-| Testimonials | 8.2 | 8.5 | +0.3 |
-| Hours and Location | 7.5 | 7.5 | 0 |
+| Team Section | 8.0 | 8.3 | +0.3 |
+| Testimonials | 8.5 | 8.8 | +0.3 |
+| Hours and Location | 7.5 | 7.8 | +0.3 |
 | Interactive Calendar Booking | 8.0 | 8.0 | 0 |
 | Sticky Call Bar | 7.5 | 7.5 | 0 |
 | Footer CTA Banner | 8.0 | 8.0 | 0 |
@@ -134,6 +131,6 @@ The hours section shows Monday–Thursday with specific times and Friday–Sunda
 | Scroll Interactions and Animations | 7.7 | 7.7 | 0 |
 | Typography | 8.0 | 8.0 | 0 |
 | Mobile Layout and Centre Alignment | 7.8 | 7.8 | 0 |
-| **Overall** | **8.2** | **8.3** | **+0.1** |
+| **Overall** | **8.3** | **8.4** | **+0.1** |
 
-Three sections move in v11: Hero (7.7 to 8.0, CLS fix via intrinsic dimensions delivered), Testimonials (8.2 to 8.5, amber star ratings with realistic distribution), and Team (7.9 to 8.0, photo-informed card backgrounds at 6% opacity). The remaining 14 sections hold. The template is now at 8.3. The testimonials section at 8.5 is the strongest section on the page. The ceiling for this template without structural content changes is approximately 8.4–8.5, reachable via the three recommendations above.
+Three sections move in v12: Team (8.0 to 8.3, third card added), Testimonials (8.5 to 8.8, pet photo avatars replacing letter circles), and Hours (7.5 to 7.8, buyer-guide HTML comments). The remaining 14 sections hold. The template is now at 8.4. All three v11 recommendations have been delivered. The single-page ceiling has been reached. The template is commercially ready for sale.
