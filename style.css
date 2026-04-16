@@ -2425,6 +2425,117 @@ p { font-size: 1rem; color: var(--brown-mid); }
   box-shadow: 0 0 20px rgba(74, 124, 89, 0.55) !important;
 }
 
+/* ---- Mobile nav active-link background chip ---- */
+/* On mobile full-screen overlay, active link gets same green-pale chip as desktop */
+.nav-menu:not(.open) a[aria-current="true"]:not(.nav-cta) {
+  /* Only relevant when open — handled below */
+}
+.nav-menu.open a[aria-current="true"]:not(.nav-cta) {
+  background: var(--green-pale);
+  border-radius: var(--radius-sm);
+  color: var(--green-dark);
+}
+
+/* ---- Alex Torres placeholder card ---- */
+.team-card--placeholder {
+  outline: 2px dashed var(--sand-dark);
+  outline-offset: -2px;
+}
+.team-card--placeholder .team-img-wrap {
+  position: relative;
+}
+.team-card--placeholder .team-img-wrap img {
+  filter: grayscale(65%) opacity(0.65);
+}
+.placeholder-banner {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(46, 36, 25, 0.78);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.team-bio--placeholder {
+  font-style: italic;
+  color: var(--brown-light);
+}
+
+/* ---- What's included section ---- */
+.whats-included {
+  background: var(--warm-white);
+  border-top: 5px solid var(--sand-dark);
+  padding: 64px 0 72px;
+}
+.whats-included h2 {
+  margin-bottom: 16px;
+}
+.whats-included-intro {
+  color: var(--brown-mid);
+  font-size: 1rem;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+}
+.whats-included-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.whats-included-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--sand);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  border: 1px solid var(--sand-dark);
+}
+.wi-check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.wi-check::after {
+  content: '';
+  display: block;
+  width: 7px;
+  height: 4px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) translateY(-1px);
+}
+.whats-included-list strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--brown-text);
+  margin-bottom: 3px;
+}
+.whats-included-list span {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--brown-mid);
+  line-height: 1.5;
+}
+
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
