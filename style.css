@@ -482,11 +482,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
   background-color: var(--cream);
 }
 
-/* About section top accent removed — was creating a stray green line below the why strip */
-.about::before {
-  display: none;
-}
-
 /* Botanical watermark behind the h2 in the text block */
 .about-text {
   position: relative;
@@ -2173,17 +2168,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
   transform: none;
 }
 
-/* Service cards scale up on viewport entry */
-.service-card--enter {
-  opacity: 0;
-  transform: scale(0.93) translateY(16px);
-  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.service-card--enter.visible {
-  opacity: 1;
-  transform: none;
-}
-
 /* ---- Hero ambient orbs ---- */
 .hero-orb {
   position: absolute;
@@ -2368,19 +2352,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
   text-align: center;
 }
 
-.parallax-break-stat {
-  font-family: var(--font-serif);
-  font-size: clamp(1rem, 4vw, 1.4rem);
-  font-weight: 700;
-  color: rgba(255,255,255,0.9);
-  letter-spacing: 0.02em;
-}
-
-.parallax-break-divider {
-  color: rgba(255,255,255,0.3);
-  font-size: 1.4rem;
-}
-
 .parallax-break-quote {
   font-family: var(--font-serif);
   font-size: clamp(1.1rem, 4.5vw, 1.8rem);
@@ -2465,7 +2436,6 @@ p { font-size: 1rem; color: var(--brown-mid); }
   .reveal { opacity: 1; transform: none; transition: none; }
   .section-reveal { opacity: 1; transform: none; transition: none; }
   .team-card--from-left, .team-card--from-right { opacity: 1; transform: none; transition: none; }
-  .service-card--enter { opacity: 1; transform: none; transition: none; }
   .parallax-break-img { transform: none !important; transition: none !important; }
   .services-cards-track { transform: none !important; transition: none !important; overflow-x: auto; scroll-snap-type: x mandatory; }
 }
