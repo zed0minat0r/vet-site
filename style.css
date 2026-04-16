@@ -854,7 +854,7 @@ p { font-size: 1rem; color: var(--brown-mid); }
 .team {
   padding: 0 0 80px;
   background: var(--warm-white);
-  border-top: none;
+  border-top: 5px solid #fff;
   border-bottom: 3px solid var(--sand-dark);
   position: relative;
   text-align: center;
