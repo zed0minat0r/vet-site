@@ -31,6 +31,32 @@
     });
   }
 
+  // ---- Active nav link tracking ----
+  (function () {
+    var navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+    var sections = [];
+    navLinks.forEach(function (link) {
+      var id = link.getAttribute('href').replace('#', '');
+      var el = id === 'top' ? document.querySelector('.hero') : document.getElementById(id);
+      if (el) sections.push({ el: el, link: link });
+    });
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+    var current = null;
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var match = sections.find(function (s) { return s.el === entry.target; });
+          if (match && match !== current) {
+            if (current) current.link.removeAttribute('aria-current');
+            match.link.setAttribute('aria-current', 'true');
+            current = match;
+          }
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+    sections.forEach(function (s) { navObserver.observe(s.el); });
+  }());
+
   // ---- Scroll reveal ----
   var revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length && 'IntersectionObserver' in window) {
